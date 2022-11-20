@@ -18,7 +18,7 @@ import BVCscrap  as bvc
 import http.client, urllib.request, urllib.parse, urllib.error, base64
 import yfinance as yf
 
-st.title('Cours de référence BAM')
+st.text('Cours de référence BAM')
 
 #Scrapping eur mad and usd mad from BAM
 #scrap from BAM
@@ -86,5 +86,8 @@ dfindex = pd.DataFrame(index['Resume indice']).transpose()
 #sectorial
 dfsect = pd.DataFrame(index['Indices sectoriels']).transpose()
 
+st.text('Indices BVC')
 st.dataframe(dfindex)
+
+st.text('Indices sectoriaux)
 st.dataframe(dfsect)
