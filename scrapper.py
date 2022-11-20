@@ -94,7 +94,7 @@ st.dataframe(dfsect)
 
 #Pondération et cours
 st.text('Pondération et cours')
-courspond = pd.DataFrame(load.getPond())
+courspond = pd.DataFrame(bvc.getPond())
 st.dataframe(courspond[['Instrument', 'Nombre de titres', 'Cours','Poids']])
 #test
 st.text('Volume de la séance :')
