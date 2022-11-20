@@ -1,3 +1,7 @@
+openpyxl
+matplotlib
+plost
+xlsxwriter
 beautifulsoup4
 lxml
 BVCscrap
