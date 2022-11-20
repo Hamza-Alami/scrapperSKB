@@ -18,5 +18,5 @@ import yfinance as yf
 import BVCscrap as load
 import pandas as pd
 
-recap=bvc.getIndexRecap()
+#recap=bvc.getIndexRecap()
 st.text('onga bounga')
