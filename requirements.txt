@@ -6,9 +6,4 @@ beautifulsoup4
 lxml
 BVCscrap
 jsonlib
-http.client
-urllib.request
-urllib.parse
-urllib.error
-base64
 yfinance
