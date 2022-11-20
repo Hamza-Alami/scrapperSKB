@@ -5,5 +5,4 @@ xlsxwriter
 beautifulsoup4
 lxml
 BVCscrap
-jsonlib
 yfinance
