@@ -21,4 +21,4 @@ st.text('onga bounga')
 
 recap=bvc.getIndexRecap()
 data=bvc.loadata('BCP',start='2021-09-01',end='2021-09-10')
-st.write(recap)
+st.write(pd.DataFrame(recap))
