@@ -72,8 +72,8 @@ def usdmad():
         
     usd = float(dataus.decode()[-25:-18])
     return usd
-BAMcc = pd.DataFrame({'Cours en MAD': [euromad(), usdmad()]},index=['EUR', 'USD'])
-st.dataframe(BAMcc)
+#BAMcc = pd.DataFrame({'Cours en MAD': [euromad(), usdmad()]},index=['EUR', 'USD'])
+#st.dataframe(BAMcc)
 
 #BVCscrapper
 
@@ -94,5 +94,5 @@ st.dataframe(dfsect)
 
 #test 
 recap=bvc.getIndexRecap()
-testdf = pd.DataFrame(recap['Indice'])
+testdf = pd.DataFrame(recap['Volume Global'])
 st.dataframe(testdf)
