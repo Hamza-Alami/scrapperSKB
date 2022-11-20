@@ -72,3 +72,6 @@ def usdmad():
         
     usd = float(dataus.decode()[-25:-18])
     return usd
+
+st.write('USD/MAD :',usdmad())
+st.write('EUR/MAD :',euromad())
