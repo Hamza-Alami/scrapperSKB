@@ -91,3 +91,8 @@ st.dataframe(dfindex)
 
 st.text('Indices sectoriaux')
 st.dataframe(dfsect)
+
+#test 
+recap=bvc.getIndexRecap()
+recap['Indice']
+st.write(recap['Indice'])
