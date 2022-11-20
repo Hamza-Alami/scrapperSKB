@@ -18,3 +18,4 @@ import BVCscrap  as bvc
 
 #recap=bvc.getIndexRecap()
 st.text('onga bounga')
+bvc.notation()
