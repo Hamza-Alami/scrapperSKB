@@ -13,7 +13,7 @@ from io import BytesIO
 import altair as alt
 from bs4 import BeautifulSoup
 import lxml
-import json
+import Json
 import BVCscrap  as bvc
 
 recap=bvc.getIndexRecap()
