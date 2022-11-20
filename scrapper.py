@@ -92,8 +92,11 @@ st.dataframe(dfindex)
 st.text('Indices sectoriaux')
 st.dataframe(dfsect)
 
-#test 
+#Pondération et cours
+st.text('Pondération et cours')
+courspond = pd.DataFrame(load.getPond())
+st.dataframe(courspond[['Instrument', 'Nombre de titres', 'Cours','Poids']])
+#test
+st.text('Volume de la séance :')
 recap=bvc.getIndexRecap()
-#testdf = pd.DataFrame(recap['Plus forte baisse'])
-#st.dataframe(testdf)
 st.write(recap['Volume Global'])
