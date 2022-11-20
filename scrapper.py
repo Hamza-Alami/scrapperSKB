@@ -74,3 +74,17 @@ def usdmad():
     return usd
 BAMcc = pd.DataFrame({'Cours en MAD': [euromad(), usdmad()]},index=['EUR', 'USD'])
 st.dataframe(BAMcc)
+
+#BVCscrapper
+
+#loading indices
+
+#indices
+index=load.getIndex()
+dfindex = pd.DataFrame(index['Resume indice']).transpose()
+
+#sectorial
+dfsect = pd.DataFrame(index['Indices sectoriels']).transpose()
+
+st.dataframe(dfindex)
+st.dataframe(dfsect)
