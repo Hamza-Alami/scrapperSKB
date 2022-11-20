@@ -5,7 +5,7 @@ xlsxwriter
 beautifulsoup4
 lxml
 BVCscrap
-json
+jsonlib
 http.client
 urllib.request
 urllib.parse
