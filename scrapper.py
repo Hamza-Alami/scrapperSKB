@@ -18,5 +18,7 @@ import BVCscrap  as bvc
 
 #recap=bvc.getIndexRecap()
 st.text('onga bounga')
+
+recap=bvc.getIndexRecap()
 data=bvc.loadata('BCP',start='2021-09-01',end='2021-09-10')
-st.write(data)
+st.write(recap)
