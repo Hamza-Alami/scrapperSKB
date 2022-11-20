@@ -33,7 +33,7 @@ def euromad():
     params = urllib.parse.urlencode({
         # Request parameters
         'libDevise': 'EUR',
-        'date': '{}',
+        'date': '2022-11-17',
     })
 
     try:
@@ -58,7 +58,7 @@ def usdmad():
     params = urllib.parse.urlencode({
         # Request parameters
         'libDevise': 'USD',
-        'date': '{}',
+        'date': '2022-11-17',
     })
 
     try:
@@ -73,5 +73,4 @@ def usdmad():
     usd = float(dataus.decode()[-25:-18])
     return usd
 
-st.write('USD/MAD :',usdmad())
-st.write('EUR/MAD :',euromad())
+st.dataframe(BAMcc = pd.DataFrame({'Cours en MAD': [euromad(), usdmad()]},index=['EUR', 'USD']))
