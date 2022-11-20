@@ -19,6 +19,6 @@ import BVCscrap  as bvc
 #recap=bvc.getIndexRecap()
 st.text('onga bounga')
 
-recap=bvc.getIndexRecap()
+recap=bvc.getIndexRecap('Plus forte hausse')
 data=bvc.loadata('BCP',start='2021-09-01',end='2021-09-10')
 st.write(pd.DataFrame(recap))
