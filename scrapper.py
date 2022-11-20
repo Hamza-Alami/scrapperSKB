@@ -18,9 +18,57 @@ import BVCscrap  as bvc
 import http.client, urllib.request, urllib.parse, urllib.error, base64
 import yfinance as yf
 
-#recap=bvc.getIndexRecap()
-st.text('onga bounga')
+st.text('BAM')
 
-recap=bvc.getIndexRecap()
-data=bvc.loadata('BCP',start='2021-09-01',end='2021-09-10')
-st.write(recap['Plus forte hausse'])
+#Scrapping eur mad and usd mad from BAM
+#scrap from BAM
+
+def euromad():
+    
+    headers = {
+        # Request headers
+        'Ocp-Apim-Subscription-Key': '4f64d048c9f34f62a748068e3827cbc9',
+    }
+
+    params = urllib.parse.urlencode({
+        # Request parameters
+        'libDevise': 'EUR',
+        'date': '{}',
+    })
+
+    try:
+        conn = http.client.HTTPSConnection('api.centralbankofmorocco.ma')
+        conn.request("GET", "/cours/Version1/api/CoursVirement?%s" % params, "{body}", headers)
+        response = conn.getresponse()
+        data = response.read()
+        conn.close()
+    except Exception as e:
+        print("[Errno {0}] {1}".format(e.errno, e.strerror))
+        
+    eur = float(data.decode()[-25:-18])
+    return eur
+
+def usdmad():
+    
+    headers = {
+        # Request headers
+        'Ocp-Apim-Subscription-Key': '4f64d048c9f34f62a748068e3827cbc9',
+    }
+
+    params = urllib.parse.urlencode({
+        # Request parameters
+        'libDevise': 'USD',
+        'date': '{}',
+    })
+
+    try:
+        conn = http.client.HTTPSConnection('api.centralbankofmorocco.ma')
+        conn.request("GET", "/cours/Version1/api/CoursVirement?%s" % params, "{body}", headers)
+        response = conn.getresponse()
+        dataus = response.read()
+        conn.close()
+    except Exception as e:
+        print("[Errno {0}] {1}".format(e.errno, e.strerror))
+        
+    usd = float(dataus.decode()[-25:-18])
+    return usd
