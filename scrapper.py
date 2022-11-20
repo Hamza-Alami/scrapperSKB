@@ -18,7 +18,7 @@ import BVCscrap  as bvc
 import http.client, urllib.request, urllib.parse, urllib.error, base64
 import yfinance as yf
 
-st.text('BAM')
+st.title('Cours de change BAM')
 
 #Scrapping eur mad and usd mad from BAM
 #scrap from BAM
