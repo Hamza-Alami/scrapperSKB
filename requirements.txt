@@ -1,0 +1,14 @@
+openpyxl
+matplotlib
+plost
+xlsxwriter
+beautifulsoup4
+lxml
+BVCscrap
+json
+http.client
+urllib.request
+urllib.parse
+urllib.error
+base64
+yfinance
