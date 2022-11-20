@@ -89,5 +89,5 @@ dfsect = pd.DataFrame(index['Indices sectoriels']).transpose()
 st.text('Indices BVC')
 st.dataframe(dfindex)
 
-st.text('Indices sectoriaux)
+st.text('Indices sectoriaux')
 st.dataframe(dfsect)
