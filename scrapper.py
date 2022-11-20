@@ -94,5 +94,5 @@ st.dataframe(dfsect)
 
 #test 
 recap=bvc.getIndexRecap()
-recap['Indice']
-st.write(recap['Indice'])
+testdf = pd.DataFrame(recap['Indice'])
+st.write(tetsdf)
