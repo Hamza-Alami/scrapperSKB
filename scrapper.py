@@ -80,7 +80,7 @@ st.dataframe(BAMcc)
 #loading indices
 
 #indices
-index=load.getIndex()
+index=bvc.getIndex()
 dfindex = pd.DataFrame(index['Resume indice']).transpose()
 
 #sectorial
