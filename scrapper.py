@@ -15,6 +15,8 @@ from bs4 import BeautifulSoup
 import lxml
 import json
 import BVCscrap  as bvc
+import http.client, urllib.request, urllib.parse, urllib.error, base64
+import yfinance as yf
 
 #recap=bvc.getIndexRecap()
 st.text('onga bounga')
