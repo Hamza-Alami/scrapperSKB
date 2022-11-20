@@ -94,5 +94,6 @@ st.dataframe(dfsect)
 
 #test 
 recap=bvc.getIndexRecap()
-testdf = pd.DataFrame(recap['Plus forte baisse'])
-st.dataframe(testdf)
+#testdf = pd.DataFrame(recap['Plus forte baisse'])
+#st.dataframe(testdf)
+st.write(recap['Plus forte baisse'])
