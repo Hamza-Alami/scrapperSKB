@@ -160,9 +160,9 @@ st.text('Indices sectoriaux')
 st.dataframe(dfsect)
 
 #Pondération et cours
-st.text('Pondération et cours')
+st.text('Pondérations')
 courspond = pd.DataFrame(bvc.getPond())
-st.dataframe(courspond[['Instrument', 'Nombre de titres', 'Cours','Poids']])
+st.dataframe(courspond[['Instrument', 'Nombre de titres', 'Poids']])
 #test
 st.text('Volume de la séance :')
 recap=bvc.getIndexRecap()
