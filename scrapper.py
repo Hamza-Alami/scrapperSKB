@@ -172,19 +172,19 @@ recap=bvc.getIndexRecap()
 st.write(recap['Volume Global'])
 
 #test ticker
-#bcp=bvc.loadata('BCP',start='2021-09-01',end='2021-09-10')
-#st.dataframe(pd.DataFrame(bcp))
+
 #list of tickers
 tickerlist = bvc.notation()
 
-for i in tickerlist:
+def tickers():
+    for i in tickerlist :
+        seance=bvc.loadata(i,start='2021-09-01',end='2021-09-01')
+        return seance 
+#framed = pd.DataFrame(seance)
+#framed['Ticker'] = i
+#full = pd.concat(framed)
+#fdf = st.dataframe(full)
     
-    seance=bvc.loadata(i,start='2021-09-01',end='2021-09-01')
-    #framed = pd.DataFrame(seance)
-    #framed['Ticker'] = i
-    #full = pd.concat(framed)
-    #fdf = st.dataframe(full)
-    return seance
-
-full = pd.DataFrame(seance)
+ticklist = tickers()
+full = pd.DataFrame(ticklist)
 st.dataframe(full)
