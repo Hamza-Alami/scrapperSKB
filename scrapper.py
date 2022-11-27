@@ -170,3 +170,7 @@ st.dataframe(courspond[['Instrument', 'Nombre de titres', 'Poids']])
 st.text('Volume de la séance :')
 recap=bvc.getIndexRecap()
 st.write(recap['Volume Global'])
+
+#test ticker
+bcp=bvc.loadata('BCP',start='2021-09-01',end='2021-09-10')
+st.dataframe(pd.DataFrame(bcp))
