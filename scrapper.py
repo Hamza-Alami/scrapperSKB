@@ -179,4 +179,4 @@ tickerlist = bcp.notation()
 
 for i in tickerlist:
     seance=bvc.loadata(i,start='2021-09-01',end='2021-09-01')
-    return st.dataframe(pd.DataFrame(seance))
+return st.dataframe(pd.DataFrame(seance))
