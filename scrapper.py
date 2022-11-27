@@ -172,5 +172,11 @@ recap=bvc.getIndexRecap()
 st.write(recap['Volume Global'])
 
 #test ticker
-bcp=bvc.loadata('BCP',start='2021-09-01',end='2021-09-10')
-st.dataframe(pd.DataFrame(bcp))
+#bcp=bvc.loadata('BCP',start='2021-09-01',end='2021-09-10')
+#st.dataframe(pd.DataFrame(bcp))
+#list of tickers
+tickerlist = bcp.notation()
+
+for i in tickerlist:
+    seance=bvc.loadata(i,start='2021-09-01',end='2021-09-01')
+    return st.dataframe(pd.DataFrame(seance))
