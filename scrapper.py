@@ -187,4 +187,4 @@ def tickers():
     
 ticklist = tickers()
 #full = pd.DataFrame(ticklist)
-st.write(ticklist)
+st.write(ticklist[1], ticklist[3])
