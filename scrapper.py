@@ -181,4 +181,4 @@ for i in tickerlist:
     
     seance=bvc.loadata(i,start='2021-09-01',end='2021-09-01')
     fdf=st.dataframe(pd.DataFrame(seance))
-    return fdf
+    print(fdf)
