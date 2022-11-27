@@ -175,7 +175,7 @@ st.write(recap['Volume Global'])
 #bcp=bvc.loadata('BCP',start='2021-09-01',end='2021-09-10')
 #st.dataframe(pd.DataFrame(bcp))
 #list of tickers
-tickerlist = bcp.notation()
+tickerlist = bvc.notation()
 
 for i in tickerlist:
     
