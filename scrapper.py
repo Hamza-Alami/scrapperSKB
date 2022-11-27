@@ -184,4 +184,4 @@ for i in tickerlist:
     #framed['Ticker'] = i
     #full = pd.concat(framed)
     #fdf = st.dataframe(full)
-    print(seance + i)
+    print(seance)
