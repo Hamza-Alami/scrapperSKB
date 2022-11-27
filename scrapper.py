@@ -179,12 +179,12 @@ tickerlist = bvc.notation()
 def tickers():
     for i in tickerlist :
         seance=bvc.loadata(i,start='2021-09-01',end='2021-09-01')
-        return seance 
+        return seance, i
 #framed = pd.DataFrame(seance)
 #framed['Ticker'] = i
 #full = pd.concat(framed)
 #fdf = st.dataframe(full)
     
 ticklist = tickers()
-full = pd.DataFrame(ticklist)
-st.dataframe(full)
+#full = pd.DataFrame(ticklist)
+st.write(ticklist)
