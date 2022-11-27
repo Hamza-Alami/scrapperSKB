@@ -180,8 +180,8 @@ tickerlist = bvc.notation()
 for i in tickerlist:
     
     seance=bvc.loadata(i,start='2021-09-01',end='2021-09-01')
-    framed = pd.DataFrame(seance)
-    framed['Ticker'] = i
-    full = pd.concat(framed)
-    fdf = st.dataframe(full)
-    print(fdf)
+    #framed = pd.DataFrame(seance)
+    #framed['Ticker'] = i
+    #full = pd.concat(framed)
+    #fdf = st.dataframe(full)
+    print(seance + i)
