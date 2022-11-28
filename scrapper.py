@@ -187,3 +187,4 @@ def tickers():
         framed['Ticker'] = i
         full = pd.concat(framed)
         fdf = st.dataframe(full)
+st.write(tickers())
