@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import datetime as date
+import datetime
 import matplotlib.pyplot as plt
 import os
 import base64
@@ -17,6 +17,7 @@ import json
 import BVCscrap  as bvc
 import http.client, urllib.request, urllib.parse, urllib.error, base64
 import yfinance as yf
+from datetime import date
 
 st.text('Cours de référence BAM')
 
