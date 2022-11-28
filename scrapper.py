@@ -178,8 +178,7 @@ st.write(recap['Volume Global'])
 tickerlist =['Addoha','AFMA','Afric Indus','Afriquia Gaz','Agma','Alliances','Aluminium Maroc','Aradei Capital','ATLANTASANAD','Attijariwafa','Auto Hall','Auto Nejma','BALIMA','BOA','BCP','BMCI','Cartier Saada','CDM','CIH','Ciments Maroc','CMT','Colorado','COSUMAR','CTM','Dari Couspate','Delattre Lev','Delta Holding','DISWAY','Ennakl','EQDOM','FENIE BROSSETTE','HPS','IBMaroc','Immr Invest','INVOLYS','Jet Contractors','LABEL VIE','LafargeHolcim','Lesieur Cristal','Lydec','M2M Group','Maghreb Oxygene','Maghrebail','Managem','Maroc Leasing','Maroc Telecom','Med Paper','Microdata','Mutandis','Oulmes','PROMOPHARM','Rebab Company','Res.Dar Saada','Risma','S2M','Saham Assurance','SALAFIN','SMI','Stokvis Nord Afr','SNEP','SODEP','Sonasid','SRM','Ste Boissons','STROC Indus','TAQA Morocco','Timar','Total Maroc','Unimer','SOTHEMA','Wafa Assur','Zellidja']
 
 for i in tickerlist :
-    today = '2022-11-28'
-    seance=bvc.loadata(i,start=today,end=today)
+    seance=bvc.loadata(i,start='2022-11-28',end='2022-11-28')
     framed = pd.DataFrame(seance)
     framed['Ticker'] = i
     full = pd.concat(framed)
