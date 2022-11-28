@@ -182,6 +182,5 @@ for i in tickerlist :
     seance=bvc.loadata(i,start='2022-11-25',end='2022-11-28')
     framed = pd.DataFrame(seance)
     framed['Ticker'] = i
-    full = pd.concat(framed)
-    fdf = st.dataframe(full)
+    fdf = st.dataframe(framed)
 st.write(fdf)
