@@ -186,5 +186,4 @@ def tickers():
         framed = pd.DataFrame(seance)
         framed['Ticker'] = i
         full = pd.concat(framed)
-        
-fdf = st.dataframe(full)
+        fdf = st.dataframe(full)
