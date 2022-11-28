@@ -180,12 +180,11 @@ tickerlist =['Addoha','AFMA','Afric Indus','Afriquia Gaz','Agma','Alliances','Al
 today = '2022/11/28'
 #today = today.strftime()
 
-def tickers():
-    for i in tickerlist :
-        seance=bvc.loadata(i,start=today,end=today)
-        return seance, i
-        framed = pd.DataFrame(seance)
-        framed['Ticker'] = i
-        full = pd.concat(framed)
-        fdf = st.dataframe(full)
-st.write(tickers())
+
+for i in tickerlist :
+    seance=bvc.loadata(i,start=today,end=today)
+    framed = pd.DataFrame(seance)
+    framed['Ticker'] = i
+    full = pd.concat(framed)
+    fdf = st.dataframe(full)
+st.write(fdf)
