@@ -182,7 +182,7 @@ today = '2022/11/28'
 
 
 for i in tickerlist :
-    today = '2022/11/28'
+    today = '2022-11-28'
     seance=bvc.loadata(i,start=today,end=today)
     framed = pd.DataFrame(seance)
     framed['Ticker'] = i
