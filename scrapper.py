@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import datetime
+import datetime as date
 import matplotlib.pyplot as plt
 import os
 import base64
