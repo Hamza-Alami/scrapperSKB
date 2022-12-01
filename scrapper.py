@@ -183,7 +183,7 @@ datafr = pd.DataFrame (tickerlist, columns = ['Valeur'])
 
 #investing scrapper
 
-datax = investpy.get_stock_historical_data(stock='AAPL',country='United States',from_date='01/01/2010',to_date='01/01/2020')
+datax = investpy.get_stock_historical_data(stock='AAPL',country='United States',from_date='01/01/2022',to_date='01/11/2022')
 
 st.write(datax.head())
 
