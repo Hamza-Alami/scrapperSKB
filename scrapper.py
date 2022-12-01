@@ -180,7 +180,9 @@ tickerlist = bvc.notation()
 #To DF
 datafr = pd.DataFrame (tickerlist, columns = ['Valeur'])
 datafr
-for i in tickerlist:
+
+drdz = ['Addoha', 'AFMA', 'Afric Indus']
+for i in drdz:
     x = bvc.loadata(i,start='2022-11-30',end='2022-12-01')
     x = x.Value
 st.write(x)
