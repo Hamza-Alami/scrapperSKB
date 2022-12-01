@@ -18,6 +18,7 @@ import BVCscrap  as bvc
 import http.client, urllib.request, urllib.parse, urllib.error, base64
 import yfinance as yf
 from datetime import date
+import investpy
 
 st.text('Cours de référence BAM')
 
