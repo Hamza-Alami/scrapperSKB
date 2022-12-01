@@ -181,8 +181,10 @@ tickerlist = bvc.notation()
 datafr = pd.DataFrame (tickerlist, columns = ['Valeur'])
 datafr
 
-drdz = ['Addoha', 'AFMA', 'Afric Indus']
+drdz = ['Addoha', 'AFMA', 'Afric Indus''Afriquia Gaz','Agma','Alliances','Aluminium Maroc','Aradei Capital','ATLANTASANAD','Attijariwafa','Auto Hall','Auto Nejma','BALIMA','BOA','BCP','BMCI','Cartier Saada','CDM']
+grbz = []
 for i in drdz:
     x = bvc.loadata(i,start='2022-11-30',end='2022-12-01')
     x = x.Value
-st.write(x)
+    grbz.append(x)
+st.write(grbz)
