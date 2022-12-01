@@ -131,15 +131,15 @@ def commodities():
 #                                          FX
 
 #eurodollar
-eurusd = yf.Ticker("EURUSD=X")
-eurusd = eurusd.info['previousClose']
+#eurusd = yf.Ticker("EURUSD=X")
+#eurusd = eurusd.info['previousClose']
 
 #calling funcs to lists
-indiceslist = indices()
-commolist = commodities()
+#indiceslist = indices()
+#commolist = commodities()
 
-FXCOM = pd.DataFrame({'Cours': [eurusd, commolist[1], commolist[0], commolist[2]]},index=['EUR/USD','Brent', 'Gold', 'Silver'])
-intlindices = pd.DataFrame({'Cours': [indiceslist[0], indiceslist[1], indiceslist[2], indiceslist[3], indiceslist[4], indiceslist[5], indiceslist[6]]},index=['Dow Jones','S&P500', 'Nasdaq', 'CAC40', 'DAX30', 'NIKKEI','Hang Seng'])
+#FXCOM = pd.DataFrame({'Cours': [eurusd, commolist[1], commolist[0], commolist[2]]},index=['EUR/USD','Brent', 'Gold', 'Silver'])
+#intlindices = pd.DataFrame({'Cours': [indiceslist[0], indiceslist[1], indiceslist[2], indiceslist[3], indiceslist[4], indiceslist[5], indiceslist[6]]},index=['Dow Jones','S&P500', 'Nasdaq', 'CAC40', 'DAX30', 'NIKKEI','Hang Seng'])
 
 st.text('FX & commodities')
 #st.dataframe(FXCOM)
@@ -152,11 +152,11 @@ st.text('Indices internationaux')
 #loading indices
 
 #indices
-index=bvc.getIndex()
-dfindex = pd.DataFrame(index['Resume indice']).transpose()
+#index=bvc.getIndex()
+#dfindex = pd.DataFrame(index['Resume indice']).transpose()
 
 #sectorial
-dfsect = pd.DataFrame(index['Indices sectoriels']).transpose()
+#dfsect = pd.DataFrame(index['Indices sectoriels']).transpose()
 
 st.text('Indices BVC')
 #st.dataframe(dfindex)
@@ -170,7 +170,7 @@ courspond = pd.DataFrame(bvc.getPond())
 #st.dataframe(courspond[['Instrument', 'Nombre de titres', 'Poids']])
 #test
 st.text('Volume de la séance :')
-recap=bvc.getIndexRecap()
+#recap=bvc.getIndexRecap()
 st.write(recap['Volume Global'])
 
 #test ticker
@@ -186,7 +186,8 @@ Cours = []
 #st.write(datafr)
 
 for i in tickerlist:
-        Cours.append(bvc.loadata(i,start='2022-11-30',end='2022-12-01').Value)
+        x = bvc.loadata(i,start='2022-11-30',end='2022-12-01')
+        Cours.append(x.Value)
 st.write(Cours)
 
 #for i in tickerlist :
