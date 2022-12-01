@@ -179,6 +179,7 @@ st.text('Volume de la séance :')
 tickerlist = bvc.notation()
 #To DF
 datafr = pd.DataFrame (tickerlist, columns = ['Valeur'])
+datafr
 
 x = bvc.loadata('AFMA',start='2022-11-30',end='2022-12-01')
 x = x.Value
