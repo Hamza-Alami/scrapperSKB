@@ -167,24 +167,9 @@ st.text('Indices sectoriaux')
 #Pondération et cours
 st.text('Pondérations')
 courspond = pd.DataFrame(bvc.getPond())
-#st.dataframe(courspond[['Instrument', 'Nombre de titres', 'Poids']])
+st.dataframe(courspond)
 #test
 st.text('Volume de la séance :')
-#recap=bvc.getIndexRecap()
-#st.write(recap['Volume Global'])
+recap=bvc.getIndexRecap()
+st.write(recap['Volume Global'])
 
-#test ticker
-
-#list of tickers
-tickerlist = bvc.notation()
-#To DF
-datafr = pd.DataFrame (tickerlist, columns = ['Valeur'])
-datafr
-
-drdz = ['Addoha', 'AFMA', 'Afric Indus''Afriquia Gaz','Agma','Alliances','Aluminium Maroc','Aradei Capital','ATLANTASANAD','Attijariwafa','Auto Hall','Auto Nejma','BALIMA','BOA','BCP','BMCI','Cartier Saada','CDM']
-grbz = []
-for i in drdz:
-    x = bvc.loadata(i,start='2022-11-30',end='2022-12-01')
-    x = x.Value
-    grbz.append(x)
-st.write(grbz)
