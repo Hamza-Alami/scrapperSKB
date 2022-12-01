@@ -178,7 +178,9 @@ st.write(recap['Volume Global'])
 tickerlist = bvc.notation()
 
 datafr = pd.DataFrame (tickerlist, columns = ['Valeur'])
-datafr["Cours"] = bvc.loadata(datafr["Valeur"],start='2022-11-30',end='2022-12-01').Value
+
+for i in datafr["Valeur"]:
+    datafr["Cours"] = bvc.loadata(i,start='2022-11-30',end='2022-12-01').Value
 st.write(datafr)
 
 #for i in tickerlist :
