@@ -179,16 +179,16 @@ st.text('Volume de la séance :')
 tickerlist = bvc.notation()
 
 datafr = pd.DataFrame (tickerlist, columns = ['Valeur'])
-Cours = []
+
+#investing scrapper
+
+datax = investpy.get_stock_historical_data(stock='AAPL',country='United States',from_date='01/01/2010',to_date='01/01/2020')
+
+st.write(datax.head())
 
 #for i in datafr["Valeur"]:
     #datafr["Cours"] = bvc.loadata(i,start='2022-11-30',end='2022-12-01').Value
 #st.write(datafr)
-
-for i in tickerlist:
-        x = bvc.loadata(i,start='2022-11-29',end='2022-12-01')
-        #Cours.append(x.Value)
-st.write(x)
 
 #for i in tickerlist :
     #seance=bvc.loadata(i,start='2022-11-25',end='2022-11-28')
