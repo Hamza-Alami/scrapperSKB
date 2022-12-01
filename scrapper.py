@@ -181,6 +181,6 @@ tickerlist = bvc.notation()
 datafr = pd.DataFrame (tickerlist, columns = ['Valeur'])
 datafr
 
-x = bvc.loadata('Addoha',start='2022-11-30',end='2022-12-02')
+x = bvc.loadata('AFMA',start='2022-11-30',end='2022-12-02')
 x = x.Value
 st.write(x)
