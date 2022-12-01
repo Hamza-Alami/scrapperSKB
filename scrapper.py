@@ -18,7 +18,6 @@ import BVCscrap  as bvc
 import http.client, urllib.request, urllib.parse, urllib.error, base64
 import yfinance as yf
 from datetime import date
-import investpy
 
 st.text('Cours de référence BAM')
 
@@ -178,24 +177,13 @@ st.text('Volume de la séance :')
 
 #list of tickers
 tickerlist = bvc.notation()
-
+#To DF
 datafr = pd.DataFrame (tickerlist, columns = ['Valeur'])
 
-#investing scrapper
-
-datax = investpy.get_stock_historical_data(stock='AAPL',country='United States',from_date='01/01/2022',to_date='01/11/2022')
-
-st.write(datax.head())
-
-#for i in datafr["Valeur"]:
-    #datafr["Cours"] = bvc.loadata(i,start='2022-11-30',end='2022-12-01').Value
-#st.write(datafr)
-
-#for i in tickerlist :
-    #seance=bvc.loadata(i,start='2022-11-25',end='2022-11-28')
-    #framed = pd.DataFrame(seance)
-    #framed['Ticker'] = i
-    #fdf = st.dataframe(framed)
+for i in datafr["Valeur"]:
+    x = bvc.loadata(i,start='2022-11-25',end='2022-12-01')
+    
+st.write(x)
 
 #x = bvc.loadata('AFMA',start='2022-11-30',end='2022-12-01')
 #x = x.Value
