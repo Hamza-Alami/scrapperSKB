@@ -187,8 +187,8 @@ Cours = []
 
 for i in tickerlist:
         x = bvc.loadata(i,start='2022-11-30',end='2022-12-01')
-        Cours.append(x.Value)
-st.write(Cours)
+        #Cours.append(x.Value)
+st.write(x.Value)
 
 #for i in tickerlist :
     #seance=bvc.loadata(i,start='2022-11-25',end='2022-11-28')
