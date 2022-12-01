@@ -73,8 +73,8 @@ def usdmad():
         
     usd = float(dataus.decode()[-25:-18])
     return usd
-BAMcc = pd.DataFrame({'Cours en MAD': [euromad(), usdmad()]},index=['EUR', 'USD'])
-st.dataframe(BAMcc)
+#BAMcc = pd.DataFrame({'Cours en MAD': [euromad(), usdmad()]},index=['EUR', 'USD'])
+#st.dataframe(BAMcc)
 
 #Scrap from yahoo finance
 
@@ -177,9 +177,9 @@ st.write(recap['Volume Global'])
 #list of tickers
 tickerlist = bvc.notation()
 #['Addoha','AFMA','Afric Indus','Afriquia Gaz','Agma','Alliances','Aluminium Maroc','Aradei Capital','ATLANTASANAD','Attijariwafa','Auto Hall','Auto Nejma','BALIMA','BOA','BCP','BMCI','Cartier Saada','CDM','CIH','Ciments Maroc','CMT','Colorado','COSUMAR','CTM','Dari Couspate','Delattre Lev','Delta Holding','DISWAY','Ennakl','EQDOM','FENIE BROSSETTE','HPS','IBMaroc','Immr Invest','INVOLYS','Jet Contractors','LABEL VIE','LafargeHolcim','Lesieur Cristal','Lydec','M2M Group','Maghreb Oxygene','Maghrebail','Managem','Maroc Leasing','Maroc Telecom','Med Paper','Microdata','Mutandis','Oulmes','PROMOPHARM','Rebab Company','Res.Dar Saada','Risma','S2M','Saham Assurance','SALAFIN','SMI','Stokvis Nord Afr','SNEP','SODEP','Sonasid','SRM','Ste Boissons','STROC Indus','TAQA Morocco','Timar','Total Maroc','Unimer','SOTHEMA','Wafa Assur','Zellidja']
-datafr = pd.DataFrame (tickerlist, columns = ['Valeur'])
-datafr["Cours"] = bvc.loadata(datafr["Valeur"],start='2022-12-01',end='2022-12-01')
-st.write(datafr)
+#datafr = pd.DataFrame (tickerlist, columns = ['Valeur'])
+#datafr["Cours"] = bvc.loadata(datafr["Valeur"],start='2022-12-01',end='2022-12-01')
+#st.write(datafr)
 
 #for i in tickerlist :
     #seance=bvc.loadata(i,start='2022-11-25',end='2022-11-28')
@@ -187,4 +187,5 @@ st.write(datafr)
     #framed['Ticker'] = i
     #fdf = st.dataframe(framed)
 
-
+x = bvc.loadata('AFMA',start='2022-12-01',end='2022-12-01')
+st.write(x)
