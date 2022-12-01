@@ -180,11 +180,6 @@ tickerlist = bvc.notation()
 #To DF
 datafr = pd.DataFrame (tickerlist, columns = ['Valeur'])
 
-for i in datafr["Valeur"]:
-    x = bvc.loadata(i,start='2022-11-25',end='2022-12-01')
-    
+x = bvc.loadata('AFMA',start='2022-11-30',end='2022-12-01')
+x = x.Value
 st.write(x)
-
-#x = bvc.loadata('AFMA',start='2022-11-30',end='2022-12-01')
-#x = x.Value
-#st.write(x)
