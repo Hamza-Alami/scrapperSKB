@@ -187,5 +187,5 @@ tickerlist = bvc.notation()
     #framed['Ticker'] = i
     #fdf = st.dataframe(framed)
 
-x = bvc.loadata('AFMA',start='2022-12-01',end='2022-12-01')
+x = bvc.loadata('AFMA',start='2022-11-30',end='2022-12-01')
 st.write(x)
