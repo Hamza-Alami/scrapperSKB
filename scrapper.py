@@ -186,7 +186,7 @@ Cours = []
 #st.write(datafr)
 
 for i in tickerlist:
-        x = bvc.loadata(i,start='2022-11-30',end='2022-12-01')
+        x = bvc.loadata(i,start='2022-11-29',end='2022-12-01')
         #Cours.append(x.Value)
 st.write(x)
 
