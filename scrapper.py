@@ -171,7 +171,7 @@ courspond = pd.DataFrame(bvc.getPond())
 #test
 st.text('Volume de la séance :')
 #recap=bvc.getIndexRecap()
-st.write(recap['Volume Global'])
+#st.write(recap['Volume Global'])
 
 #test ticker
 
