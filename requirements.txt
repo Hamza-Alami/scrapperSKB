@@ -6,4 +6,4 @@ beautifulsoup4
 lxml
 BVCscrap
 yfinance
-investpy
+git+https://github.com/alvarobartt/investpy.git@master
