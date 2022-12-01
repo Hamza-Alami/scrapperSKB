@@ -142,10 +142,11 @@ FXCOM = pd.DataFrame({'Cours': [eurusd, commolist[1], commolist[0], commolist[2]
 intlindices = pd.DataFrame({'Cours': [indiceslist[0], indiceslist[1], indiceslist[2], indiceslist[3], indiceslist[4], indiceslist[5], indiceslist[6]]},index=['Dow Jones','S&P500', 'Nasdaq', 'CAC40', 'DAX30', 'NIKKEI','Hang Seng'])
 
 st.text('FX & commodities')
-st.dataframe(FXCOM)
+#st.dataframe(FXCOM)
 
 st.text('Indices internationaux')
-st.dataframe(intlindices)
+#st.dataframe(intlindices)
+
 #BVCscrapper
 
 #loading indices
@@ -158,15 +159,15 @@ dfindex = pd.DataFrame(index['Resume indice']).transpose()
 dfsect = pd.DataFrame(index['Indices sectoriels']).transpose()
 
 st.text('Indices BVC')
-st.dataframe(dfindex)
+#st.dataframe(dfindex)
 
 st.text('Indices sectoriaux')
-st.dataframe(dfsect)
+#st.dataframe(dfsect)
 
 #Pondération et cours
 st.text('Pondérations')
 courspond = pd.DataFrame(bvc.getPond())
-st.dataframe(courspond[['Instrument', 'Nombre de titres', 'Poids']])
+#st.dataframe(courspond[['Instrument', 'Nombre de titres', 'Poids']])
 #test
 st.text('Volume de la séance :')
 recap=bvc.getIndexRecap()
@@ -184,7 +185,7 @@ Cours = []
     #datafr["Cours"] = bvc.loadata(i,start='2022-11-30',end='2022-12-01').Value
 #st.write(datafr)
 
-for i in datafr["Valeur"]:
+for i in tickerlist:
         Cours.append(bvc.loadata(i,start='2022-11-30',end='2022-12-01').Value)
 st.write(Cours)
 
