@@ -182,4 +182,4 @@ y = json.loads(x)
 z = y['result']
 st.write(z[0])
 
-st.write("type Z :", type(z))
+st.write("type Z :", type(z[0]))
