@@ -183,6 +183,6 @@ z = y['result']
 trntrn = z[0]
    
 for i, val in enumerate(z):
-    st.write(i, ",",val["name_2"])
+    st.write(val["name"],val["name_2"], val["cours"], val["cloture"], val["variation"], val["volumeTitre"])
     
 #st.write(trntrn["name_2"])
