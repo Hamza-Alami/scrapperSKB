@@ -190,6 +190,6 @@ seance = []
 for i, val in enumerate(z):
     seance = [{'Ticker 1': val["name"], 'Ticker 2': val["name_2"], 'Cours': val["cours"], 'Cloture': val["cloture"],'Variation': val["variation"], 'Volume Titre': val["volumeTitre"]}]
 pd.DataFrame(seance)
-st.write(seance)
+st.dataframe(seance)
 
 #st.write(trntrn["name_2"])
