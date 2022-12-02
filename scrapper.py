@@ -180,4 +180,4 @@ response_API = requests.get('https://medias24.com/content/api?method=getAllStock
 x = response_API.content
 y = json.loads(x)
 st.write(y)
-st.write("type X :", type(x), "type Y :", type(y)"
+st.write("type X :", type(x), "type Y :", type(y)")
