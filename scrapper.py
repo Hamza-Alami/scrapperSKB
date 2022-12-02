@@ -187,6 +187,6 @@ length = len(z)
 # Iterating the index
 # same as 'for i in range(len(list))'
 for i in range(length):
-    print(z[i["name_2"]])
+    print(z[i])
 
 #st.write(trntrn["name_2"])
