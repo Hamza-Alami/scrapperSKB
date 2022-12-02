@@ -177,4 +177,4 @@ st.write(recap['Volume Global'])
 #testing 
 
 response_API = requests.get('https://medias24.com/content/api?method=getAllStocks&format=json')
-st.write(response_API)
+st.write(response_API.content)
