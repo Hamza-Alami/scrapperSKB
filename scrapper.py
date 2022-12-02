@@ -181,4 +181,12 @@ x = response_API.content
 y = json.loads(x)
 z = y['result']
 trntrn = z[0]
-st.write(trntrn["name_2"])
+# getting length of list
+length = len(list)
+   
+# Iterating the index
+# same as 'for i in range(len(list))'
+for i in range(z):
+    print(z[i["name_2"])
+
+#st.write(trntrn["name_2"])
