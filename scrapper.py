@@ -180,6 +180,5 @@ response_API = requests.get('https://medias24.com/content/api?method=getAllStock
 x = response_API.content
 y = json.loads(x)
 z = y['result']
-st.write(z[0])
-
-st.write("type Z :", type(z[0]))
+trntrn = z[0]
+st.write(trntrn["name_2"])
