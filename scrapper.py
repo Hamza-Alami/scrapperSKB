@@ -182,7 +182,7 @@ y = json.loads(x)
 z = y['result']
 trntrn = z[0]
 # getting length of list
-length = len(list)
+length = len(z)
    
 # Iterating the index
 # same as 'for i in range(len(list))'
