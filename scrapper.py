@@ -173,3 +173,8 @@ st.text('Volume de la séance :')
 recap=bvc.getIndexRecap()
 st.write(recap['Volume Global'])
 
+
+#testing 
+
+response_API = requests.get('https://medias24.com/content/api?method=getAllStocks&format=json')
+st.write(response_API.status_code)
