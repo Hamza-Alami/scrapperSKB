@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import datetime
+from datetime import datetime as dt
 import matplotlib.pyplot as plt
 import os
 import base64
@@ -186,7 +186,7 @@ seance = []
 for i, val in enumerate(z):
     seance.append({'Ticker': val["name"],'Cours': val["cours"], 'Cloture': val["cloture"],'Variation': val["variation"], 'Volume Titre': val["volumeTitre"],"Date" : val["datetime"]})
     pd.DataFrame(seance)
-seance['Date'] = datetime.strptime(seance['Date'], '%y%m%d %H%M%S')
+seance['Date'] = dt.strptime(seance['Date'], '%y%m%d %H%M%S')
 st.dataframe(seance)
 
 #st.write(trntrn["name_2"])
