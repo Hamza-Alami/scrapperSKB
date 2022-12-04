@@ -187,9 +187,8 @@ for i, val in enumerate(z):
     seance.append({'Ticker': val["name"],'Cours': val["cours"], 'Cloture': val["cloture"],'Variation': val["variation"], 'Volume Titre': val["volumeTitre"],"Date" : val["datetime"]})
     pd.DataFrame(seance)
     
-for e in seance['Date']:
-    dt.strptime(e, '%y%m%d %H%M%S')
-    
+seance['Date'] = pd.to_datetime(seance['Date'], format='%y%m%d %H%M%S')
+
 st.dataframe(seance)
 
 
