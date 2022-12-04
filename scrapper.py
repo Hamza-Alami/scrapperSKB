@@ -181,14 +181,10 @@ x = response_API.content
 y = json.loads(x)
 z = y['result']
 trntrn = z[0]
-   
-#for i, val in enumerate(z):
-    #st.write(val["name"],val["name_2"], val["cours"], val["cloture"], val["variation"], val["volumeTitre"])
-    
     
 seance = []
 for i, val in enumerate(z):
-    seance.append({'Ticker 1': val["name"], 'Ticker 2': val["name_2"], 'Cours': val["cours"], 'Cloture': val["cloture"],'Variation': val["variation"], 'Volume Titre': val["volumeTitre"]})
+    seance.append({'Ticker': val["name"],'Cours': val["cours"], 'Cloture': val["cloture"],'Variation': val["variation"], 'Volume Titre': val["volumeTitre"],"Date" : val["datetime"]})
     pd.DataFrame(seance)
 st.dataframe(seance)
 
