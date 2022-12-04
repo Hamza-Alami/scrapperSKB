@@ -187,10 +187,9 @@ for i, val in enumerate(z):
     seance.append({'Ticker': val["name"],'Cours': val["cours"], 'Cloture': val["cloture"],'Variation': val["variation"], 'Volume Titre': val["volumeTitre"],"derniere transaction" : val["datetime"]})
     pd.DataFrame(seance)
     
-#st.write(seance.Date)
 #=  pd.to_datetime(seance['Date'], infer_datetime_format=True)
 
 st.dataframe(seance)
-
+st.write(['derniere transaction'])
 
 #st.write(trntrn["name_2"])
