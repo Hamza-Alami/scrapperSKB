@@ -33,7 +33,8 @@ if no < 5 and ctime > starttime:
 else:
     selecteddate = '2022-12-02'
     
-threeyrsago = lyoum.replace(year=lyoum.year-3)
+fiveyrsago = lyoum.replace(year=lyoum.year-3)
+oneyrago = lyoum.replace(year=lyoum.year-1)
 
 st.text('Cours de référence BAM')
 
@@ -211,3 +212,8 @@ tradedtoday = fulldf['derniere transaction'] < lyoum
 fulldf.loc[tradedtoday, 'Volume Titre'] = 0
 
 st.dataframe(fulldf)
+
+masi1=bvc.loadata('MASI',start=oneyrago,end=lyoum)
+masi5=bvc.loadata('MASI',start=fiveyrsago,end=lyoum)
+
+st.write(masi1.head(34))
