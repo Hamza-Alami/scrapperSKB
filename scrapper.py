@@ -25,11 +25,12 @@ no = today.weekday()
 
 now = dt.now()
 ctime = now.strftime("%H:%M")
-starttime = '12:31'
+starttime = '12:30'
 
 
 if no < 5 and ctime > starttime:
     seclecteddate = today
+    st.write('not yet')
 else:
     selecteddate = '2022-12-02'
     
