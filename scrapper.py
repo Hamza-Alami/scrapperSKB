@@ -29,7 +29,7 @@ starttime = '11:30'
 
 
 if no < 5 and ctime > starttime:
-    seclecteddate = lyoum
+    selecteddate = lyoum
     st.write(ctime, lyoum)
 else:
     selecteddate = '2022-12-02'
