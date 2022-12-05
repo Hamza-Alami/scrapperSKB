@@ -22,14 +22,15 @@ import time
 
 today = date.today()
 no = today.weekday()
-ctime = today.time()
+
+now = datetime.now()
+ctime = now.strftime("%H:%M")
 starttime = '12:31'
 
 if no < 5 and ctime > starttime:
     seclecteddate = today
 else:
     selecteddate = '02-12-2022'
-
 
 st.text('Cours de référence BAM')
 
