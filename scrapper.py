@@ -208,6 +208,6 @@ fulldf['derniere transaction'] = pd.to_datetime(fulldf['derniere transaction'], 
 fulldf['derniere transaction'] = fulldf['derniere transaction'].dt.date
 
 tradedtoday = fulldf['derniere transaction'] < lyoum
-fulldf = fulldf.loc[tradedtoday, 'Volume Titre'] = 0
+fulldf.loc[tradedtoday, 'Volume Titre'] = 0
 
 st.dataframe(fulldf)
