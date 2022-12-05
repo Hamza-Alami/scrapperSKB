@@ -33,7 +33,7 @@ if no < 5 and ctime > starttime:
 else:
     selecteddate = '2022-12-02'
     
-threeyrsago = today - datetime.timedelta(days=3*365)
+threeyrsago = today - dt.timedelta(days=3*365)
 st.write("3 years ago :", threeyrsago)
 
 st.text('Cours de référence BAM')
