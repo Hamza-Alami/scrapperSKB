@@ -191,7 +191,7 @@ recap=bvc.getIndexRecap()
 st.write(recap['Volume Global'])
 
 
-#testing 
+#Scraping stock data from le Boursier 
 
 response_API = requests.get('https://medias24.com/content/api?method=getAllStocks&format=json')
 x = response_API.content
@@ -210,6 +210,7 @@ fulldf['derniere transaction'] = fulldf['derniere transaction'].dt.date
 
 tradedtoday = fulldf['derniere transaction'] < lyoum
 fulldf.loc[tradedtoday, 'Volume Titre'] = 0
+fulldf.loc[tradedtoday, 'Variation'] = 0 
 
 st.dataframe(fulldf)
 
