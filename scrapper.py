@@ -216,4 +216,4 @@ st.dataframe(fulldf)
 masi1=bvc.loadata('MASI',start=oneyrago,end=lyoum)
 masi5=bvc.loadata('MASI',start=fiveyrsago,end=lyoum)
 
-st.write(masi1.head(34))
+st.write(masi5.head(34))
