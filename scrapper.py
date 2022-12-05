@@ -25,7 +25,7 @@ no = today.weekday()
 
 now = dt.now()
 ctime = now.strftime("%H:%M")
-starttime = '12:30'
+starttime = '11:30'
 
 
 if no < 5 and ctime > starttime:
