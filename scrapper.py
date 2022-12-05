@@ -207,7 +207,7 @@ fulldf['derniere transaction'] = pd.to_datetime(fulldf['derniere transaction'], 
 
 fulldf['derniere transaction'] = fulldf['derniere transaction'].dt.date
 
-tradedtoday = fulldf['derniere transaction'] < today
+tradedtoday = fulldf['derniere transaction'] < lyoum
 st.write(tradedtoday)
 
 st.dataframe(fulldf)
