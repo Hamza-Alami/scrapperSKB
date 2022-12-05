@@ -225,6 +225,13 @@ with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
     BAMcc.to_excel(writer, sheet_name='Cours de change BAM')
     FXCOM.to_excel(writer, sheet_name='FX & commodities')
     intlindices.to_excel(writer, sheet_name='Indices internationaux')
+    dfindex.to_excel(writer, sheet_name='Indices BVC')
+    dfsect.to_excel(writer, sheet_name='Indices sectoriaux')
+    courspond.to_excel(writer, sheet_name='Pondérations')
+    fulldf.to_excel(writer, sheet_name='Cours & Variations')
+    masi1.to_excel(writer, sheet_name='Masi Hist 1YR')
+    masi3.to_excel(writer, sheet_name='Masi Hist 1YR')
+
 
     # Close the Pandas Excel writer and output the Excel file to the buffer
     writer.save()
@@ -234,4 +241,3 @@ with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
         data=buffer,
         file_name="ds.xlsx"
     )
-    
