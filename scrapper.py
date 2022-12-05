@@ -230,7 +230,7 @@ with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
     courspond.to_excel(writer, sheet_name='Pondérations')
     fulldf.to_excel(writer, sheet_name='Cours & Variations')
     masi1.to_excel(writer, sheet_name='Masi Hist 1YR')
-    masi3.to_excel(writer, sheet_name='Masi Hist 1YR')
+    masi3.to_excel(writer, sheet_name='Masi Hist 3YR')
 
 
     # Close the Pandas Excel writer and output the Excel file to the buffer
