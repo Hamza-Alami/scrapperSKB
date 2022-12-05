@@ -23,19 +23,15 @@ import time
 today = date.today()
 no = today.weekday()
 
-st.write("today : ", today)
-
 now = dt.now()
 ctime = now.strftime("%H:%M")
 starttime = '12:31'
-
-st.write("ctime : ", ctime)
 
 
 if no < 5 and ctime > starttime:
     seclecteddate = today
 else:
-    selecteddate = '02-12-2022'
+    selecteddate = '2022-12-02'
 
 st.text('Cours de référence BAM')
 
@@ -91,8 +87,8 @@ def usdmad():
         
     usd = float(dataus.decode()[-25:-18])
     return usd
-#BAMcc = pd.DataFrame({'Cours en MAD': [euromad(), usdmad()]},index=['EUR', 'USD'])
-#st.dataframe(BAMcc)
+BAMcc = pd.DataFrame({'Cours en MAD': [euromad(), usdmad()]},index=['EUR', 'USD'])
+st.dataframe(BAMcc)
 
 #Scrap from yahoo finance
 
