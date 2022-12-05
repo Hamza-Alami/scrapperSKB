@@ -21,7 +21,7 @@ from datetime import date
 import time
 
 lyoum = date.today()
-no = today.weekday()
+no = lyoum.weekday()
 
 now = dt.now()
 ctime = now.strftime("%H:%M")
