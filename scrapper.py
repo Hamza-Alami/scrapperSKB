@@ -20,7 +20,7 @@ import yfinance as yf
 from datetime import date
 import time
 
-today = date.today()
+lyoum = date.today()
 no = today.weekday()
 
 now = dt.now()
@@ -29,8 +29,8 @@ starttime = '11:30'
 
 
 if no < 5 and ctime > starttime:
-    seclecteddate = today
-    st.write(ctime, today)
+    seclecteddate = lyoum
+    st.write(ctime, lyoum)
 else:
     selecteddate = '2022-12-02'
     
