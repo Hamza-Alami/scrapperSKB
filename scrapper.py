@@ -73,8 +73,8 @@ def usdmad():
         
     usd = float(dataus.decode()[-25:-18])
     return usd
-#BAMcc = pd.DataFrame({'Cours en MAD': [euromad(), usdmad()]},index=['EUR', 'USD'])
-#st.dataframe(BAMcc)
+BAMcc = pd.DataFrame({'Cours en MAD': [euromad(), usdmad()]},index=['EUR', 'USD'])
+st.dataframe(BAMcc)
 
 #Scrap from yahoo finance
 
@@ -131,38 +131,38 @@ def commodities():
 #                                          FX
 
 #eurodollar
-#eurusd = yf.Ticker("EURUSD=X")
-#eurusd = eurusd.info['previousClose']
+eurusd = yf.Ticker("EURUSD=X")
+eurusd = eurusd.info['previousClose']
 
 #calling funcs to lists
-#indiceslist = indices()
-#commolist = commodities()
+indiceslist = indices()
+commolist = commodities()
 
-#FXCOM = pd.DataFrame({'Cours': [eurusd, commolist[1], commolist[0], commolist[2]]},index=['EUR/USD','Brent', 'Gold', 'Silver'])
-#intlindices = pd.DataFrame({'Cours': [indiceslist[0], indiceslist[1], indiceslist[2], indiceslist[3], indiceslist[4], indiceslist[5], indiceslist[6]]},index=['Dow Jones','S&P500', 'Nasdaq', 'CAC40', 'DAX30', 'NIKKEI','Hang Seng'])
+FXCOM = pd.DataFrame({'Cours': [eurusd, commolist[1], commolist[0], commolist[2]]},index=['EUR/USD','Brent', 'Gold', 'Silver'])
+intlindices = pd.DataFrame({'Cours': [indiceslist[0], indiceslist[1], indiceslist[2], indiceslist[3], indiceslist[4], indiceslist[5], indiceslist[6]]},index=['Dow Jones','S&P500', 'Nasdaq', 'CAC40', 'DAX30', 'NIKKEI','Hang Seng'])
 
 st.text('FX & commodities')
 #st.dataframe(FXCOM)
 
 st.text('Indices internationaux')
-#st.dataframe(intlindices)
+st.dataframe(intlindices)
 
 #BVCscrapper
 
 #loading indices
 
 #indices
-#index=bvc.getIndex()
-#dfindex = pd.DataFrame(index['Resume indice']).transpose()
+index=bvc.getIndex()
+dfindex = pd.DataFrame(index['Resume indice']).transpose()
 
 #sectorial
-#dfsect = pd.DataFrame(index['Indices sectoriels']).transpose()
+dfsect = pd.DataFrame(index['Indices sectoriels']).transpose()
 
 st.text('Indices BVC')
-#st.dataframe(dfindex)
+st.dataframe(dfindex)
 
 st.text('Indices sectoriaux')
-#st.dataframe(dfsect)
+st.dataframe(dfsect)
 
 #Pondération et cours
 st.text('Pondérations')
