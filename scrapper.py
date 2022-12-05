@@ -25,17 +25,15 @@ no = lyoum.weekday()
 
 now = dt.now()
 ctime = now.strftime("%H:%M")
-starttime = '11:30'
+starttime = '11:45'
 
 
 if no < 5 and ctime > starttime:
     selecteddate = lyoum
-    st.write(ctime, lyoum)
 else:
     selecteddate = '2022-12-02'
     
 threeyrsago = lyoum.replace(year=lyoum.year-3)
-st.write("3 years ago :", threeyrsago)
 
 st.text('Cours de référence BAM')
 
