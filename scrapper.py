@@ -18,8 +18,18 @@ import BVCscrap  as bvc
 import http.client, urllib.request, urllib.parse, urllib.error, base64
 import yfinance as yf
 from datetime import date
+import time
 
 today = date.today()
+no = today.weekday()
+ctime = today.time()
+starttime = '12:31'
+
+if no < 5 and ctime > starttime:
+    seclecteddate = today
+else:
+    selecteddate = '02-12-2022'
+
 
 st.text('Cours de référence BAM')
 
@@ -36,7 +46,7 @@ def euromad():
     params = urllib.parse.urlencode({
         # Request parameters
         'libDevise': 'EUR',
-        'date': today,
+        'date': selecteddate,
     })
 
     try:
@@ -61,7 +71,7 @@ def usdmad():
     params = urllib.parse.urlencode({
         # Request parameters
         'libDevise': 'USD',
-        'date': '2022-11-17',
+        'date': selecteddate,
     })
 
     try:
