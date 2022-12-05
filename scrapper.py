@@ -208,7 +208,7 @@ fulldf['derniere transaction'] = pd.to_datetime(fulldf['derniere transaction'], 
 
 fulldf['derniere transaction'] = fulldf['derniere transaction'].dt.date
 
-if fulldf['derniere transaction'] < today:
-    fulldf['Volume Titre'] = 0
-    
+tradedtoday = fulldf['derniere transaction'] < today
+st.write(tradedtoday)
+
 st.dataframe(fulldf)
