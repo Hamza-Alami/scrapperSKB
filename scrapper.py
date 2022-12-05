@@ -206,7 +206,7 @@ for i, val in enumerate(z):
     
 fulldf['derniere transaction'] = pd.to_datetime(fulldf['derniere transaction'], infer_datetime_format=True)
 
-for p in fulldf['derniere transaction']:
-    p = p.date()
+fulldf['derniere transaction'] = fulldf['derniere transaction'].dt.date
+
 
 st.dataframe(fulldf)
