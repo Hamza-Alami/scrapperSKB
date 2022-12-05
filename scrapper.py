@@ -30,7 +30,7 @@ starttime = '11:30'
 
 if no < 5 and ctime > starttime:
     seclecteddate = today
-    st.write(ctime)
+    st.write(ctime, today)
 else:
     selecteddate = '2022-12-02'
     
