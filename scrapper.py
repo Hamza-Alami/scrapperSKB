@@ -33,7 +33,7 @@ if no < 5 and ctime > starttime:
 else:
     selecteddate = '2022-12-02'
     
-fiveyrsago = lyoum.replace(year=lyoum.year-3)
+threeyrsago = lyoum.replace(year=lyoum.year-3)
 oneyrago = lyoum.replace(year=lyoum.year-1)
 
 st.text('Cours de référence BAM')
@@ -214,6 +214,24 @@ fulldf.loc[tradedtoday, 'Volume Titre'] = 0
 st.dataframe(fulldf)
 
 masi1=bvc.loadata('MASI',start=oneyrago,end=lyoum)
-masi5=bvc.loadata('MASI',start=fiveyrsago,end=lyoum)
+masi3=bvc.loadata('MASI',start=threeyrsago,end=lyoum)
 
-st.write(masi5.head(34))
+#to excel sheets
+buffer = io.BytesIO()
+
+# Create a Pandas Excel writer using XlsxWriter as the engine.
+with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
+    # Write each dataframe to a different worksheet.
+    BAMcc.to_excel(writer, sheet_name='Cours de change BAM')
+    FXCOM.to_excel(writer, sheet_name='FX & commodities')
+    intlindices.to_excel(writer, sheet_name='Indices internationaux')
+
+    # Close the Pandas Excel writer and output the Excel file to the buffer
+    writer.save()
+
+    st.download_button(
+        label="Scrap and download data",
+        data=buffer,
+        file_name="ds.xlsx"
+    )
+    
