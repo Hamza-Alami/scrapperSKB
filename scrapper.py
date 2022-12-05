@@ -23,7 +23,7 @@ import time
 today = date.today()
 no = today.weekday()
 
-now = datetime.now()
+now = dt.now()
 ctime = now.strftime("%H:%M")
 starttime = '12:31'
 
