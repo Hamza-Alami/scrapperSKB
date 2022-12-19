@@ -5,4 +5,4 @@ xlsxwriter
 beautifulsoup4
 lxml
 BVCscrap
-yfinance==0.1.87
+yfinance==0.1.85
