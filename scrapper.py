@@ -148,21 +148,21 @@ def commodities():
 #                                          FX
 
 #eurodollar
-eurusd = yf.Ticker("EURUSD=X")
-eurusd = eurusd.info['previousClose']
+#eurusd = yf.Ticker("EURUSD=X")
+#eurusd = eurusd.info['previousClose']
 
 #calling funcs to lists
-indiceslist = indices()
-commolist = commodities()
+#indiceslist = indices()
+#commolist = commodities()
 
-FXCOM = pd.DataFrame({'Cours': [eurusd, commolist[1], commolist[0], commolist[2]]},index=['EUR/USD','Brent', 'Gold', 'Silver'])
-intlindices = pd.DataFrame({'Cours': [indiceslist[0], indiceslist[1], indiceslist[2], indiceslist[3], indiceslist[4], indiceslist[5], indiceslist[6]]},index=['Dow Jones','S&P500', 'Nasdaq', 'CAC40', 'DAX30', 'NIKKEI','Hang Seng'])
+#FXCOM = pd.DataFrame({'Cours': [eurusd, commolist[1], commolist[0], commolist[2]]},index=['EUR/USD','Brent', 'Gold', 'Silver'])
+#intlindices = pd.DataFrame({'Cours': [indiceslist[0], indiceslist[1], indiceslist[2], indiceslist[3], indiceslist[4], indiceslist[5], indiceslist[6]]},index=['Dow Jones','S&P500', 'Nasdaq', 'CAC40', 'DAX30', 'NIKKEI','Hang Seng'])
 
-st.text('FX & commodities')
-st.dataframe(FXCOM)
+#st.text('FX & commodities')
+#st.dataframe(FXCOM)
 
-st.text('Indices internationaux')
-st.dataframe(intlindices)
+#st.text('Indices internationaux')
+#st.dataframe(intlindices)
 
 #BVCscrapper
 
@@ -225,8 +225,8 @@ buffer = io.BytesIO()
 with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
     # Write each dataframe to a different worksheet.
     BAMcc.to_excel(writer, sheet_name='Cours de change BAM')
-    FXCOM.to_excel(writer, sheet_name='FX & commodities')
-    intlindices.to_excel(writer, sheet_name='Indices internationaux')
+    #FXCOM.to_excel(writer, sheet_name='FX & commodities')
+    #intlindices.to_excel(writer, sheet_name='Indices internationaux')
     dfindex.to_excel(writer, sheet_name='Indices BVC')
     dfsect.to_excel(writer, sheet_name='Indices sectoriaux')
     courspond.to_excel(writer, sheet_name='Pondérations')
