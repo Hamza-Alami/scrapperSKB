@@ -96,34 +96,44 @@ st.dataframe(BAMcc)
 #Scrap from yahoo finance
 
 #                                        Indices
+
+#Previous method
+#Dow jones
+#dj30 = yf.Ticker("^DJI")
+#dj30 = dj30.info['previousClose']
+
+sdate = '2022-12-16'
+edate = '2022-12-17'
+
 def indices():
+    
     #Dow jones
-    dj30 = yf.Ticker("^DJI")
-    dj30 = dj30.info['previousClose']
+    dj30 = yf.download("^DJI", sdate, edate)
+    dj30 = dj30.Close[0]
 
     #spoos
-    sp500 = yf.Ticker("^GSPC")
-    sp500 = sp500.info['previousClose']
+    sp500 = yf.download("^GSPC", sdate, edate)
+    sp500 = sp500.Close[0]
 
     #nasdaq
-    nasdaq = yf.Ticker("^IXIC")
-    nasdaq = nasdaq.info['previousClose']
+    nasdaq = yf.download("^IXIC", sdate, edate)
+    nasdaq = nasdaq.Close[0]
 
     #cac40
-    cac = yf.Ticker("^FCHI")
-    cac = cac.info['previousClose']
+    cac = yf.download("^FCHI", sdate, edate)
+    cac = cac.Close[0]
 
     #DAX
-    dax = yf.Ticker("^GDAXI")
-    dax = dax.info['previousClose']
+    dax = yf.download("^GDAXI", sdate, edate)
+    dax = dax.Close[0]
 
     #nikkei
-    jp = yf.Ticker("^N225")
-    jp = jp.info['previousClose']
+    jp = yf.download("^N225", sdate, edate)
+    jp = jp.Close[0]
 
     #hangseng
-    hk = yf.Ticker("^HSI")
-    hk = hk.info['previousClose']
+    hk = yf.download("^HSI", sdate, edate)
+    hk = hk.Close[0]
     
     return dj30, sp500, nasdaq, cac, dax, jp, hk
 
@@ -148,21 +158,21 @@ def commodities():
 #                                          FX
 
 #eurodollar
-#eurusd = yf.Ticker("EURUSD=X")
-#eurusd = eurusd.info['previousClose']
+eurusd = yf.download("EURUSD=X", sdate, edate)
+eurusd = eurusd.Close[0]
 
 #calling funcs to lists
-#indiceslist = indices()
+indiceslist = indices()
 #commolist = commodities()
 
 #FXCOM = pd.DataFrame({'Cours': [eurusd, commolist[1], commolist[0], commolist[2]]},index=['EUR/USD','Brent', 'Gold', 'Silver'])
-#intlindices = pd.DataFrame({'Cours': [indiceslist[0], indiceslist[1], indiceslist[2], indiceslist[3], indiceslist[4], indiceslist[5], indiceslist[6]]},index=['Dow Jones','S&P500', 'Nasdaq', 'CAC40', 'DAX30', 'NIKKEI','Hang Seng'])
+intlindices = pd.DataFrame({'Cours': [indiceslist[0], indiceslist[1], indiceslist[2], indiceslist[3], indiceslist[4], indiceslist[5], indiceslist[6]]},index=['Dow Jones','S&P500', 'Nasdaq', 'CAC40', 'DAX30', 'NIKKEI','Hang Seng'])
 
 #st.text('FX & commodities')
 #st.dataframe(FXCOM)
 
-#st.text('Indices internationaux')
-#st.dataframe(intlindices)
+st.text('Indices internationaux')
+st.dataframe(intlindices)
 
 #BVCscrapper
 
