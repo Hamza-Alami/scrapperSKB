@@ -99,7 +99,7 @@ st.dataframe(BAMcc)
 def indices():
     #Dow jones
     dj30 = yf.Ticker("^DJI")
-    dj30 = dj30.iloc[-1]
+    dj30 = dj30.info
 
     #spoos
     sp500 = yf.Ticker("^GSPC")
