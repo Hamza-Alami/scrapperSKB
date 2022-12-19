@@ -93,6 +93,7 @@ def usdmad():
 BAMcc = pd.DataFrame({'Cours en MAD': [euromad(), usdmad()]},index=['EUR', 'USD'])
 st.dataframe(BAMcc)
 
+
 #Scrap from yahoo finance
 
 #                                        Indices
