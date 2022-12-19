@@ -216,7 +216,7 @@ for i, val in enumerate(z):
     seance.append({'Ticker': val["name"],'Cours': val["cours"], 'Cloture': val["cloture"],'Variation': val["variation"], 'Volume Titre': val["volumeTitre"],"derniere transaction" : val["datetime"]})
     fulldf = pd.DataFrame(seance)
     
-fulldf['derniere transaction'] = pd.to_datetime(fulldf['derniere transaction'], infer_datetime_format=True)
+#fulldf['derniere transaction'] = pd.to_datetime(fulldf['derniere transaction'], infer_datetime_format=True)
 
 #fulldf['derniere transaction'] = fulldf['derniere transaction'].dt.date
 
