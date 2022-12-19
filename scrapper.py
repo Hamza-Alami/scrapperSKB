@@ -149,7 +149,7 @@ def commodities():
 
 #eurodollar
 eurusd = yf.Ticker("EURUSD=X")
-eurusd = eurusd.info['previousClose']
+#eurusd = eurusd.info['previousClose']
 
 #calling funcs to lists
 indiceslist = indices()
