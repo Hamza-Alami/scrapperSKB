@@ -180,7 +180,7 @@ st.dataframe(dfindex)
 
 st.text('Indices sectoriaux')
 st.dataframe(dfsect)
-
+st.write(dj30)
 #Pondération et cours
 st.text('Pondérations')
 courspond = pd.DataFrame(bvc.getPond())
