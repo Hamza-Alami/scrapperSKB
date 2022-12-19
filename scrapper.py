@@ -143,16 +143,17 @@ def indices():
 
 def commodities():
     #Gold
-    gld = yf.Ticker("GC=F")
-    gld = gld.info['previousClose']
+    gld = yf.download("GC=F", sdate, edate)
+    gld = gld.Close[0]
+
 
     #Brent
-    oil = yf.Ticker("BZ=F")
-    oil = oil.info['previousClose']
+    oil = yf.download("BZ=F", sdate, edate)
+    oil = oil.Close[0]
 
     #silver
-    silver = yf.Ticker("SI=F")
-    silver = silver.info['previousClose']
+    silver = yf.download("SI=F", sdate, edate)
+    silver = silver.Close[0]
     return gld, oil, silver
 
 #                                          FX
@@ -163,13 +164,13 @@ eurusd = eurusd.Close[0]
 
 #calling funcs to lists
 indiceslist = indices()
-#commolist = commodities()
+commolist = commodities()
 
-#FXCOM = pd.DataFrame({'Cours': [eurusd, commolist[1], commolist[0], commolist[2]]},index=['EUR/USD','Brent', 'Gold', 'Silver'])
+FXCOM = pd.DataFrame({'Cours': [eurusd, commolist[1], commolist[0], commolist[2]]},index=['EUR/USD','Brent', 'Gold', 'Silver'])
 intlindices = pd.DataFrame({'Cours': [indiceslist[0], indiceslist[1], indiceslist[2], indiceslist[3], indiceslist[4], indiceslist[5], indiceslist[6]]},index=['Dow Jones','S&P500', 'Nasdaq', 'CAC40', 'DAX30', 'NIKKEI','Hang Seng'])
 
-#st.text('FX & commodities')
-#st.dataframe(FXCOM)
+st.text('FX & commodities')
+st.dataframe(FXCOM)
 
 st.text('Indices internationaux')
 st.dataframe(intlindices)
@@ -235,8 +236,8 @@ buffer = io.BytesIO()
 with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
     # Write each dataframe to a different worksheet.
     BAMcc.to_excel(writer, sheet_name='Cours de change BAM')
-    #FXCOM.to_excel(writer, sheet_name='FX & commodities')
-    #intlindices.to_excel(writer, sheet_name='Indices internationaux')
+    FXCOM.to_excel(writer, sheet_name='FX & commodities')
+    intlindices.to_excel(writer, sheet_name='Indices internationaux')
     dfindex.to_excel(writer, sheet_name='Indices BVC')
     dfsect.to_excel(writer, sheet_name='Indices sectoriaux')
     courspond.to_excel(writer, sheet_name='Pondérations')
