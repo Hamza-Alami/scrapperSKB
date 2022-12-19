@@ -226,8 +226,6 @@ for i, val in enumerate(z):
 #fulldf.loc[tradedtoday, 'Variation'] = 0 
 
 st.dataframe(fulldf)
-st.write(fulldf['derniere transaction'])
-st.write(type(fulldf['derniere transaction']))
 
 masi1=bvc.loadata('MASI',start=oneyrago,end=lyoum)
 masi3=bvc.loadata('MASI',start=threeyrsago,end=lyoum)
