@@ -99,33 +99,33 @@ st.dataframe(BAMcc)
 def indices():
     #Dow jones
     dj30 = yf.Ticker("^DJI")
-    dj30 = dj30.info
+    dj30 = dj30.info['previousClose']
 
     #spoos
     sp500 = yf.Ticker("^GSPC")
-    #sp500 = sp500.info['previousClose']
+    sp500 = sp500.info['previousClose']
 
     #nasdaq
     nasdaq = yf.Ticker("^IXIC")
-    #nasdaq = nasdaq.info['previousClose']
+    nasdaq = nasdaq.info['previousClose']
 
     #cac40
     cac = yf.Ticker("^FCHI")
-    #cac = cac.info['previousClose']
+    cac = cac.info['previousClose']
 
     #DAX
     dax = yf.Ticker("^GDAXI")
-    #dax = dax.info['previousClose']
+    dax = dax.info['previousClose']
 
     #nikkei
     jp = yf.Ticker("^N225")
-    #jp = jp.info['previousClose']
+    jp = jp.info['previousClose']
 
     #hangseng
     hk = yf.Ticker("^HSI")
-    #hk = hk.info['previousClose']
+    hk = hk.info['previousClose']
     
-    return dj30 #, sp500, nasdaq, cac, dax, jp, hk
+    return dj30, sp500, nasdaq, cac, dax, jp, hk
 
 
 #                                        Commodities
@@ -148,21 +148,21 @@ def commodities():
 #                                          FX
 
 #eurodollar
-#eurusd = yf.Ticker("EURUSD=X")
-#eurusd = eurusd.info['previousClose']
+eurusd = yf.Ticker("EURUSD=X")
+eurusd = eurusd.info['previousClose']
 
 #calling funcs to lists
 indiceslist = indices()
-#commolist = commodities()
+commolist = commodities()
 
-#FXCOM = pd.DataFrame({'Cours': [eurusd, commolist[1], commolist[0], commolist[2]]},index=['EUR/USD','Brent', 'Gold', 'Silver'])
-#intlindices = pd.DataFrame({'Cours': [indiceslist[0], indiceslist[1], indiceslist[2], indiceslist[3], indiceslist[4], indiceslist[5], indiceslist[6]]},index=['Dow Jones','S&P500', 'Nasdaq', 'CAC40', 'DAX30', 'NIKKEI','Hang Seng'])
+FXCOM = pd.DataFrame({'Cours': [eurusd, commolist[1], commolist[0], commolist[2]]},index=['EUR/USD','Brent', 'Gold', 'Silver'])
+intlindices = pd.DataFrame({'Cours': [indiceslist[0], indiceslist[1], indiceslist[2], indiceslist[3], indiceslist[4], indiceslist[5], indiceslist[6]]},index=['Dow Jones','S&P500', 'Nasdaq', 'CAC40', 'DAX30', 'NIKKEI','Hang Seng'])
 
-#st.text('FX & commodities')
-#st.dataframe(FXCOM)
+st.text('FX & commodities')
+st.dataframe(FXCOM)
 
-#st.text('Indices internationaux')
-#st.dataframe(intlindices)
+st.text('Indices internationaux')
+st.dataframe(intlindices)
 
 #BVCscrapper
 
@@ -180,11 +180,12 @@ st.dataframe(dfindex)
 
 st.text('Indices sectoriaux')
 st.dataframe(dfsect)
-st.write(indices())
+
 #Pondération et cours
 st.text('Pondérations')
 courspond = pd.DataFrame(bvc.getPond())
 st.dataframe(courspond)
+
 #test
 st.text('Volume de la séance :')
 recap=bvc.getIndexRecap()
