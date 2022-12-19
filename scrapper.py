@@ -103,29 +103,29 @@ def indices():
 
     #spoos
     sp500 = yf.Ticker("^GSPC")
-    sp500 = sp500.info['previousClose']
+    #sp500 = sp500.info['previousClose']
 
     #nasdaq
     nasdaq = yf.Ticker("^IXIC")
-    nasdaq = nasdaq.info['previousClose']
+    #nasdaq = nasdaq.info['previousClose']
 
     #cac40
     cac = yf.Ticker("^FCHI")
-    cac = cac.info['previousClose']
+    #cac = cac.info['previousClose']
 
     #DAX
     dax = yf.Ticker("^GDAXI")
-    dax = dax.info['previousClose']
+    #dax = dax.info['previousClose']
 
     #nikkei
     jp = yf.Ticker("^N225")
-    jp = jp.info['previousClose']
+    #jp = jp.info['previousClose']
 
     #hangseng
     hk = yf.Ticker("^HSI")
-    hk = hk.info['previousClose']
+    #hk = hk.info['previousClose']
     
-    return dj30, sp500, nasdaq, cac, dax, jp, hk
+    return dj30 #, sp500, nasdaq, cac, dax, jp, hk
 
 
 #                                        Commodities
