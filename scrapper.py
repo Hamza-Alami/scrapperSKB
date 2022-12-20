@@ -90,8 +90,8 @@ def usdmad():
         
     usd = float(dataus.decode()[-25:-18])
     return usd
-BAMcc = pd.DataFrame({'Cours en MAD': [euromad(), usdmad()]},index=['EUR', 'USD'])
-st.dataframe(BAMcc)
+#BAMcc = pd.DataFrame({'Cours en MAD': [euromad(), usdmad()]},index=['EUR', 'USD'])
+#st.dataframe(BAMcc)
 
 
 #Scrap from yahoo finance
