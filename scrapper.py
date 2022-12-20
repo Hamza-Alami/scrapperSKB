@@ -218,7 +218,7 @@ for i, val in enumerate(z):
     fulldf = pd.DataFrame(seance)
     
 #fulldf['derniere transaction'] = pd.to_datetime(fulldf['derniere transaction'], infer_datetime_format=True)
-fulldf['derniere transaction'] = datetime.strptime(fulldf['derniere transaction'], '%y%m%d %H%M%S')
+fulldf['derniere transaction'] = dt.strptime(fulldf['derniere transaction'], '%y%m%d %H%M%S')
 #fulldf['derniere transaction'] = fulldf['derniere transaction'].dt.date
 
 #tradedtoday = fulldf['derniere transaction'] < lyoum
