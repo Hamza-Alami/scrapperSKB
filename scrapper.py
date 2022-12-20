@@ -217,7 +217,7 @@ for i, val in enumerate(z):
     sep = ' '
     stripped = val["datetime"].split(sep, 1)[0]
     #val["datetime"] = dt.strptime(val["datetime"],  '%y%m%d %H%M%S.%f')
-    seance.append({'Ticker': val["name"],'Cours': val["cours"], 'Cloture': val["cloture"],'Variation': val["variation"], 'Volume Titre': val["volumeTitre"],"derniere transaction" : stripped]})
+    seance.append({'Ticker': val["name"],'Cours': val["cours"], 'Cloture': val["cloture"],'Variation': val["variation"], 'Volume Titre': val["volumeTitre"],"derniere transaction" : stripped})
     fulldf = pd.DataFrame(seance)
     
 #fulldf['derniere transaction'] = pd.to_datetime(fulldf['derniere transaction'], infer_datetime_format=True)
