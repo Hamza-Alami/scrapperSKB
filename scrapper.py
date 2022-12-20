@@ -214,7 +214,7 @@ trntrn = z[0]
     
 seance = []
 for i, val in enumerate(z):
-    val["datetime"] = pd.to_datetime(val["datetime"], infer_datetime_format=True)
+    val["datetime"] = dt.strptime(val["datetime"], infer_datetime_format=True)
     seance.append({'Ticker': val["name"],'Cours': val["cours"], 'Cloture': val["cloture"],'Variation': val["variation"], 'Volume Titre': val["volumeTitre"],"derniere transaction" : val["datetime"]})
     fulldf = pd.DataFrame(seance)
     
