@@ -214,11 +214,12 @@ trntrn = z[0]
     
 seance = []
 for i, val in enumerate(z):
+    val["datetime"] = dt.strptime(val["datetime"], '%y%m%d %H%M%S')
     seance.append({'Ticker': val["name"],'Cours': val["cours"], 'Cloture': val["cloture"],'Variation': val["variation"], 'Volume Titre': val["volumeTitre"],"derniere transaction" : val["datetime"]})
     fulldf = pd.DataFrame(seance)
     
 #fulldf['derniere transaction'] = pd.to_datetime(fulldf['derniere transaction'], infer_datetime_format=True)
-dt.strptime(fulldf['derniere transaction'], '%y%m%d %H%M%S')
+
 #fulldf['derniere transaction'] = fulldf['derniere transaction'].dt.date
 
 #tradedtoday = fulldf['derniere transaction'] < lyoum
