@@ -222,11 +222,11 @@ for i, val in enumerate(z):
     
 fulldf['derniere transaction'] = pd.to_datetime(fulldf['derniere transaction'], infer_datetime_format=True)
 
-#fulldf['derniere transaction'] = fulldf['derniere transaction'].dt.date
+fulldf['derniere transaction'] = fulldf['derniere transaction'].dt.date
 
-#tradedtoday = fulldf['derniere transaction'] < lyoum
-#fulldf.loc[tradedtoday, 'Volume Titre'] = 0
-#fulldf.loc[tradedtoday, 'Variation'] = 0 
+tradedtoday = fulldf['derniere transaction'] < lyoum
+fulldf.loc[tradedtoday, 'Volume Titre'] = 0
+fulldf.loc[tradedtoday, 'Variation'] = 0 
 
 st.dataframe(fulldf)
 
