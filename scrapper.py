@@ -240,7 +240,7 @@ buffer = io.BytesIO()
 # Create a Pandas Excel writer using XlsxWriter as the engine.
 with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
     # Write each dataframe to a different worksheet.
-    BAMcc.to_excel(writer, sheet_name='Cours de change BAM')
+    #BAMcc.to_excel(writer, sheet_name='Cours de change BAM')
     FXCOM.to_excel(writer, sheet_name='FX & commodities')
     intlindices.to_excel(writer, sheet_name='Indices internationaux')
     dfindex.to_excel(writer, sheet_name='Indices BVC')
