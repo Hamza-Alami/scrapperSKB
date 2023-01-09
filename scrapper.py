@@ -31,7 +31,7 @@ starttime = '11:45'
 if no < 5 and ctime > starttime:
     selecteddate = lyoum
 else:
-    selecteddate = '2022-12-02'
+    selecteddate = '2023-01-06'
     
 threeyrsago = lyoum.replace(year=lyoum.year-3)
 oneyrago = lyoum.replace(year=lyoum.year-1)
@@ -91,7 +91,8 @@ def usdmad():
     usd = float(dataus.decode()[-25:-18])
     return usd
 BAMcc = pd.DataFrame({'Cours en MAD': [euromad(), usdmad()]},index=['EUR', 'USD'])
-st.dataframe(BAMcc)
+
+#st.dataframe(BAMcc)
 
 
 #Scrap from yahoo finance
@@ -103,8 +104,8 @@ st.dataframe(BAMcc)
 #dj30 = yf.Ticker("^DJI")
 #dj30 = dj30.info['previousClose']
 
-sdate = '2022-12-16'
-edate = '2022-12-17'
+sdate = '2023-01-05'
+edate = '2023-01-06'
 
 def indices():
     
