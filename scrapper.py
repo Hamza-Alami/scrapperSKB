@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import datetime
 from datetime import datetime as dt
 from datetime import timedelta
 import matplotlib.pyplot as plt
@@ -105,7 +106,7 @@ st.dataframe(BAMcc)
 #dj30 = yf.Ticker("^DJI")
 #dj30 = dj30.info['previousClose']
 
-sdate = lyoum - dt.timedelta(days=1)
+sdate = lyoum - datetime.timedelta(days=1)
 edate = lyoum
 
 def indices():
