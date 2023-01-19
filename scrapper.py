@@ -31,7 +31,7 @@ starttime = '11:45'
 if no < 5 and ctime > starttime:
     selecteddate = lyoum
 else:
-    selecteddate = '2023-01-06'
+    selecteddate = '2023-01-02'
     
 threeyrsago = lyoum.replace(year=lyoum.year-3)
 oneyrago = lyoum.replace(year=lyoum.year-1)
@@ -104,8 +104,8 @@ st.dataframe(BAMcc)
 #dj30 = yf.Ticker("^DJI")
 #dj30 = dj30.info['previousClose']
 
-sdate = '2023-01-05'
-edate = '2023-01-06'
+sdate = (lyoum.day-1)
+edate = lyoum
 
 def indices():
     
