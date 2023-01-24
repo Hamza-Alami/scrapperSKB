@@ -150,7 +150,7 @@ def indices():
     #nikkei
     jp1 = yf.download("^N225", sdate, edate)
     jp = jp1.Close[1]
-    jpvar = (((jp-jp.Close[0])*100)/jp.Close[0]
+    jpvar = ((jp-jp.Close[0])*100)/jp.Close[0]
 
     #hangseng
     #hk = yf.download("^HSI", sdate, edate)
