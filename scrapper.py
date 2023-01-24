@@ -187,24 +187,18 @@ eurusd = yf.download("EURUSD=X", sdate, edate)
 eurusd = eurusd.Close[0]
 
 #calling funcs to lists
-
-#
-lst = [['tom', 25], ['krish', 30],
-       ['nick', 26], ['juli', 22]]
-    
-df = pd.DataFrame(lst, columns =['Name', 'Age'])
-df
-#
-
 indiceslist = indices()
 commolist = commodities()
 
-# list of name, degree, score
+#testing stuff
 Cours1 = [indiceslist[0], indiceslist[1], indiceslist[2], indiceslist[3], indiceslist[4], indiceslist[5]]
 var1 = [indiceslist[6], indiceslist[7], indiceslist[8], indiceslist[9], indiceslist[10], indiceslist[11]]
-  
+
+st.write(Cours1, var1)
+
 # dictionary of lists 
 dictin = {'Cours': Cours1, 'var %': var1}
+st.write(dictin)
 
 FXCOM = pd.DataFrame({'Cours': [eurusd, commolist[1], commolist[0], commolist[2]]},index=['EUR/USD','Brent', 'Gold', 'Silver'])
 intlindices = pd.DataFrame(dictin,index=['Dow Jones','S&P500', 'Nasdaq', 'CAC40', 'DAX30', 'NIKKEI'])
