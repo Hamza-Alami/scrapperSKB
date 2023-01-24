@@ -109,6 +109,10 @@ st.dataframe(BAMcc)
 sdate = lyoum - datetime.timedelta(days=4)
 edate = lyoum
 
+dj30 = yf.download("^DJI", sdate, edate)
+j30 = dj30.Close
+st.write(j30)
+
 def indices():
     
     #Dow jones
