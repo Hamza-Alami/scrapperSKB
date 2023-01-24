@@ -156,7 +156,7 @@ def indices():
     #hk = yf.download("^HSI", sdate, edate)
     #hk = hk.Close[1]
     
-    return dj30, sp500, nasdaq, cac, dax, jp, dj30var, sp500var, nasdaqvar, cacvar, daxvar, jpvar#, hk
+    return dj30, sp500, nasdaq, cac, dax, jp, dj30var, sp500var, nasdaqvar, cacvar, daxvar, jpvar #, hk
 
 
 #                                        Commodities
