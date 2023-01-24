@@ -120,6 +120,7 @@ j30 = dj30.Close
 st.write(j30)
 st.write(j30[0])
 st.write(j30[1])
+st.write('var % :', ((j30[1]-j30[0])*100)/j30[0])
 
 def indices():
     
