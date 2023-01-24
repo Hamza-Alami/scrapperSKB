@@ -115,44 +115,51 @@ else:
         
 edate = lyoum
 
-dj30 = yf.download("^DJI", sdate, edate)
-j30 = dj30.Close
-st.write(j30)
-st.write(j30[0])
-st.write(j30[1])
-st.write('var % :', ((j30[1]-j30[0])*100)/j30[0])
+#test and var test
+#dj30 = yf.download("^DJI", sdate, edate)
+#j30 = dj30.Close
+#st.write(j30)
+#st.write(j30[0])
+#st.write(j30[1])
+#st.write('var % :', ((j30[1]-j30[0])*100)/j30[0])
 
 def indices():
     
     #Dow jones
     dj30 = yf.download("^DJI", sdate, edate)
-    dj30 = dj30.Close[0]
+    dj30 = dj30.Close[1]
+    dj30var = ((dj30[1]-dj30[0])*100)/dj30[0]
 
     #spoos
     sp500 = yf.download("^GSPC", sdate, edate)
-    sp500 = sp500.Close[0]
+    sp500 = sp500.Close[1]
+    sp500var = ((sp500[1]-sp500[0])*100)/sp500[0]
 
     #nasdaq
     nasdaq = yf.download("^IXIC", sdate, edate)
-    nasdaq = nasdaq.Close[0]
+    nasdaq = nasdaq.Close[1]
+    nasdaqvar = ((nasdaq[1]-nasdaq[0])*100)/nasdaq[0]
 
     #cac40
     cac = yf.download("^FCHI", sdate, edate)
-    cac = cac.Close[0]
+    cac = cac.Close[1]
+    cacvar = ((cac[1]-cac[0])*100)/cac[0]
 
     #DAX
     dax = yf.download("^GDAXI", sdate, edate)
-    dax = dax.Close[0]
+    dax = dax.Close[1]
+    daxvar = ((dax[1]-dax[0])*100)/dax[0]
 
     #nikkei
     jp = yf.download("^N225", sdate, edate)
-    jp = jp.Close[0]
+    jp = jp.Close[1]
+    jpvar = ((jp[1]-jp[0])*100)/jp[0]
 
     #hangseng
     #hk = yf.download("^HSI", sdate, edate)
-    #hk = hk.Close[0]
+    #hk = hk.Close[1]
     
-    return dj30, sp500, nasdaq, cac, dax, jp#, hk
+    return dj30, sp500, nasdaq, cac, dax, jp, dj30var, sp500var, nasdaqvar, cacvar, daxvar, jpvar#, hk
 
 
 #                                        Commodities
@@ -180,11 +187,29 @@ eurusd = yf.download("EURUSD=X", sdate, edate)
 eurusd = eurusd.Close[0]
 
 #calling funcs to lists
+
+#
+lst = [['tom', 25], ['krish', 30],
+       ['nick', 26], ['juli', 22]]
+    
+df = pd.DataFrame(lst, columns =['Name', 'Age'])
+df
+#
+
 indiceslist = indices()
 commolist = commodities()
 
+# list of name, degree, score
+Cours1 = [indiceslist[0], indiceslist[1], indiceslist[2], indiceslist[3], indiceslist[4], indiceslist[5]]
+var1 = [indiceslist[6], indiceslist[7], indiceslist[8], indiceslist[9], indiceslist[10], indiceslist[11]]
+  
+# dictionary of lists 
+dictin = {'Cours': Cours1, 'var %': var1}
+
 FXCOM = pd.DataFrame({'Cours': [eurusd, commolist[1], commolist[0], commolist[2]]},index=['EUR/USD','Brent', 'Gold', 'Silver'])
-intlindices = pd.DataFrame({'Cours': [indiceslist[0], indiceslist[1], indiceslist[2], indiceslist[3], indiceslist[4], indiceslist[5]]},index=['Dow Jones','S&P500', 'Nasdaq', 'CAC40', 'DAX30', 'NIKKEI'])#, indiceslist[6],'Hang Seng'
+intlindices = pd.DataFrame(dictin,index=['Dow Jones','S&P500', 'Nasdaq', 'CAC40', 'DAX30', 'NIKKEI'])
+#{'Cours': [indiceslist[0], indiceslist[1], indiceslist[2], indiceslist[3], indiceslist[4], indiceslist[5]]}
+#, indiceslist[6],'Hang Seng'
 
 st.text('FX & commodities')
 st.dataframe(FXCOM)
