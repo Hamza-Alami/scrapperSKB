@@ -106,12 +106,20 @@ st.dataframe(BAMcc)
 #dj30 = yf.Ticker("^DJI")
 #dj30 = dj30.info['previousClose']
 
-sdate = lyoum - datetime.timedelta(days=4)
+if no = 1:
+    sdate = lyoum - datetime.timedelta(days=3)
+elif no = 2:
+    sdate = lyoum - datetime.timedelta(days=4)
+else:
+     sdate = lyoum - datetime.timedelta(days=2)
+        
 edate = lyoum
 
 dj30 = yf.download("^DJI", sdate, edate)
 j30 = dj30.Close
 st.write(j30)
+st.write(j30[0])
+st.write(j30[1])
 
 def indices():
     
