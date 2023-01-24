@@ -106,7 +106,7 @@ st.dataframe(BAMcc)
 #dj30 = yf.Ticker("^DJI")
 #dj30 = dj30.info['previousClose']
 
-sdate = lyoum - datetime.timedelta(days=1)
+sdate = lyoum - datetime.timedelta(days=4)
 edate = lyoum
 
 def indices():
