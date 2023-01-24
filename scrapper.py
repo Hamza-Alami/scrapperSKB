@@ -106,7 +106,7 @@ st.dataframe(BAMcc)
 #dj30 = yf.Ticker("^DJI")
 #dj30 = dj30.info['previousClose']
 
-if no = 1:
+if no == 1 :
     sdate = lyoum - datetime.timedelta(days=3)
 elif no = 2:
     sdate = lyoum - datetime.timedelta(days=4)
