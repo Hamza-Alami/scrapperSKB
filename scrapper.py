@@ -123,12 +123,12 @@ edate = lyoum
 #st.write(j30[1])
 #st.write('var % :', ((j30[1]-j30[0])*100)/j30[0])
 
-dj30 = yf.download("^DJI", sdate, edate)
+dj = yf.download("^DJI", sdate, edate)
 dj30 = dj30.Close[1]
-dj30var = ((dj30[1]-dj30[0])*100)/dj30[0]
+dj30var = ((dj[1]-dj[0])*100)/dj[0]
 st.write(dj30)
-st.write(dj30[0])
-st.write(dj30[1])
+st.write(dj[0])
+st.write(dj[1])
 st.write(dj30var)
 
 def indices():
