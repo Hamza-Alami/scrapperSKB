@@ -125,18 +125,17 @@ edate = lyoum
 
 dj = yf.download("^DJI", sdate, edate)
 dj30 = dj.Close[1]
-dj30var = ((dj[1]-dj[0])*100)/dj[0]
+dj30var = ((dj.Close[1]-dj.Close[0])*100)/dj.Close[0]
 st.write(dj30)
-st.write(dj[0])
-st.write(dj[1])
+st.write(dj.Close[0])
 st.write(dj30var)
 
 def indices():
     
     #Dow jones
-    dj30 = yf.download("^DJI", sdate, edate)
-    dj30 = dj30.Close[1]
-    dj30var = (((dj30[1]-dj30[0])*100)/dj30[0])
+    dj = yf.download("^DJI", sdate, edate)
+    dj30 = dj.Close[1]
+    dj30var = (((dj[1]-dj[0])*100)/dj[0])
 
     #spoos
     sp500 = yf.download("^GSPC", sdate, edate)
