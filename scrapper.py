@@ -115,52 +115,42 @@ else:
         
 edate = lyoum
 
-#test and var test
-#dj30 = yf.download("^DJI", sdate, edate)
-#j30 = dj30.Close
-#st.write(j30)
-#st.write(j30[0])
-#st.write(j30[1])
-#st.write('var % :', ((j30[1]-j30[0])*100)/j30[0])
-
 dj = yf.download("^DJI", sdate, edate)
 dj30 = dj.Close[1]
 dj30var = ((dj.Close[1]-dj.Close[0])*100)/dj.Close[0]
-st.write(dj30)
-st.write(dj.Close[0])
-st.write(dj30var)
+
 
 def indices():
     
     #Dow jones
     dj = yf.download("^DJI", sdate, edate)
     dj30 = dj.Close[1]
-    dj30var = (((dj[1]-dj[0])*100)/dj[0])
+    dj30var = ((dj.Close[1]-dj.Close[0])*100)/dj.Close[0]
 
     #spoos
-    sp500 = yf.download("^GSPC", sdate, edate)
-    sp500 = sp500.Close[1]
-    sp500var = (((sp500[1]-sp500[0])*100)/sp500[0])
+    sp = yf.download("^GSPC", sdate, edate)
+    sp500 = sp.Close[1]
+    sp500var = ((sp500-sp.Close[0])*100)/sp.Close[0]
 
     #nasdaq
-    nasdaq = yf.download("^IXIC", sdate, edate)
-    nasdaq = nasdaq.Close[1]
-    nasdaqvar = (((nasdaq[1]-nasdaq[0])*100)/nasdaq[0])
+    nas = yf.download("^IXIC", sdate, edate)
+    nasdaq = nas.Close[1]
+    nasdaqvar = ((nasdaq-nas.Close[0])*100)/nas.Close[0]
 
     #cac40
-    cac = yf.download("^FCHI", sdate, edate)
-    cac = cac.Close[1]
-    cacvar = (((cac[1]-cac[0])*100)/cac[0])
+    cac4 = yf.download("^FCHI", sdate, edate)
+    cac = cac4.Close[1]
+    cacvar = ((cac-cac4.Close[0])*100)/cac4.Close[0]
 
     #DAX
-    dax = yf.download("^GDAXI", sdate, edate)
-    dax = dax.Close[1]
-    daxvar = (((dax[1]-dax[0])*100)/dax[0])
+    dax3 = yf.download("^GDAXI", sdate, edate)
+    dax = dax3.Close[1]
+    daxvar = ((dax-dax3.Close[0])*100)/dax3.Close[0]
 
     #nikkei
-    jp = yf.download("^N225", sdate, edate)
-    jp = jp.Close[1]
-    jpvar = (((jp[1]-jp[0])*100)/jp[0])
+    jp1 = yf.download("^N225", sdate, edate)
+    jp = jp1.Close[1]
+    jpvar = (((jp-jp.Close[0])*100)/jp.Close[0]
 
     #hangseng
     #hk = yf.download("^HSI", sdate, edate)
