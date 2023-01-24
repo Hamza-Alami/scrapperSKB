@@ -108,7 +108,7 @@ st.dataframe(BAMcc)
 
 if no == 1 :
     sdate = lyoum - datetime.timedelta(days=3)
-elif no = 2:
+elif no == 2 :
     sdate = lyoum - datetime.timedelta(days=4)
 else:
      sdate = lyoum - datetime.timedelta(days=2)
