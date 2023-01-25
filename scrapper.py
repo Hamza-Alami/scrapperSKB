@@ -93,6 +93,7 @@ def usdmad():
    
     usd = dataus.decode()
     usdt = json.loads(usd)
+    usdtt = type(json.loads(usd))
     
     #float(dataus.decode()[-25:-18])
     return usd, usdt
