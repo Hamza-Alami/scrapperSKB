@@ -166,7 +166,7 @@ def usdmad():
     usdt = json.loads(usd)
     usdt1 = usdt[0]
     dollarmad = usdt1.get("moyen")
-    return dollarmad
+    return usdt
 
 BAMcc = pd.DataFrame({'Cours en MAD': [euromad(), usdmad()]},index=['EUR', 'USD'])
 
