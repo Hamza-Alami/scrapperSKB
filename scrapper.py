@@ -68,7 +68,7 @@ def euromad():
     eur = data.decode()
     #float(data.decode()[-25:-18])
     return eur
-
+thingy1 = []
 def usdmad():
     
     headers = {
@@ -93,9 +93,14 @@ def usdmad():
    
     usd = dataus.decode()
     usdt = json.loads(usd)
+    usdt1 = usdt[0]
+    for i, val in enumerate(usdt1):
+    sep = ','
+    strippedx = val["datetime"].split(sep, 1)[0]
+    thingy.append({'Ticker': val["name"],'Cours': val["cours"], 'Cloture': val["cloture"],'Variation': val["variation"], 'Volume Titre': val["volumeTitre"],"derniere transaction" : strippedx})    
     
     #float(dataus.decode()[-25:-18])
-    return usdt
+    return usdt, usdt1, thingy
 BAMcc = pd.DataFrame({'Cours en MAD': [euromad(), usdmad()]},index=['EUR', 'USD'])
 
 st.dataframe(BAMcc)
