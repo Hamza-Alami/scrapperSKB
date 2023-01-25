@@ -193,7 +193,6 @@ var1 = [indiceslist[6], indiceslist[7], indiceslist[8], indiceslist[9], indicesl
 
 # dictionary of lists 
 dictin = {'Cours': Cours1, 'var %': var1}
-st.write(dictin)
 
 FXCOM = pd.DataFrame({'Cours': [eurusd, commolist[1], commolist[0], commolist[2]]},index=['EUR/USD','Brent', 'Gold', 'Silver'])
 intlindices = pd.DataFrame(dictin,index=['Dow Jones','S&P500', 'Nasdaq', 'CAC40', 'DAX30', 'NIKKEI'])
