@@ -65,7 +65,7 @@ def euromad():
     except Exception as e:
         print("[Errno {0}] {1}".format(e.errno, e.strerror))
         
-    eur = data 
+    eur = data.decode()
     #float(data.decode()[-25:-18])
     return eur
 
