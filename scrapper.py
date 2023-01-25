@@ -95,12 +95,13 @@ def usdmad():
     usdt = json.loads(usd)
     usdt1 = usdt[0]
     for i, val in enumerate(usdt1):
-    sep = ','
-    strippedx = val["datetime"].split(sep, 1)[0]
-    thingy.append({'Ticker': val["name"],'Cours': val["cours"], 'Cloture': val["cloture"],'Variation': val["variation"], 'Volume Titre': val["volumeTitre"],"derniere transaction" : strippedx})    
+        sep = ','
+        strippedx = val["datetime"].split(sep, 1)[0]
+        thingy.append({'Ticker': val["name"],'Cours': val["cours"], 'Cloture': val["cloture"],'Variation': val["variation"], 'Volume Titre': val["volumeTitre"],"derniere transaction" : strippedx})    
     
     #float(dataus.decode()[-25:-18])
     return usdt, usdt1, thingy
+
 BAMcc = pd.DataFrame({'Cours en MAD': [euromad(), usdmad()]},index=['EUR', 'USD'])
 
 st.dataframe(BAMcc)
@@ -122,10 +123,6 @@ else:
      sdate = lyoum - datetime.timedelta(days=2)
         
 edate = lyoum
-
-dj = yf.download("^DJI", sdate, edate)
-dj30 = dj.Close[1]
-dj30var = ((dj.Close[1]-dj.Close[0])*100)/dj.Close[0]
 
 
 def indices():
