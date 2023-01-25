@@ -161,8 +161,7 @@ dprev = dirhamdollar[1]
 BAMcc = pd.DataFrame({'Cours en MAD': [eact, dact]},index=['EUR', 'USD'])
 
 varmad = [((eact-eprev)/eact)*100, ((dact-dprev)/dact)*100]  
-st.write(varmad)
-
+BAMcc['var %'] = varmad
 st.dataframe(BAMcc)
 
 #Scrap from yahoo finance
