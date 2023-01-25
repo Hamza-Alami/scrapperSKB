@@ -151,10 +151,16 @@ def usdmad():
     return dollarmad, dolmad2
 
 dirhameuro = euromad()
-dirhamdollar = usdmad()
-BAMcc = pd.DataFrame({'Cours en MAD': [dirhameuro[0], usdmad()]},index=['EUR', 'USD'])
+eact = dirhameuro[0]
+eprev = dirhameuro[1]
 
-varmad = [((dirhameuro[0]-dirhameuro[1])/dirhameuro[0])*100, ((dirhamdollar[0]-dirhamdollar[1])/dirhamdollar[0])*100]  
+dirhamdollar = usdmad()
+dact = dirhamdollar[0]
+dprev = dirhamdollar[1]
+
+BAMcc = pd.DataFrame({'Cours en MAD': eact, dact]},index=['EUR', 'USD'])
+
+varmad = [((eact-eprev)/eact)*100, ((dact-dprev)/dact)*100]  
 st.write(varmad)
 
 st.dataframe(BAMcc)
