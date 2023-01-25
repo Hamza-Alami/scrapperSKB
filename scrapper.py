@@ -90,12 +90,12 @@ def usdmad():
         conn.close()
     except Exception as e:
         print("[Errno {0}] {1}".format(e.errno, e.strerror))
-        
-    usd = dataus.decode()
-    usdt = type(dataus)
-    usdtt = type(usd)
+   
+    usd = dataus.content
+    usdt = json.loads(usd)
+    
     #float(dataus.decode()[-25:-18])
-    return usd, usdt, usdtt
+    return usd, usdt
 BAMcc = pd.DataFrame({'Cours en MAD': [euromad(), usdmad()]},index=['EUR', 'USD'])
 
 st.dataframe(BAMcc)
