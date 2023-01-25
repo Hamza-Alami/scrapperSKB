@@ -93,7 +93,7 @@ def usdmad():
    
     usd = dataus.decode()
     usdt = json.loads(usd)
-    usdt1 = usdt[0]
+    usdt1 = usdt[1]
     for i, val in enumerate(usdt1):
         sep = ','
         #strippedx = val["datetime"].split(sep, 1)[0]
