@@ -248,8 +248,10 @@ var2 =  [eurusdvar, commolist[3], commolist[4], commolist[5]]
 
 # dictionary of lists 
 dictin = {'Cours': Cours1, 'var %': var1}
+dictin2 = {'Cours': Cours2, 'var %': var2}
 
-FXCOM = pd.DataFrame({'Cours': [eurusd, commolist[1], commolist[0], commolist[2]]},index=['EUR/USD','Brent', 'Gold', 'Silver'])
+
+FXCOM = pd.DataFrame(dictin2,index=['EUR/USD','Brent', 'Gold', 'Silver'])
 
 intlindices = pd.DataFrame(dictin,index=['Dow Jones','S&P500', 'Nasdaq', 'CAC40', 'DAX30', 'NIKKEI']) #, indiceslist[6],'Hang Seng'
 
