@@ -170,7 +170,7 @@ def usdmad():
 
 BAMcc = pd.DataFrame({'Cours en MAD': [euromad(), usdmad()]},index=['EUR', 'USD'])
 
-varmad = [((euromad()-preveur())/euromad())*100, ((usdmad()-prevdol())/usdmad())*100]
+#varmad = [((euromad()-preveur())/euromad())*100, ((usdmad()-prevdol())/usdmad())*100]
                                             
 #st.write(varmad)
 
