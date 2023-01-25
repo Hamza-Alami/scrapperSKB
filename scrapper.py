@@ -91,13 +91,15 @@ def usdmad():
     except Exception as e:
         print("[Errno {0}] {1}".format(e.errno, e.strerror))
         
-    usd = dataus
+    usd = dataus.decode()
     usdt = type(dataus)
+    usdtt = type(usd)
     #float(dataus.decode()[-25:-18])
-    return usd
+    return usd, usdt, usdtt
 BAMcc = pd.DataFrame({'Cours en MAD': [euromad(), usdmad()]},index=['EUR', 'USD'])
 
 st.dataframe(BAMcc)
+st.wirte(usd, usdt, usdtt)
 
 
 #Scrap from yahoo finance
