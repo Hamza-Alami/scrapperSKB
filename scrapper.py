@@ -91,7 +91,7 @@ def usdmad():
     except Exception as e:
         print("[Errno {0}] {1}".format(e.errno, e.strerror))
    
-    usd = dataus.content
+    usd = dataus.decode()
     usdt = json.loads(usd)
     
     #float(dataus.decode()[-25:-18])
