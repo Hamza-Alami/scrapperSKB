@@ -66,9 +66,10 @@ def euromad():
         print("[Errno {0}] {1}".format(e.errno, e.strerror))
         
     eur = data.decode()
-    #float(data.decode()[-25:-18])
+    euro = json.loads(eur)
+    euro1 = euro[1]    
     return eur
-thingy1 = []
+
 def usdmad():
     
     headers = {
@@ -93,14 +94,8 @@ def usdmad():
    
     usd = dataus.decode()
     usdt = json.loads(usd)
-    usdt1 = usdt[1]
-    for i, val in enumerate(usdt1):
-        sep = ','
-        #strippedx = val["datetime"].split(sep, 1)[0]
-        #thingy.append({'Ticker': val["name"],'Cours': val["cours"], 'Cloture': val["cloture"],'Variation': val["variation"], 'Volume Titre': val["volumeTitre"],"derniere transaction" : strippedx})    
-    
-    #float(dataus.decode()[-25:-18])
-    return type(usdt1) #, usdt1#, #thingy
+    usdt1 = usdt[1]    
+    return usdt1
 
 BAMcc = pd.DataFrame({'Cours en MAD': [euromad(), usdmad()]},index=['EUR', 'USD'])
 
@@ -195,8 +190,6 @@ commolist = commodities()
 #testing stuff
 Cours1 = [indiceslist[0], indiceslist[1], indiceslist[2], indiceslist[3], indiceslist[4], indiceslist[5]]
 var1 = [indiceslist[6], indiceslist[7], indiceslist[8], indiceslist[9], indiceslist[10], indiceslist[11]]
-
-st.write(Cours1, var1)
 
 # dictionary of lists 
 dictin = {'Cours': Cours1, 'var %': var1}
