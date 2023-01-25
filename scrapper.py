@@ -99,7 +99,7 @@ def usdmad():
 BAMcc = pd.DataFrame({'Cours en MAD': [euromad(), usdmad()]},index=['EUR', 'USD'])
 
 st.dataframe(BAMcc)
-st.wirte(usd, usdt, usdtt)
+st.write(usd, usdt, usdtt)
 
 
 #Scrap from yahoo finance
@@ -266,6 +266,7 @@ fulldf.loc[tradedtoday, 'Volume Titre'] = 0
 fulldf.loc[tradedtoday, 'Variation'] = 0 
 
 st.dataframe(fulldf)
+st.write(x, y, z, trntrn)
 
 masi1=bvc.loadata('MASI',start=oneyrago,end=lyoum)
 masi3=bvc.loadata('MASI',start=threeyrsago,end=lyoum)
