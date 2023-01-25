@@ -78,7 +78,7 @@ def prevdol():
     params = urllib.parse.urlencode({
         # Request parameters
         'libDevise': 'USD',
-        'date': selecteddate,
+        'date': prevdate,
     })
 
     try:
