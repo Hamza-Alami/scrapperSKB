@@ -212,40 +212,46 @@ def indices():
 
 def commodities():
     #Gold
-    gld = yf.download("GC=F", sdate, edate)
-    gld = gld.Close[0]
-
+    gld1 = yf.download("GC=F", sdate, edate)
+    gld = gld1.Close[1]
+    gldvar = ((gld-gld1.Close[0])*100)/gld1.Close[0]
 
     #Brent
-    oil = yf.download("BZ=F", sdate, edate)
-    oil = oil.Close[0]
+    oil1 = yf.download("BZ=F", sdate, edate)
+    oil = oil1.Close[1]
+    oilvar = ((oil-oil1.Close[0])*100)/oil1.Close[0]
 
     #silver
-    silver = yf.download("SI=F", sdate, edate)
-    silver = silver.Close[0]
-    return gld, oil, silver
+    silver1 = yf.download("SI=F", sdate, edate)
+    silver = silver1.Close[0]
+    silvervar = ((silver-silver1.Close[0])*100)/silver1.Close[0]
+    
+    return gld, oil, silver, gldvar, oilvar, silvervar
 
 #                                          FX
 
 #eurodollar
-eurusd = yf.download("EURUSD=X", sdate, edate)
-eurusd = eurusd.Close[0]
+eurusd1 = yf.download("EURUSD=X", sdate, edate)
+eurusd = eurusd1.Close[1]
+eurusdvar = ((eurusd-eurusd1.Close[0])*100)/eurusd1.Close[0]
 
 #calling funcs to lists
 indiceslist = indices()
 commolist = commodities()
 
-#testing stuff
+#putting data into lists
 Cours1 = [indiceslist[0], indiceslist[1], indiceslist[2], indiceslist[3], indiceslist[4], indiceslist[5]]
 var1 = [indiceslist[6], indiceslist[7], indiceslist[8], indiceslist[9], indiceslist[10], indiceslist[11]]
+
+Cours2 =  [eurusd, commolist[1], commolist[0], commolist[2]]
+var2 =  [eurusdvar, commolist[3], commolist[4], commolist[5]]
 
 # dictionary of lists 
 dictin = {'Cours': Cours1, 'var %': var1}
 
 FXCOM = pd.DataFrame({'Cours': [eurusd, commolist[1], commolist[0], commolist[2]]},index=['EUR/USD','Brent', 'Gold', 'Silver'])
-intlindices = pd.DataFrame(dictin,index=['Dow Jones','S&P500', 'Nasdaq', 'CAC40', 'DAX30', 'NIKKEI'])
-#{'Cours': [indiceslist[0], indiceslist[1], indiceslist[2], indiceslist[3], indiceslist[4], indiceslist[5]]}
-#, indiceslist[6],'Hang Seng'
+
+intlindices = pd.DataFrame(dictin,index=['Dow Jones','S&P500', 'Nasdaq', 'CAC40', 'DAX30', 'NIKKEI']) #, indiceslist[6],'Hang Seng'
 
 st.text('FX & commodities')
 st.dataframe(FXCOM)
