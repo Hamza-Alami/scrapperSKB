@@ -85,7 +85,7 @@ def prevdol():
         conn = http.client.HTTPSConnection('api.centralbankofmorocco.ma')
         conn.request("GET", "/cours/Version1/api/CoursVirement?%s" % params, "{body}", headers)
         response = conn.getresponse()
-        dataus = response.read()
+        data = response.read()
         conn.close()
     except Exception as e:
         print("[Errno {0}] {1}".format(e.errno, e.strerror))
