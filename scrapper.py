@@ -68,7 +68,34 @@ def preveur():
     eurmad = euro1.get("moyen")
     return eurmad
 
-st.write(preveur())
+def prevdol():
+    
+     headers = {
+        # Request headers
+        'Ocp-Apim-Subscription-Key': '4f64d048c9f34f62a748068e3827cbc9',
+    }
+
+    params = urllib.parse.urlencode({
+        # Request parameters
+        'libDevise': 'USD',
+        'date': selecteddate,
+    })
+
+    try:
+        conn = http.client.HTTPSConnection('api.centralbankofmorocco.ma')
+        conn.request("GET", "/cours/Version1/api/CoursVirement?%s" % params, "{body}", headers)
+        response = conn.getresponse()
+        dataus = response.read()
+        conn.close()
+    except Exception as e:
+        print("[Errno {0}] {1}".format(e.errno, e.strerror))
+   
+    usd = dataus.decode()
+    usdt = json.loads(usd)
+    usdt1 = usdt[0]
+    dollarmad = usdt1.get("moyen")
+    return dollarmad
+
 #end
 
 if no < 5 and ctime > starttime:
@@ -141,6 +168,10 @@ def usdmad():
     return dollarmad
 
 BAMcc = pd.DataFrame({'Cours en MAD': [euromad(), usdmad()]},index=['EUR', 'USD'])
+
+varmad = [((euromad()-preveur())/euromad())*100, ((usdmad()-prevdol()/usdmad())*100]
+                                            
+st.write(varmad)
 
 st.dataframe(BAMcc)
 
