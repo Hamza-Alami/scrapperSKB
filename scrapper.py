@@ -100,7 +100,7 @@ def usdmad():
         #thingy.append({'Ticker': val["name"],'Cours': val["cours"], 'Cloture': val["cloture"],'Variation': val["variation"], 'Volume Titre': val["volumeTitre"],"derniere transaction" : strippedx})    
     
     #float(dataus.decode()[-25:-18])
-    return usdt1 #, usdt1#, #thingy
+    return type(usdt1) #, usdt1#, #thingy
 
 BAMcc = pd.DataFrame({'Cours en MAD': [euromad(), usdmad()]},index=['EUR', 'USD'])
 
