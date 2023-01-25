@@ -64,8 +64,9 @@ def preveur():
         
     eur = data.decode()
     euro = json.loads(eur)
-    euro1 = euro[0]    
-    return euro1
+    euro1 = euro[0]
+    eurmad = euro1.get("moyen")
+    return eurmad
 
 st.write(preveur())
 #end
@@ -107,8 +108,9 @@ def euromad():
         
     eur = data.decode()
     euro = json.loads(eur)
-    euro1 = euro[0]    
-    return euro1
+    euro1 = euro[0]
+    eurmad = euro1.get("moyen")
+    return eurmad
 
 def usdmad():
     
