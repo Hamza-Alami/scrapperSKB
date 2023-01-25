@@ -38,39 +38,6 @@ elif no == 1 :
 else:
      sdate = lyoum - datetime.timedelta(days=2)
      prevdate = lyoum - datetime.timedelta(days=1)
-    
-#getting preivous mad usd and mad eur
-
-def prevdol():
-    
-     
-    headers = {
-        # Request headers
-        'Ocp-Apim-Subscription-Key': '4f64d048c9f34f62a748068e3827cbc9',
-    }
-
-    params = urllib.parse.urlencode({
-        # Request parameters
-        'libDevise': 'USD',
-        'date': prevdate,
-    })
-
-    try:
-        conn = http.client.HTTPSConnection('api.centralbankofmorocco.ma')
-        conn.request("GET", "/cours/Version1/api/CoursVirement?%s" % params, "{body}", headers)
-        response = conn.getresponse()
-        data = response.read()
-        conn.close()
-    except Exception as e:
-        print("[Errno {0}] {1}".format(e.errno, e.strerror))
-   
-    usd = dataus.decode()
-    usdt = json.loads(usd)
-    usdt1 = usdt[0]
-    dollarmad = usdt1.get("moyen")
-    return dollarmad
-
-#end
 
 if no < 5 and ctime > starttime:
     selecteddate = lyoum
@@ -146,6 +113,27 @@ def usdmad():
         'libDevise': 'USD',
         'date': selecteddate,
     })
+    ####
+    params2 = urllib.parse.urlencode({
+        # Request parameters
+        'libDevise': 'USD',
+        'date': prevdate,
+    })
+
+    try:
+        conn2 = http.client.HTTPSConnection('api.centralbankofmorocco.ma')
+        conn2.request("GET", "/cours/Version1/api/CoursVirement?%s" % params2, "{body}", headers)
+        response2 = conn2.getresponse()
+        data2 = response2.read()
+        conn2.close()
+    except Exception as e:
+        print("[Errno {0}] {1}".format(e.errno, e.strerror))
+   
+    usd2 = data2.decode()
+    dol2 = json.loads(usd2)
+    dol22 = dol2[0]
+    dolmad2 = dol22.get("moyen")
+    #####
 
     try:
         conn = http.client.HTTPSConnection('api.centralbankofmorocco.ma')
@@ -160,12 +148,13 @@ def usdmad():
     usdt = json.loads(usd)
     usdt1 = usdt[0]
     dollarmad = usdt1.get("moyen")
-    return dollarmad
+    return dollarmad, dolmad2
 
 dirhameuro = euromad()
+dirhamdollar = usdmad()
 BAMcc = pd.DataFrame({'Cours en MAD': [dirhameuro[0], usdmad()]},index=['EUR', 'USD'])
-varmad = [((dirhameuro[0]-dirhameuro[1])/dirhameuro[0])*100]  #, ((usdmad()-prevdol())/usdmad())*100
 
+varmad = [((dirhameuro[0]-dirhameuro[1])/dirhameuro[0])*100, ((dirhamdollar[0]-dirhamdollar[1])/dirhamdollar[0])*100]  
 st.write(varmad)
 
 st.dataframe(BAMcc)
