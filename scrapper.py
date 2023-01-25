@@ -40,33 +40,6 @@ else:
      prevdate = lyoum - datetime.timedelta(days=1)
     
 #getting preivous mad usd and mad eur
-def preveur():
-    
-    headers = {
-        # Request headers
-        'Ocp-Apim-Subscription-Key': '4f64d048c9f34f62a748068e3827cbc9',
-    }
-
-    params = urllib.parse.urlencode({
-        # Request parameters
-        'libDevise': 'EUR',
-        'date': prevdate,
-    })
-
-    try:
-        conn = http.client.HTTPSConnection('api.centralbankofmorocco.ma')
-        conn.request("GET", "/cours/Version1/api/CoursVirement?%s" % params, "{body}", headers)
-        response = conn.getresponse()
-        data = response.read()
-        conn.close()
-    except Exception as e:
-        print("[Errno {0}] {1}".format(e.errno, e.strerror))
-        
-    eur = data.decode()
-    euro = json.loads(eur)
-    euro1 = euro[0]
-    eurmad = euro1.get("moyen")
-    return eurmad
 
 def prevdol():
     
@@ -189,7 +162,8 @@ def usdmad():
     dollarmad = usdt1.get("moyen")
     return dollarmad
 
-BAMcc = pd.DataFrame({'Cours en MAD': [euromad(), usdmad()]},index=['EUR', 'USD'])
+dirhameuro = euromad()
+BAMcc = pd.DataFrame({'Cours en MAD': [dirhameuro[0], usdmad()]},index=['EUR', 'USD'])
 
 #varmad = [((euromad()-preveur())/euromad())*100, ((usdmad()-prevdol())/usdmad())*100]                                           
 #st.write(varmad)
