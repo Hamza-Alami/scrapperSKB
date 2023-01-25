@@ -93,10 +93,9 @@ def usdmad():
    
     usd = dataus.decode()
     usdt = json.loads(usd)
-    usdtt = type(json.loads(usd))
     
     #float(dataus.decode()[-25:-18])
-    return usd, usdt, usdtt
+    return usdt
 BAMcc = pd.DataFrame({'Cours en MAD': [euromad(), usdmad()]},index=['EUR', 'USD'])
 
 st.dataframe(BAMcc)
