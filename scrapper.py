@@ -136,9 +136,9 @@ def euromad():
         
     eur = data.decode()
     euro = json.loads(eur)
-    #euro1 = euro[0]
-    #eurmad = euro1.get("moyen")
-    return euro
+    euro1 = euro[0]
+    eurmad = euro1.get("moyen")
+    return eurmad
 
 def usdmad():
     
@@ -164,15 +164,15 @@ def usdmad():
    
     usd = dataus.decode()
     usdt = json.loads(usd)
-    #usdt1 = usdt[0]
-    #dollarmad = usdt1.get("moyen")
-    return usdt
+    usdt1 = usdt[0]
+    dollarmad = usdt1.get("moyen")
+    return dollarmad
 
 BAMcc = pd.DataFrame({'Cours en MAD': [euromad(), usdmad()]},index=['EUR', 'USD'])
 
-#varmad = [((euromad()-preveur())/euromad())*100, ((usdmad()-prevdol())/usdmad())*100]
+varmad = [((euromad()-preveur())/euromad())*100, ((usdmad()-prevdol())/usdmad())*100]
                                             
-#st.write(varmad)
+st.write(varmad)
 
 st.dataframe(BAMcc)
 
