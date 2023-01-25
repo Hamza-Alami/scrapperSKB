@@ -65,7 +65,7 @@ def preveur():
     eur = data.decode()
     euro = json.loads(eur)
     euro1 = euro[1]    
-    return euro1
+    return eur
 
 st.write(preveur())
 #end
