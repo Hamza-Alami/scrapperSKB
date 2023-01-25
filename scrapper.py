@@ -143,7 +143,7 @@ def euromad():
     eur2 = data2.decode()
     euro2 = json.loads(eur2)
     euro22 = euro2[0]
-    eurmad2 = euro2.get("moyen")
+    eurmad2 = euro22.get("moyen")
     #####
 
     try:
