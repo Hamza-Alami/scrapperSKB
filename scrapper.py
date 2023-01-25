@@ -29,6 +29,46 @@ now = dt.now()
 ctime = now.strftime("%H:%M")
 starttime = '11:45'
 
+if no == 0 :
+    sdate = lyoum - datetime.timedelta(days=3)
+    prevdate = lyoum - datetime.timedelta(days=2)
+elif no == 1 :
+    sdate = lyoum - datetime.timedelta(days=4)
+    prevdate = lyoum - datetime.timedelta(days=3)
+else:
+     sdate = lyoum - datetime.timedelta(days=2)
+     prevdate = lyoum - datetime.timedelta(days=1)
+    
+#getting preivous mad usd and mad eur
+def preveur():
+    
+    headers = {
+        # Request headers
+        'Ocp-Apim-Subscription-Key': '4f64d048c9f34f62a748068e3827cbc9',
+    }
+
+    params = urllib.parse.urlencode({
+        # Request parameters
+        'libDevise': 'EUR',
+        'date': prevdate,
+    })
+
+    try:
+        conn = http.client.HTTPSConnection('api.centralbankofmorocco.ma')
+        conn.request("GET", "/cours/Version1/api/CoursVirement?%s" % params, "{body}", headers)
+        response = conn.getresponse()
+        data = response.read()
+        conn.close()
+    except Exception as e:
+        print("[Errno {0}] {1}".format(e.errno, e.strerror))
+        
+    eur = data.decode()
+    euro = json.loads(eur)
+    euro1 = euro[1]    
+    return euro1
+
+st.write(preveur())
+#end
 
 if no < 5 and ctime > starttime:
     selecteddate = lyoum
@@ -105,21 +145,8 @@ st.dataframe(BAMcc)
 #Scrap from yahoo finance
 
 #                                        Indices
-
-#Previous method
-#Dow jones
-#dj30 = yf.Ticker("^DJI")
-#dj30 = dj30.info['previousClose']
-
-if no == 0 :
-    sdate = lyoum - datetime.timedelta(days=3)
-elif no == 1 :
-    sdate = lyoum - datetime.timedelta(days=4)
-else:
-     sdate = lyoum - datetime.timedelta(days=2)
         
 edate = lyoum
-
 
 def indices():
     
@@ -159,9 +186,7 @@ def indices():
     
     return dj30, sp500, nasdaq, cac, dax, jp, dj30var, sp500var, nasdaqvar, cacvar, daxvar, jpvar #, hk
 
-
 #                                        Commodities
-
 
 def commodities():
     #Gold
@@ -233,7 +258,6 @@ st.text('Volume de la séance :')
 recap=bvc.getIndexRecap()
 st.write(recap['Volume Global'])
 
-
 #Scraping stock data from le Boursier 
 
 response_API = requests.get('https://medias24.com/content/api?method=getAllStocks&format=json')
@@ -264,11 +288,15 @@ masi1=bvc.loadata('MASI',start=oneyrago,end=lyoum)
 masi3=bvc.loadata('MASI',start=threeyrsago,end=lyoum)
 
 #to excel sheets
+
 buffer = io.BytesIO()
 
 # Create a Pandas Excel writer using XlsxWriter as the engine.
+
 with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
+    
     # Write each dataframe to a different worksheet.
+    
     BAMcc.to_excel(writer, sheet_name='Cours de change BAM')
     FXCOM.to_excel(writer, sheet_name='FX & commodities')
     intlindices.to_excel(writer, sheet_name='Indices internationaux')
@@ -281,6 +309,7 @@ with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
 
 
     # Close the Pandas Excel writer and output the Excel file to the buffer
+    
     writer.save()
 
     st.download_button(
