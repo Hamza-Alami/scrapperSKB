@@ -124,6 +124,27 @@ def euromad():
         'libDevise': 'EUR',
         'date': selecteddate,
     })
+    ####
+    params2 = urllib.parse.urlencode({
+        # Request parameters
+        'libDevise': 'EUR',
+        'date': prevdate,
+    })
+
+    try:
+        conn2 = http.client.HTTPSConnection('api.centralbankofmorocco.ma')
+        conn2.request("GET", "/cours/Version1/api/CoursVirement?%s" % params2, "{body}", headers)
+        response2 = conn2.getresponse()
+        data2 = response2.read()
+        conn2.close()
+    except Exception as e:
+        print("[Errno {0}] {1}".format(e.errno, e.strerror))
+   
+    eur2 = data2.decode()
+    euro2 = json.loads(eur2)
+    euro22 = euro2[0]
+    eurmad2 = euro2.get("moyen")
+    #####
 
     try:
         conn = http.client.HTTPSConnection('api.centralbankofmorocco.ma')
@@ -138,7 +159,7 @@ def euromad():
     euro = json.loads(eur)
     euro1 = euro[0]
     eurmad = euro1.get("moyen")
-    return eurmad
+    return eurmad, eurmad2
 
 def usdmad():
     
@@ -170,9 +191,8 @@ def usdmad():
 
 BAMcc = pd.DataFrame({'Cours en MAD': [euromad(), usdmad()]},index=['EUR', 'USD'])
 
-varmad = [((euromad()-preveur())/euromad())*100, ((usdmad()-prevdol())/usdmad())*100]
-                                            
-st.write(varmad)
+#varmad = [((euromad()-preveur())/euromad())*100, ((usdmad()-prevdol())/usdmad())*100]                                           
+#st.write(varmad)
 
 st.dataframe(BAMcc)
 
