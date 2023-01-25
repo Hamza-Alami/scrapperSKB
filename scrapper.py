@@ -65,7 +65,8 @@ def euromad():
     except Exception as e:
         print("[Errno {0}] {1}".format(e.errno, e.strerror))
         
-    eur = float(data.decode()[-25:-18])
+    eur = data 
+    #float(data.decode()[-25:-18])
     return eur
 
 def usdmad():
@@ -90,7 +91,9 @@ def usdmad():
     except Exception as e:
         print("[Errno {0}] {1}".format(e.errno, e.strerror))
         
-    usd = float(dataus.decode()[-25:-18])
+    usd = dataus
+    usdt = type(dataus)
+    #float(dataus.decode()[-25:-18])
     return usd
 BAMcc = pd.DataFrame({'Cours en MAD': [euromad(), usdmad()]},index=['EUR', 'USD'])
 
