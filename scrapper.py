@@ -164,9 +164,9 @@ def usdmad():
 
 dirhameuro = euromad()
 BAMcc = pd.DataFrame({'Cours en MAD': [dirhameuro[0], usdmad()]},index=['EUR', 'USD'])
+varmad = [((dirhameuro[0]-dirhameuro[1])/dirhameuro[0])*100]  #, ((usdmad()-prevdol())/usdmad())*100
 
-#varmad = [((euromad()-preveur())/euromad())*100, ((usdmad()-prevdol())/usdmad())*100]                                           
-#st.write(varmad)
+st.write(varmad)
 
 st.dataframe(BAMcc)
 
