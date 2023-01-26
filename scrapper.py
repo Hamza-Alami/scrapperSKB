@@ -88,7 +88,7 @@ def euromad():
         print("[Errno {0}] {1}".format(e.errno, e.strerror))
    
     eur3 = data3.decode()
-    euro3 = json.loads(eur2)
+    euro3 = json.loads(eur3)
     euro33 = euro3[0]
     eurmad3 = euro33.get("moyen")
     #####
