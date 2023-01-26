@@ -299,6 +299,11 @@ FXCOM = pd.DataFrame(dictin2,index=['EUR/USD','Brent', 'Gold', 'Silver'])
 
 intlindices = pd.DataFrame(dictin,index=['Dow Jones','S&P500', 'Nasdaq', 'CAC40', 'DAX30', 'NIKKEI']) #, indiceslist[6],'Hang Seng'
 
+st.text('testing')
+djeoy = yf.download("^DJI", "30-12-2022", "31-12-2022")
+djeoye = djeoy.Close[0]
+st.write(djeoye)
+
 st.text('FX & commodities')
 st.dataframe(FXCOM)
 
