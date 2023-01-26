@@ -293,25 +293,23 @@ commolist = commodities()
 #putting data into lists
 Cours1 = [indiceslist[0], indiceslist[1], indiceslist[2], indiceslist[3], indiceslist[4], indiceslist[5]]
 var1 = [indiceslist[6], indiceslist[7], indiceslist[8], indiceslist[9], indiceslist[10], indiceslist[11]]
-Coursi = [indiceslist[12], indiceslist[13], indiceslist[14], indiceslist[15], indiceslist[16], indiceslist[17]]
+
 vari = [indiceslist[18], indiceslist[19], indiceslist[20], indiceslist[21], indiceslist[22], indiceslist[23]]
 
 Cours2 =  [eurusd, commolist[1], commolist[0], commolist[2]]
 var2 =  [eurusdvar, commolist[3], commolist[4], commolist[5]]
 
-Coursi2 =  [eurusdeoye, commolist[6], commolist[7], commolist[8]]
 vari2 =  [eurusdvarytd, commolist[9], commolist[10], commolist[11]]
 
 # dictionary of lists 
 dictin = {'Cours': Cours1, 'var %': var1}
-dicti = {'Cours': Coursi, 'var ytd %': vari}
-
 dictin2 = {'Cours': Cours2, 'var %': var2}
-dicti2 = {'Cours': Coursi2, 'var ytd %': vari2}
 
 FXCOM = pd.DataFrame(dictin2,index=['EUR/USD','Brent', 'Gold', 'Silver'])
+FXCOM['var ytd %'] = vari2
 
 intlindices = pd.DataFrame(dictin,index=['Dow Jones','S&P500', 'Nasdaq', 'CAC40', 'DAX30', 'NIKKEI']) #, indiceslist[6],'Hang Seng'
+intlindices['var ytd %'] = vari
 
 st.text('FX & commodities')
 st.dataframe(FXCOM)
