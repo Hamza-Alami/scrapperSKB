@@ -28,6 +28,7 @@ no = lyoum.weekday()
 now = dt.now()
 ctime = now.strftime("%H:%M")
 starttime = '11:45'
+EOY = '30-12-2022'
 
 if no == 0 :
     sdate = lyoum - datetime.timedelta(days=3)
@@ -70,7 +71,27 @@ def euromad():
         'libDevise': 'EUR',
         'date': prevdate,
     })
+    
+    params3 = urllib.parse.urlencode({
+        # Request parameters
+        'libDevise': 'EUR',
+        'date': EOY,
+    })
 
+    try:
+        conn3 = http.client.HTTPSConnection('api.centralbankofmorocco.ma')
+        conn3.request("GET", "/cours/Version1/api/CoursVirement?%s" % params3, "{body}", headers)
+        response3 = conn3.getresponse()
+        data3 = response3.read()
+        conn3.close()
+    except Exception as e:
+        print("[Errno {0}] {1}".format(e.errno, e.strerror))
+   
+    eur3 = data3.decode()
+    euro3 = json.loads(eur2)
+    euro33 = euro3[0]
+    eurmad3 = euro33.get("moyen")
+    #####
     try:
         conn2 = http.client.HTTPSConnection('api.centralbankofmorocco.ma')
         conn2.request("GET", "/cours/Version1/api/CoursVirement?%s" % params2, "{body}", headers)
@@ -84,7 +105,7 @@ def euromad():
     euro2 = json.loads(eur2)
     euro22 = euro2[0]
     eurmad2 = euro22.get("moyen")
-    #####
+    ####
 
     try:
         conn = http.client.HTTPSConnection('api.centralbankofmorocco.ma')
@@ -99,7 +120,7 @@ def euromad():
     euro = json.loads(eur)
     euro1 = euro[0]
     eurmad = euro1.get("moyen")
-    return eurmad, eurmad2
+    return eurmad, eurmad2, eurmad3
 
 def usdmad():
     
@@ -119,7 +140,27 @@ def usdmad():
         'libDevise': 'USD',
         'date': prevdate,
     })
+    
+    params3 = urllib.parse.urlencode({
+        # Request parameters
+        'libDevise': 'USD',
+        'date': EOY,
+    })
 
+    try:
+        conn3 = http.client.HTTPSConnection('api.centralbankofmorocco.ma')
+        conn3.request("GET", "/cours/Version1/api/CoursVirement?%s" % params2, "{body}", headers)
+        response3 = conn3.getresponse()
+        data3 = response3.read()
+        conn3.close()
+    except Exception as e:
+        print("[Errno {0}] {1}".format(e.errno, e.strerror))
+   
+    usd3 = data3.decode()
+    dol3 = json.loads(usd3)
+    dol33 = dol3[0]
+    dolmad3 = dol33.get("moyen")
+    #####
     try:
         conn2 = http.client.HTTPSConnection('api.centralbankofmorocco.ma')
         conn2.request("GET", "/cours/Version1/api/CoursVirement?%s" % params2, "{body}", headers)
@@ -148,20 +189,23 @@ def usdmad():
     usdt = json.loads(usd)
     usdt1 = usdt[0]
     dollarmad = usdt1.get("moyen")
-    return dollarmad, dolmad2
+    return dollarmad, dolmad2, dolmad3
 
 dirhameuro = euromad()
 eact = dirhameuro[0]
 eprev = dirhameuro[1]
+eeoy = dirhameuro[2]
 
 dirhamdollar = usdmad()
 dact = dirhamdollar[0]
 dprev = dirhamdollar[1]
-
+deoy = dirhamdollar[2]
 BAMcc = pd.DataFrame({'Cours en MAD': [eact, dact]},index=['EUR', 'USD'])
 
-varmad = [((eact-eprev)/eact)*100, ((dact-dprev)/dact)*100]  
+varmad = [((eact-eprev)/eact)*100, ((dact-dprev)/dact)*100]
+vareoy = [((eact-eeoy)/eact)*100, ((dact-deoy)/dact)*100]
 BAMcc['var %'] = varmad
+BAMcc['var ytd %'] = vareoy
 st.dataframe(BAMcc)
 
 #Scrap from yahoo finance
