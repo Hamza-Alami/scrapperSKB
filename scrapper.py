@@ -28,7 +28,6 @@ no = lyoum.weekday()
 now = dt.now()
 ctime = now.strftime("%H:%M")
 starttime = '11:45'
-EOY = '30-12-2022'
 
 if no == 0 :
     sdate = lyoum - datetime.timedelta(days=3)
@@ -71,26 +70,9 @@ def euromad():
         'libDevise': 'EUR',
         'date': prevdate,
     })
-    
-    params3 = urllib.parse.urlencode({
-        # Request parameters
-        'libDevise': 'EUR',
-        'date': EOY,
-    })
-
-    try:
-        conn3 = http.client.HTTPSConnection('api.centralbankofmorocco.ma')
-        conn3.request("GET", "/cours/Version1/api/CoursVirement?%s" % params3, "{body}", headers)
-        response3 = conn3.getresponse()
-        data3 = response3.read()
-        conn3.close()
-    except Exception as e:
-        print("[Errno {0}] {1}".format(e.errno, e.strerror))
-   
-    eur3 = data3.decode()
-    euro3 = json.loads(eur3)
-    euro33 = euro3[0]
-    eurmad3 = euro33.get("moyen")
+  
+    #####
+    eurmad3 = 11.1592
     #####
     try:
         conn2 = http.client.HTTPSConnection('api.centralbankofmorocco.ma')
@@ -141,25 +123,8 @@ def usdmad():
         'date': prevdate,
     })
     
-    params3 = urllib.parse.urlencode({
-        # Request parameters
-        'libDevise': 'USD',
-        'date': EOY,
-    })
-
-    try:
-        conn3 = http.client.HTTPSConnection('api.centralbankofmorocco.ma')
-        conn3.request("GET", "/cours/Version1/api/CoursVirement?%s" % params2, "{body}", headers)
-        response3 = conn3.getresponse()
-        data3 = response3.read()
-        conn3.close()
-    except Exception as e:
-        print("[Errno {0}] {1}".format(e.errno, e.strerror))
-   
-    usd3 = data3.decode()
-    dol3 = json.loads(usd3)
-    dol33 = dol3[0]
-    dolmad3 = dol33.get("moyen")
+    #####
+    dolmad3 = 10.4477
     #####
     try:
         conn2 = http.client.HTTPSConnection('api.centralbankofmorocco.ma')
