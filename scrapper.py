@@ -167,6 +167,7 @@ def usdmad():
 
 dirhameuro = euromad()
 st.write(dirhameuro)
+st.write(prevdate)
 #eact = dirhameuro[0]
 #eprev = dirhameuro[1]
 #eeoy = dirhameuro[2]
