@@ -292,7 +292,7 @@ eurusd = eurusd1.Close[1]
 eurusdeoy = yf.download("EURUSD=X", "2022-12-30", "2022-12-31")
 eurusdeoye = eurusdeoy.Close[0]
 
-eurusdvarytd = ((eurusd-eurusdeoye)*100/eurusdeoye
+eurusdvarytd = ((eurusd-eurusdeoye)*100)/eurusdeoye
 eurusdvar = ((eurusd-eurusd1.Close[0])*100)/eurusd1.Close[0]
 
 #calling funcs to lists
