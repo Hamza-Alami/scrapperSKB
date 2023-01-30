@@ -349,11 +349,15 @@ st.dataframe(dfindex)
 st.text('Indices sectoriaux')
 dfsect['Var%'] = dfsect['Var%'].apply(lambda x: x.replace(" %", ""))
 dfsect['Var% 31/12'] = dfsect['Var% 31/12'].apply(lambda x: x.replace(" %", ""))
+dfsect['Var% 31/12'] = dfsect['Var% 31/12'].apply(lambda x: x.replace(",", "."))
 dfsect['Var%'] = dfsect['Var%'].apply(lambda x: x.replace(",", "."))
-#dfsect['Var%'] = dfsect['Var%'].apply(lambda x: x.replace("-", "-"))
 
+dfsect['Var% 31/12'] = pd.to_numeric(dfsect['Var% 31/12'], errors='coerce')
 dfsect['Var%'] = pd.to_numeric(dfsect['Var%'], errors='coerce')
-#dfsect['Var% 31/12'] = dfsect['Var% 31/12'].astype(float)
+
+dfsect['Var%'] = dfsect['Var%'].fillna(0)
+dfsect['Var% 31/12'] = dfsect['Var% 31/12'].fillna(0)
+
 
 st.dataframe(dfsect)
 
