@@ -261,25 +261,25 @@ def commodities():
     #eoy
     gldeoy = yf.download("GC=F", "2022-12-30", "2022-12-31")
     gldeoye = gldeoy.Close[0]
-    gldvarytd = ((gld-gldeoye)*100)/gldeoye
+    gldvarytd = (((gld/gldeoye)-1)*100)
 
     #Brent
     oil1 = yf.download("BZ=F", prevdate, edate)
     oil = oil1.Close[1]
-    oilvar = ((oil-oil1.Close[0])*100)/oil1.Close[0]
+    oilvar = (((oil/oil1.Close[0])-1)*100)
     #eoy
     oileoy = yf.download("BZ=F", "2022-12-30", "2022-12-31")
     oileoye = oileoy.Close[0]
-    oilvarytd = ((oil-oileoye)*100)/oileoye
+    oilvarytd = (((oil-oileoye)-1)*100)
 
     #silver
     silver1 = yf.download("SI=F", prevdate, edate)
     silver = silver1.Close[0]
-    silvervar = ((silver-silver1.Close[0])*100)/silver1.Close[0]
+    silvervar = (((silver-silver1.Close[0])-1)*100)
     #eoy
     silvereoy = yf.download("SI=F", "2022-12-30", "2022-12-31")
     silvereoye = silvereoy.Close[0]
-    silvervarytd = ((silver-silvereoye)*100)/silvereoye
+    silvervarytd = (((silver-silvereoye)-1)*100)
     
     return gld, oil, silver, gldvar, oilvar, silvervar, gldeoye, oileoye, silvereoye, gldvarytd, oilvarytd, silvervarytd
 
@@ -292,8 +292,8 @@ eurusd = eurusd1.Close[1]
 eurusdeoy = yf.download("EURUSD=X", "2022-12-30", "2022-12-31")
 eurusdeoye = eurusdeoy.Close[0]
 
-eurusdvarytd = ((eurusd-eurusdeoye)*100)/eurusdeoye
-eurusdvar = ((eurusd-eurusd1.Close[0])*100)/eurusd1.Close[0]
+eurusdvarytd = (((eurusd/eurusdeoye)-1)*100)
+eurusdvar = (((eurusd-eurusd1.Close[0])-1)*100)
 
 #calling funcs to lists
 #indiceslist = indices()
