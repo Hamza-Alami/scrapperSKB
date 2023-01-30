@@ -388,14 +388,12 @@ courspond.rename(columns = {'Instrument':'BVC'}, inplace = True)
 #merging
 df_merge_col = pd.merge(fulldf, supportsc, on='Scrappername')
 df_merge_2 = pd.merge(courspond, df_merge_col, on='BVC')
-df_merge_2.Cours = df_merge_2.Cours.str.replace('.',',')
-df_merge_2['Cloture'] = df_merge_2['Cloture'].str.replace(' ','')
 
-#data["column_name"] = data["column_name"].apply(lambda x: x.replace("characters_need_to_replace", "new_characters"))
+df_merge_2['Cloture'] = df_merge_2['Cloture'].apply(lambda x: x.replace(" ", ""))
 
 
 
-st.write(df_merge_col)
+st.write(df_merge_2)
 
 
 masi1=bvc.loadata('MASI',start=oneyrago,end=lyoum)
