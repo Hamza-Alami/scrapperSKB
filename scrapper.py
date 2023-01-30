@@ -111,7 +111,7 @@ def euromad():
     #euro1 = euro[0]
     eurmad = 11.0833
     #euro1.get("moyen")
-    return eurmad, eur2, eurmad3
+    return eurmad, eurmad2, eurmad3
 
 def usdmad():
     
@@ -166,23 +166,21 @@ def usdmad():
     return dollarmad, dolmad2, dolmad3
 
 dirhameuro = euromad()
-st.write(dirhameuro)
 eact = dirhameuro[0]
 eprev = dirhameuro[1]
 eeoy = dirhameuro[2]
 
-#dirhamdollar = usdmad()
-#st.write(dirhamdollar)
-#dact = dirhamdollar[0]
-#dprev = dirhamdollar[1]
-#deoy = dirhamdollar[2]
-#BAMcc = pd.DataFrame({'Cours en MAD': [eact, dact]},index=['EUR', 'USD'])
+dirhamdollar = usdmad()
+dact = dirhamdollar[0]
+dprev = dirhamdollar[1]
+deoy = dirhamdollar[2]
+BAMcc = pd.DataFrame({'Cours en MAD': [eact, dact]},index=['EUR', 'USD'])
 
-#varmad = [((eact-eprev)/eact)*100, ((dact-dprev)/dact)*100]
-#vareoy = [((eact-eeoy)/eact)*100, ((dact-deoy)/dact)*100]
-#BAMcc['var %'] = varmad
-#BAMcc['var ytd %'] = vareoy
-#st.dataframe(BAMcc)
+varmad = [((eact-eprev)/eact)*100, ((dact-dprev)/dact)*100]
+vareoy = [((eact-eeoy)/eact)*100, ((dact-deoy)/dact)*100]
+BAMcc['var %'] = varmad
+BAMcc['var ytd %'] = vareoy
+st.dataframe(BAMcc)
 
 #Scrap from yahoo finance
 
