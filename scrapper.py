@@ -296,7 +296,7 @@ eurusdvarytd = ((eurusd-eurusdeoye)*100)/eurusdeoye
 eurusdvar = ((eurusd-eurusd1.Close[0])*100)/eurusd1.Close[0]
 
 #calling funcs to lists
-#indiceslist = indices()
+indiceslist = indices()
 commolist = commodities()
 
 #putting data into lists
