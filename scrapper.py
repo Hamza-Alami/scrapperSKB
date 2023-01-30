@@ -172,13 +172,13 @@ def usdmad():
     return dollarmad #, dolmad2, dolmad3
 
 dirhameuro = euromad()
-st.write(dirhameuro)
+#st.write(dirhameuro)
 #eact = dirhameuro[0]
 #eprev = dirhameuro[1]
 #eeoy = dirhameuro[2]
 
 dirhamdollar = usdmad()
-st.write(dirhamdollar)
+#st.write(dirhamdollar)
 #dact = dirhamdollar[0]
 #dprev = dirhamdollar[1]
 #deoy = dirhamdollar[2]
@@ -297,11 +297,11 @@ def commodities():
 eurusd1 = yf.download("EURUSD=X", sdate, edate)
 #eurusd = eurusd1.Close[1]
 #eoy
-eurusdeoy = yf.download("EURUSD=X", "2022-12-30", "2022-12-31")
-eurusdeoye = eurusdeoy.Close[0]
+#eurusdeoy = yf.download("EURUSD=X", "2022-12-30", "2022-12-31")
+#eurusdeoye = eurusdeoy.Close[0]
 
-eurusdvarytd = ((eurusd-eurusdeoye)*100)/eurusdeoye
-eurusdvar = ((eurusd-eurusd1.Close[0])*100)/eurusd1.Close[0]
+#eurusdvarytd = ((eurusd-eurusdeoye)*100)/eurusdeoye
+#eurusdvar = ((eurusd-eurusd1.Close[0])*100)/eurusd1.Close[0]
 
 #calling funcs to lists
 indiceslist = indices()
