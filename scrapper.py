@@ -156,10 +156,10 @@ def usdmad():
     dollarmad = usdt1.get("moyen")
     return dollarmad, dolmad2, dolmad3
 
-#dirhameuro = euromad()
-#eact = dirhameuro[0]
-#eprev = dirhameuro[1]
-#eeoy = dirhameuro[2]
+dirhameuro = euromad()
+eact = dirhameuro[0]
+eprev = dirhameuro[1]
+eeoy = dirhameuro[2]
 
 dirhamdollar = usdmad()
 dact = dirhamdollar[0]
