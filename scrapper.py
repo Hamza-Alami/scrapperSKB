@@ -157,7 +157,7 @@ def usdmad():
     return dollarmad, dolmad2, dolmad3
 
 #dirhameuro = euromad()
-eact = dirhameuro[0]
+#eact = dirhameuro[0]
 eprev = dirhameuro[1]
 eeoy = dirhameuro[2]
 
