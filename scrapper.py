@@ -39,13 +39,13 @@ starttime = '11:45'
 
 if no == 0 :
     sdate = lyoum - datetime.timedelta(days=3)
-    prevdate = lyoum - datetime.timedelta(days=2)
+    prevdate = lyoum - datetime.timedelta(days=4)
 elif no == 1 :
     sdate = lyoum - datetime.timedelta(days=4)
-    prevdate = lyoum - datetime.timedelta(days=3)
+    prevdate = lyoum - datetime.timedelta(days=5)
 else:
      sdate = lyoum - datetime.timedelta(days=2)
-     prevdate = lyoum - datetime.timedelta(days=1)
+     prevdate = lyoum - datetime.timedelta(days=3)
 
 if no < 5 and ctime > starttime:
     selecteddate = lyoum
@@ -255,7 +255,7 @@ def indices():
 
 def commodities():
     #Gold
-    gld1 = yf.download("GC=F", sdate, edate)
+    gld1 = yf.download("GC=F", prevdate, edate)
     gld = gld1.Close[1]
     gldvar = ((gld-gld1.Close[0])*100)/gld1.Close[0]
     #eoy
@@ -264,7 +264,7 @@ def commodities():
     gldvarytd = ((gld-gldeoye)*100)/gldeoye
 
     #Brent
-    oil1 = yf.download("BZ=F", sdate, edate)
+    oil1 = yf.download("BZ=F", prevdate, edate)
     oil = oil1.Close[1]
     oilvar = ((oil-oil1.Close[0])*100)/oil1.Close[0]
     #eoy
@@ -273,7 +273,7 @@ def commodities():
     oilvarytd = ((oil-oileoye)*100)/oileoye
 
     #silver
-    silver1 = yf.download("SI=F", sdate, edate)
+    silver1 = yf.download("SI=F", prevdate, edate)
     silver = silver1.Close[0]
     silvervar = ((silver-silver1.Close[0])*100)/silver1.Close[0]
     #eoy
@@ -286,7 +286,7 @@ def commodities():
 #                                          FX
 
 #eurodollar
-eurusd1 = yf.download("EURUSD=X", sdate, edate)
+eurusd1 = yf.download("EURUSD=X", prevdate, edate)
 eurusd = eurusd1.Close[1]
 #eoy
 eurusdeoy = yf.download("EURUSD=X", "2022-12-30", "2022-12-31")
