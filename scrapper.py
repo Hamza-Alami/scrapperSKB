@@ -386,6 +386,7 @@ fulldf.loc[tradedtoday, 'Volume Titre'] = 0
 fulldf.loc[tradedtoday, 'Variation'] = 0 
 
 st.dataframe(fulldf)
+st.write(supportsc)
 
 masi1=bvc.loadata('MASI',start=oneyrago,end=lyoum)
 masi3=bvc.loadata('MASI',start=threeyrsago,end=lyoum)
