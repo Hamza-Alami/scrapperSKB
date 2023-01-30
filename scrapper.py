@@ -400,16 +400,9 @@ df_merge_2['Nombre de titres'] = df_merge_2['Volume Titre'].astype(float)
 df_merge_2['Var Ytd'] = ((df_merge_2['Cours']-df_merge_2['COURS AU 31/12/2022'])*100)/df_merge_2['COURS AU 31/12/2022']
 
 df_merge_2['Capitalisation'] = (df_merge_2['Cours']*df_merge_2['NofS'])
-#df[['col2', 'col3', 'col1']]
+FinalDF = df_merge_2[['soge', 'TICKER', 'Variation', 'Var Ytd', 'Volume Titre', 'Capitalisation']]
 
-
-
-st.write(df_merge_2.dtypes)
-
-
-
-
-st.write(df_merge_2)
+st.write(FinalDF)
 
 
 masi1=bvc.loadata('MASI',start=oneyrago,end=lyoum)
