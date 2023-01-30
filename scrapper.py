@@ -228,7 +228,7 @@ def indices():
     cacvarytd = ((cac-caceoye)*100)/caceoye
 
     #DAX
-    dax3 = yf.download("^GDAXI", sdate, edate)
+    dax3 = yf.download("^GDAXI", prevdate, edate)
     dax = dax3.Close[1]
     daxvar = ((dax-dax3.Close[0])*100)/dax3.Close[0]
     #eoy
@@ -237,7 +237,7 @@ def indices():
     daxvarytd = ((dax-daxeoye)*100)/daxeoye
 
     #nikkei
-    jp1 = yf.download("^N225", sdate, edate)
+    jp1 = yf.download("^N225", prevdate, edate)
     jp = jp1.Close[1]
     jpvar = ((jp-jp1.Close[0])*100)/jp1.Close[0]
     #eoy
@@ -246,8 +246,8 @@ def indices():
     jpvarytd = ((jp-jpeoye)*100)/jpeoye
 
     #hangseng
-    #hk = yf.download("^HSI", sdate, edate)
-    #hk = hk.Close[1]
+    hk = yf.download("^HSI", sdate, edate)
+    hk = hk.Close[1]
     
     return dj30, sp500, nasdaq, cac, dax, jp, dj30var, sp500var, nasdaqvar, cacvar, daxvar, jpvar, djeoye, speoye, naseoye, caceoye, daxeoye, jpeoye, djvarytd, spvarytd, nasvarytd, cacvarytd, daxvarytd, jpvarytd #, hk
 
@@ -300,10 +300,10 @@ eurusdvar = ((eurusd-eurusd1.Close[0])*100)/eurusd1.Close[0]
 commolist = commodities()
 
 #putting data into lists
-#Cours1 = [indiceslist[0], indiceslist[1], indiceslist[2], indiceslist[3], indiceslist[4], indiceslist[5]]
-#var1 = [indiceslist[6], indiceslist[7], indiceslist[8], indiceslist[9], indiceslist[10], indiceslist[11]]
+Cours1 = [indiceslist[0], indiceslist[1], indiceslist[2], indiceslist[3], indiceslist[4], indiceslist[5]]
+var1 = [indiceslist[6], indiceslist[7], indiceslist[8], indiceslist[9], indiceslist[10], indiceslist[11]]
 
-#vari = [indiceslist[18], indiceslist[19], indiceslist[20], indiceslist[21], indiceslist[22], indiceslist[23]]
+vari = [indiceslist[18], indiceslist[19], indiceslist[20], indiceslist[21], indiceslist[22], indiceslist[23]]
 
 Cours2 =  [eurusd, commolist[1], commolist[0], commolist[2]]
 var2 =  [eurusdvar, commolist[3], commolist[4], commolist[5]]
@@ -311,20 +311,20 @@ var2 =  [eurusdvar, commolist[3], commolist[4], commolist[5]]
 vari2 =  [eurusdvarytd, commolist[9], commolist[10], commolist[11]]
 
 # dictionary of lists 
-#dictin = {'Cours': Cours1, 'var %': var1}
+dictin = {'Cours': Cours1, 'var %': var1}
 dictin2 = {'Cours': Cours2, 'var %': var2}
 
 FXCOM = pd.DataFrame(dictin2,index=['EUR/USD','Brent', 'Gold', 'Silver'])
 FXCOM['var ytd %'] = vari2
 
-#intlindices = pd.DataFrame(dictin,index=['Dow Jones','S&P500', 'Nasdaq', 'CAC40', 'DAX30', 'NIKKEI']) #, indiceslist[6],'Hang Seng'
-#intlindices['var ytd %'] = vari
+intlindices = pd.DataFrame(dictin,index=['Dow Jones','S&P500', 'Nasdaq', 'CAC40', 'DAX30', 'NIKKEI']) #, indiceslist[6],'Hang Seng'
+intlindices['var ytd %'] = vari
 
 st.text('FX & commodities')
 st.dataframe(FXCOM)
 
 st.text('Indices internationaux')
-#st.dataframe(intlindices)
+st.dataframe(intlindices)
 
 #BVCscrapper
 
