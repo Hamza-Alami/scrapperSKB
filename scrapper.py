@@ -191,7 +191,7 @@ edate = lyoum
 def indices():
     
     #Dow jones
-    dj = yf.download("^DJI", sdate, edate)
+    dj = yf.download("^DJI", prevdate, edate)
     dj30 = dj.Close[1]
     dj30var = ((dj30-dj.Close[0])*100)/dj.Close[0]
     #eoy
@@ -201,7 +201,7 @@ def indices():
 
 
     #spoos
-    sp = yf.download("^GSPC", sdate, edate)
+    sp = yf.download("^GSPC", prevdate, edate)
     sp500 = sp.Close[1]
     sp500var = ((sp500-sp.Close[0])*100)/sp.Close[0]
     #eoy
@@ -210,7 +210,7 @@ def indices():
     spvarytd = ((sp500-speoye)*100)/speoye
 
     #nasdaq
-    nas = yf.download("^IXIC", sdate, edate)
+    nas = yf.download("^IXIC", prevdate, edate)
     nasdaq = nas.Close[1]
     nasdaqvar = ((nasdaq-nas.Close[0])*100)/nas.Close[0]
     #eoy
@@ -219,7 +219,7 @@ def indices():
     nasvarytd = ((nasdaq-naseoye)*100)/naseoye
 
     #cac40
-    cac4 = yf.download("^FCHI", sdate, edate)
+    cac4 = yf.download("^FCHI", prevdate, edate)
     cac = cac4.Close[1]
     cacvar = ((cac-cac4.Close[0])*100)/cac4.Close[0]
     #eoy
