@@ -381,6 +381,8 @@ fulldf.loc[tradedtoday, 'Variation'] = 0
 #renaming for merge
 fulldf.rename(columns = {'Ticker':'Scrappername'}, inplace = True)
 courspond.rename(columns = {'Instrument':'BVC'}, inplace = True)
+courspond.rename(columns = {'Cours':'Cours BVC'}, inplace = True)
+
 
 #st.dataframe(fulldf)
 #st.write(supportsc)
