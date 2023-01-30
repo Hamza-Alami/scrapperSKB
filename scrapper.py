@@ -340,6 +340,10 @@ dfindex = pd.DataFrame(index['Resume indice']).transpose()
 dfsect = pd.DataFrame(index['Indices sectoriels']).transpose()
 
 st.text('Indices BVC')
+dfindex['Cloture'] = dfindex['Cloture'].apply(lambda x: x.replace((" %", ""))
+dfindex['Var% 31/12'] = dfindex['Var% 31/12'].apply(lambda x: x.replace(" %", ""))
+
+
 st.dataframe(dfindex)
 
 st.text('Indices sectoriaux')
@@ -422,10 +426,9 @@ buffer = io.BytesIO()
 with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
     
     # Write each dataframe to a different worksheet.
-    
-    #BAMcc.to_excel(writer, sheet_name='Cours de change BAM')
-    #FXCOM.to_excel(writer, sheet_name='FX & commodities')
-    #intlindices.to_excel(writer, sheet_name='Indices internationaux')
+    BAMcc.to_excel(writer, sheet_name='Cours de change BAM')
+    FXCOM.to_excel(writer, sheet_name='FX & commodities')
+    intlindices.to_excel(writer, sheet_name='Indices internationaux')
     dfindex.to_excel(writer, sheet_name='Indices BVC')
     dfsect.to_excel(writer, sheet_name='Indices sectoriaux')
     FinalDF.to_excel(writer, sheet_name='Cours & Variations')
