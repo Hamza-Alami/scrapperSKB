@@ -158,8 +158,8 @@ def usdmad():
 
 #dirhameuro = euromad()
 #eact = dirhameuro[0]
-eprev = dirhameuro[1]
-eeoy = dirhameuro[2]
+#eprev = dirhameuro[1]
+#eeoy = dirhameuro[2]
 
 dirhamdollar = usdmad()
 dact = dirhamdollar[0]
