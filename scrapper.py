@@ -92,9 +92,9 @@ def euromad():
         print("[Errno {0}] {1}".format(e.errno, e.strerror))
    
     eur2 = data2.decode()
-    #euro2 = json.loads(eur2)
-    #euro22 = euro2[0]
-    #eurmad2 = euro22.get("moyen")
+    euro2 = json.loads(eur2)
+    euro22 = euro2[0]
+    eurmad2 = euro22.get("moyen")
     ####
 
     try:
@@ -129,7 +129,7 @@ def usdmad():
     params2 = urllib.parse.urlencode({
         # Request parameters
         'libDevise': 'USD',
-        'date': prevdate,
+        'date': sdate,
     })
     
     #####
@@ -146,8 +146,8 @@ def usdmad():
    
     usd2 = data2.decode()
     dol2 = json.loads(usd2)
-    #dol22 = dol2[0]
-    #dolmad2 = dol22.get("moyen")
+    dol22 = dol2[0]
+    dolmad2 = dol22.get("moyen")
     #####
 
     try:
@@ -159,20 +159,17 @@ def usdmad():
     except Exception as e:
         print("[Errno {0}] {1}".format(e.errno, e.strerror))
    
-    usd = dataus.decode()
-    usdt = json.loads(usd)
-    usdt1 = usdt[0]
-    dollarmad = usdt1.get("moyen")
-    return dollarmad #, dolmad2, dolmad3
+    #usd = dataus.decode()
+    #usdt = json.loads(usd)
+    #usdt1 = usdt[0]
+    dollarmad = 10.1766 #usdt1.get("moyen")
+    return dollarmad, dolmad2, dolmad3
 
 dirhameuro = euromad()
 st.write(dirhameuro)
-st.write(prevdate)
-st.write(no)
-st.write(lyoum)
-#eact = dirhameuro[0]
-#eprev = dirhameuro[1]
-#eeoy = dirhameuro[2]
+eact = dirhameuro[0]
+eprev = dirhameuro[1]
+eeoy = dirhameuro[2]
 
 #dirhamdollar = usdmad()
 #st.write(dirhamdollar)
