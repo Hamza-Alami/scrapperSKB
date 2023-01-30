@@ -23,16 +23,9 @@ from datetime import date
 import time
 
 #GITHUB READING
-# Username of your GitHub account
-username = 'Hamza-Alami'
-# Personal Access Token (PAO) from your GitHub account
-token = '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'
-# Creates a re-usable session object with your creds in-built
-github_session = requests.Session()
-github_session.auth = (username, token)
 # Downloading the csv file from your GitHub
-url = "https://raw.githubusercontent.com/Hamza-Alami/scrapperSKB/main/suppscrap.csv?token=GHSAT0AAAAAABSFKW6OW3BDQEYG5LWI3FHKYSQIZ5A" # Make sure the url is the raw version of the file on GitHub
-download = github_session.get(url).content
+url = "https://raw.githubusercontent.com/Hamza-Alami/scrapperSKB/main/suppscrap.csv" # Make sure the url is the raw version of the file on GitHub
+download = requests.get(url).content
 # Reading the downloaded content and making it a pandas dataframe
 supportsc = pd.read_csv(io.StringIO(download.decode('utf-8')))
 #end
