@@ -111,7 +111,7 @@ def euromad():
     #euro1 = euro[0]
     eurmad = 11.0833
     #euro1.get("moyen")
-    return eurmad, eurmad2, eurmad3
+    return eurmad,eur2, eurmad2, eurmad3
 
 def usdmad():
     
@@ -166,6 +166,7 @@ def usdmad():
     return dollarmad, dolmad2, dolmad3
 
 dirhameuro = euromad()
+st.write(dirhameuro)
 eact = dirhameuro[0]
 eprev = dirhameuro[1]
 eeoy = dirhameuro[2]
