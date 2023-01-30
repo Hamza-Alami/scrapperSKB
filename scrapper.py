@@ -111,7 +111,7 @@ def euromad():
     #euro1 = euro[0]
     eurmad = 11.0833
     #euro1.get("moyen")
-    return eurmad,eur2, eurmad2, eurmad3
+    return eurmad, eurmad2, eurmad3
 
 def usdmad():
     
