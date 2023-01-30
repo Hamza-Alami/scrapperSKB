@@ -108,8 +108,8 @@ def euromad():
         
     eur = data.decode()
     euro = json.loads(eur)
-    euro1 = euro[0]
-    eurmad = euro1.get("moyen")
+    #euro1 = euro[0]
+    #eurmad = euro1.get("moyen")
     return euro #, eurmad2, eurmad3
 
 def usdmad():
