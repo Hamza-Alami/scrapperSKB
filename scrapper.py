@@ -340,7 +340,7 @@ dfindex = pd.DataFrame(index['Resume indice']).transpose()
 dfsect = pd.DataFrame(index['Indices sectoriels']).transpose()
 
 st.text('Indices BVC')
-dfindex['Cloture'] = dfindex['Cloture'].apply(lambda x: x.replace((" %", ""))
+dfindex['Var%'] = dfindex['Var%'].apply(lambda x: x.replace((" %", ""))
 dfindex['Var% 31/12'] = dfindex['Var% 31/12'].apply(lambda x: x.replace(" %", ""))
 
 
