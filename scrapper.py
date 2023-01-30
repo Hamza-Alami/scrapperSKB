@@ -76,7 +76,7 @@ def euromad():
     params2 = urllib.parse.urlencode({
         # Request parameters
         'libDevise': 'EUR',
-        'date': prevdate,
+        'date': sdate,
     })
   
     #####
