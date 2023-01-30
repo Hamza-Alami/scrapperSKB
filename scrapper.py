@@ -172,21 +172,23 @@ def usdmad():
     return dollarmad, dolmad2, dolmad3
 
 dirhameuro = euromad()
-eact = dirhameuro[0]
-eprev = dirhameuro[1]
-eeoy = dirhameuro[2]
+st.write(dirhameuro)
+#eact = dirhameuro[0]
+#eprev = dirhameuro[1]
+#eeoy = dirhameuro[2]
 
 dirhamdollar = usdmad()
-dact = dirhamdollar[0]
-dprev = dirhamdollar[1]
-deoy = dirhamdollar[2]
-BAMcc = pd.DataFrame({'Cours en MAD': [eact, dact]},index=['EUR', 'USD'])
+st.write(dirhamdollar)
+#dact = dirhamdollar[0]
+#dprev = dirhamdollar[1]
+#deoy = dirhamdollar[2]
+#BAMcc = pd.DataFrame({'Cours en MAD': [eact, dact]},index=['EUR', 'USD'])
 
-varmad = [((eact-eprev)/eact)*100, ((dact-dprev)/dact)*100]
-vareoy = [((eact-eeoy)/eact)*100, ((dact-deoy)/dact)*100]
-BAMcc['var %'] = varmad
-BAMcc['var ytd %'] = vareoy
-st.dataframe(BAMcc)
+#varmad = [((eact-eprev)/eact)*100, ((dact-dprev)/dact)*100]
+#vareoy = [((eact-eeoy)/eact)*100, ((dact-deoy)/dact)*100]
+#BAMcc['var %'] = varmad
+#BAMcc['var ytd %'] = vareoy
+#st.dataframe(BAMcc)
 
 #Scrap from yahoo finance
 
