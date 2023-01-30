@@ -378,8 +378,14 @@ tradedtoday = fulldf['derniere transaction'] < lyoum
 fulldf.loc[tradedtoday, 'Volume Titre'] = 0
 fulldf.loc[tradedtoday, 'Variation'] = 0 
 
+fulldf.rename(columns = {'Ticker':'Scrappername'}, inplace = True)
+
 st.dataframe(fulldf)
 st.write(supportsc)
+
+df_merge_col = pd.merge(fulldf, supportsc, on='Scrappername')
+st.write(df_merge_col)
+
 
 masi1=bvc.loadata('MASI',start=oneyrago,end=lyoum)
 masi3=bvc.loadata('MASI',start=threeyrsago,end=lyoum)
