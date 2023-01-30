@@ -350,8 +350,7 @@ st.text('Indices sectoriaux')
 dfsect['Var%'] = dfsect['Var%'].apply(lambda x: x.replace(" %", ""))
 dfsect['Var% 31/12'] = dfsect['Var% 31/12'].apply(lambda x: x.replace(" %", ""))
 dfsect['Var%'] = dfsect['Var%'].apply(lambda x: x.replace(",", "."))
-dfsect['Var%'] = dfsect['Var%'].str.replace('−', '-').astype(float)
-
+dfsect['Var%'] = pd.to_numeric(dfsect['Var%'])
 #dfsect['Var% 31/12'] = dfsect['Var% 31/12'].astype(float)
 
 st.dataframe(dfsect)
