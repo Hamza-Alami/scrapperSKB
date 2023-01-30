@@ -423,8 +423,7 @@ with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
     #intlindices.to_excel(writer, sheet_name='Indices internationaux')
     dfindex.to_excel(writer, sheet_name='Indices BVC')
     dfsect.to_excel(writer, sheet_name='Indices sectoriaux')
-    #courspond.to_excel(writer, sheet_name='Pondérations')
-    #fulldf.to_excel(writer, sheet_name='Cours & Variations')
+    FinalDF.to_excel(writer, sheet_name='Cours & Variations')
     masi1.to_excel(writer, sheet_name='Masi Hist 1YR')
     masi3.to_excel(writer, sheet_name='Masi Hist 3YR')
 
