@@ -246,8 +246,8 @@ def indices():
     jpvarytd = ((jp-jpeoye)*100)/jpeoye
 
     #hangseng
-    hk = yf.download("^HSI", sdate, edate)
-    hk = hk.Close[1]
+    #hk = yf.download("^HSI", sdate, edate)
+    #hk = hk.Close[1]
     
     return dj30, sp500, nasdaq, cac, dax, jp, dj30var, sp500var, nasdaqvar, cacvar, daxvar, jpvar, djeoye, speoye, naseoye, caceoye, daxeoye, jpeoye, djvarytd, spvarytd, nasvarytd, cacvarytd, daxvarytd, jpvarytd #, hk
 
