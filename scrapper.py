@@ -398,7 +398,7 @@ df_merge_2['Variation'] = df_merge_2['Variation'].astype(float)
 df_merge_2['Volume Titre'] = df_merge_2['Volume Titre'].astype(float)
 df_merge_2['Nombre de titres'] = df_merge_2['Volume Titre'].astype(float)
 df_merge_2['Var Ytd'] = ((df_merge_2['Cours']-df_merge_2['COURS AU 31/12/2022'])*100)/df_merge_2['COURS AU 31/12/2022']
-df_merge_2['Capitalisation'] = df_merge_2['Var Ytd']*df_merge_2['Nombre de titres']
+df_merge_2['Capitalisation'] = (df_merge_2['Var Ytd']*df_merge_2['Nombre de titres'])
 #df[['col2', 'col3', 'col1']]
 
 
