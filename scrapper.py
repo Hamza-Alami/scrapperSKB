@@ -350,6 +350,8 @@ st.text('Indices sectoriaux')
 dfsect['Var%'] = dfsect['Var%'].apply(lambda x: x.replace(" %", ""))
 dfsect['Var% 31/12'] = dfsect['Var% 31/12'].apply(lambda x: x.replace(" %", ""))
 dfsect['Var%'] = dfsect['Var%'].apply(lambda x: x.replace(",", "."))
+dfsect['Var%'] = dfsect['Var%'].apply(lambda x: x.replace("-", "-"))
+
 dfsect['Var%'] = pd.to_numeric(dfsect['Var%'])
 #dfsect['Var% 31/12'] = dfsect['Var% 31/12'].astype(float)
 
@@ -419,7 +421,6 @@ masi1=bvc.loadata('MASI',start=oneyrago,end=lyoum)
 masi3=bvc.loadata('MASI',start=threeyrsago,end=lyoum)
 
 #to excel sheets
-
 buffer = io.BytesIO()
 
 # Create a Pandas Excel writer using XlsxWriter as the engine.
