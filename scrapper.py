@@ -394,6 +394,12 @@ df_merge_2 = pd.merge(courspond, df_merge_col, on='BVC')
 df_merge_2['Cloture'] = df_merge_2['Cloture'].apply(lambda x: x.replace(" ", ""))
 df_merge_2['Cours'] = df_merge_2['Cours'].apply(lambda x: x.replace(".", ","))
 
+df_merge_2['Cours'] = df_merge_2['Cours'].astype(float)
+df_merge_2['Cloture'] = df_merge_2['Cloture'].astype(float)
+df_merge_2['Variation'] = df_merge_2['Variation'].astype(float)
+df_merge_2['Volume Titre'] = df_merge_2['Volume Titre'].astype(float)
+
+
 
 
 st.write(df_merge_2)
