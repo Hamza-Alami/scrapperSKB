@@ -82,16 +82,16 @@ def euromad():
     #####
     eurmad3 = 11.1592
     #####
-    #try:
-        #conn2 = http.client.HTTPSConnection('api.centralbankofmorocco.ma')
-        #conn2.request("GET", "/cours/Version1/api/CoursVirement?%s" % params2, "{body}", headers)
-        #response2 = conn2.getresponse()
-        #data2 = response2.read()
-        #conn2.close()
-    #except Exception as e:
-        #print("[Errno {0}] {1}".format(e.errno, e.strerror))
+    try:
+        conn2 = http.client.HTTPSConnection('api.centralbankofmorocco.ma')
+        conn2.request("GET", "/cours/Version1/api/CoursVirement?%s" % params2, "{body}", headers)
+        response2 = conn2.getresponse()
+        data2 = response2.read()
+        conn2.close()
+    except Exception as e:
+        print("[Errno {0}] {1}".format(e.errno, e.strerror))
    
-    #eur2 = data2.decode()
+    eur2 = data2.decode()
     #euro2 = json.loads(eur2)
     #euro22 = euro2[0]
     #eurmad2 = euro22.get("moyen")
@@ -106,11 +106,12 @@ def euromad():
     except Exception as e:
         print("[Errno {0}] {1}".format(e.errno, e.strerror))
         
-    eur = data.decode()
-    euro = json.loads(eur)
+    #eur = data.decode()
+    #euro = json.loads(eur)
     #euro1 = euro[0]
-    #eurmad = euro1.get("moyen")
-    return eur #, eurmad2, eurmad3
+    eurmad = 11.0833
+    #euro1.get("moyen")
+    return eurmad, eur2, eurmad3
 
 def usdmad():
     
