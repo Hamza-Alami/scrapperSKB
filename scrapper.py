@@ -295,7 +295,7 @@ def commodities():
 
 #eurodollar
 eurusd1 = yf.download("EURUSD=X", sdate, edate)
-eurusd = eurusd1.Close[1]
+#eurusd = eurusd1.Close[1]
 #eoy
 eurusdeoy = yf.download("EURUSD=X", "2022-12-30", "2022-12-31")
 eurusdeoye = eurusdeoy.Close[0]
