@@ -172,6 +172,7 @@ eprev = dirhameuro[1]
 eeoy = dirhameuro[2]
 
 dirhamdollar = usdmad()
+st.write(dirhamdollar)
 dact = dirhamdollar[0]
 dprev = dirhamdollar[1]
 deoy = dirhamdollar[2]
