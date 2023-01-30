@@ -304,8 +304,8 @@ eurusd1 = yf.download("EURUSD=X", sdate, edate)
 #eurusdvar = ((eurusd-eurusd1.Close[0])*100)/eurusd1.Close[0]
 
 #calling funcs to lists
-indiceslist = indices()
-commolist = commodities()
+#indiceslist = indices()
+#commolist = commodities()
 
 #putting data into lists
 Cours1 = [indiceslist[0], indiceslist[1], indiceslist[2], indiceslist[3], indiceslist[4], indiceslist[5]]
