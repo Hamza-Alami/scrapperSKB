@@ -347,7 +347,7 @@ st.dataframe(dfsect)
 #Pondération et cours
 st.text('Pondérations')
 courspond = pd.DataFrame(bvc.getPond())
-st.dataframe(courspond)
+#st.dataframe(courspond)
 
 #test
 st.text('Volume de la séance :')
@@ -376,14 +376,20 @@ fulldf['derniere transaction'] = fulldf['derniere transaction'].dt.date
 
 tradedtoday = fulldf['derniere transaction'] < lyoum
 fulldf.loc[tradedtoday, 'Volume Titre'] = 0
-fulldf.loc[tradedtoday, 'Variation'] = 0 
+fulldf.loc[tradedtoday, 'Variation'] = 0
 
+#renaming for merge
 fulldf.rename(columns = {'Ticker':'Scrappername'}, inplace = True)
+courspond.rename(columns = {'Instrument':'BVC'}, inplace = True)
 
-st.dataframe(fulldf)
-st.write(supportsc)
+#st.dataframe(fulldf)
+#st.write(supportsc)
 
+#merging
 df_merge_col = pd.merge(fulldf, supportsc, on='Scrappername')
+df_merge_2 = pd.merge(courspond, df_merge_col, on='BVC')
+
+
 st.write(df_merge_col)
 
 
@@ -405,8 +411,8 @@ with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
     #intlindices.to_excel(writer, sheet_name='Indices internationaux')
     dfindex.to_excel(writer, sheet_name='Indices BVC')
     dfsect.to_excel(writer, sheet_name='Indices sectoriaux')
-    courspond.to_excel(writer, sheet_name='Pondérations')
-    fulldf.to_excel(writer, sheet_name='Cours & Variations')
+    #courspond.to_excel(writer, sheet_name='Pondérations')
+    #fulldf.to_excel(writer, sheet_name='Cours & Variations')
     masi1.to_excel(writer, sheet_name='Masi Hist 1YR')
     masi3.to_excel(writer, sheet_name='Masi Hist 3YR')
 
