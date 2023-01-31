@@ -248,10 +248,15 @@ def indices():
     jpvarytd = ((jp-jpeoye)*100)/jpeoye
 
     #hangseng
-    #hk = yf.download("^HSI", sdate, edate)
-    #hk = hk.Close[1]
+    hk1 = yf.download("^HSI", prevdate, edate)
+    hk = hk.Close[1]
+    hkvar = ((hk-hk1.Close[0])*100)/hk1.Close[0]
+    #eoy
+    hkeoy = yf.download("^HSI", "2022-12-30", "2022-12-31")
+    hkeoye = hkeoy.Close[0]
+    hkvarytd = ((hk-hkeoye)*100)/hkeoye
     
-    return dj30, sp500, nasdaq, cac, dax, jp, dj30var, sp500var, nasdaqvar, cacvar, daxvar, jpvar, djeoye, speoye, naseoye, caceoye, daxeoye, jpeoye, djvarytd, spvarytd, nasvarytd, cacvarytd, daxvarytd, jpvarytd #, hk
+    return dj30, sp500, nasdaq, cac, dax, jp, hk, dj30var, sp500var, nasdaqvar, cacvar, daxvar, jpvar, hkvar, djeoye, speoye, naseoye, caceoye, daxeoye, jpeoye, hkeoye, djvarytd, spvarytd, nasvarytd, cacvarytd, daxvarytd, jpvarytd, hkvarytd
 
 #                                        Commodities
 
@@ -302,10 +307,10 @@ indiceslist = indices()
 commolist = commodities()
 
 #putting data into lists
-Cours1 = [indiceslist[0], indiceslist[1], indiceslist[2], indiceslist[3], indiceslist[4], indiceslist[5]]
-var1 = [indiceslist[6], indiceslist[7], indiceslist[8], indiceslist[9], indiceslist[10], indiceslist[11]]
+Cours1 = [indiceslist[0], indiceslist[1], indiceslist[2], indiceslist[3], indiceslist[4], indiceslist[5], indiceslist[6]]
+var1 = [indiceslist[7], indiceslist[8], indiceslist[9], indiceslist[10], indiceslist[11], indiceslist[12]]
 
-vari = [indiceslist[18], indiceslist[19], indiceslist[20], indiceslist[21], indiceslist[22], indiceslist[23]]
+vari = [indiceslist[19], indiceslist[20], indiceslist[21], indiceslist[22], indiceslist[23], indiceslist[24]]
 
 Cours2 =  [eurusd, commolist[1], commolist[0], commolist[2]]
 var2 =  [eurusdvar, commolist[3], commolist[4], commolist[5]]
@@ -319,7 +324,7 @@ dictin2 = {'Cours': Cours2, 'var %': var2}
 FXCOM = pd.DataFrame(dictin2,index=['EUR/USD','Brent', 'Gold', 'Silver'])
 FXCOM['var ytd %'] = vari2
 
-intlindices = pd.DataFrame(dictin,index=['Dow Jones','S&P500', 'Nasdaq', 'CAC40', 'DAX30', 'NIKKEI']) #, indiceslist[6],'Hang Seng'
+intlindices = pd.DataFrame(dictin,index=['Dow Jones','S&P500', 'Nasdaq', 'CAC40', 'DAX30', 'NIKKEI','Hang Seng'])
 intlindices['var ytd %'] = vari
 
 st.text('FX & commodities')
@@ -352,7 +357,6 @@ dfindex['Var %'] = pd.to_numeric(dfindex['Var %'], errors='coerce')
 dfindex['Var %'] = dfindex['Var %'].fillna(0)
 dfindex['Var % 31/12'] = dfindex['Var % 31/12'].fillna(0)
 
-st.write(list(dfindex.columns))
 st.dataframe(dfindex)
 
 st.text('Indices sectoriaux')
