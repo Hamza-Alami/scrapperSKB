@@ -64,11 +64,6 @@ def euromad():
         'Ocp-Apim-Subscription-Key': '4f64d048c9f34f62a748068e3827cbc9',
     }
 
-    params = urllib.parse.urlencode({
-        # Request parameters
-        'libDevise': 'EUR',
-        'date': selecteddate,
-    })
     ####
     params2 = urllib.parse.urlencode({
         # Request parameters
@@ -91,21 +86,7 @@ def euromad():
     #euro22 = euro2[0]
     #eurmad2 = euro22.get("moyen")
     ####
-
-    try:
-        conn = http.client.HTTPSConnection('api.centralbankofmorocco.ma')
-        conn.request("GET", "/cours/Version1/api/CoursVirement?%s" % params, "{body}", headers)
-        response = conn.getresponse()
-        data = response.read()
-        conn.close()
-    except Exception as e:
-        print("[Errno {0}] {1}".format(e.errno, e.strerror))
-        
-    eur = data.decode()
-    euro = json.loads(eur)
-    euro1 = euro[0]
-    eurmad = euro1.get("moyen")
-    return euro2, eurmad
+    return euro2
 
 st.write(ctime)
 st.write(sdate)
