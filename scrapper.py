@@ -30,7 +30,7 @@ download = requests.get(url).content
 supportsc = pd.read_csv(io.StringIO(download.decode('utf-8')))
 #end
 
-lyoum = '2023-01-30'#date.today()
+lyoum = date.today()
 no = lyoum.weekday()
 
 now = dt.now()
@@ -193,7 +193,7 @@ edate = lyoum
 def indices():
     
     #Dow jones
-    dj = yf.download("^DJI", prevdate, edate)
+    dj = yf.download("^DJI", prevdate, '2023-01-30')
     '''dj30 = dj.Close[1]
     dj30var = ((dj30-dj.Close[0])*100)/dj.Close[0]
     #eoy
