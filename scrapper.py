@@ -352,7 +352,7 @@ st.text('Indices BVC')
 #dfindex['Var%'] = dfindex['Var%'].fillna(0)
 #dfindex['Var% 31/12'] = dfindex['Var% 31/12'].fillna(0)
 
-st.write(list(dfindex.columns)
+st.write(list(dfindex.columns))
 st.dataframe(dfindex)
 
 st.text('Indices sectoriaux')
