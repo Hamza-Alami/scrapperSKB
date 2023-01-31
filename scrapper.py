@@ -256,7 +256,7 @@ def indices():
     hkeoye = hkeoy.Close[0]
     hkvarytd = ((hk-hkeoye)*100)/hkeoye
     
-    return dj30, sp500, nasdaq, cac, dax, jp, hk, dj30var, sp500var, nasdaqvar, cacvar, daxvar, jpvar, hkvar, djvarytd, spvarytd, nasvarytd, cacvarytd, daxvarytd, jpvarytd, hkvarytd
+    return dj30, sp500, nasdaq, cac, dax, jp, hk, dj30var, sp500var, nasdaqvar, cacvar, daxvar, jpvar, hkvar, djvarytd, spvarytd, nasvarytd, cacvarytd, daxvarytd, jpvarytd, hkvarytd, daxeoy
 
 #                                        Commodities
 
@@ -311,7 +311,7 @@ commolist = commodities()
 Cours1 = [indiceslist[0], indiceslist[1], indiceslist[2], indiceslist[3], indiceslist[4], indiceslist[5], indiceslist[6]]
 var1 = [indiceslist[7], indiceslist[8], indiceslist[9], indiceslist[10], indiceslist[11], indiceslist[12], indiceslist[13]]
 
-vari = [indiceslist[14], indiceslist[15], indiceslist[16], indiceslist[17], indiceslist[18], indiceslist[19], indiceslist[19]]
+vari = [indiceslist[14], indiceslist[15], indiceslist[16], indiceslist[17], indiceslist[18], indiceslist[19], indiceslist[20]]
 
 Cours2 =  [eurusd, commolist[1], commolist[0], commolist[2]]
 var2 =  [eurusdvar, commolist[3], commolist[4], commolist[5]]
@@ -333,6 +333,7 @@ st.dataframe(FXCOM)
 
 st.text('Indices internationaux')
 st.write(indices())
+st.write(indiceslist[21])
 st.dataframe(intlindices)
 
 #BVCscrapper
