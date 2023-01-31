@@ -107,6 +107,7 @@ def euromad():
     eurmad = euro1.get("moyen")
     return euro, euro2
 st.write(ctime)
+st.write(sdate)
 st.write(euromad())
 
 #Scrapping eur mad and usd mad from BAM
