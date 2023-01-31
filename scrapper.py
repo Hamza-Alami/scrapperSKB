@@ -39,7 +39,7 @@ starttime = '11:45'
 
 if no == 0 :
     sdate = lyoum - datetime.timedelta(days=3)
-    prevdate = lyoum - datetime.timedelta(days=5)
+    prevdate = lyoum - datetime.timedelta(days=4)
 elif no == 1 :
     sdate = lyoum - datetime.timedelta(days=2)
     prevdate = lyoum - datetime.timedelta(days=4)
@@ -189,11 +189,11 @@ st.dataframe(BAMcc)
 #                                        Indices
         
 edate = lyoum
-st.write(prevdate)
+
 def indices():
     
     #Dow jones
-    dj = yf.download("^DJI", '2023-01-26', '2023-01-30')
+    dj = yf.download("^DJI", prevdate, edate)
     '''dj30 = dj.Close[1]
     dj30var = ((dj30-dj.Close[0])*100)/dj.Close[0]
     #eoy
