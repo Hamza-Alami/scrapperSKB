@@ -193,7 +193,7 @@ edate = lyoum
 def indices():
     
     #Dow jones
-    dj = yf.download("^DJI", prevdate, edate)
+    dj = yf.download("^DJI", sdate, edate)
     dj30 = dj.Close[1]
     dj30var = ((dj30-dj.Close[0])*100)/dj.Close[0]
     #eoy
@@ -203,7 +203,7 @@ def indices():
 
 
     #spoos
-    sp = yf.download("^GSPC", prevdate, edate)
+    sp = yf.download("^GSPC", sdate, edate)
     sp500 = sp.Close[1]
     sp500var = ((sp500-sp.Close[0])*100)/sp.Close[0]
     #eoy
@@ -212,7 +212,7 @@ def indices():
     spvarytd = ((sp500-speoye)*100)/speoye
 
     #nasdaq
-    nas = yf.download("^IXIC", prevdate, edate)
+    nas = yf.download("^IXIC", sdate, edate)
     nasdaq = nas.Close[1]
     nasdaqvar = ((nasdaq-nas.Close[0])*100)/nas.Close[0]
     #eoy
@@ -221,7 +221,7 @@ def indices():
     nasvarytd = ((nasdaq-naseoye)*100)/naseoye
 
     #cac40
-    cac4 = yf.download("^FCHI", prevdate, edate)
+    cac4 = yf.download("^FCHI", sdate, edate)
     cac = cac4.Close[1]
     cacvar = ((cac-cac4.Close[0])*100)/cac4.Close[0]
     #eoy
@@ -230,7 +230,7 @@ def indices():
     cacvarytd = ((cac-caceoye)*100)/caceoye
 
     #DAX
-    dax3 = yf.download("^GDAXI", prevdate, edate)
+    dax3 = yf.download("^GDAXI", sdate, edate)
     dax = dax3.Close[1]
     daxvar = ((dax-dax3.Close[0])*100)/dax3.Close[0]
     #eoy
@@ -239,7 +239,7 @@ def indices():
     daxvarytd = ((dax-daxeoye)*100)/daxeoye
 
     #nikkei
-    jp1 = yf.download("^N225", prevdate, edate)
+    jp1 = yf.download("^N225", sdate, edate)
     jp = jp1.Close[1]
     jpvar = ((jp-jp1.Close[0])*100)/jp1.Close[0]
     #eoy
@@ -248,7 +248,7 @@ def indices():
     jpvarytd = ((jp-jpeoye)*100)/jpeoye
 
     #hangseng
-    hk1 = yf.download("^HSI", prevdate, edate)
+    hk1 = yf.download("^HSI", sdate, edate)
     hk = hk1.Close[1]
     hkvar = ((hk-hk1.Close[0])*100)/hk1.Close[0]
     #eoy
