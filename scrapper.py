@@ -189,11 +189,11 @@ st.dataframe(BAMcc)
 #                                        Indices
         
 edate = lyoum
-
+st.write(prevdate)
 def indices():
     
     #Dow jones
-    dj = yf.download("^DJI", prevdate, '2023-01-30')
+    dj = yf.download("^DJI", '2023-01-26', '2023-01-30')
     '''dj30 = dj.Close[1]
     dj30var = ((dj30-dj.Close[0])*100)/dj.Close[0]
     #eoy
