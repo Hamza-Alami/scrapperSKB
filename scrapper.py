@@ -106,11 +106,10 @@ def euromad():
     except Exception as e:
         print("[Errno {0}] {1}".format(e.errno, e.strerror))
         
-    #eur = data.decode()
-    #euro = json.loads(eur)
-    #euro1 = euro[0]
-    eurmad = 11.0833
-    #euro1.get("moyen")
+    eur = data.decode()
+    euro = json.loads(eur)
+    euro1 = euro[0]
+    eurmad = euro1.get("moyen")
     return eurmad, eurmad2, eurmad3
 
 def usdmad():
@@ -159,10 +158,10 @@ def usdmad():
     except Exception as e:
         print("[Errno {0}] {1}".format(e.errno, e.strerror))
    
-    #usd = dataus.decode()
-    #usdt = json.loads(usd)
-    #usdt1 = usdt[0]
-    dollarmad = 10.1766 #usdt1.get("moyen")
+    usd = dataus.decode()
+    usdt = json.loads(usd)
+    usdt1 = usdt[0]
+    dollarmad = usdt1.get("moyen")
     return dollarmad, dolmad2, dolmad3
 
 dirhameuro = euromad()
