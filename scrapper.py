@@ -412,9 +412,9 @@ fulldf.rename(columns = {'Ticker':'Scrappername'}, inplace = True)
 courspond.rename(columns = {'Instrument':'BVC'}, inplace = True)
 courspond.rename(columns = {'Cours':'Cours BVC'}, inplace = True)
 
-
-#st.dataframe(fulldf)
-#st.write(supportsc)
+#test
+st.dataframe(fulldf)
+st.write(supportsc)
 
 #merging
 df_merge_col = pd.merge(fulldf, supportsc, on='Scrappername')
