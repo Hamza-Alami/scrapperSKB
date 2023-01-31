@@ -194,7 +194,7 @@ def indices():
     
     #Dow jones
     dj = yf.download("^DJI", prevdate, edate)
-    '''dj30 = dj.Close[1]
+    dj30 = dj.Close[1]
     dj30var = ((dj30-dj.Close[0])*100)/dj.Close[0]
     #eoy
     djeoy = yf.download("^DJI", "2022-12-30", "2022-12-31")
@@ -254,9 +254,9 @@ def indices():
     #eoy
     hkeoy = yf.download("^HSI", "2022-12-30", "2022-12-31")
     hkeoye = hkeoy.Close[0]
-    hkvarytd = ((hk-hkeoye)*100)/hkeoye'''
+    hkvarytd = ((hk-hkeoye)*100)/hkeoye
     
-    return dj #dj30, sp500, nasdaq, cac, dax, jp, hk, dj30var, sp500var, nasdaqvar, cacvar, daxvar, jpvar, hkvar, djeoye, speoye, naseoye, caceoye, daxeoye, jpeoye, hkeoye, djvarytd, spvarytd, nasvarytd, cacvarytd, daxvarytd, jpvarytd, hkvarytd
+    return dj30, sp500, nasdaq, cac, dax, jp, hk, dj30var, sp500var, nasdaqvar, cacvar, daxvar, jpvar, hkvar, djeoye, speoye, naseoye, caceoye, daxeoye, jpeoye, hkeoye, djvarytd, spvarytd, nasvarytd, cacvarytd, daxvarytd, jpvarytd, hkvarytd
 
 #                                        Commodities
 
@@ -333,7 +333,7 @@ st.dataframe(FXCOM)
 
 st.text('Indices internationaux')'''
 st.write(indices())
-#st.dataframe(intlindices)
+st.dataframe(intlindices)
 
 #BVCscrapper
 
