@@ -50,10 +50,7 @@ else:
 if no < 5 and ctime > starttime:
     selecteddate = lyoum
 else:
-    selecteddate = '2023-01-02'
-    
-st.write(no)
-st.write(sdate)
+    selecteddate = '2023-01-02'   
     
 threeyrsago = lyoum.replace(year=lyoum.year-3)
 oneyrago = lyoum.replace(year=lyoum.year-1)
