@@ -30,7 +30,7 @@ download = requests.get(url).content
 supportsc = pd.read_csv(io.StringIO(download.decode('utf-8')))
 #end
 
-lyoum = date.today()
+lyoum = '2023-01-30'#date.today()
 no = lyoum.weekday()
 
 now = dt.now()
