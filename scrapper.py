@@ -411,16 +411,9 @@ fulldf.rename(columns = {'Ticker':'Scrappername'}, inplace = True)
 courspond.rename(columns = {'Instrument':'BVC'}, inplace = True)
 courspond.rename(columns = {'Cours':'Cours BVC'}, inplace = True)
 
-#test
-st.dataframe(fulldf)
-st.write(supportsc)
-
 #merging
 df_merge_col = pd.merge(fulldf, supportsc, on='Scrappername')
 df_merge_2 = pd.merge(courspond, df_merge_col, on='BVC')
-
-st.write(df_merge_col)
-st.write(courspond)
 
 df_merge_2['Cloture'] = df_merge_2['Cloture'].apply(lambda x: x.replace(" ", ""))
 
