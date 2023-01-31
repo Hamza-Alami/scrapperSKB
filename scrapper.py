@@ -59,6 +59,7 @@ st.text('Cours de référence BAM')
 #Scrapping eur mad and usd mad from BAM
 #scrap from BAM
 
+'''
 def euromad():
     
     headers = {
@@ -181,6 +182,7 @@ vareoy = [((eact-eeoy)/eact)*100, ((dact-deoy)/dact)*100]
 BAMcc['var %'] = varmad
 BAMcc['var ytd %'] = vareoy
 st.dataframe(BAMcc)
+'''
 
 #Scrap from yahoo finance
 
