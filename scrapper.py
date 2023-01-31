@@ -225,7 +225,7 @@ def indices():
     cac = cac4.Close[1]
     cacvar = ((cac-cac4.Close[0])*100)/cac4.Close[0]
     #eoy
-    caceoy = yf.download("^^FCHI", "2022-12-30", "2022-12-31")
+    caceoy = yf.download("^FCHI", "2022-12-30", "2022-12-31")
     caceoye = caceoy.Close[0]
     cacvarytd = ((cac-caceoye)*100)/caceoye
 
