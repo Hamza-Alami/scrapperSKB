@@ -333,10 +333,10 @@ st.dataframe(FXCOM)
 
 st.text('Indices internationaux')
 #st.write(indices())
-st.write(indices[21])
-st.write(indices[22])
-st.write(indices[23])
-st.write(indices[24])
+st.write(indiceslist[21])
+st.write(indiceslist[22])
+st.write(indiceslist[23])
+st.write(indiceslist[24])
 
 st.dataframe(intlindices)
 
