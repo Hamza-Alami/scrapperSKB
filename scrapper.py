@@ -302,7 +302,7 @@ eurusdeoye = eurusdeoy.Close[0]
 eurusdvarytd = ((eurusd-eurusdeoye)*100)/eurusdeoye
 eurusdvar = ((eurusd-eurusd1.Close[0])*100)/eurusd1.Close[0]
 
-#calling funcs to lists
+'''#calling funcs to lists
 indiceslist = indices()
 commolist = commodities()
 
@@ -330,9 +330,9 @@ intlindices['var ytd %'] = vari
 st.text('FX & commodities')
 st.dataframe(FXCOM)
 
-st.text('Indices internationaux')
+st.text('Indices internationaux')'''
 st.write(indices())
-st.dataframe(intlindices)
+#st.dataframe(intlindices)
 
 #BVCscrapper
 
