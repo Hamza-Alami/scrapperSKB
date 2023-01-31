@@ -110,7 +110,7 @@ def euromad():
     euro = json.loads(eur)
     euro1 = euro[0]
     eurmad = euro1.get("moyen")
-    return eurmad, eurmad2, eurmad3
+    return eurmad, eurmad2, eurmad3, euro, euro2
 
 def usdmad():
     
@@ -162,7 +162,7 @@ def usdmad():
     usdt = json.loads(usd)
     usdt1 = usdt[0]
     dollarmad = usdt1.get("moyen")
-    return dollarmad, dolmad2, dolmad3
+    return dollarmad, dolmad2, dolmad3, usdt, dol2, 
 
 dirhameuro = euromad()
 st.write(dirhameuro)
