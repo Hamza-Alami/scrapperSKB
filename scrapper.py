@@ -382,7 +382,7 @@ courspond = pd.DataFrame(bvc.getPond())
 st.text('Volume de la séance :')
 recap=bvc.getIndexRecap()
 #voldf = recap['Volume Global']
-st.write(type(recap['Volume Global']))
+st.write(type(recap) #['Volume Global']))
 
 #Scraping stock data from le Boursier 
 
