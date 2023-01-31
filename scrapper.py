@@ -57,10 +57,61 @@ oneyrago = lyoum.replace(year=lyoum.year-1)
 
 st.text('Cours de référence BAM')
 
+def euromad():
+    
+    headers = {
+        # Request headers
+        'Ocp-Apim-Subscription-Key': '4f64d048c9f34f62a748068e3827cbc9',
+    }
+
+    params = urllib.parse.urlencode({
+        # Request parameters
+        'libDevise': 'EUR',
+        'date': selecteddate,
+    })
+    ####
+    params2 = urllib.parse.urlencode({
+        # Request parameters
+        'libDevise': 'EUR',
+        'date': sdate,
+    })
+  
+    #####
+    try:
+        conn2 = http.client.HTTPSConnection('api.centralbankofmorocco.ma')
+        conn2.request("GET", "/cours/Version1/api/CoursVirement?%s" % params2, "{body}", headers)
+        response2 = conn2.getresponse()
+        data2 = response2.read()
+        conn2.close()
+    except Exception as e:
+        print("[Errno {0}] {1}".format(e.errno, e.strerror))
+   
+    eur2 = data2.decode()
+    euro2 = json.loads(eur2)
+    euro22 = euro2[0]
+    eurmad2 = euro22.get("moyen")
+    ####
+
+    try:
+        conn = http.client.HTTPSConnection('api.centralbankofmorocco.ma')
+        conn.request("GET", "/cours/Version1/api/CoursVirement?%s" % params, "{body}", headers)
+        response = conn.getresponse()
+        data = response.read()
+        conn.close()
+    except Exception as e:
+        print("[Errno {0}] {1}".format(e.errno, e.strerror))
+        
+    eur = data.decode()
+    euro = json.loads(eur)
+    euro1 = euro[0]
+    eurmad = euro1.get("moyen")
+    return euro, euro2
+st.write(euromad())
+
 #Scrapping eur mad and usd mad from BAM
 #scrap from BAM
 
-def euromad():
+'''def euromad():
     
     headers = {
         # Request headers
@@ -182,7 +233,7 @@ vareoy = [((eact-eeoy)/eact)*100, ((dact-deoy)/dact)*100]
 BAMcc['var %'] = varmad
 BAMcc['var ytd %'] = vareoy
 st.dataframe(BAMcc)
-
+'''
 #Scrap from yahoo finance
 
 #                                        Indices
