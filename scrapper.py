@@ -382,7 +382,8 @@ courspond = pd.DataFrame(bvc.getPond())
 st.text('Volume de la séance :')
 recap=bvc.getIndexRecap()
 #voldf = recap['Volume Global']
-st.write(type(recap) #['Volume Global']))
+st.write(recap)
+st.write(type(recap)) #['Volume Global']))
 
 #Scraping stock data from le Boursier 
 
@@ -442,7 +443,7 @@ buffer = io.BytesIO()
 with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
     
     # Write each dataframe to a different worksheet.
-    #BAMcc.to_excel(writer, sheet_name='Cours de change BAM')
+    BAMcc.to_excel(writer, sheet_name='Cours de change BAM')
     FXCOM.to_excel(writer, sheet_name='FX & commodities')
     intlindices.to_excel(writer, sheet_name='Indices internationaux')
     dfindex.to_excel(writer, sheet_name='Indices BVC')
