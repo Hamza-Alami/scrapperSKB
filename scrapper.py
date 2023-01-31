@@ -88,8 +88,8 @@ def euromad():
    
     eur2 = data2.decode()
     euro2 = json.loads(eur2)
-    euro22 = euro2[0]
-    eurmad2 = euro22.get("moyen")
+    #euro22 = euro2[0]
+    #eurmad2 = euro22.get("moyen")
     ####
 
     try:
@@ -105,7 +105,7 @@ def euromad():
     euro = json.loads(eur)
     euro1 = euro[0]
     eurmad = euro1.get("moyen")
-    return euro, euro2, eurmad, eurmad2
+    return euro, euro2, eurmad
 
 st.write(ctime)
 st.write(sdate)
