@@ -227,7 +227,7 @@ def indices():
     #eoy
     caceoy = yf.download("^IXIC", "2022-12-30", "2022-12-31")
     caceoye = caceoy.Close[0]
-    cacvarytd = ((cacdaq-caceoye)*100)/caceoye
+    cacvarytd = ((cac-caceoye)*100)/caceoye
 
     #DAX
     dax3 = yf.download("^GDAXI", prevdate, edate)
