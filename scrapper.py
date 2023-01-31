@@ -292,7 +292,7 @@ def commodities():
 
 #                                          FX
 
-'''
+
 #eurodollar
 eurusd1 = yf.download("EURUSD=X", prevdate, edate)
 eurusd = eurusd1.Close[1]
@@ -301,9 +301,9 @@ eurusdeoy = yf.download("EURUSD=X", "2022-12-30", "2022-12-31")
 eurusdeoye = eurusdeoy.Close[0]
 
 eurusdvarytd = ((eurusd-eurusdeoye)*100)/eurusdeoye
-eurusdvar = ((eurusd-eurusd1.Close[0])*100)/eurusd1.Close[0]'''
+eurusdvar = ((eurusd-eurusd1.Close[0])*100)/eurusd1.Close[0]
 
-'''#calling funcs to lists
+#calling funcs to lists
 indiceslist = indices()
 commolist = commodities()
 
@@ -331,7 +331,7 @@ intlindices['var ytd %'] = vari
 st.text('FX & commodities')
 st.dataframe(FXCOM)
 
-st.text('Indices internationaux')'''
+st.text('Indices internationaux')
 st.write(indices())
 st.dataframe(intlindices)
 
