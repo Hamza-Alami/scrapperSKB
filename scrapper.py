@@ -371,7 +371,6 @@ dfsect['Var%'] = pd.to_numeric(dfsect['Var%'], errors='coerce')
 dfsect['Var%'] = dfsect['Var%'].fillna(0)
 dfsect['Var% 31/12'] = dfsect['Var% 31/12'].fillna(0)
 
-
 st.dataframe(dfsect)
 
 #Pondération et cours
@@ -419,6 +418,9 @@ st.write(supportsc)
 #merging
 df_merge_col = pd.merge(fulldf, supportsc, on='Scrappername')
 df_merge_2 = pd.merge(courspond, df_merge_col, on='BVC')
+
+st.write(df_merge_col)
+st.write(courspond)
 
 df_merge_2['Cloture'] = df_merge_2['Cloture'].apply(lambda x: x.replace(" ", ""))
 
