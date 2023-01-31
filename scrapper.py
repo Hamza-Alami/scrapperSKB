@@ -314,9 +314,9 @@ var1 = [indiceslist[7], indiceslist[8], indiceslist[9], indiceslist[10], indices
 vari = [indiceslist[14], indiceslist[15], indiceslist[16], indiceslist[17], indiceslist[18], indiceslist[19], indiceslist[20]]
 
 Cours2 =  [eurusd, commolist[1], commolist[0], commolist[2]]
-var2 =  [eurusdvar, commolist[3], commolist[4], commolist[5]]
+var2 =  [eurusdvar, commolist[4], commolist[3], commolist[5]]
 
-vari2 =  [eurusdvarytd, commolist[9], commolist[10], commolist[11]]
+vari2 =  [eurusdvarytd, commolist[10], commolist[9], commolist[11]]
 
 # dictionary of lists 
 dictin = {'Cours': Cours1, 'var %': var1}
