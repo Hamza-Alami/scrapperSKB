@@ -381,9 +381,9 @@ courspond = pd.DataFrame(bvc.getPond())
 #test
 st.text('Volume de la séance :')
 recap=bvc.getIndexRecap()
-#voldf = recap['Volume Global']
-st.write(recap)
-st.write(type(recap)) #['Volume Global']))
+s = pd.Series([recap['Volume Global']],
+              name="Volume Global")
+voldf = s.to_frame()
 
 #Scraping stock data from le Boursier 
 
@@ -449,6 +449,7 @@ with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
     dfindex.to_excel(writer, sheet_name='Indices BVC')
     dfsect.to_excel(writer, sheet_name='Indices sectoriaux')
     FinalDF.to_excel(writer, sheet_name='Cours & Variations')
+    voldf.to_excel(writer, sheet_name='Volume global')
     masi1.to_excel(writer, sheet_name='Masi Hist 1YR')
     masi3.to_excel(writer, sheet_name='Masi Hist 3YR')
 
