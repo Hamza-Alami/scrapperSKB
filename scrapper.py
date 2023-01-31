@@ -56,46 +56,10 @@ threeyrsago = lyoum.replace(year=lyoum.year-3)
 oneyrago = lyoum.replace(year=lyoum.year-1)
 
 st.text('Cours de référence BAM')
-
-def euromad():
-    
-    headers = {
-        # Request headers
-        'Ocp-Apim-Subscription-Key': '4f64d048c9f34f62a748068e3827cbc9',
-    }
-
-    ####
-    params2 = urllib.parse.urlencode({
-        # Request parameters
-        'libDevise': 'EUR',
-        'date': sdate,
-    })
-  
-    #####
-    try:
-        conn2 = http.client.HTTPSConnection('api.centralbankofmorocco.ma')
-        conn2.request("GET", "/cours/Version1/api/CoursVirement?%s" % params2, "{body}", headers)
-        response2 = conn2.getresponse()
-        data2 = response2.read()
-        conn2.close()
-    except Exception as e:
-        print("[Errno {0}] {1}".format(e.errno, e.strerror))
-   
-    eur2 = data2.decode()
-    euro2 = json.loads(eur2)
-    #euro22 = euro2[0]
-    #eurmad2 = euro22.get("moyen")
-    ####
-    return euro2
-
-st.write(ctime)
-st.write(sdate)
-st.write(euromad())
-
 #Scrapping eur mad and usd mad from BAM
 #scrap from BAM
 
-'''def euromad():
+def euromad():
     
     headers = {
         # Request headers
@@ -128,8 +92,8 @@ st.write(euromad())
    
     eur2 = data2.decode()
     euro2 = json.loads(eur2)
-    euro22 = euro2[0]
-    eurmad2 = euro22.get("moyen")
+    #euro22 = euro2[0]
+    eurmad2 = 11.0548 #euro22.get("moyen")
     ####
 
     try:
@@ -145,7 +109,7 @@ st.write(euromad())
     euro = json.loads(eur)
     euro1 = euro[0]
     eurmad = euro1.get("moyen")
-    return eurmad, eurmad2, eurmad3, euro, euro2
+    return eurmad, eurmad2, eurmad3
 
 def usdmad():
     
@@ -180,8 +144,8 @@ def usdmad():
    
     usd2 = data2.decode()
     dol2 = json.loads(usd2)
-    dol22 = dol2[0]
-    dolmad2 = dol22.get("moyen")
+    #dol22 = dol2[0]
+    dolmad2 = 10.1355 #dol22.get("moyen")
     #####
 
     try:
@@ -197,7 +161,7 @@ def usdmad():
     usdt = json.loads(usd)
     usdt1 = usdt[0]
     dollarmad = usdt1.get("moyen")
-    return dollarmad, dolmad2, dolmad3, usdt, dol2, 
+    return dollarmad, dolmad2, dolmad3
 
 dirhameuro = euromad()
 st.write(dirhameuro)
@@ -217,7 +181,7 @@ vareoy = [((eact-eeoy)/eact)*100, ((dact-deoy)/dact)*100]
 BAMcc['var %'] = varmad
 BAMcc['var ytd %'] = vareoy
 st.dataframe(BAMcc)
-'''
+
 #Scrap from yahoo finance
 
 #                                        Indices
