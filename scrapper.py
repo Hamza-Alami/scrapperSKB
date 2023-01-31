@@ -249,7 +249,7 @@ def indices():
 
     #hangseng
     hk1 = yf.download("^HSI", prevdate, edate)
-    hk = hk.Close[1]
+    hk = hk1.Close[1]
     hkvar = ((hk-hk1.Close[0])*100)/hk1.Close[0]
     #eoy
     hkeoy = yf.download("^HSI", "2022-12-30", "2022-12-31")
