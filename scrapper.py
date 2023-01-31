@@ -256,7 +256,7 @@ def indices():
     hkeoye = hkeoy.Close[0]
     hkvarytd = ((hk-hkeoye)*100)/hkeoye
     
-    return dj30, sp500, nasdaq, cac, dax, jp, hk, dj30var, sp500var, nasdaqvar, cacvar, daxvar, jpvar, hkvar, djvarytd, spvarytd, nasvarytd, cacvarytd, daxvarytd, jpvarytd, hkvarytd
+    return dj30, sp500, nasdaq, cac, dax, jp, hk, dj30var, sp500var, nasdaqvar, cacvar, daxvar, jpvar, hkvar, djvarytd, spvarytd, nasvarytd, cacvarytd, daxvarytd, jpvarytd, hkvarytd, cac, caceoye, cacvar, cacvarytd
 
 #                                        Commodities
 
@@ -332,7 +332,12 @@ st.text('FX & commodities')
 st.dataframe(FXCOM)
 
 st.text('Indices internationaux')
-st.write(indices())
+#st.write(indices())
+st.write(indices[21])
+st.write(indices[22])
+st.write(indices[23])
+st.write(indices[24])
+
 st.dataframe(intlindices)
 
 #BVCscrapper
