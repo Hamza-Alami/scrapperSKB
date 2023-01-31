@@ -341,16 +341,16 @@ dfsect = pd.DataFrame(index['Indices sectoriels']).transpose()
 
 st.text('Indices BVC')
 
-#dfindex['Var%'] = dfindex['Var%'].apply(lambda x: x.replace(" %", ""))
-#dfindex['Var% 31/12'] = dfindex['Var% 31/12'].apply(lambda x: x.replace(" %", ""))
-#dfindex['Var% 31/12'] = dfindex['Var% 31/12'].apply(lambda x: x.replace(",", "."))
-#dfindex['Var%'] = dfindex['Var%'].apply(lambda x: x.replace(",", "."))
+dfindex['Var %'] = dfindex['Var %'].apply(lambda x: x.replace(" %", ""))
+dfindex['Var % 31/12'] = dfindex['Var % 31/12'].apply(lambda x: x.replace(" %", ""))
+dfindex['Var % 31/12'] = dfindex['Var % 31/12'].apply(lambda x: x.replace(",", "."))
+dfindex['Var %'] = dfindex['Var %'].apply(lambda x: x.replace(",", "."))
 
-#dfindex['Var% 31/12'] = pd.to_numeric(dfindex['Var% 31/12'], errors='coerce')
-#dfindex['Var%'] = pd.to_numeric(dfindex['Var%'], errors='coerce')
+dfindex['Var % 31/12'] = pd.to_numeric(dfindex['Var % 31/12'], errors='coerce')
+dfindex['Var %'] = pd.to_numeric(dfindex['Var %'], errors='coerce')
 
-#dfindex['Var%'] = dfindex['Var%'].fillna(0)
-#dfindex['Var% 31/12'] = dfindex['Var% 31/12'].fillna(0)
+dfindex['Var %'] = dfindex['Var %'].fillna(0)
+dfindex['Var % 31/12'] = dfindex['Var % 31/12'].fillna(0)
 
 st.write(list(dfindex.columns))
 st.dataframe(dfindex)
