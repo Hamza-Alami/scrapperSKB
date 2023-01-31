@@ -39,7 +39,7 @@ starttime = '11:45'
 
 if no == 0 :
     sdate = lyoum - datetime.timedelta(days=3)
-    prevdate = lyoum - datetime.timedelta(days=4)
+    prevdate = lyoum - datetime.timedelta(days=5)
 elif no == 1 :
     sdate = lyoum - datetime.timedelta(days=2)
     prevdate = lyoum - datetime.timedelta(days=4)
