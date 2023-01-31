@@ -333,7 +333,6 @@ st.dataframe(FXCOM)
 
 st.text('Indices internationaux')
 st.write(indices())
-st.write(indiceslist[21])
 st.dataframe(intlindices)
 
 #BVCscrapper
