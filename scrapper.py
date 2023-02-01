@@ -237,7 +237,7 @@ def indices():
     #eoy
     daxeoy = yf.download("^GDAXI", "2022-12-30", "2022-12-31")
     daxeoye = daxeoy.Close[0]
-    daxvarytd = ((dax-daxeoye)*100)/daxeoye '''
+    daxvarytd = ((dax-daxeoye)*100)/daxeoye 
 
     #nikkei
     jp1 = yf.download("^N225", prevdate, edate)
@@ -256,7 +256,7 @@ def indices():
     hkeoy = yf.download("^HSI", "2022-12-30", "2022-12-31")
     hkeoye = hkeoy.Close[0]
     hkvarytd = ((hk-hkeoye)*100)/hkeoye
-    
+    '''
     return cac4 #dj30, sp500, nasdaq, cac, dax, jp, hk, dj30var, sp500var, nasdaqvar, cacvar, daxvar, jpvar, hkvar, djvarytd, spvarytd, nasvarytd, cacvarytd, daxvarytd, jpvarytd, hkvarytd
 
 #                                        Commodities
