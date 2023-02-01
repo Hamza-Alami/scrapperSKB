@@ -256,7 +256,7 @@ def indices():
     hkeoye = hkeoy.Close[0]
     hkvarytd = ((hk-hkeoye)*100)/hkeoye
     
-    return dj30, sp500, nasdaq, cac, dax, jp, hk, dj30var, sp500var, nasdaqvar, cacvar, daxvar, jpvar, hkvar, djvarytd, spvarytd, nasvarytd, cacvarytd, daxvarytd, jpvarytd, hkvarytd
+    return cac4 #dj30, sp500, nasdaq, cac, dax, jp, hk, dj30var, sp500var, nasdaqvar, cacvar, daxvar, jpvar, hkvar, djvarytd, spvarytd, nasvarytd, cacvarytd, daxvarytd, jpvarytd, hkvarytd
 
 #                                        Commodities
 
@@ -304,14 +304,14 @@ eurusdvarytd = ((eurusd-eurusdeoye)*100)/eurusdeoye
 eurusdvar = ((eurusd-eurusd1.Close[0])*100)/eurusd1.Close[0]
 
 #calling funcs to lists
-indiceslist = indices()
+#indiceslist = indices()
 commolist = commodities()
 
 #putting data into lists
-Cours1 = [indiceslist[0], indiceslist[1], indiceslist[2], indiceslist[3], indiceslist[4], indiceslist[5], indiceslist[6]]
-var1 = [indiceslist[7], indiceslist[8], indiceslist[9], indiceslist[10], indiceslist[11], indiceslist[12], indiceslist[13]]
+#Cours1 = [indiceslist[0], indiceslist[1], indiceslist[2], indiceslist[3], indiceslist[4], indiceslist[5], indiceslist[6]]
+#var1 = [indiceslist[7], indiceslist[8], indiceslist[9], indiceslist[10], indiceslist[11], indiceslist[12], indiceslist[13]]
 
-vari = [indiceslist[14], indiceslist[15], indiceslist[16], indiceslist[17], indiceslist[18], indiceslist[19], indiceslist[20]]
+#vari = [indiceslist[14], indiceslist[15], indiceslist[16], indiceslist[17], indiceslist[18], indiceslist[19], indiceslist[20]]
 
 Cours2 =  [eurusd, commolist[1], commolist[0], commolist[2]]
 var2 =  [eurusdvar, commolist[4], commolist[3], commolist[5]]
@@ -319,20 +319,21 @@ var2 =  [eurusdvar, commolist[4], commolist[3], commolist[5]]
 vari2 =  [eurusdvarytd, commolist[10], commolist[9], commolist[11]]
 
 # dictionary of lists 
-dictin = {'Cours': Cours1, 'var %': var1}
+#dictin = {'Cours': Cours1, 'var %': var1}
 dictin2 = {'Cours': Cours2, 'var %': var2}
 
 FXCOM = pd.DataFrame(dictin2,index=['EUR/USD','Brent', 'Gold', 'Silver'])
 FXCOM['var ytd %'] = vari2
 
-intlindices = pd.DataFrame(dictin,index=['Dow Jones','S&P500', 'Nasdaq', 'CAC40', 'DAX30', 'NIKKEI','Hang Seng'])
-intlindices['var ytd %'] = vari
+#intlindices = pd.DataFrame(dictin,index=['Dow Jones','S&P500', 'Nasdaq', 'CAC40', 'DAX30', 'NIKKEI','Hang Seng'])
+#intlindices['var ytd %'] = vari
 
 st.text('FX & commodities')
 st.dataframe(FXCOM)
 
 st.text('Indices internationaux')
-st.dataframe(intlindices)
+#st.dataframe(intlindices)
+st.write(indices())
 
 #BVCscrapper
 
@@ -445,7 +446,7 @@ with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
     # Write each dataframe to a different worksheet.
     BAMcc.to_excel(writer, sheet_name='Cours de change BAM')
     FXCOM.to_excel(writer, sheet_name='FX & commodities')
-    intlindices.to_excel(writer, sheet_name='Indices internationaux')
+    #intlindices.to_excel(writer, sheet_name='Indices internationaux')
     dfindex.to_excel(writer, sheet_name='Indices BVC')
     dfsect.to_excel(writer, sheet_name='Indices sectoriaux')
     FinalDF.to_excel(writer, sheet_name='Cours & Variations')
