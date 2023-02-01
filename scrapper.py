@@ -45,7 +45,7 @@ elif no == 1 :
     prevdate = lyoum - datetime.timedelta(days=4)
 else:
      sdate = lyoum - datetime.timedelta(days=1)
-     prevdate = lyoum - datetime.timedelta(days=4)
+     prevdate = lyoum - datetime.timedelta(days=2)
 
 if no < 5 and ctime > starttime:
     selecteddate = lyoum
