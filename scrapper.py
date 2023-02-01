@@ -194,31 +194,31 @@ def indices():
     
     #Dow jones
     dj = yf.download("^DJI", prevdate, edate)
-    dj30 = dj.Close[1]
-    dj30var = ((dj30-dj.Close[0])*100)/dj.Close[0]
+    #dj30 = dj.Close[1]
+    #dj30var = ((dj30-dj.Close[0])*100)/dj.Close[0]
     #eoy
-    djeoy = yf.download("^DJI", "2022-12-30", "2022-12-31")
-    djeoye = djeoy.Close[0]
-    djvarytd = ((dj30-djeoye)*100)/djeoye
+    #djeoy = yf.download("^DJI", "2022-12-30", "2022-12-31")
+    #djeoye = djeoy.Close[0]
+    #djvarytd = ((dj30-djeoye)*100)/djeoye
 
 
     #spoos
     sp = yf.download("^GSPC", prevdate, edate)
-    sp500 = sp.Close[1]
-    sp500var = ((sp500-sp.Close[0])*100)/sp.Close[0]
+    #sp500 = sp.Close[1]
+    #sp500var = ((sp500-sp.Close[0])*100)/sp.Close[0]
     #eoy
-    speoy = yf.download("^GSPC", "2022-12-30", "2022-12-31")
-    speoye = speoy.Close[0]
-    spvarytd = ((sp500-speoye)*100)/speoye
+    #speoy = yf.download("^GSPC", "2022-12-30", "2022-12-31")
+    #speoye = speoy.Close[0]
+    #spvarytd = ((sp500-speoye)*100)/speoye
 
     #nasdaq
     nas = yf.download("^IXIC", prevdate, edate)
-    nasdaq = nas.Close[1]
-    nasdaqvar = ((nasdaq-nas.Close[0])*100)/nas.Close[0]
+    #nasdaq = nas.Close[1]
+    #nasdaqvar = ((nasdaq-nas.Close[0])*100)/nas.Close[0]
     #eoy
-    naseoy = yf.download("^IXIC", "2022-12-30", "2022-12-31")
-    naseoye = naseoy.Close[0]
-    nasvarytd = ((nasdaq-naseoye)*100)/naseoye
+    #naseoy = yf.download("^IXIC", "2022-12-30", "2022-12-31")
+    #naseoye = naseoy.Close[0]
+    #nasvarytd = ((nasdaq-naseoye)*100)/naseoye
 
     #cac40
     cac4 = yf.download("^FCHI", prevdate, edate)
