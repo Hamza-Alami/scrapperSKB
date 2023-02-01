@@ -288,24 +288,24 @@ def commodities():
     silvereoye = silvereoy.Close[0]
     silvervarytd = ((silver-silvereoye)*100)/silvereoye
     
-    return gld, oil, silver, gldvar, oilvar, silvervar, gldeoye, oileoye, silvereoye, gldvarytd, oilvarytd, silvervarytd
+    #return gld, oil, silver, gldvar, oilvar, silvervar, gldeoye, oileoye, silvereoye, gldvarytd, oilvarytd, silvervarytd
 
 #                                          FX
 
 
 #eurodollar
-eurusd1 = yf.download("EURUSD=X", prevdate, edate)
-eurusd = eurusd1.Close[1]
+#eurusd1 = yf.download("EURUSD=X", prevdate, edate)
+#eurusd = eurusd1.Close[1]
 #eoy
-eurusdeoy = yf.download("EURUSD=X", "2022-12-30", "2022-12-31")
-eurusdeoye = eurusdeoy.Close[0]
+#eurusdeoy = yf.download("EURUSD=X", "2022-12-30", "2022-12-31")
+#eurusdeoye = eurusdeoy.Close[0]
 
-eurusdvarytd = ((eurusd-eurusdeoye)*100)/eurusdeoye
-eurusdvar = ((eurusd-eurusd1.Close[0])*100)/eurusd1.Close[0]
+#eurusdvarytd = ((eurusd-eurusdeoye)*100)/eurusdeoye
+#eurusdvar = ((eurusd-eurusd1.Close[0])*100)/eurusd1.Close[0]
 
 #calling funcs to lists
 #indiceslist = indices()
-commolist = commodities()
+#commolist = commodities()
 
 #putting data into lists
 #Cours1 = [indiceslist[0], indiceslist[1], indiceslist[2], indiceslist[3], indiceslist[4], indiceslist[5], indiceslist[6]]
@@ -313,23 +313,23 @@ commolist = commodities()
 
 #vari = [indiceslist[14], indiceslist[15], indiceslist[16], indiceslist[17], indiceslist[18], indiceslist[19], indiceslist[20]]
 
-Cours2 =  [eurusd, commolist[1], commolist[0], commolist[2]]
-var2 =  [eurusdvar, commolist[4], commolist[3], commolist[5]]
+#Cours2 =  [eurusd, commolist[1], commolist[0], commolist[2]]
+#var2 =  [eurusdvar, commolist[4], commolist[3], commolist[5]]
 
-vari2 =  [eurusdvarytd, commolist[10], commolist[9], commolist[11]]
+#vari2 =  [eurusdvarytd, commolist[10], commolist[9], commolist[11]]
 
 # dictionary of lists 
 #dictin = {'Cours': Cours1, 'var %': var1}
-dictin2 = {'Cours': Cours2, 'var %': var2}
+#dictin2 = {'Cours': Cours2, 'var %': var2}
 
-FXCOM = pd.DataFrame(dictin2,index=['EUR/USD','Brent', 'Gold', 'Silver'])
-FXCOM['var ytd %'] = vari2
+#FXCOM = pd.DataFrame(dictin2,index=['EUR/USD','Brent', 'Gold', 'Silver'])
+#FXCOM['var ytd %'] = vari2
 
 #intlindices = pd.DataFrame(dictin,index=['Dow Jones','S&P500', 'Nasdaq', 'CAC40', 'DAX30', 'NIKKEI','Hang Seng'])
 #intlindices['var ytd %'] = vari
 
 st.text('FX & commodities')
-st.dataframe(FXCOM)
+#st.dataframe(FXCOM)
 
 st.text('Indices internationaux')
 #st.dataframe(intlindices)
@@ -445,7 +445,7 @@ with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
     
     # Write each dataframe to a different worksheet.
     BAMcc.to_excel(writer, sheet_name='Cours de change BAM')
-    FXCOM.to_excel(writer, sheet_name='FX & commodities')
+    #FXCOM.to_excel(writer, sheet_name='FX & commodities')
     #intlindices.to_excel(writer, sheet_name='Indices internationaux')
     dfindex.to_excel(writer, sheet_name='Indices BVC')
     dfsect.to_excel(writer, sheet_name='Indices sectoriaux')
