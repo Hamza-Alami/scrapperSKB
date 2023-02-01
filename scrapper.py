@@ -230,13 +230,14 @@ def indices():
     #cacvarytd = ((cac-caceoye)*100)/caceoye
 
     #DAX
+    '''
     dax3 = yf.download("^GDAXI", prevdate, edate)
     dax = dax3.Close[1]
     daxvar = ((dax-dax3.Close[0])*100)/dax3.Close[0]
     #eoy
     daxeoy = yf.download("^GDAXI", "2022-12-30", "2022-12-31")
     daxeoye = daxeoy.Close[0]
-    daxvarytd = ((dax-daxeoye)*100)/daxeoye
+    daxvarytd = ((dax-daxeoye)*100)/daxeoye '''
 
     #nikkei
     jp1 = yf.download("^N225", prevdate, edate)
