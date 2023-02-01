@@ -334,7 +334,11 @@ st.text('FX & commodities')
 '''
 st.text('Indices internationaux')
 #st.dataframe(intlindices)
-st.write(indices())
+indiceslist = indices()
+st.write(indiceslist[0])
+st.write(indiceslist[1])
+st.write(indiceslist[2])
+
 
 #BVCscrapper
 
