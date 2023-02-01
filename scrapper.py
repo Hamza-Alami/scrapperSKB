@@ -59,7 +59,7 @@ st.text('Cours de référence BAM')
 #Scrapping eur mad and usd mad from BAM
 #scrap from BAM
 
-
+'''
 def euromad():
     
     headers = {
@@ -182,7 +182,7 @@ vareoy = [((eact-eeoy)/eact)*100, ((dact-deoy)/dact)*100]
 BAMcc['var %'] = varmad
 BAMcc['var ytd %'] = vareoy
 st.dataframe(BAMcc)
-
+'''
 
 #Scrap from yahoo finance
 
@@ -222,8 +222,8 @@ def indices():
 
     #cac40
     cac4 = yf.download("^FCHI", prevdate, edate)
-    cac = cac4.Close[1]
-    cacvar = ((cac-cac4.Close[0])*100)/cac4.Close[0]
+    #cac = cac4.Close[1]
+    #cacvar = ((cac-cac4.Close[0])*100)/cac4.Close[0]
     #eoy
     caceoy = yf.download("^FCHI", "2022-12-30", "2022-12-31")
     caceoye = caceoy.Close[0]
@@ -259,7 +259,7 @@ def indices():
     return cac4 #dj30, sp500, nasdaq, cac, dax, jp, hk, dj30var, sp500var, nasdaqvar, cacvar, daxvar, jpvar, hkvar, djvarytd, spvarytd, nasvarytd, cacvarytd, daxvarytd, jpvarytd, hkvarytd
 
 #                                        Commodities
-
+'''
 def commodities():
     #Gold
     gld1 = yf.download("GC=F", prevdate, edate)
@@ -330,7 +330,7 @@ def commodities():
 
 st.text('FX & commodities')
 #st.dataframe(FXCOM)
-
+'''
 st.text('Indices internationaux')
 #st.dataframe(intlindices)
 st.write(indices())
@@ -444,7 +444,7 @@ buffer = io.BytesIO()
 with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
     
     # Write each dataframe to a different worksheet.
-    BAMcc.to_excel(writer, sheet_name='Cours de change BAM')
+    #BAMcc.to_excel(writer, sheet_name='Cours de change BAM')
     #FXCOM.to_excel(writer, sheet_name='FX & commodities')
     #intlindices.to_excel(writer, sheet_name='Indices internationaux')
     dfindex.to_excel(writer, sheet_name='Indices BVC')
