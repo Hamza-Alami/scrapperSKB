@@ -93,8 +93,8 @@ def euromad():
    
     eur2 = data2.decode()
     euro2 = json.loads(eur2)
-    #euro22 = euro2[0]
-    eurmad2 = 11.0548 #euro22.get("moyen")
+    euro22 = euro2[0]
+    eurmad2 = euro22.get("moyen")
     ####
 
     try:
@@ -145,8 +145,8 @@ def usdmad():
    
     usd2 = data2.decode()
     dol2 = json.loads(usd2)
-    #dol22 = dol2[0]
-    dolmad2 = 10.1355 #dol22.get("moyen")
+    dol22 = dol2[0]
+    dolmad2 = dol22.get("moyen")
     #####
 
     try:
