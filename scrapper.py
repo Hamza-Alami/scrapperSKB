@@ -59,7 +59,7 @@ st.text('Cours de référence BAM')
 #Scrapping eur mad and usd mad from BAM
 #scrap from BAM
 
-'''
+
 def euromad():
     
     headers = {
@@ -182,7 +182,7 @@ vareoy = [((eact-eeoy)/eact)*100, ((dact-deoy)/dact)*100]
 BAMcc['var %'] = varmad
 BAMcc['var ytd %'] = vareoy
 st.dataframe(BAMcc)
-'''
+
 
 #Scrap from yahoo finance
 
@@ -194,43 +194,43 @@ def indices():
     
     #Dow jones
     dj = yf.download("^DJI", prevdate, edate)
-    #dj30 = dj.Close[1]
-    #dj30var = ((dj30-dj.Close[0])*100)/dj.Close[0]
+    dj30 = dj.Close[1]
+    dj30var = ((dj30-dj.Close[0])*100)/dj.Close[0]
     #eoy
-    #djeoy = yf.download("^DJI", "2022-12-30", "2022-12-31")
-    #djeoye = djeoy.Close[0]
-    #djvarytd = ((dj30-djeoye)*100)/djeoye
+    djeoy = yf.download("^DJI", "2022-12-30", "2022-12-31")
+    djeoye = djeoy.Close[0]
+    djvarytd = ((dj30-djeoye)*100)/djeoye
 
 
     #spoos
     sp = yf.download("^GSPC", prevdate, edate)
-    #sp500 = sp.Close[1]
-    #sp500var = ((sp500-sp.Close[0])*100)/sp.Close[0]
+    sp500 = sp.Close[1]
+    sp500var = ((sp500-sp.Close[0])*100)/sp.Close[0]
     #eoy
-    #speoy = yf.download("^GSPC", "2022-12-30", "2022-12-31")
-    #speoye = speoy.Close[0]
-    #spvarytd = ((sp500-speoye)*100)/speoye
+    speoy = yf.download("^GSPC", "2022-12-30", "2022-12-31")
+    speoye = speoy.Close[0]
+    spvarytd = ((sp500-speoye)*100)/speoye
 
     #nasdaq
     nas = yf.download("^IXIC", prevdate, edate)
-    #nasdaq = nas.Close[1]
-    #nasdaqvar = ((nasdaq-nas.Close[0])*100)/nas.Close[0]
+    nasdaq = nas.Close[1]
+    nasdaqvar = ((nasdaq-nas.Close[0])*100)/nas.Close[0]
     #eoy
-    #naseoy = yf.download("^IXIC", "2022-12-30", "2022-12-31")
-    #naseoye = naseoy.Close[0]
-    #nasvarytd = ((nasdaq-naseoye)*100)/naseoye
+    naseoy = yf.download("^IXIC", "2022-12-30", "2022-12-31")
+    naseoye = naseoy.Close[0]
+    nasvarytd = ((nasdaq-naseoye)*100)/naseoye
 
     #cac40
     cac4 = yf.download("^FCHI", prevdate, edate)
-    #cac = cac4.Close[1]
-    #cacvar = ((cac-cac4.Close[0])*100)/cac4.Close[0]
+    cac = cac4.Close[1]
+    cacvar = ((cac-cac4.Close[0])*100)/cac4.Close[0]
     #eoy
-    #caceoy = yf.download("^FCHI", "2022-12-30", "2022-12-31")
-    #caceoye = caceoy.Close[0]
-    #cacvarytd = ((cac-caceoye)*100)/caceoye
+    caceoy = yf.download("^FCHI", "2022-12-30", "2022-12-31")
+    caceoye = caceoy.Close[0]
+    cacvarytd = ((cac-caceoye)*100)/caceoye
 
     #DAX
-    '''
+    
     dax3 = yf.download("^GDAXI", prevdate, edate)
     dax = dax3.Close[1]
     daxvar = ((dax-dax3.Close[0])*100)/dax3.Close[0]
@@ -256,11 +256,11 @@ def indices():
     hkeoy = yf.download("^HSI", "2022-12-30", "2022-12-31")
     hkeoye = hkeoy.Close[0]
     hkvarytd = ((hk-hkeoye)*100)/hkeoye
-    '''
-    return cac4, dj, sp #dj30, sp500, nasdaq, cac, dax, jp, hk, dj30var, sp500var, nasdaqvar, cacvar, daxvar, jpvar, hkvar, djvarytd, spvarytd, nasvarytd, cacvarytd, daxvarytd, jpvarytd, hkvarytd
+    
+    return dj30, sp500, nasdaq, cac, dax, jp, hk, dj30var, sp500var, nasdaqvar, cacvar, daxvar, jpvar, hkvar, djvarytd, spvarytd, nasvarytd, cacvarytd, daxvarytd, jpvarytd, hkvarytd
 
 #                                        Commodities
-'''
+
 def commodities():
     #Gold
     gld1 = yf.download("GC=F", prevdate, edate)
@@ -289,56 +289,54 @@ def commodities():
     silvereoye = silvereoy.Close[0]
     silvervarytd = ((silver-silvereoye)*100)/silvereoye
     
-    #return gld, oil, silver, gldvar, oilvar, silvervar, gldeoye, oileoye, silvereoye, gldvarytd, oilvarytd, silvervarytd
+    return gld, oil, silver, gldvar, oilvar, silvervar, gldeoye, oileoye, silvereoye, gldvarytd, oilvarytd, silvervarytd
 
 #                                          FX
 
 
 #eurodollar
-#eurusd1 = yf.download("EURUSD=X", prevdate, edate)
-#eurusd = eurusd1.Close[1]
+eurusd1 = yf.download("EURUSD=X", prevdate, edate)
+eurusd = eurusd1.Close[1]
 #eoy
-#eurusdeoy = yf.download("EURUSD=X", "2022-12-30", "2022-12-31")
-#eurusdeoye = eurusdeoy.Close[0]
+eurusdeoy = yf.download("EURUSD=X", "2022-12-30", "2022-12-31")
+eurusdeoye = eurusdeoy.Close[0]
 
-#eurusdvarytd = ((eurusd-eurusdeoye)*100)/eurusdeoye
-#eurusdvar = ((eurusd-eurusd1.Close[0])*100)/eurusd1.Close[0]
+eurusdvarytd = ((eurusd-eurusdeoye)*100)/eurusdeoye
+eurusdvar = ((eurusd-eurusd1.Close[0])*100)/eurusd1.Close[0]
 
 #calling funcs to lists
-#indiceslist = indices()
-#commolist = commodities()
+indiceslist = indices()
+commolist = commodities()
 
 #putting data into lists
-#Cours1 = [indiceslist[0], indiceslist[1], indiceslist[2], indiceslist[3], indiceslist[4], indiceslist[5], indiceslist[6]]
-#var1 = [indiceslist[7], indiceslist[8], indiceslist[9], indiceslist[10], indiceslist[11], indiceslist[12], indiceslist[13]]
+Cours1 = [indiceslist[0], indiceslist[1], indiceslist[2], indiceslist[3], indiceslist[4], indiceslist[5], indiceslist[6]]
+var1 = [indiceslist[7], indiceslist[8], indiceslist[9], indiceslist[10], indiceslist[11], indiceslist[12], indiceslist[13]]
 
-#vari = [indiceslist[14], indiceslist[15], indiceslist[16], indiceslist[17], indiceslist[18], indiceslist[19], indiceslist[20]]
+vari = [indiceslist[14], indiceslist[15], indiceslist[16], indiceslist[17], indiceslist[18], indiceslist[19], indiceslist[20]]
 
-#Cours2 =  [eurusd, commolist[1], commolist[0], commolist[2]]
-#var2 =  [eurusdvar, commolist[4], commolist[3], commolist[5]]
+Cours2 =  [eurusd, commolist[1], commolist[0], commolist[2]]
+var2 =  [eurusdvar, commolist[4], commolist[3], commolist[5]]
 
-#vari2 =  [eurusdvarytd, commolist[10], commolist[9], commolist[11]]
+vari2 =  [eurusdvarytd, commolist[10], commolist[9], commolist[11]]
 
 # dictionary of lists 
-#dictin = {'Cours': Cours1, 'var %': var1}
-#dictin2 = {'Cours': Cours2, 'var %': var2}
+dictin = {'Cours': Cours1, 'var %': var1}
+dictin2 = {'Cours': Cours2, 'var %': var2}
 
-#FXCOM = pd.DataFrame(dictin2,index=['EUR/USD','Brent', 'Gold', 'Silver'])
-#FXCOM['var ytd %'] = vari2
+FXCOM = pd.DataFrame(dictin2,index=['EUR/USD','Brent', 'Gold', 'Silver'])
+FXCOM['var ytd %'] = vari2
 
-#intlindices = pd.DataFrame(dictin,index=['Dow Jones','S&P500', 'Nasdaq', 'CAC40', 'DAX30', 'NIKKEI','Hang Seng'])
-#intlindices['var ytd %'] = vari
+intlindices = pd.DataFrame(dictin,index=['Dow Jones','S&P500', 'Nasdaq', 'CAC40', 'DAX30', 'NIKKEI','Hang Seng'])
+intlindices['var ytd %'] = vari
 
 st.text('FX & commodities')
 #st.dataframe(FXCOM)
-'''
 st.text('Indices internationaux')
 #st.dataframe(intlindices)
 indiceslist = indices()
 st.write(indiceslist[0])
 st.write(indiceslist[1])
 st.write(indiceslist[2])
-
 
 #BVCscrapper
 
@@ -449,9 +447,9 @@ buffer = io.BytesIO()
 with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
     
     # Write each dataframe to a different worksheet.
-    #BAMcc.to_excel(writer, sheet_name='Cours de change BAM')
-    #FXCOM.to_excel(writer, sheet_name='FX & commodities')
-    #intlindices.to_excel(writer, sheet_name='Indices internationaux')
+    BAMcc.to_excel(writer, sheet_name='Cours de change BAM')
+    FXCOM.to_excel(writer, sheet_name='FX & commodities')
+    intlindices.to_excel(writer, sheet_name='Indices internationaux')
     dfindex.to_excel(writer, sheet_name='Indices BVC')
     dfsect.to_excel(writer, sheet_name='Indices sectoriaux')
     FinalDF.to_excel(writer, sheet_name='Cours & Variations')
