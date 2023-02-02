@@ -436,7 +436,7 @@ mapping = {'StÃ© Boissons du Maroc': 'Sté Boissons du Maroc',
            'Maghreb OxygÃ¨ne':'Maghreb Oxygène'
           }
 
-FinalDF.soge.replace(mapping, regex=True)
+FinalDF.soge = FinalDF.soge.replace(mapping, regex=True)
 
 st.write(FinalDF)
 
