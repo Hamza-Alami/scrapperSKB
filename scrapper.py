@@ -430,12 +430,15 @@ df_merge_2['Var Ytd'] = ((df_merge_2['Cours']-df_merge_2['COURS AU 31/12/2022'])
 df_merge_2['Capitalisation'] = (df_merge_2['Cours']*df_merge_2['NofS'])
 FinalDF = df_merge_2[['soge', 'TICKER','Cours', 'Variation', 'Var Ytd', 'Volume Titre', 'Capitalisation']]
 
-#mapping = {'è': 'e'}
+mapping = {'StÃ© Boissons du Maroc': 'Sté Boissons du Maroc',
+           'CrÃ©dit Du Maroc': 'Crédit du Maroc',
+           'OulmÃ¨s': 'Oulmès',
+           'Maghreb OxygÃ¨ne':'Maghreb Oxygène'
+          }
 
-#FinalDF.soge.replace(mapping, regex=True)
+FinalDF.soge.replace(mapping, regex=True)
 
 st.write(FinalDF)
-st.write(FinalDF.soge)
 
 
 masi1=bvc.loadata('MASI',start=oneyrago,end=lyoum)
