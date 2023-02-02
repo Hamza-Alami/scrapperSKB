@@ -373,9 +373,7 @@ dfsect['Var%'] = pd.to_numeric(dfsect['Var%'], errors='coerce')
 dfsect['Var%'] = dfsect['Var%'].fillna(0)
 dfsect['Var% 31/12'] = dfsect['Var% 31/12'].fillna(0)
 
-mapping2 = {'MASI INGENIERIES ET BIENS DâEQUIPEMENT INDUSTRIELS': 'MASI INGENIERIES ET BIENS D EQUIPEMENT INDUSTRIELS'}
-
-dfsect.index = dfsect.index.replace(mapping2, regex=True)
+dfsect = dfsect.rename(index={'"MASI INGENIERIES ET BIENS DâEQUIPEMENT INDUSTRIELS"': 'MASI INGENIERIES ET BIENS D EQUIPEMENT INDUSTRIELS'})
 st.dataframe(dfsect)
 
 #Pondération et cours
