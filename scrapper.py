@@ -330,9 +330,9 @@ intlindices = pd.DataFrame(dictin,index=['Dow Jones','S&P500', 'Nasdaq', 'CAC40'
 intlindices['var ytd %'] = vari
 
 st.text('FX & commodities')
-#st.dataframe(FXCOM)
+st.dataframe(FXCOM)
 st.text('Indices internationaux')
-#st.dataframe(intlindices)
+st.dataframe(intlindices)
 indiceslist = indices()
 st.write(indiceslist[0])
 st.write(indiceslist[1])
