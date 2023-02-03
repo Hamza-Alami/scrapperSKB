@@ -25,6 +25,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
+import asyncio 
 import time
 
 
@@ -465,6 +466,15 @@ driver.get(URL)
 st.code(driver.page_source)
 
 #end of test 
+
+#test2
+link="https://www.casablanca-bourse.com/bourseweb/Activite-marche.aspx?Cat=22&IdLink=297"
+    request2 = requests.Session()
+    code_soup= request2.get(link,headers={'User-Agent': 'Mozilla/5.0'})
+    soup2 = BeautifulSoup(code_soup.content,features="lxml")
+    result=getAllIndex(soup2)
+st.write(result)
+#
 
 masi1=bvc.loadata('MASI',start=oneyrago,end=lyoum)
 masi3=bvc.loadata('MASI',start=threeyrsago,end=lyoum)
