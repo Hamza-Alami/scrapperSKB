@@ -384,7 +384,7 @@ courspond = pd.DataFrame(bvc.getPond())
 #test
 st.text('Volume de la séance :')
 recap=bvc.getIndexRecap()
-st.write(recap)
+st.write(recap['Volume Global'])
 s = pd.Series([recap['Volume Global']],
               name="Volume Global")
 voldf = s.to_frame()
@@ -449,7 +449,7 @@ rep = requests.get(url)
 soup = BeautifulSoup(rep.content, "html.parser")
 
 element = soup.find(id="FrontTabContainer1_ctl00_Capitalisation1_LBCapitalisation")
-v1 = element.text
+v1 = element
 
 st.write(v1)
 
