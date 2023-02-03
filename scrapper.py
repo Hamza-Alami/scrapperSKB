@@ -103,13 +103,14 @@ def euromad():
         response = conn.getresponse()
         data = response.read()
         conn.close()
+        eur = data.decode()
+        euro = json.loads(eur)
+        euro1 = euro[0]
+        eurmad = euro1.get("moyen")
     except Exception as e:
-        print("[Errno {0}] {1}".format(e.errno, e.strerror))
-        
-    eur = data.decode()
-    euro = json.loads(eur)
-    euro1 = euro[0]
-    eurmad = euro1.get("moyen")
+        st.write("[Errno {0}] {1}".format(e.errno, e.strerror))
+        eurmad = eurmad3
+   
     return eurmad, eurmad2, eurmad3
 
 def usdmad():
