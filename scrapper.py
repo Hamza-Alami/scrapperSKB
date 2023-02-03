@@ -20,6 +20,7 @@ import BVCscrap  as bvc
 import http.client, urllib.request, urllib.parse, urllib.error, base64
 import yfinance as yf
 from datetime import date
+from selenium import webdriver
 import time
 
 
@@ -443,17 +444,18 @@ FinalDF.soge = FinalDF.soge.replace(mapping, regex=True)
 
 st.write(FinalDF)
 
+#scrap with selenium test
 url = "https://www.casablanca-bourse.com/bourseweb/index.aspx"
-
-rep = requests.get(url)
-soup = BeautifulSoup(rep.content, "html.parser")
-
+driver = webdriver.Firefox()
+driver.get(url)
+soup = BeautifulSoup(driver.page_source, "html.parser")
 element = soup.find("div", {"class": "Indice-General"})
 v1 = element.text.strip()
-
 st.write(element)
 st.write(v1)
+driver.quit()
 
+#end of test 
 
 masi1=bvc.loadata('MASI',start=oneyrago,end=lyoum)
 masi3=bvc.loadata('MASI',start=threeyrsago,end=lyoum)
