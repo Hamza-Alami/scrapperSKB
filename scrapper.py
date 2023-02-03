@@ -22,13 +22,9 @@ import yfinance as yf
 from datetime import date
 from selenium import webdriver
 from selenium import webdriver
-from selenium.common.exceptions import TimeoutException
-from selenium.webdriver.common.by import By
-from selenium.webdriver.firefox.options import Options
-from selenium.webdriver.firefox.service import Service
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.ui import WebDriverWait
-from webdriver_manager.firefox import GeckoDriverManager
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 import time
 
 
@@ -454,20 +450,18 @@ st.write(FinalDF)
 
 #scrap with selenium test
 URL = "https://www.casablanca-bourse.com/bourseweb/index.aspx"
-TIMEOUT = 20
+@st.experimental_singleton
+def get_driver():
+    return webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
-st.title("Test Selenium")
+options = Options()
+options.add_argument('--disable-gpu')
+options.add_argument('--headless')
 
-firefoxOptions = Options()
-firefoxOptions.add_argument("--headless")
-service = Service(GeckoDriverManager().install())
-driver = webdriver.Firefox(
-    options=firefoxOptions,
-    service=service,
-)
+driver = get_driver()
 driver.get(URL)
 
-st.write(driver.page_source)
+st.code(driver.page_source)
 
 #end of test 
 
