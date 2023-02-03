@@ -87,14 +87,14 @@ def euromad():
         conn2.request("GET", "/cours/Version1/api/CoursVirement?%s" % params2, "{body}", headers)
         response2 = conn2.getresponse()
         data2 = response2.read()
+        eur2 = data2.decode()
         conn2.close()
+        euro2 = json.loads(eur2)
+        euro22 = euro2[0]
+        eurmad2 = euro22.get("moyen")
     except Exception as e:
-        print("[Errno {0}] {1}".format(e.errno, e.strerror))
-   
-    eur2 = data2.decode()
-    euro2 = json.loads(eur2)
-    euro22 = euro2[0]
-    eurmad2 = euro22.get("moyen")
+        st.write("[Errno {0}] {1}".format(e.errno, e.strerror))
+        eurmad2 = eurmad3
     ####
 
     try:
