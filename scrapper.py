@@ -5,7 +5,7 @@ import datetime
 from datetime import datetime as dt
 from datetime import timedelta
 import matplotlib.pyplot as plt
-import os
+import os, sys
 import base64
 import plost
 import requests
@@ -445,15 +445,19 @@ FinalDF.soge = FinalDF.soge.replace(mapping, regex=True)
 st.write(FinalDF)
 
 #scrap with selenium test
-url = "https://www.casablanca-bourse.com/bourseweb/index.aspx"
-driver = webdriver.Firefox()
-driver.get(url)
-soup = BeautifulSoup(driver.page_source, "html.parser")
-element = soup.find("div", {"class": "Indice-General"})
-v1 = element.text.strip()
-st.write(element)
-st.write(v1)
-driver.quit()
+@st.experimental_singleton
+def installff():
+  os.system('sbase install geckodriver')
+  os.system('ln -s /home/appuser/venv/lib/python3.7/site-packages/seleniumbase/drivers/geckodriver /home/appuser/venv/bin/geckodriver')
+
+_ = installff()
+from selenium.webdriver import FirefoxOptions
+opts = FirefoxOptions()
+opts.add_argument("--headless")
+browser = webdriver.Firefox(options=opts)
+
+browser.get("https://www.casablanca-bourse.com/bourseweb/index.aspx")
+st.write(browser.page_source)
 
 #end of test 
 
