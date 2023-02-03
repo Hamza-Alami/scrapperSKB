@@ -451,7 +451,9 @@ soup = BeautifulSoup(rep.content, "html.parser")
 element = soup.find(id="FrontTabContainer1_ctl00_Capitalisation1_LBCapitalisation")
 v1 = element
 
-st.write(v1)
+st.write(element)
+st.write(soup)
+
 
 masi1=bvc.loadata('MASI',start=oneyrago,end=lyoum)
 masi3=bvc.loadata('MASI',start=threeyrsago,end=lyoum)
