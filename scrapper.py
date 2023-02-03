@@ -384,6 +384,7 @@ courspond = pd.DataFrame(bvc.getPond())
 #test
 st.text('Volume de la séance :')
 recap=bvc.getIndexRecap()
+st.write(recap)
 s = pd.Series([recap['Volume Global']],
               name="Volume Global")
 voldf = s.to_frame()
