@@ -141,13 +141,15 @@ def usdmad():
         response2 = conn2.getresponse()
         data2 = response2.read()
         conn2.close()
+        usd2 = data2.decode()
+        dol2 = json.loads(usd2)
+        dol22 = dol2[0]
+        dolmad2 = dol22.get("moyen")
     except Exception as e:
-        print("[Errno {0}] {1}".format(e.errno, e.strerror))
+        st.write("[Errno {0}] {1}".format(e.errno, e.strerror))
+        dolmad2 = dolmad3
    
-    usd2 = data2.decode()
-    dol2 = json.loads(usd2)
-    dol22 = dol2[0]
-    dolmad2 = dol22.get("moyen")
+    
     #####
 
     try:
@@ -156,13 +158,14 @@ def usdmad():
         response = conn.getresponse()
         dataus = response.read()
         conn.close()
+        usd = dataus.decode()
+        usdt = json.loads(usd)
+        usdt1 = usdt[0]
+        dollarmad = usdt1.get("moyen")
     except Exception as e:
-        print("[Errno {0}] {1}".format(e.errno, e.strerror))
-   
-    usd = dataus.decode()
-    usdt = json.loads(usd)
-    usdt1 = usdt[0]
-    dollarmad = usdt1.get("moyen")
+        st.write("[Errno {0}] {1}".format(e.errno, e.strerror))
+        dollarmad = dolmad3
+    
     return dollarmad, dolmad2, dolmad3
 
 dirhameuro = euromad()
