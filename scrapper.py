@@ -22,6 +22,7 @@ import yfinance as yf
 from datetime import date
 import time
 
+
 #GITHUB READING
 # Downloading the csv file from your GitHub
 url = "https://raw.githubusercontent.com/Hamza-Alami/scrapperSKB/main/suppscrap.csv" # Make sure the url is the raw version of the file on GitHub
@@ -441,6 +442,15 @@ FinalDF.soge = FinalDF.soge.replace(mapping, regex=True)
 
 st.write(FinalDF)
 
+url = "https://www.casablanca-bourse.com/bourseweb/index.aspx"
+
+rep = requests.get(url)
+soup = BeautifulSoup(response.content, "html.parser")
+
+element = soup.find(id="FrontTabContainer1_ctl00_Capitalisation1_LBCapitalisation")
+v1 = element.text
+
+st.write(v1)
 
 masi1=bvc.loadata('MASI',start=oneyrago,end=lyoum)
 masi3=bvc.loadata('MASI',start=threeyrsago,end=lyoum)
