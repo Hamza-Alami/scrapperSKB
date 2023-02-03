@@ -93,7 +93,6 @@ def euromad():
         euro22 = euro2[0]
         eurmad2 = euro22.get("moyen")
     except Exception as e:
-        st.write("[Errno {0}] {1}".format(e.errno, e.strerror))
         eurmad2 = eurmad3
     ####
 
@@ -108,7 +107,6 @@ def euromad():
         euro1 = euro[0]
         eurmad = euro1.get("moyen")
     except Exception as e:
-        st.write("[Errno {0}] {1}".format(e.errno, e.strerror))
         eurmad = eurmad3
    
     return eurmad, eurmad2, eurmad3
@@ -146,7 +144,6 @@ def usdmad():
         dol22 = dol2[0]
         dolmad2 = dol22.get("moyen")
     except Exception as e:
-        st.write("[Errno {0}] {1}".format(e.errno, e.strerror))
         dolmad2 = dolmad3
    
     
@@ -163,7 +160,6 @@ def usdmad():
         usdt1 = usdt[0]
         dollarmad = usdt1.get("moyen")
     except Exception as e:
-        st.write("[Errno {0}] {1}".format(e.errno, e.strerror))
         dollarmad = dolmad3
     
     return dollarmad, dolmad2, dolmad3
