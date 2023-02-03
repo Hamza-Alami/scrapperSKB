@@ -445,7 +445,7 @@ st.write(FinalDF)
 url = "https://www.casablanca-bourse.com/bourseweb/index.aspx"
 
 rep = requests.get(url)
-soup = BeautifulSoup(response.content, "html.parser")
+soup = BeautifulSoup(rep.content, "html.parser")
 
 element = soup.find(id="FrontTabContainer1_ctl00_Capitalisation1_LBCapitalisation")
 v1 = element.text
