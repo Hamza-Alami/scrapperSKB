@@ -469,10 +469,10 @@ st.code(driver.page_source)
 
 #test2
 link="https://www.casablanca-bourse.com/bourseweb/Activite-marche.aspx?Cat=22&IdLink=297"
-    request2 = requests.Session()
-    code_soup= request2.get(link,headers={'User-Agent': 'Mozilla/5.0'})
-    soup2 = BeautifulSoup(code_soup.content,features="lxml")
-    result=getAllIndex(soup2)
+request2 = requests.Session()
+code_soup= request2.get(link,headers={'User-Agent': 'Mozilla/5.0'})
+soup2 = BeautifulSoup(code_soup.content,features="lxml")
+result=getAllIndex(soup2)
 st.write(result)
 #
 
