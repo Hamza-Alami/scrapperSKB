@@ -468,22 +468,11 @@ st.code(driver.page_source)
 #end of test 
 
 #test2
-
-def getAllIndex(soup):
-    indexSumry=getIndexSumry(soup)
-    indiceRent=getIndiceRentab(soup)
-    indiceDevis=getIndiceDevise(soup)
-    indiceDevisF=getIndiceDeviseF(soup)
-    indiceSect=getIndiceSect(soup)
-    return {"Resume indice":indexSumry,"Indice rentabilite":indiceRent,"Indices en devises":indiceDevis,
-           "Indice FTSE":indiceDevisF,"Indices sectoriels":indiceSect}
-
 link="https://www.casablanca-bourse.com/bourseweb/Activite-marche.aspx?Cat=22&IdLink=297"
 request2 = requests.Session()
 code_soup= request2.get(link,headers={'User-Agent': 'Mozilla/5.0'})
 soup2 = BeautifulSoup(code_soup.content,features="lxml")
-result=getAllIndex(soup2)
-st.write(result)
+st.write(soup2)
 #
 
 masi1=bvc.loadata('MASI',start=oneyrago,end=lyoum)
