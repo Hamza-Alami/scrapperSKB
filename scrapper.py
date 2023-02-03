@@ -20,12 +20,6 @@ import BVCscrap  as bvc
 import http.client, urllib.request, urllib.parse, urllib.error, base64
 import yfinance as yf
 from datetime import date
-from selenium import webdriver
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
-import asyncio 
 import time
 
 
@@ -65,7 +59,6 @@ oneyrago = lyoum.replace(year=lyoum.year-1)
 st.text('Cours de référence BAM')
 #Scrapping eur mad and usd mad from BAM
 #scrap from BAM
-
 
 def euromad():
     
@@ -208,7 +201,6 @@ def indices():
     djeoye = djeoy.Close[0]
     djvarytd = ((dj30-djeoye)*100)/djeoye
 
-
     #spoos
     sp = yf.download("^GSPC", prevdate, edate)
     sp500 = sp.Close[1]
@@ -300,7 +292,6 @@ def commodities():
 
 #                                          FX
 
-
 #eurodollar
 eurusd1 = yf.download("EURUSD=X", prevdate, edate)
 eurusd = eurusd1.Close[1]
@@ -385,7 +376,6 @@ st.dataframe(dfsect)
 
 #Pondération et cours
 courspond = pd.DataFrame(bvc.getPond())
-#st.dataframe(courspond)
 
 #test
 st.text('Volume de la séance :')
@@ -446,34 +436,7 @@ mapping = {'StÃ© Boissons du Maroc': 'Sté Boissons du Maroc',
           }
 
 FinalDF.soge = FinalDF.soge.replace(mapping, regex=True)
-
 st.write(FinalDF)
-
-#scrap with selenium test
-URL = "https://www.casablanca-bourse.com/bourseweb/index.aspx"
-@st.experimental_singleton
-def get_driver():
-    return webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
-
-options = Options()
-options.add_argument('--disable-gpu')
-options.add_argument('--headless')
-options.add_argument('user-agent=scrapperdata')
-
-driver = get_driver()
-driver.get(URL)
-
-st.code(driver.page_source)
-
-#end of test 
-
-#test2
-link="https://www.casablanca-bourse.com/bourseweb/Activite-marche.aspx?Cat=22&IdLink=297"
-request2 = requests.Session()
-code_soup= request2.get(link,headers={'User-Agent': 'Mozilla/5.0'})
-soup2 = BeautifulSoup(code_soup.content,features="lxml")
-st.write(soup2)
-#
 
 masi1=bvc.loadata('MASI',start=oneyrago,end=lyoum)
 masi3=bvc.loadata('MASI',start=threeyrsago,end=lyoum)
