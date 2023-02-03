@@ -448,11 +448,11 @@ url = "https://www.casablanca-bourse.com/bourseweb/index.aspx"
 rep = requests.get(url)
 soup = BeautifulSoup(rep.content, "html.parser")
 
-element = soup.find(id="FrontTabContainer1_ctl00_Capitalisation1_LBCapitalisation")
-v1 = element
+element = soup.find("div", {"class": "Indice-General"})
+v1 = element.text.strip()
 
 st.write(element)
-st.write(soup)
+st.write(v1)
 
 
 masi1=bvc.loadata('MASI',start=oneyrago,end=lyoum)
