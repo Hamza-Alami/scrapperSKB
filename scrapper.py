@@ -21,6 +21,14 @@ import http.client, urllib.request, urllib.parse, urllib.error, base64
 import yfinance as yf
 from datetime import date
 from selenium import webdriver
+from selenium import webdriver
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.common.by import By
+from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.firefox.service import Service
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+from webdriver_manager.firefox import GeckoDriverManager
 import time
 
 
@@ -445,19 +453,21 @@ FinalDF.soge = FinalDF.soge.replace(mapping, regex=True)
 st.write(FinalDF)
 
 #scrap with selenium test
-@st.experimental_singleton
-def installff():
-  os.system('sbase install geckodriver')
-  os.system('ln -s /home/appuser/venv/lib/python3.7/site-packages/seleniumbase/drivers/geckodriver /home/appuser/venv/bin/geckodriver')
+URL = "https://www.casablanca-bourse.com/bourseweb/index.aspx"
+TIMEOUT = 20
 
-_ = installff()
-from selenium.webdriver import FirefoxOptions
-opts = FirefoxOptions()
-opts.add_argument("--headless")
-browser = webdriver.Firefox(options=opts)
+st.title("Test Selenium")
 
-browser.get("https://www.casablanca-bourse.com/bourseweb/index.aspx")
-st.write(browser.page_source)
+firefoxOptions = Options()
+firefoxOptions.add_argument("--headless")
+service = Service(GeckoDriverManager().install())
+driver = webdriver.Firefox(
+    options=firefoxOptions,
+    service=service,
+)
+driver.get(URL)
+
+st.write(driver.page_source)
 
 #end of test 
 
