@@ -445,8 +445,8 @@ today = datetime.datetime.now().date()
 
 last = dfindex['Valeur']
 last2 = last.iloc[1]
-s1 = pd.Series([today, last2])
-masi1f = masi1.append(s1, ignore_index=True)
+s1 = pd.Series([today.strftime("%Y-%m-%d"), last2])
+masi1f = masi1.append(s1)
 
 #date fr
 # Get the day of the week as an integer (Monday is 0, Tuesday is 1, etc.)
