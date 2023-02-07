@@ -43,7 +43,7 @@ if no == 0 :
     sdate = lyoum - datetime.timedelta(days=3)
     prevdate = lyoum - datetime.timedelta(days=4)
 elif no == 1 :
-    sdate = lyoum - datetime.timedelta(days=2)
+    sdate = lyoum - datetime.timedelta(days=1)
     prevdate = lyoum - datetime.timedelta(days=4)
 else:
      sdate = lyoum - datetime.timedelta(days=1)
