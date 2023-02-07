@@ -441,6 +441,22 @@ st.write(FinalDF)
 
 masi1=bvc.loadata('MASI',start=oneyrago,end=ms1end)
 
+###test date fr
+
+# Get today's date
+today = dt.datetime.now().date()
+
+# Get the day of the week as an integer (Monday is 0, Tuesday is 1, etc.)
+day_of_week = today.weekday()
+
+# Define a list of days of the week in French
+days_of_week_fr = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche']
+
+# Print today's date and day of the week in French
+aujd = (days_of_week_fr[day_of_week], today.strftime("%d/%m/%Y"))
+st.write(aujd)
+###
+
 #to excel sheets
 buffer = io.BytesIO()
 
@@ -457,6 +473,7 @@ with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
     FinalDF.to_excel(writer, sheet_name='Cours & Variations')
     voldf.to_excel(writer, sheet_name='Volume global')
     masi1.to_excel(writer, sheet_name='Masi Hist 1YR')
+    aujd.to_excel(writer, sheet_name='Date')
 
     # Close the Pandas Excel writer and output the Excel file to the buffer
     
