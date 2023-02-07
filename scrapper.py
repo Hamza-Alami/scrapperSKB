@@ -32,6 +32,7 @@ supportsc = pd.read_csv(io.StringIO(download.decode('utf-8')))
 #end
 
 lyoum = date.today()
+ms1end = lyoum + datetime.timedelta(days=1)
 no = lyoum.weekday()
 
 now = dt.now()
@@ -438,8 +439,7 @@ mapping = {'StÃ© Boissons du Maroc': 'Sté Boissons du Maroc',
 FinalDF.soge = FinalDF.soge.replace(mapping, regex=True)
 st.write(FinalDF)
 
-masi1=bvc.loadata('MASI',start=oneyrago,end=lyoum)
-masi3=bvc.loadata('MASI',start=threeyrsago,end=lyoum)
+masi1=bvc.loadata('MASI',start=oneyrago,end=ms1end)
 
 #to excel sheets
 buffer = io.BytesIO()
@@ -457,8 +457,6 @@ with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
     FinalDF.to_excel(writer, sheet_name='Cours & Variations')
     voldf.to_excel(writer, sheet_name='Volume global')
     masi1.to_excel(writer, sheet_name='Masi Hist 1YR')
-    masi3.to_excel(writer, sheet_name='Masi Hist 3YR')
-
 
     # Close the Pandas Excel writer and output the Excel file to the buffer
     
