@@ -441,7 +441,8 @@ st.write(FinalDF)
 masi1=bvc.loadata('MASI',start=oneyrago,end=lyoum)
 
 last = dfindex['Valeur']
-st.write(last)
+last2 = last.loc[ 'MASI' , : ]
+st.write(last2)
 
 ###test date fr
 
@@ -460,6 +461,7 @@ st.write(aujd)
 aujddf = pd.Series([aujd],
               name="Date")
 aujddff = aujddf.to_frame()
+
 ###
 
 #to excel sheets
