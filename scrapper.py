@@ -32,7 +32,6 @@ supportsc = pd.read_csv(io.StringIO(download.decode('utf-8')))
 #end
 
 lyoum = date.today()
-ms1end = lyoum + datetime.timedelta(days=1)
 no = lyoum.weekday()
 
 now = dt.now()
@@ -439,7 +438,10 @@ mapping = {'StÃ© Boissons du Maroc': 'Sté Boissons du Maroc',
 FinalDF.soge = FinalDF.soge.replace(mapping, regex=True)
 st.write(FinalDF)
 
-masi1=bvc.loadata('MASI',start=oneyrago,end=ms1end)
+masi1=bvc.loadata('MASI',start=oneyrago,end=lyoum)
+
+last = dfindex['Valeur']
+st.write(last)
 
 ###test date fr
 
