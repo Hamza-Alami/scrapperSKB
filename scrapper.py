@@ -446,7 +446,7 @@ today = datetime.datetime.now().date()
 last = dfindex['Valeur']
 last2 = last.iloc[1]
 s1 = pd.Series([today.strftime("%Y-%m-%d"), last2])
-masi1f = masi1.append(s1)
+#masi1f = masi1.append(s1)
 
 #date fr
 # Get the day of the week as an integer (Monday is 0, Tuesday is 1, etc.)
@@ -479,7 +479,7 @@ with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
     dfsect.to_excel(writer, sheet_name='Indices sectoriaux')
     FinalDF.to_excel(writer, sheet_name='Cours & Variations')
     voldf.to_excel(writer, sheet_name='Volume global')
-    masi1f.to_excel(writer, sheet_name='Masi Hist 1YR')
+    masi1.to_excel(writer, sheet_name='Masi Hist 1YR')
     aujddff.to_excel(writer, sheet_name='Date')
 
     # Close the Pandas Excel writer and output the Excel file to the buffer
