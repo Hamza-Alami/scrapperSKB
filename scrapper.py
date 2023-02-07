@@ -440,15 +440,15 @@ st.write(FinalDF)
 
 masi1=bvc.loadata('MASI',start=oneyrago,end=lyoum)
 
-last = dfindex['Valeur']
-last2 = last.iloc[1]
-st.write(last2)
-
-###test date fr
-
 # Get today's date
 today = datetime.datetime.now().date()
 
+last = dfindex['Valeur']
+last2 = last.iloc[1]
+s1 = pd.Series([today, last2])
+masi1f = masi1.append(s1)
+
+#date fr
 # Get the day of the week as an integer (Monday is 0, Tuesday is 1, etc.)
 day_of_week = today.weekday()
 
@@ -479,7 +479,7 @@ with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
     dfsect.to_excel(writer, sheet_name='Indices sectoriaux')
     FinalDF.to_excel(writer, sheet_name='Cours & Variations')
     voldf.to_excel(writer, sheet_name='Volume global')
-    masi1.to_excel(writer, sheet_name='Masi Hist 1YR')
+    masi1f.to_excel(writer, sheet_name='Masi Hist 1YR')
     aujddff.to_excel(writer, sheet_name='Date')
 
     # Close the Pandas Excel writer and output the Excel file to the buffer
