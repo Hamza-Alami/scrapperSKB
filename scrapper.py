@@ -441,7 +441,7 @@ st.write(FinalDF)
 masi1=bvc.loadata('MASI',start=oneyrago,end=lyoum)
 
 last = dfindex['Valeur']
-last2 = last.iloc[ 'MASI']
+last2 = last.iloc[1]
 st.write(last2)
 
 ###test date fr
