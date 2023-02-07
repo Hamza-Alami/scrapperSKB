@@ -444,7 +444,7 @@ masi1=bvc.loadata('MASI',start=oneyrago,end=ms1end)
 ###test date fr
 
 # Get today's date
-today = dt.datetime.now().date()
+today = datetime.datetime.now().date()
 
 # Get the day of the week as an integer (Monday is 0, Tuesday is 1, etc.)
 day_of_week = today.weekday()
