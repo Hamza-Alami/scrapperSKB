@@ -493,10 +493,5 @@ notation = bvc.notation()
 seance2 = []
 for val in enumerate(notation):
     seance2.append(val)
-    return val
     
 st.write(seance2)
-st.write(val)
-st.write(type(val))
-
-        
