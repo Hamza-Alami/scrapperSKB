@@ -393,6 +393,8 @@ y = json.loads(x)
 z = y['result']
 trntrn = z[0]
     
+st.write(trntrn)
+    
 seance = []
 for i, val in enumerate(z):
     sep = ' '
