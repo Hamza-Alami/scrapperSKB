@@ -494,3 +494,11 @@ with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
         data=buffer,
         file_name="ds.xlsx"
     )
+    
+    notation = bvc.notation()
+    st.write(type(notation))
+    
+    #seance2 = []
+    #for val in enumerate(notation):
+        #cours=bvc.getCours(val)
+        
