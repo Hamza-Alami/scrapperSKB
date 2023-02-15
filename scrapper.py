@@ -494,6 +494,6 @@ bingo = pd.DataFrame(notation, columns=['ticker'])
 test = bvc.getPond()
 test2 = pd.DataFrame.from_dict(test)
 test3 = test2.Instrument
-test3['test'] = bvc.getCours(test3['Instrument'])
+test3['test'] = bvc.getCours(test3.Instrument)
 
 st.write(test3)
