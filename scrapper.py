@@ -491,8 +491,9 @@ with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
 notation = ["Addoha","AFMA","Afric Indus","Afriquia Gaz","Agma","Alliances","Aluminium Maroc","Aradei Capital","ATLANTASANAD","Attijariwafa","Auto Hall","Auto Nejma","BALIMA","BOA","BCP","BMCI","Cartier Saada","CDM","CIH","Ciments Maroc","CMT","Colorado","COSUMAR","CTM","Dari Couspate","Delattre Lev","Delta Holding","Diac Salaf","DISWAY","Ennakl","EQDOM","FENIE BROSSETTE","HPS","IBMaroc","Immr Invest","INVOLYS","Jet Contractors","LABEL VIE","LafargeHolcim","Lesieur Cristal","Lydec","M2M Group","Maghreb Oxygene","Maghrebail","Managem","Maroc Leasing","Maroc Telecom","Med Paper","Microdata","Mutandis","Oulmes","PROMOPHARM","Rebab Company","Res.Dar Saada","Risma","S2M","Saham Assurance","SALAFIN","SMI","Stokvis Nord Afr","SNEP","SODEP","Sonasid","SRM","Ste Boissons","STROC Indus","TAQA Morocco","Timar","Total Maroc","Unimer","SOTHEMA","Wafa Assur","Zellidja"]
 bingo = pd.DataFrame(notation, columns=['ticker'])
 
-st.write(bvc.getCours("ADH"))
-st.write(bvc.getCours("AFMA"))
-st.write(bvc.getCours("Afric Indus"))
+test = bvc.getPond()
+test2 = test.Instrument
 
-st.write(bingo)
+#st.write(bvc.getCours("ADH"))
+
+st.write(test2)
