@@ -491,16 +491,6 @@ with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
 '''
     
 notation = bvc.notation()
-seance2 = []
-for val in notation:
-    seance2.append(val)
-st.write(seance2)
-
-bingo = pd.DataFrame(seance2, columns=['ticker'])
-bingo['test'] = bvc
+bingo = pd.DataFrame(notation, columns=['ticker'])
+bingo['test'] = bvc.getCours(bingo['ticker'])
 st.write(bingo)
-
-cours=bvc.getCours("BOA")
-ding = cours["Données_Seance"]
-st.write(ding["Volume"].astype(float))
-st.write(type(ding["Volume"].astype(float)))
