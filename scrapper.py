@@ -497,8 +497,7 @@ test3 = test2.Instrument
 
 
 x = bvc.getCours("BOA")
-y = x["Données_Seance"]
-z = y["Volume"]
-st.write(z)
+
+st.write(x)
 
 st.write(test3)
