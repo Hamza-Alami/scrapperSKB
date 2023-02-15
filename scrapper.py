@@ -502,5 +502,5 @@ st.write(bingo)
 
 cours=bvc.getCours("BOA")
 ding = cours["Données_Seance"]
-st.write(ding["Volume"])
-st.write(type(ding["Volume"]))
+st.write(ding["Volume"].astype(float))
+st.write(type(ding["Volume"].astype(float)))
