@@ -21,7 +21,6 @@ import http.client, urllib.request, urllib.parse, urllib.error, base64
 import yfinance as yf
 from datetime import date
 import time
-
 '''
 #GITHUB READING
 # Downloading the csv file from your GitHub
@@ -445,7 +444,6 @@ today = datetime.datetime.now().date()
 last = dfindex['Valeur']
 last2 = last.iloc[1]
 s1 = pd.Series([today.strftime("%Y-%m-%d"), last2])
-#masi1f = masi1.append(s1)
 
 #date fr
 # Get the day of the week as an integer (Monday is 0, Tuesday is 1, etc.)
@@ -491,8 +489,8 @@ with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
 '''
     
 notation = bvc.notation()
-notation.remove('MASI')
-notation.remove('MSI20')
-bingo = pd.DataFrame(notation, columns=['ticker'])
-bingo['test'] = bvc.getCours(bingo['ticker'])
-st.write(bingo)
+
+#bingo = pd.DataFrame(notation, columns=['ticker'])
+#bingo['test'] = bvc.getCours(bingo['ticker'])
+
+st.write(notation)
