@@ -488,5 +488,25 @@ with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
     )
 '''
 
-data=bvc.loadmany(['Akdital','Timar'],start="2023-02-10",end='2023-02-15')
-st.write(data)
+#Scraping stock data from le Boursier 
+response_API = requests.get('https://medias24.com/content/api?method=getAllStocks&format=json')
+x = response_API.content
+y = json.loads(x)
+z = y['result']
+trntrn = z[0]
+        
+seance = []
+for i, val in enumerate(z):
+    sep = ' '
+    stripped = val["datetime"].split(sep, 1)[0]
+    seance.append({'Ticker': val["name"],'Cours': val["cours"], 'Cloture': val["cloture"],'Variation': val["variation"], 'Volume Titre': val["volumeTitre"],"derniere transaction" : stripped})
+    fulldf = pd.DataFrame(seance)
+    
+fulldf['derniere transaction'] = pd.to_datetime(fulldf['derniere transaction'], infer_datetime_format=True)
+fulldf['derniere transaction'] = fulldf['derniere transaction'].dt.date
+tradedtoday = fulldf['derniere transaction'] < lyoum
+fulldf.loc[tradedtoday, 'Volume Titre'] = 0
+fulldf.loc[tradedtoday, 'Variation'] = 0
+
+#data=bvc.loadmany([],start="2023-02-10",end='2023-02-15')
+st.write(fulldf)
