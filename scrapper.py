@@ -392,14 +392,11 @@ x = response_API.content
 y = json.loads(x)
 z = y['result']
 trntrn = z[0]
-    
-st.write(trntrn)
-    
+        
 seance = []
 for i, val in enumerate(z):
     sep = ' '
     stripped = val["datetime"].split(sep, 1)[0]
-    #val["datetime"] = dt.strptime(val["datetime"],  '%y%m%d %H%M%S.%f')
     seance.append({'Ticker': val["name"],'Cours': val["cours"], 'Cloture': val["cloture"],'Variation': val["variation"], 'Volume Titre': val["volumeTitre"],"derniere transaction" : stripped})
     fulldf = pd.DataFrame(seance)
     
@@ -459,9 +456,6 @@ days_of_week_fr = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 
 
 # Print today's date and day of the week in French
 aujd = (days_of_week_fr[day_of_week], today.strftime("%d/%m/%Y"))
-#aujddf = pd.Series([aujd],
-              #name="Date")
-#aujddff = aujddf.to_frame()
 data0 = [[aujd[0], aujd[1]]]
 aujddf = pd.DataFrame(data0, columns=['Jour', 'Date'])
 st.write(aujddf)
@@ -495,10 +489,14 @@ with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
         file_name="ds.xlsx"
     )
     
-    notation = bvc.notation()
-    st.write(type(notation))
+notation = bvc.notation()
+seance2 = []
+for val in enumerate(notation):
+    seance2.append(val)
+    return val
     
-    #seance2 = []
-    #for val in enumerate(notation):
-        #cours=bvc.getCours(val)
+st.write(seance2)
+st.write(val)
+st.write(type(val))
+
         
