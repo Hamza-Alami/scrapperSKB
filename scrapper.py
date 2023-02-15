@@ -496,7 +496,7 @@ test2 = pd.DataFrame.from_dict(test)
 test3 = test2.Instrument
 
 
-x = bvc.getCours("Attijariwafa")
+x = bvc.getCours("Timar")
 y = x["Données_Seance"]
 z = y["Volume"]
 st.write(z)
