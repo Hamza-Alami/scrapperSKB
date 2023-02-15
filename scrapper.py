@@ -491,7 +491,7 @@ with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
 '''
     
 notation = bvc.notation()
-notation.remove('MASI')
+notation.remove('MASI','MSI20')
 
 bingo = pd.DataFrame(notation, columns=['ticker'])
 #bingo['test'] = bvc.getCours(bingo['ticker'])
