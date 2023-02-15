@@ -488,7 +488,8 @@ with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
     )
 '''
 
-#Scraping stock data from le Boursier 
+#Scraping stock data from le Boursier
+lyoum = date.today()
 response_API = requests.get('https://medias24.com/content/api?method=getAllStocks&format=json')
 x = response_API.content
 y = json.loads(x)
