@@ -488,5 +488,5 @@ with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
     )
 '''
 
-data=bvc.loadmany(['BCP','BMCI','BOA','CIH'],start="2021-08-30",end='2021-09-04')
+data=bvc.loadmany(['BCP','BMCI','BOA','CIH'],start="2023-02-10",end='2023-02-15')
 st.write(data)
