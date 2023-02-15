@@ -493,6 +493,7 @@ with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
 notation = bvc.notation()
 seance2 = []
 for val in enumerate(notation):
-    seance2.append(val)
+    t = cours[val]
+    seance2.append(t)
     
 st.write(seance2)
