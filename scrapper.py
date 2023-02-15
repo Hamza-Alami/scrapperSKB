@@ -22,7 +22,7 @@ import yfinance as yf
 from datetime import date
 import time
 
-
+'''
 #GITHUB READING
 # Downloading the csv file from your GitHub
 url = "https://raw.githubusercontent.com/Hamza-Alami/scrapperSKB/main/suppscrap.csv" # Make sure the url is the raw version of the file on GitHub
@@ -488,6 +488,7 @@ with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
         data=buffer,
         file_name="ds.xlsx"
     )
+'''
     
 notation = bvc.notation()
 seance2 = []
