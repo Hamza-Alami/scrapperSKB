@@ -494,7 +494,7 @@ notation = bvc.notation()
 seance2 = []
 for val in enumerate(notation):
     x = val[1]
-    t = cours[x]
-    seance2.append(t)
+    #t = cours[x]
+    seance2.append(x)
     
 st.write(seance2)
