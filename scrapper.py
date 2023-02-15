@@ -497,4 +497,10 @@ for val in notation:
 st.write(seance2)
 
 bingo = pd.DataFrame(seance2, columns=['ticker'])
+bingo['test'] = bvc
 st.write(bingo)
+
+cours=bvc.getCours("BOA")
+ding = cours["Données_Seance"]
+st.write(ding)
+st.write(type(ding))
