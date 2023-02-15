@@ -496,7 +496,7 @@ test2 = pd.DataFrame.from_dict(test)
 test3 = test2.Instrument
 for i in notation:
     x = bvc.getCours(i)
-    y = cours["Données_Seance"]
+    y = x["Données_Seance"]
     z = y["Volume"]
     st.write(z)
 
