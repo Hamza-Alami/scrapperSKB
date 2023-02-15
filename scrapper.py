@@ -509,5 +509,6 @@ tradedtoday = fulldf['derniere transaction'] < lyoum
 fulldf.loc[tradedtoday, 'Volume Titre'] = 0
 fulldf.loc[tradedtoday, 'Variation'] = 0
 
-#data=bvc.loadmany([],start="2023-02-10",end='2023-02-15')
-st.write(fulldf)
+data=bvc.loadmany(fulldf['Ticker'],start="2023-02-10",end='2023-02-15')
+
+st.write(data)
