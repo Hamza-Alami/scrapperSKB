@@ -21,7 +21,7 @@ import http.client, urllib.request, urllib.parse, urllib.error, base64
 import yfinance as yf
 from datetime import date
 import time
-'''
+
 #GITHUB READING
 # Downloading the csv file from your GitHub
 url = "https://raw.githubusercontent.com/Hamza-Alami/scrapperSKB/main/suppscrap.csv" # Make sure the url is the raw version of the file on GitHub
@@ -486,30 +486,9 @@ with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
         data=buffer,
         file_name="ds.xlsx"
     )
-'''
 
-#Scraping stock data from le Boursier
-lyoum = date.today()
-response_API = requests.get('https://medias24.com/content/api?method=getAllStocks&format=json')
-x = response_API.content
-y = json.loads(x)
-z = y['result']
-trntrn = z[0]
-        
-seance = []
-for i, val in enumerate(z):
-    sep = ' '
-    stripped = val["datetime"].split(sep, 1)[0]
-    seance.append({'Ticker': val["name"],'Cours': val["cours"], 'Cloture': val["cloture"],'Variation': val["variation"], 'Volume Titre': val["volumeTitre"],"derniere transaction" : stripped})
-    fulldf = pd.DataFrame(seance)
-    
-fulldf['derniere transaction'] = pd.to_datetime(fulldf['derniere transaction'], infer_datetime_format=True)
-fulldf['derniere transaction'] = fulldf['derniere transaction'].dt.date
-tradedtoday = fulldf['derniere transaction'] < lyoum
-fulldf.loc[tradedtoday, 'Volume Titre'] = 0
-fulldf.loc[tradedtoday, 'Variation'] = 0
 
 data=bvc.loadmany(['Addoha','AFMA','Afric Indus','Afriquia Gaz','Agma','Alliances','Aluminium Maroc','Aradei Capital','ATLANTASANAD','Attijariwafa','Auto Hall','Auto Nejma','BALIMA','BOA','BCP','BMCI','Cartier Saada','CDM','CIH','Ciments Maroc','CMT','Colorado','COSUMAR','CTM','Dari Couspate','Delta Holding','DISWAY','Ennakl','EQDOM','FENIE BROSSETTE','HPS','Immr Invest','INVOLYS','Jet Contractors','LABEL VIE','LafargeHolcim','Lesieur Cristal','M2M Group','Maghreb Oxygene','Maghrebail','Managem','Maroc Leasing','Maroc Telecom','Microdata','Mutandis','Oulmes','PROMOPHARM','Rebab Company','Res.Dar Saada','Risma','S2M','Saham Assurance','SALAFIN','SMI','Stokvis Nord Afr','SNEP','SODEP','Sonasid','SRM','Ste Boissons','STROC Indus','TAQA Morocco','Timar','Total Maroc','Unimer','SOTHEMA','Wafa Assur','Zellidja'],start="2023-02-09",end='2023-02-15')
 #,'Med Paper'
-st.write('Weekly Hist')
+st.text('Weekly Hist')
 st.write(data.T)
