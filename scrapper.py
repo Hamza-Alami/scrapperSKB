@@ -492,7 +492,7 @@ notation = ["Addoha","AFMA","Afric Indus","Afriquia Gaz","Agma","Alliances","Alu
 bingo = pd.DataFrame(notation, columns=['ticker'])
 
 test = bvc.getPond()
-test2 = test.Instrument
+test2 = test.to_frame()
 
 #st.write(bvc.getCours("ADH"))
 
