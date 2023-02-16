@@ -348,9 +348,11 @@ dfindex['Var %'] = dfindex['Var %'].apply(lambda x: x.replace(" %", ""))
 dfindex['Var % 31/12'] = dfindex['Var % 31/12'].apply(lambda x: x.replace(" %", ""))
 dfindex['Var % 31/12'] = dfindex['Var % 31/12'].apply(lambda x: x.replace(",", "."))
 dfindex['Var %'] = dfindex['Var %'].apply(lambda x: x.replace(",", "."))
+dfindex['Valeur'] = dfindex['Valeur'].apply(lambda x: x.replace(",", "."))
 
 dfindex['Var % 31/12'] = pd.to_numeric(dfindex['Var % 31/12'], errors='coerce')
 dfindex['Var %'] = pd.to_numeric(dfindex['Var %'], errors='coerce')
+dfindex['Valeur'] = pd.to_numeric(dfindex['Valeur'], errors='coerce')
 
 dfindex['Var %'] = dfindex['Var %'].fillna(0)
 dfindex['Var % 31/12'] = dfindex['Var % 31/12'].fillna(0)
@@ -466,7 +468,7 @@ buffer = io.BytesIO()
 with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
     
     # Write each dataframe to a different worksheet.
-    #BAMcc.to_excel(writer, sheet_name='Cours de change BAM')
+    BAMcc.to_excel(writer, sheet_name='Cours de change BAM')
     FXCOM.to_excel(writer, sheet_name='FX & commodities')
     intlindices.to_excel(writer, sheet_name='Indices internationaux')
     dfindex.to_excel(writer, sheet_name='Indices BVC')
@@ -486,6 +488,6 @@ with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
         file_name="ds.xlsx"
     )
 
-data=bvc.loadmany(['Addoha','AFMA','Afric Indus','Afriquia Gaz','Agma','Alliances','Aluminium Maroc','Aradei Capital','ATLANTASANAD','Attijariwafa','Auto Hall','Auto Nejma','BALIMA','BOA','BCP','BMCI','Cartier Saada','CDM','CIH','Ciments Maroc','CMT','Colorado','COSUMAR','CTM','Dari Couspate','Delta Holding','DISWAY','Ennakl','EQDOM','FENIE BROSSETTE','HPS','Immr Invest','INVOLYS','Jet Contractors','LABEL VIE','LafargeHolcim','Lesieur Cristal','M2M Group','Maghreb Oxygene','Maghrebail','Managem','Maroc Leasing','Maroc Telecom','Microdata','Mutandis','Oulmes','PROMOPHARM','Rebab Company','Res.Dar Saada','Risma','S2M','Saham Assurance','SALAFIN','SMI','Stokvis Nord Afr','SNEP','SODEP','Sonasid','SRM','Ste Boissons','STROC Indus','TAQA Morocco','Timar','Total Maroc','Unimer','SOTHEMA','Wafa Assur','Zellidja'],start="2023-02-09",end='2023-02-15')
-st.text('Weekly Hist')
-st.write(data.T)
+#data=bvc.loadmany(['Addoha','AFMA','Afric Indus','Afriquia Gaz','Agma','Alliances','Aluminium Maroc','Aradei Capital','ATLANTASANAD','Attijariwafa','Auto Hall','Auto Nejma','BALIMA','BOA','BCP','BMCI','Cartier Saada','CDM','CIH','Ciments Maroc','CMT','Colorado','COSUMAR','CTM','Dari Couspate','Delta Holding','DISWAY','Ennakl','EQDOM','FENIE BROSSETTE','HPS','Immr Invest','INVOLYS','Jet Contractors','LABEL VIE','LafargeHolcim','Lesieur Cristal','M2M Group','Maghreb Oxygene','Maghrebail','Managem','Maroc Leasing','Maroc Telecom','Microdata','Mutandis','Oulmes','PROMOPHARM','Rebab Company','Res.Dar Saada','Risma','S2M','Saham Assurance','SALAFIN','SMI','Stokvis Nord Afr','SNEP','SODEP','Sonasid','SRM','Ste Boissons','STROC Indus','TAQA Morocco','Timar','Total Maroc','Unimer','SOTHEMA','Wafa Assur','Zellidja'],start="2023-02-09",end='2023-02-15')
+#st.text('Weekly Hist')
+#st.write(data.T)
