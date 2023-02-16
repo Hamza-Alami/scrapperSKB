@@ -486,6 +486,6 @@ with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
         file_name="ds.xlsx"
     )
 
-#data=bvc.loadmany(['Addoha','AFMA','Afric Indus','Afriquia Gaz','Agma','Alliances','Aluminium Maroc','Aradei Capital','ATLANTASANAD','Attijariwafa','Auto Hall','Auto Nejma','BALIMA','BOA','BCP','BMCI','Cartier Saada','CDM','CIH','Ciments Maroc','CMT','Colorado','COSUMAR','CTM','Dari Couspate','Delta Holding','DISWAY','Ennakl','EQDOM','FENIE BROSSETTE','HPS','Immr Invest','INVOLYS','Jet Contractors','LABEL VIE','LafargeHolcim','Lesieur Cristal','M2M Group','Maghreb Oxygene','Maghrebail','Managem','Maroc Leasing','Maroc Telecom','Microdata','Mutandis','Oulmes','PROMOPHARM','Rebab Company','Res.Dar Saada','Risma','S2M','Saham Assurance','SALAFIN','SMI','Stokvis Nord Afr','SNEP','SODEP','Sonasid','SRM','Ste Boissons','STROC Indus','TAQA Morocco','Timar','Total Maroc','Unimer','SOTHEMA','Wafa Assur','Zellidja'],start="2023-02-09",end='2023-02-15')
-#st.text('Weekly Hist')
-#st.write(data.T)
+data=bvc.loadmany(['Addoha','AFMA','Afric Indus','Afriquia Gaz','Agma','Alliances','Aluminium Maroc','Aradei Capital','ATLANTASANAD','Attijariwafa','Auto Hall','Auto Nejma','BALIMA','BOA','BCP','BMCI','Cartier Saada','CDM','CIH','Ciments Maroc','CMT','Colorado','COSUMAR','CTM','Dari Couspate','Delta Holding','DISWAY','Ennakl','EQDOM','FENIE BROSSETTE','HPS','Immr Invest','INVOLYS','Jet Contractors','LABEL VIE','LafargeHolcim','Lesieur Cristal','M2M Group','Maghreb Oxygene','Maghrebail','Managem','Maroc Leasing','Maroc Telecom','Microdata','Mutandis','Oulmes','PROMOPHARM','Rebab Company','Res.Dar Saada','Risma','S2M','Saham Assurance','SALAFIN','SMI','Stokvis Nord Afr','SNEP','SODEP','Sonasid','SRM','Ste Boissons','STROC Indus','TAQA Morocco','Timar','Total Maroc','Unimer','SOTHEMA','Wafa Assur','Zellidja'],start="2023-02-09",end='2023-02-15')
+st.text('Weekly Hist')
+st.write(data.T)
