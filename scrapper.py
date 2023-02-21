@@ -281,8 +281,11 @@ def commodities():
     gldvarytd = ((gld/gldeoye)*100)/gldeoye
 
     #Brent
-    oil1 = yf.download("BZ=F", prevdate, edate)
-    oil = oil1.Close[1]
+    try:
+        oil1 = yf.download("BZ=F", prevdate, edate)
+        oil = oil1.Close[1]
+    except Exception as e:
+        oil = oil1.Close[0]
     oilvar = ((oil/oil1.Close[0])*100)/oil1.Close[0]
     #eoy
     oileoy = yf.download("BZ=F", "2022-12-30", "2022-12-31")
@@ -290,6 +293,7 @@ def commodities():
     oilvarytd = ((oil-oileoye)*100)/oileoye
 
     #silver
+    
     silver1 = yf.download("SI=F", prevdate, edate)
     silver = silver1.Close[0]
     silvervar = ((silver-silver1.Close[0])*100)/silver1.Close[0]
