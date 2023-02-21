@@ -191,8 +191,11 @@ edate = lyoum
 def indices():
     
     #Dow jones
-    dj = yf.download("^DJI", prevdate, edate)
-    dj30 = dj.Close[1]
+    try:
+        dj = yf.download("^DJI", prevdate, edate)
+        dj30 = dj.Close[1]
+    except Exception as e:
+        dj30 = dj.Close[0]
     dj30var = ((dj30-dj.Close[0])*100)/dj.Close[0]
     #eoy
     djeoy = yf.download("^DJI", "2022-12-30", "2022-12-31")
@@ -200,8 +203,11 @@ def indices():
     djvarytd = ((dj30-djeoye)*100)/djeoye
 
     #spoos
-    sp = yf.download("^GSPC", prevdate, edate)
-    sp500 = sp.Close[1]
+    try:
+        sp = yf.download("^GSPC", prevdate, edate)
+        sp500 = sp.Close[1]
+    except Exception as e:
+        sp500 = sp.Close[0]
     sp500var = ((sp500-sp.Close[0])*100)/sp.Close[0]
     #eoy
     speoy = yf.download("^GSPC", "2022-12-30", "2022-12-31")
@@ -209,8 +215,11 @@ def indices():
     spvarytd = ((sp500-speoye)*100)/speoye
 
     #nasdaq
-    nas = yf.download("^IXIC", prevdate, edate)
-    nasdaq = nas.Close[1]
+    try:
+        nas = yf.download("^IXIC", prevdate, edate)
+        nasdaq = nas.Close[1]
+    except Exception as e:
+        nasdaq = nas.Close[0]
     nasdaqvar = ((nasdaq-nas.Close[0])*100)/nas.Close[0]
     #eoy
     naseoy = yf.download("^IXIC", "2022-12-30", "2022-12-31")
