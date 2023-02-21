@@ -269,8 +269,11 @@ def indices():
 
 def commodities():
     #Gold
-    gld1 = yf.download("GC=F", prevdate, edate)
-    gld = gld1.Close[1]
+    try:
+        gld1 = yf.download("GC=F", prevdate, edate)
+        gld = gld1.Close[1]
+    except Exception as e:
+        gld = gld1.Close[0]
     gldvar = ((gld-gld1.Close[0])*100)/gld1.Close[0]
     #eoy
     gldeoy = yf.download("GC=F", "2022-12-30", "2022-12-31")
