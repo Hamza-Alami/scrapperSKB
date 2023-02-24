@@ -464,7 +464,7 @@ FinalDF.soge = FinalDF.soge.replace(mapping, regex=True)
 st.write(FinalDF)
 
 masi1=bvc.loadata('MASI',start=oneyrago,end=lyoum)
-masihist = masi1.to_frame(name='histmasi')
+masihist = masi1.to_frame(name=None)
 
 st.write(masihist)
 
