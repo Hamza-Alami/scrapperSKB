@@ -50,7 +50,12 @@ else:
 if no < 5 and ctime > starttime:
     selecteddate = lyoum
 else:
-    selecteddate = '2023-01-02'   
+    selecteddate = '2023-01-02'
+    
+#Rolling Week
+rwsdate = lyoum - datetime.timedelta(days=7)
+rwedate = lyoum - datetime.timedelta(days=6)
+#end
     
 threeyrsago = lyoum.replace(year=lyoum.year-3)
 oneyrago = lyoum.replace(year=lyoum.year-1)
@@ -311,8 +316,12 @@ def commodities():
     silvereoy = yf.download("SI=F", "2022-12-30", "2022-12-31")
     silvereoye = silvereoy.Close[0]
     silvervarytd = ((silver-silvereoye)*100)/silvereoye
+    #weekly
+    silverrw = yf.download("SI=F", rwsdate, rwedate)
+    silverrwe = silverrw.Close[0]
+    silvervarw = ((silver-silverrwe)*100)/silverrwe
     
-    return gld, oil, silver, gldvar, oilvar, silvervar, gldeoye, oileoye, silvereoye, gldvarytd, oilvarytd, silvervarytd
+    return gld, oil, silver, gldvar, oilvar, silvervar, gldeoye, oileoye, silvereoye, gldvarytd, oilvarytd, silvervarytd, silverrwe, silvervarw
 
 #                                          FX
 
@@ -466,10 +475,6 @@ st.write(FinalDF)
 masi1=bvc.loadata('MASI',start=oneyrago,end=lyoum)
 msi20=bvc.loadata('MSI20',start=oneyrago,end=lyoum)
 
-
-st.write(type(masi1))
-st.write(list(masi1.columns))
-
 # Get today's date
 today = datetime.datetime.now().date()
 
@@ -490,6 +495,8 @@ data0 = [[aujd[0], aujd[1]]]
 aujddf = pd.DataFrame(data0, columns=['Jour', 'Date'])
 st.write(aujddf)
 ###
+
+st.write(commolist[12], commolist[13])
 
 #to excel sheets
 buffer = io.BytesIO()
