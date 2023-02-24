@@ -295,6 +295,10 @@ def commodities():
     gldeoy = yf.download("GC=F", "2022-12-30", "2022-12-31")
     gldeoye = gldeoy.Close[0]
     gldvarytd = ((gld/gldeoye)*100)/gldeoye
+    #weekly
+    goldrw = yf.download("BZ=F", rwsdate, rwedate)
+    goldrwe = goldrw.Close[0]
+    goldvarw = ((gld-goldrwe)*100)/goldrw
 
     #Brent
     try:
@@ -307,6 +311,10 @@ def commodities():
     oileoy = yf.download("BZ=F", "2022-12-30", "2022-12-31")
     oileoye = oileoy.Close[0]
     oilvarytd = ((oil-oileoye)*100)/oileoye
+    #weekly
+    oilrw = yf.download("BZ=F", rwsdate, rwedate)
+    oilrwe = oilrw.Close[0]
+    oilvarw = ((oil-oilrwe)*100)/oilrwe
 
     #silver
     silver1 = yf.download("SI=F", prevdate, edate)
@@ -321,7 +329,7 @@ def commodities():
     silverrwe = silverrw.Close[0]
     silvervarw = ((silver-silverrwe)*100)/silverrwe
     
-    return gld, oil, silver, gldvar, oilvar, silvervar, gldeoye, oileoye, silvereoye, gldvarytd, oilvarytd, silvervarytd, silverrwe, silvervarw
+    return gld, oil, silver, gldvar, oilvar, silvervar, gldeoye, oileoye, silvereoye, gldvarytd, oilvarytd, silvervarytd, goldrwe, oilrwe, silverrwe, goldvarw, oilvarw, silvervarw
 
 #                                          FX
 
@@ -334,6 +342,11 @@ eurusdeoye = eurusdeoy.Close[0]
 
 eurusdvarytd = ((eurusd-eurusdeoye)*100)/eurusdeoye
 eurusdvar = ((eurusd-eurusd1.Close[0])*100)/eurusd1.Close[0]
+
+#weekly
+eurw = yf.download("EURUSD=X", rwsdate, rwedate)
+eurwe = eurw.Close[0]
+euvarw = ((eurusd-eurwe)*100)/eurwe
 
 #calling funcs to lists
 indiceslist = indices()
@@ -349,6 +362,8 @@ Cours2 =  [eurusd, commolist[1], commolist[0], commolist[2]]
 var2 =  [eurusdvar, commolist[4], commolist[3], commolist[5]]
 
 vari2 =  [eurusdvarytd, commolist[10], commolist[9], commolist[11]]
+Coursw2 = [eurwe, commolist[12], commolist[13], commolist[14]]
+varw2 = [eurvarw, commolist[15], commolist[16], commolist[17]]
 
 # dictionary of lists 
 dictin = {'Cours': Cours1, 'var %': var1}
@@ -356,6 +371,8 @@ dictin2 = {'Cours': Cours2, 'var %': var2}
 
 FXCOM = pd.DataFrame(dictin2,index=['EUR/USD','Brent', 'Gold', 'Silver'])
 FXCOM['var ytd %'] = vari2
+FXCOM['Cours j-7'] = Coursw2
+FXCOM['var weekly %'] = varw2
 
 intlindices = pd.DataFrame(dictin,index=['Dow Jones','S&P500', 'Nasdaq', 'CAC40', 'DAX30', 'NIKKEI','Hang Seng'])
 intlindices['var ytd %'] = vari
@@ -480,8 +497,6 @@ data0 = [[aujd[0], aujd[1]]]
 aujddf = pd.DataFrame(data0, columns=['Jour', 'Date'])
 st.write(aujddf)
 ###
-
-st.write(commolist[12], commolist[13])
 
 #to excel sheets
 buffer = io.BytesIO()
