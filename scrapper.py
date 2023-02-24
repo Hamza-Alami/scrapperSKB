@@ -227,8 +227,11 @@ def indices():
     nasvarytd = ((nasdaq-naseoye)*100)/naseoye
 
     #cac40
-    cac4 = yf.download("^FCHI", prevdate, edate)
-    cac = cac4.Close[1]
+    try:
+        cac4 = yf.download("^FCHI", prevdate, edate)
+        cac = cac4.Close[1]
+    except Exception as e:
+        cac = cac4.Close[0]
     cacvar = ((cac-cac4.Close[0])*100)/cac4.Close[0]
     #eoy
     caceoy = yf.download("^FCHI", "2022-12-30", "2022-12-31")
@@ -236,9 +239,11 @@ def indices():
     cacvarytd = ((cac-caceoye)*100)/caceoye
 
     #DAX
-    
-    dax3 = yf.download("^GDAXI", prevdate, edate)
-    dax = dax3.Close[1]
+    try:
+        dax3 = yf.download("^GDAXI", prevdate, edate)
+        dax = dax3.Close[1]
+    except Exception as e:
+        dax = dax3.Close[0]
     daxvar = ((dax-dax3.Close[0])*100)/dax3.Close[0]
     #eoy
     daxeoy = yf.download("^GDAXI", "2022-12-30", "2022-12-31")
@@ -246,8 +251,11 @@ def indices():
     daxvarytd = ((dax-daxeoye)*100)/daxeoye 
 
     #nikkei
-    jp1 = yf.download("^N225", prevdate, edate)
-    jp = jp1.Close[1]
+    try:
+        jp1 = yf.download("^N225", prevdate, edate)
+        jp = jp1.Close[1]
+    except Exception as e:
+        jp = jp1.Close[0]
     jpvar = ((jp-jp1.Close[0])*100)/jp1.Close[0]
     #eoy
     jpeoy = yf.download("^N225", "2022-12-30", "2022-12-31")
@@ -255,8 +263,11 @@ def indices():
     jpvarytd = ((jp-jpeoye)*100)/jpeoye
 
     #hangseng
-    hk1 = yf.download("^HSI", prevdate, edate)
-    hk = hk1.Close[1]
+    try:
+        hk1 = yf.download("^HSI", prevdate, edate)
+        hk = hk1.Close[1]
+    except Exception as e:
+        hk = hk1.Close[0]
     hkvar = ((hk-hk1.Close[0])*100)/hk1.Close[0]
     #eoy
     hkeoy = yf.download("^HSI", "2022-12-30", "2022-12-31")
@@ -293,9 +304,8 @@ def commodities():
     oilvarytd = ((oil-oileoye)*100)/oileoye
 
     #silver
-    
     silver1 = yf.download("SI=F", prevdate, edate)
-    silver = silver1.Close[0]
+    silver = silver1.Close[0]   
     silvervar = ((silver-silver1.Close[0])*100)/silver1.Close[0]
     #eoy
     silvereoy = yf.download("SI=F", "2022-12-30", "2022-12-31")
