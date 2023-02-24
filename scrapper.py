@@ -454,6 +454,7 @@ FinalDF.soge = FinalDF.soge.replace(mapping, regex=True)
 st.write(FinalDF)
 
 masi1=bvc.loadata('MASI',start=oneyrago,end=lyoum)
+msi20=bvc.loadata('MSI20',start=oneyrago,end=lyoum)
 
 # Get today's date
 today = datetime.datetime.now().date()
@@ -492,6 +493,7 @@ with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
     FinalDF.to_excel(writer, sheet_name='Cours & Variations')
     voldf.to_excel(writer, sheet_name='Volume global')
     masi1.to_excel(writer, sheet_name='Masi Hist 1YR')
+    msi20.to_excel(writer, sheet_name='Msi20 Hist 1YR')
     aujddf.to_excel(writer, sheet_name='Date')
 
     # Close the Pandas Excel writer and output the Excel file to the buffer
