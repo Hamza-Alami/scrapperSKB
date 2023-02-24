@@ -394,6 +394,9 @@ dfindex['Var % 31/12'] = dfindex['Var % 31/12'].fillna(0)
 
 st.dataframe(dfindex)
 
+#Pondération et cours
+courspond = pd.DataFrame(bvc.getPond())
+
 #Volume scrap
 st.text('Volume de la séance :')
 recap=bvc.getIndexRecap()
