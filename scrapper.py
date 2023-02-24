@@ -464,6 +464,10 @@ FinalDF.soge = FinalDF.soge.replace(mapping, regex=True)
 st.write(FinalDF)
 
 masi1=bvc.loadata('MASI',start=oneyrago,end=lyoum)
+masi1 = masi1.to_frame(name=hist masi)
+
+st.write(masi1)
+
 msi20=bvc.loadata('MSI20',start=oneyrago,end=lyoum)
 
 # Get today's date
