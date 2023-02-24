@@ -466,8 +466,9 @@ st.write(FinalDF)
 masi1=bvc.loadata('MASI',start=oneyrago,end=lyoum)
 msi20=bvc.loadata('MSI20',start=oneyrago,end=lyoum)
 
+
 st.write(type(masi1))
-st.write(masi1)
+st.write(masi1.columns)
 
 #masihist = masi1.to_frame()
 
