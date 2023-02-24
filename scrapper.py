@@ -298,7 +298,7 @@ def commodities():
     #weekly
     goldrw = yf.download("BZ=F", rwsdate, rwedate)
     goldrwe = goldrw.Close[0]
-    goldvarw = ((gld-goldrwe)*100)/goldrw
+    goldvarw = ((gld-goldrwe)*100)/goldrwe
 
     #Brent
     try:
