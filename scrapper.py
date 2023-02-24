@@ -468,9 +468,7 @@ msi20=bvc.loadata('MSI20',start=oneyrago,end=lyoum)
 
 
 st.write(type(masi1))
-st.write(masi1.columns)
-
-#masihist = masi1.to_frame()
+st.write(list(masi1.columns))
 
 # Get today's date
 today = datetime.datetime.now().date()
