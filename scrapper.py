@@ -296,7 +296,7 @@ def commodities():
     gldeoye = gldeoy.Close[0]
     gldvarytd = ((gld/gldeoye)*100)/gldeoye
     #weekly
-    goldrw = yf.download("BZ=F", rwsdate, rwedate)
+    goldrw = yf.download("GC=F", rwsdate, rwedate)
     goldrwe = goldrw.Close[0]
     goldvarw = ((gld-goldrwe)*100)/goldrwe
 
