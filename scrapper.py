@@ -363,7 +363,7 @@ var2 =  [eurusdvar, commolist[4], commolist[3], commolist[5]]
 
 vari2 =  [eurusdvarytd, commolist[10], commolist[9], commolist[11]]
 Coursw2 = [eurwe, commolist[12], commolist[13], commolist[14]]
-varw2 = [eurvarw, commolist[15], commolist[16], commolist[17]]
+varw2 = [euvarw, commolist[15], commolist[16], commolist[17]]
 
 # dictionary of lists 
 dictin = {'Cours': Cours1, 'var %': var1}
