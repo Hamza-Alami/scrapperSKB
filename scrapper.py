@@ -535,7 +535,7 @@ euvarw = ((eurusd-eurwe)*100)/eurwe
 
 #calling funcs to lists
 indiceslist = indices()
-#commolist = commodities()
+commolist = commodities()
 
 #putting data into lists
 Cours1 = [indiceslist[0], indiceslist[1], indiceslist[2], indiceslist[3], indiceslist[4], indiceslist[5], indiceslist[6]]
