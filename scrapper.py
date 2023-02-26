@@ -286,6 +286,9 @@ def indices():
     #eoy
     djeoye = dj.loc[eoly, "Close"]
     djvarytd = ((dj30-djeoye)*100)/djeoye
+    return dj30, dj30prev, dj30var, djeoye, djvarytd
+
+st.write(indices())
 '''
     #spoos
     try:
@@ -360,11 +363,7 @@ def indices():
     hkvarytd = ((hk-hkeoye)*100)/hkeoye
     
     return dj30, sp500, nasdaq, cac, dax, jp, hk, dj30var, sp500var, nasdaqvar, cacvar, daxvar, jpvar, hkvar, djvarytd, spvarytd, nasvarytd, cacvarytd, daxvarytd, jpvarytd, hkvarytd
-'''
-    return dj30, dj30prev, dj30var, djeoye, djvarytd
 
-st.write(indices())
-'''
 #                                        Commodities
 
 def commodities():
