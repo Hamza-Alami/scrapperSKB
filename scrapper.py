@@ -339,7 +339,7 @@ def indices():
         cac = 1
         
     try: 
-        cacprev = cac.loc[formatted_date2, "Close"]
+        cacprev = cac4.loc[formatted_date2, "Close"]
     except Exception as e:
         cacprev = 1   
         
