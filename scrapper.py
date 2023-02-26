@@ -515,7 +515,7 @@ def commodities():
     silvereoye = silver1.loc[eoly, "Close"]
     silvervarytd = ((silver/silvereoye)*100)/silvereoye
     
-    return gld, oil, silver, gldvar, oilvar, silvervar, gldeoye, oileoye, silvereoye, gldvarytd, oilvarytd, silvervarytd, goldrwe, oilrwe, silverrwe, goldvarw, oilvarw, silvervarw
+    return gld, oil, silver, gldvar, oilvar, silvervar, gldeoye, oileoye, silvereoye, gldvarytd, oilvarytd, silvervarytd, gldwe, oilwe, silverwe, goldvarw, oilvarw, silvervarw
 
 #                                          FX
 
