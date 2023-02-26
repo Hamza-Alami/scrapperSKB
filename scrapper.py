@@ -46,6 +46,10 @@ formatted_date2 = base_date.strftime('%Y-%m-%d')
 
 start_date = st.sidebar.date_input('séléctionner la date pour les indices et les commodities')
 formatted_date = start_date.strftime('%Y-%m-%d')
+
+we_date = st.sidebar.date_input('séléctionner la fin de semaine pour la comparaison hebdo des indices et des commodities')
+formatted_date3 = we_date.strftime('%Y-%m-%d')
+
 #no2 = formatted_date.weekday()
 
 
@@ -288,8 +292,14 @@ def indices():
         dj30prev = dj.loc[formatted_date2, "Close"]
     except Exception as e:
         dj30prev = 1
+    
+    try: 
+        dj30we = dj.loc[formatted_date3, "Close"]
+    except Exception as e:
+        dj30we = 1
         
     dj30var = ((dj30-dj30prev)*100)/dj30prev
+    dj30wvar = ((dj30-dj30we)*100)/dj30we
     
     #eoy
     djeoye = dj.loc[eoly, "Close"]
@@ -306,8 +316,14 @@ def indices():
         sp500prev = sp.loc[formatted_date2, "Close"]
     except Exception as e:
         sp500prev = 1
+    
+    try: 
+        sp500we = sp.loc[formatted_date3, "Close"]
+    except Exception as e:
+        sp500we = 1
         
     sp500var = ((sp500-sp500prev)*100)/sp500prev
+    sp500wvar = ((sp500-sp500we)*100)/sp500we
     
     #eoy
     speoye = sp.loc[eoly, "Close"]
@@ -319,12 +335,19 @@ def indices():
         nasdaq = nas.loc[formatted_date, "Close"]
     except Exception as e:
         nasdaq = 1
+        
     try: 
         nasdaqprev = nas.loc[formatted_date2, "Close"]
     except Exception as e:
-        nasdaqprev = 1   
-        
+        nasdaqprev = 1 
+    
+    try: 
+        nasdaqwe = nas.loc[formatted_date3, "Close"]
+    except Exception as e:
+        nasdaqwe = 1   
+    
     nasdaqvar = ((nasdaq-nasdaqprev)*100)/nasdaqprev
+    nasdaqwvar = ((nasdaq-nasdaqwe)*100)/nasdaqwe
     
     #eoy
     naseoye = nas.loc[eoly, "Close"]
@@ -342,8 +365,14 @@ def indices():
         cacprev = cac4.loc[formatted_date2, "Close"]
     except Exception as e:
         cacprev = 1   
-        
+    
+    try: 
+        cacwe = cac4.loc[formatted_date3, "Close"]
+    except Exception as e:
+        cacwe = 1   
+    
     cacvar = ((cac-cacprev)*100)/cacprev
+    cacwvar = ((cac-cacwe)*100)/cacwe
     #eoy
     caceoye = cac4.loc[eoly, "Close"]
     cacvarytd = ((cac-caceoye)*100)/caceoye
@@ -360,8 +389,14 @@ def indices():
         daxprev = dax3.loc[formatted_date2, "Close"]
     except Exception as e:
         daxprev = 1   
-        
+    
+    try: 
+        daxwe = dax3.loc[formatted_date3, "Close"]
+    except Exception as e:
+        daxwe = 1   
+    
     daxvar = ((dax-daxprev)*100)/daxprev
+    daxwvar = ((dax-daxwe)*100)/daxwe
     
     #eoy
     daxeoye = dax3.loc[eoly, "Close"]
@@ -379,8 +414,14 @@ def indices():
         jpprev = jp1.loc[formatted_date2, "Close"]
     except Exception as e:
         jpprev = 1   
-        
+    
+    try: 
+        jpwe = jp1.loc[formatted_date3, "Close"]
+    except Exception as e:
+        jpwe = 1   
+    
     jpvar = ((jp-jpprev)*100)/jpprev
+    jpwvar = ((jp-jpwe)*100)/jpwe
     #eoy
     jpeoye = jp1.loc[eoly, "Close"]
     jpvarytd = ((jp-jpeoye)*100)/jpeoye
@@ -397,13 +438,19 @@ def indices():
         hkprev = hk1.loc[formatted_date2, "Close"]
     except Exception as e:
         hkrev = 1       
-        
+    
+    try: 
+        hkwe = hk1.loc[formatted_date3, "Close"]
+    except Exception as e:
+        hkwe = 1       
+    
     hkvar = ((hk-hkprev)*100)/hkprev
+    hkwvar = ((hk-hkwe)*100)/hkwe
     #eoy
     hkeoye = hk1.loc[eoly, "Close"]
     hkvarytd = ((hk-hkeoye)*100)/hkeoye
     
-    return dj30, sp500, nasdaq, cac, dax, jp, hk, dj30var, sp500var, nasdaqvar, cacvar, daxvar, jpvar, hkvar, djvarytd, spvarytd, nasvarytd, cacvarytd, daxvarytd, jpvarytd, hkvarytd
+    return dj30, sp500, nasdaq, cac, dax, jp, hk, dj30var, sp500var, nasdaqvar, cacvar, daxvar, jpvar, hkvar, djvarytd, spvarytd, nasvarytd, cacvarytd, daxvarytd, jpvarytd, hkvarytd, dj30wvar, sp500wvar, nasdaqwvar, cacwvar, daxwvar, jpwvar, hkwvar
 
 #                                        Commodities
 '''
@@ -481,6 +528,7 @@ Cours1 = [indiceslist[0], indiceslist[1], indiceslist[2], indiceslist[3], indice
 var1 = [indiceslist[7], indiceslist[8], indiceslist[9], indiceslist[10], indiceslist[11], indiceslist[12], indiceslist[13]]
 
 vari = [indiceslist[14], indiceslist[15], indiceslist[16], indiceslist[17], indiceslist[18], indiceslist[19], indiceslist[20]]
+varw = [indiceslist[21], indiceslist[22], indiceslist[23], indiceslist[24], indiceslist[25], indiceslist[26], indiceslist[27]]
 
 #Cours2 =  [eurusd, commolist[1], commolist[0], commolist[2]]
 #var2 =  [eurusdvar, commolist[4], commolist[3], commolist[5]]
@@ -500,13 +548,28 @@ dictin = {'Cours': Cours1, 'var %': var1}
 
 intlindices = pd.DataFrame(dictin,index=['Dow Jones','S&P500', 'Nasdaq', 'CAC40', 'DAX30', 'NIKKEI','Hang Seng'])
 intlindices['var ytd %'] = vari
+intlindices['var weekly %'] = varw
 
 #st.text('FX & commodities')
 #st.dataframe(FXCOM)
 st.text('Indices internationaux')
+
 st.dataframe(intlindices)
 
-indiceslist = indices()
+with st.container(): 
+    #ratio selection 
+    hebdo = st.radio(
+     "Quotidien ou Hebdo",
+     ('Q', 'H'))
+    
+    if (hebdo == 'Q') :
+        intlindicesQ = intlindices[['Cours','var %','var ytd %']]
+        st.dataframe(intlindicesQ)
+        
+    else :
+        intlindicesH = intlindices
+        st.dataframe(intlindicesH)
+
 
 #BVCscrapper
 
