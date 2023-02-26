@@ -283,95 +283,130 @@ def indices():
         dj30 = dj.loc[formatted_date, "Close"]
     except Exception as e:
         dj30 = 1
+        
     try: 
         dj30prev = dj.loc[formatted_date2, "Close"]
     except Exception as e:
         dj30prev = 1
         
     dj30var = ((dj30-dj30prev)*100)/dj30prev
+    
     #eoy
     djeoye = dj.loc[eoly, "Close"]
     djvarytd = ((dj30-djeoye)*100)/djeoye
-    return dj30, dj30prev, dj30var, djeoye, djvarytd
 
-st.write(indices())
-'''
     #spoos
-    try:
-        sp = yf.download("^GSPC", prevdate, edate)
-        sp500 = sp.Close[1]
+    sp = yf.download("^GSPC", eoly, edate)
+    try: 
+        sp500 = sp.loc[formatted_date, "Close"]
     except Exception as e:
-        sp500 = sp.Close[0]
-    sp500var = ((sp500-sp.Close[0])*100)/sp.Close[0]
+        sp500 = 1
+        
+    try: 
+        sp500prev = sp.loc[formatted_date2, "Close"]
+    except Exception as e:
+        sp500prev = 1
+        
+    sp500var = ((sp500-sp500prev)*100)/sp500prev
+    
     #eoy
-    speoy = yf.download("^GSPC", "2022-12-30", "2022-12-31")
-    speoye = speoy.Close[0]
+    speoye = sp.loc[eoly, "Close"]
     spvarytd = ((sp500-speoye)*100)/speoye
 
     #nasdaq
+    nas = yf.download("^IXIC", eoly, edate)
     try:
-        nas = yf.download("^IXIC", prevdate, edate)
-        nasdaq = nas.Close[1]
+        nasdaq = nas.loc[formatted_date, "Close"]
     except Exception as e:
-        nasdaq = nas.Close[0]
-    nasdaqvar = ((nasdaq-nas.Close[0])*100)/nas.Close[0]
+        nasdaq = 1
+    try: 
+        nasdaqprev = nas.loc[formatted_date2, "Close"]
+    except Exception as e:
+        nasdaqprev = 1   
+        
+    nasdaqvar = ((nasdaq-nasdaqprev)*100)/nasdaqprev
+    
     #eoy
-    naseoy = yf.download("^IXIC", "2022-12-30", "2022-12-31")
-    naseoye = naseoy.Close[0]
+    naseoye = nas.loc[eoly, "Close"]
     nasvarytd = ((nasdaq-naseoye)*100)/naseoye
 
     #cac40
-    try:
-        cac4 = yf.download("^FCHI", prevdate, edate)
-        cac = cac4.Close[1]
+    cac4 = yf.download("^FCHI", eoly, edate)
+    
+    try:        
+        cac = cac4.loc[formatted_date, "Close"]
     except Exception as e:
-        cac = cac4.Close[0]
-    cacvar = ((cac-cac4.Close[0])*100)/cac4.Close[0]
+        cac = 1
+        
+    try: 
+        cacprev = cac.loc[formatted_date2, "Close"]
+    except Exception as e:
+        cacprev = 1   
+        
+    cacvar = ((cac-cacprev)*100)/cacprev
     #eoy
-    caceoy = yf.download("^FCHI", "2022-12-30", "2022-12-31")
-    caceoye = caceoy.Close[0]
+    caceoye = cac4.loc[eoly, "Close"]
     cacvarytd = ((cac-caceoye)*100)/caceoye
 
     #DAX
+    dax3 = yf.download("^GDAXI", eoly, edate)
+    
     try:
-        dax3 = yf.download("^GDAXI", prevdate, edate)
-        dax = dax3.Close[1]
+        dax = dax3.loc[formatted_date, "Close"]
     except Exception as e:
-        dax = dax3.Close[0]
-    daxvar = ((dax-dax3.Close[0])*100)/dax3.Close[0]
+        dax = 1
+    
+    try: 
+        daxprev = dax3.loc[formatted_date2, "Close"]
+    except Exception as e:
+        daxprev = 1   
+        
+    daxvar = ((dax-daxprev)*100)/daxprev
+    
     #eoy
-    daxeoy = yf.download("^GDAXI", "2022-12-30", "2022-12-31")
-    daxeoye = daxeoy.Close[0]
+    daxeoye = dax3.loc[eoly, "Close"]
     daxvarytd = ((dax-daxeoye)*100)/daxeoye 
 
     #nikkei
+    jp1 = yf.download("^N225", eoly, edate)
+    
     try:
-        jp1 = yf.download("^N225", prevdate, edate)
-        jp = jp1.Close[1]
+        jp = jp1.loc[formatted_date, "Close"]
     except Exception as e:
-        jp = jp1.Close[0]
-    jpvar = ((jp-jp1.Close[0])*100)/jp1.Close[0]
+        jp = 1
+        
+    try: 
+        jpprev = jp1.loc[formatted_date2, "Close"]
+    except Exception as e:
+        jpprev = 1   
+        
+    jpvar = ((jp-jpprev)*100)/jpprev
     #eoy
-    jpeoy = yf.download("^N225", "2022-12-30", "2022-12-31")
-    jpeoye = jpeoy.Close[0]
+    jpeoye = jp1.loc[eoly, "Close"]
     jpvarytd = ((jp-jpeoye)*100)/jpeoye
 
     #hangseng
-    try:
-        hk1 = yf.download("^HSI", prevdate, edate)
-        hk = hk1.Close[1]
+    hk1 = yf.download("^HSI", eoly, edate)
+    
+    try:     
+        hk = hk1.loc[formatted_date, "Close"]
     except Exception as e:
-        hk = hk1.Close[0]
+        hk = 1
+        
+    try: 
+        hkprev = hk1.loc[formatted_date2, "Close"]
+    except Exception as e:
+        hkrev = 1       
+        
     hkvar = ((hk-hk1.Close[0])*100)/hk1.Close[0]
     #eoy
-    hkeoy = yf.download("^HSI", "2022-12-30", "2022-12-31")
-    hkeoye = hkeoy.Close[0]
+    hkeoye = hk1.loc[eoly, "Close"]
     hkvarytd = ((hk-hkeoye)*100)/hkeoye
     
     return dj30, sp500, nasdaq, cac, dax, jp, hk, dj30var, sp500var, nasdaqvar, cacvar, daxvar, jpvar, hkvar, djvarytd, spvarytd, nasvarytd, cacvarytd, daxvarytd, jpvarytd, hkvarytd
 
 #                                        Commodities
-
+'''
 def commodities():
     #Gold
     try:
@@ -436,10 +471,10 @@ eurusdvar = ((eurusd-eurusd1.Close[0])*100)/eurusd1.Close[0]
 eurw = yf.download("EURUSD=X", rwsdate, rwedate)
 eurwe = eurw.Close[0]
 euvarw = ((eurusd-eurwe)*100)/eurwe
-
+'''
 #calling funcs to lists
 indiceslist = indices()
-commolist = commodities()
+#commolist = commodities()
 
 #putting data into lists
 Cours1 = [indiceslist[0], indiceslist[1], indiceslist[2], indiceslist[3], indiceslist[4], indiceslist[5], indiceslist[6]]
@@ -447,29 +482,30 @@ var1 = [indiceslist[7], indiceslist[8], indiceslist[9], indiceslist[10], indices
 
 vari = [indiceslist[14], indiceslist[15], indiceslist[16], indiceslist[17], indiceslist[18], indiceslist[19], indiceslist[20]]
 
-Cours2 =  [eurusd, commolist[1], commolist[0], commolist[2]]
-var2 =  [eurusdvar, commolist[4], commolist[3], commolist[5]]
+#Cours2 =  [eurusd, commolist[1], commolist[0], commolist[2]]
+#var2 =  [eurusdvar, commolist[4], commolist[3], commolist[5]]
 
-vari2 =  [eurusdvarytd, commolist[10], commolist[9], commolist[11]]
-Coursw2 = [eurwe, commolist[12], commolist[13], commolist[14]]
-varw2 = [euvarw, commolist[15], commolist[16], commolist[17]]
+#vari2 =  [eurusdvarytd, commolist[10], commolist[9], commolist[11]]
+#Coursw2 = [eurwe, commolist[12], commolist[13], commolist[14]]
+#varw2 = [euvarw, commolist[15], commolist[16], commolist[17]]
 
 # dictionary of lists 
 dictin = {'Cours': Cours1, 'var %': var1}
-dictin2 = {'Cours': Cours2, 'var %': var2}
+#dictin2 = {'Cours': Cours2, 'var %': var2}
 
-FXCOM = pd.DataFrame(dictin2,index=['EUR/USD','Brent', 'Gold', 'Silver'])
-FXCOM['var ytd %'] = vari2
-FXCOM['Cours j-7'] = Coursw2
-FXCOM['var weekly %'] = varw2
+#FXCOM = pd.DataFrame(dictin2,index=['EUR/USD','Brent', 'Gold', 'Silver'])
+#FXCOM['var ytd %'] = vari2
+#FXCOM['Cours j-7'] = Coursw2
+#FXCOM['var weekly %'] = varw2
 
 intlindices = pd.DataFrame(dictin,index=['Dow Jones','S&P500', 'Nasdaq', 'CAC40', 'DAX30', 'NIKKEI','Hang Seng'])
 intlindices['var ytd %'] = vari
 
-st.text('FX & commodities')
-st.dataframe(FXCOM)
+#st.text('FX & commodities')
+#st.dataframe(FXCOM)
 st.text('Indices internationaux')
 st.dataframe(intlindices)
+
 indiceslist = indices()
 
 #BVCscrapper
