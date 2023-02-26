@@ -245,8 +245,20 @@ BAMcc['var %'] = varmad
 BAMcc['var ytd %'] = vareoy
 BAMcc['weekly var %'] = varmadweekly
 
-st.dataframe(BAMcc)
-
+with st.container(): 
+    #ratio selection 
+    bamselection = st.selectbox(
+     "Quotidien ou Hebdo",
+     ('Q', 'H'))
+    
+    if (bamselection == 'Q') :
+        BAMccQ = BAMcc[['Cours en MAD','var %','var ytd %']]
+        st.dataframe(BAMccQ)
+        
+    else :
+        BAMccH = BAMcc
+        st.dataframe(BAMccH)
+        
 
 #Scrap from yahoo finance
 
