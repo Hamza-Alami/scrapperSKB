@@ -247,7 +247,7 @@ BAMcc['weekly var %'] = varmadweekly
 
 with st.container(): 
     #ratio selection 
-    bamselection = st.selectbox(
+    bamselection = st.radio(
      "Quotidien ou Hebdo",
      ('Q', 'H'))
     
