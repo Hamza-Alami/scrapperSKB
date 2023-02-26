@@ -40,9 +40,12 @@ starttime = '11:45'
 last_year = lyoum.year - 1
 eoly = date(last_year, 12, 30).strftime('%Y-%m-%d')
 edate = lyoum
+
+base_date = st.sidebar.date_input('séléctionner la date de base pour la comparaison des indices et des commodities')
+formatted_date2 = base_date.strftime('%Y-%m-%d')
+
 start_date = st.sidebar.date_input('séléctionner la date pour les indices et les commodities')
 formatted_date = start_date.strftime('%Y-%m-%d')
-
 #no2 = formatted_date.weekday()
 
 
@@ -54,16 +57,6 @@ elif no == 1 :
     
 else:
     sdate = lyoum - datetime.timedelta(days=1)
-
-#loop 2
-#if no2 == 0 :
-    #prevdate = formatted_date - datetime.timedelta(days=4)
-    
-#elif no2 == 1 :
-    #prevdate = formatted_date - datetime.timedelta(days=4)
-    
-#else:
-    #prevdate = formatted_date - datetime.timedelta(days=2)
     
 #bamweek
 bamweek = lyoum - datetime.timedelta(days=7)
@@ -285,19 +278,21 @@ with st.container():
 def indices():
     
     #Dow jones
-    try:
-        dj = yf.download("^DJI", eoly, edate)
+    dj = yf.download("^DJI", eoly, edate)
+    try:   
         dj30 = dj.loc[formatted_date, "Close"]
-        #dj30prev = dj.loc[prevdate, "Close"]
     except Exception as e:
         dj30 = 1
+    try: 
+        dj30prev = dj.loc[formatted_date2, "Close"]
+    except Exception as e:
         dj30prev = 1
         
-    #dj30var = ((dj30-dj30prev)*100)/dj30prev
+    dj30var = ((dj30-dj30prev)*100)/dj30prev
     #eoy
     djeoye = dj.loc[eoly, "Close"]
     djvarytd = ((dj30-djeoye)*100)/djeoye
-    return dj30, djeoye, djvarytd
+    return dj30, dj30prev, dj30var, djeoye, djvarytd
 
 st.write(indices())
 '''
