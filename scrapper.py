@@ -673,5 +673,4 @@ with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
 
 
 #Pondération et cours
-#courspond = pd.DataFrame(bvc.getPond())
-'''
+#courspond = pd.DataFrame(bvc.getPond())'''
