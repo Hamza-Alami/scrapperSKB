@@ -39,15 +39,15 @@ starttime = '11:45'
 
 if no == 0 :
     sdate = lyoum - datetime.timedelta(days=3)
-    prevdate = lyoum - datetime.timedelta(days=4)
+    #prevdate = lyoum - datetime.timedelta(days=4)
     
 elif no == 1 :
     sdate = lyoum - datetime.timedelta(days=1)
-    prevdate = lyoum - datetime.timedelta(days=4)
+    #prevdate = lyoum - datetime.timedelta(days=4)
     
 else:
     sdate = lyoum - datetime.timedelta(days=1)
-    prevdate = lyoum - datetime.timedelta(days=2)
+    #prevdate = lyoum - datetime.timedelta(days=2)
     
 #bamweek
 bamweek = lyoum - datetime.timedelta(days=7)
@@ -259,27 +259,34 @@ with st.container():
         BAMccH = BAMcc
         st.dataframe(BAMccH)
         
+##END OF BANK AL MAGHRIB TOOL
+
 
 #Scrap from yahoo finance
 
-#                                        Indices
-        
+#                                       Indices
+last_year = lyoum.year - 1
+eoly = date(last_year, 12, 30).strftime('%Y-%m-%d')
 edate = lyoum
+start_date = st.sidebar.date_input('séléctionner la date pour les indices et les commodities')
+formatted_date = start_date.strftime('%Y-%m-%d')
 
 def indices():
     
     #Dow jones
     try:
-        dj = yf.download("^DJI", prevdate, edate)
-        dj30 = dj.Close[1]
+        dj = yf.download("^DJI", eoly, edate)
+        dj30 = dj.loc[formatted_date, "Close"]
+        dj30prev = dj.loc[formatted_date.day - 1, "Close"]
     except Exception as e:
-        dj30 = dj.Close[0]
-    dj30var = ((dj30-dj.Close[0])*100)/dj.Close[0]
+        dj30 = dj.loc[formatted_date.day - 1, "Close"]
+        dj30prev = dj.loc[formatted_date.day - 2, "Close"]
+        
+    dj30var = ((dj30-dj30prev)*100)/dj30prev
     #eoy
-    djeoy = yf.download("^DJI", "2022-12-30", "2022-12-31")
-    djeoye = djeoy.Close[0]
+    djeoye = dj.loc[eoly, "Close"]
     djvarytd = ((dj30-djeoye)*100)/djeoye
-
+'''
     #spoos
     try:
         sp = yf.download("^GSPC", prevdate, edate)
@@ -353,7 +360,11 @@ def indices():
     hkvarytd = ((hk-hkeoye)*100)/hkeoye
     
     return dj30, sp500, nasdaq, cac, dax, jp, hk, dj30var, sp500var, nasdaqvar, cacvar, daxvar, jpvar, hkvar, djvarytd, spvarytd, nasvarytd, cacvarytd, daxvarytd, jpvarytd, hkvarytd
+'''
+    return dj30, dj30prev, dj30var, djeoye, djvarytd
 
+st.write(indices())
+'''
 #                                        Commodities
 
 def commodities():
@@ -622,3 +633,4 @@ with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
 
 #Pondération et cours
 #courspond = pd.DataFrame(bvc.getPond())
+'''
