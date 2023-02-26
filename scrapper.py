@@ -560,16 +560,12 @@ with st.container():
      "Daily ou Weekly",
      ('D', 'W'))
     
-    if (hebdo == 'D') :
-        intlindicesQ = intlindices[['Cours','var %','var ytd %']]
-        st.dataframe(intlindices)
+if (bamselection == 'Q') :
+    intlindicesQ = intlindices[['Cours','var %','var ytd %']]
+    st.dataframe(intlindices)
         
-    else :
-        intlindicesW = intlindices
-        st.dataframe(intlindicesW)
-        
-st.write(intlindices.columns)
-st.write(intlindicesw.columns)
+else :
+    st.dataframe(intlindices)
 
 #BVCscrapper
 
