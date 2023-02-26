@@ -40,12 +40,18 @@ starttime = '11:45'
 if no == 0 :
     sdate = lyoum - datetime.timedelta(days=3)
     prevdate = lyoum - datetime.timedelta(days=4)
+    
 elif no == 1 :
     sdate = lyoum - datetime.timedelta(days=1)
     prevdate = lyoum - datetime.timedelta(days=4)
+    
 else:
-     sdate = lyoum - datetime.timedelta(days=1)
-     prevdate = lyoum - datetime.timedelta(days=2)
+    sdate = lyoum - datetime.timedelta(days=1)
+    prevdate = lyoum - datetime.timedelta(days=2)
+    
+#bamweek
+bamweek = lyoum - datetime.timedelta(days=7)
+#
 
 if no < 5 and ctime > starttime:
     selecteddate = lyoum
@@ -76,29 +82,24 @@ def euromad():
         'date': selecteddate,
     })
     ####
-    params2 = urllib.parse.urlencode({
+    paramsprev = urllib.parse.urlencode({
         # Request parameters
         'libDevise': 'EUR',
         'date': sdate,
     })
-  
+    
+    paramsweekly = urllib.parse.urlencode({
+        # Request parameters
+        'libDevise': 'EUR',
+        'date': bamweek,
+    })
+    
     #####
     eurmad3 = 11.1592
     #####
-    try:
-        conn2 = http.client.HTTPSConnection('api.centralbankofmorocco.ma')
-        conn2.request("GET", "/cours/Version1/api/CoursVirement?%s" % params2, "{body}", headers)
-        response2 = conn2.getresponse()
-        data2 = response2.read()
-        eur2 = data2.decode()
-        conn2.close()
-        euro2 = json.loads(eur2)
-        euro22 = euro2[0]
-        eurmad2 = euro22.get("moyen")
-    except Exception as e:
-        eurmad2 = eurmad3
-    ####
-
+        
+    #current day
+    
     try:
         conn = http.client.HTTPSConnection('api.centralbankofmorocco.ma')
         conn.request("GET", "/cours/Version1/api/CoursVirement?%s" % params, "{body}", headers)
@@ -110,9 +111,41 @@ def euromad():
         euro1 = euro[0]
         eurmad = euro1.get("moyen")
     except Exception as e:
-        eurmad = eurmad3
+        eurmad = 1
+        
+    ####
+    #previous day
+
+    try:
+        conn2 = http.client.HTTPSConnection('api.centralbankofmorocco.ma')
+        conn2.request("GET", "/cours/Version1/api/CoursVirement?%s" % paramsprev, "{body}", headers)
+        response2 = conn2.getresponse()
+        data2 = response2.read()
+        eur2 = data2.decode()
+        conn2.close()
+        euro2 = json.loads(eur2)
+        euro22 = euro2[0]
+        eurmad2 = euro22.get("moyen")
+    except Exception as e:
+        eurmad2 = 1
+        
+    ####
+    #previous week
+    try:
+        conn3 = http.client.HTTPSConnection('api.centralbankofmorocco.ma')
+        conn3.request("GET", "/cours/Version1/api/CoursVirement?%s" % paramsweekly, "{body}", headers)
+        response3 = conn3.getresponse()
+        data3 = response3.read()
+        eur3 = data2.decode()
+        conn2.close()
+        euro3 = json.loads(eur3)
+        euro33 = euro3[0]
+        eurmadw = euro33.get("moyen")
+    except Exception as e:
+        eurmadw = 1
+        
    
-    return eurmad, eurmad2, eurmad3
+    return eurmad, eurmad2, eurmadw, eurmad3
 
 def usdmad():
     
@@ -133,6 +166,12 @@ def usdmad():
         'date': sdate,
     })
     
+    paramsweekly = urllib.parse.urlencode({
+        # Request parameters
+        'libDevise': 'USD',
+        'date': bamweek,
+    })
+    
     #####
     dolmad3 = 10.4477
     #####
@@ -147,7 +186,7 @@ def usdmad():
         dol22 = dol2[0]
         dolmad2 = dol22.get("moyen")
     except Exception as e:
-        dolmad2 = dolmad3
+        dolmad2 = 1
    
     
     #####
@@ -163,27 +202,49 @@ def usdmad():
         usdt1 = usdt[0]
         dollarmad = usdt1.get("moyen")
     except Exception as e:
-        dollarmad = dolmad3
+        dollarmad = 1
+        
+    try:
+        conn = http.client.HTTPSConnection('api.centralbankofmorocco.ma')
+        conn.request("GET", "/cours/Version1/api/CoursVirement?%s" % paramsweekly, "{body}", headers)
+        response3 = conn.getresponse()
+        dataus3 = response3.read()
+        conn.close()
+        usd3 = dataus3.decode()
+        usdt3 = json.loads(usd3)
+        usdt33 = usdt3[0]
+        dollarmadweekly = usdt33.get("moyen")
+    except Exception as e:
+        dollarmadweekly = 1   
+        
     
-    return dollarmad, dolmad2, dolmad3
+    
+    return dollarmad, dolmad2, dollarmadweekly, dolmad3
 
 dirhameuro = euromad()
 st.write(dirhameuro)
 eact = dirhameuro[0]
 eprev = dirhameuro[1]
-eeoy = dirhameuro[2]
+eweek = dirhameuro[2]
+eeoy = dirhameuro[3]
 
 dirhamdollar = usdmad()
 st.write(dirhamdollar)
 dact = dirhamdollar[0]
 dprev = dirhamdollar[1]
-deoy = dirhamdollar[2]
+dweek = dirhamdollar[2]
+deoy = dirhamdollar[3]
+
 BAMcc = pd.DataFrame({'Cours en MAD': [eact, dact]},index=['EUR', 'USD'])
 
 varmad = [((eact-eprev)/eact)*100, ((dact-dprev)/dact)*100]
 vareoy = [((eact-eeoy)/eact)*100, ((dact-deoy)/dact)*100]
+varmadweekly = [((eact-eweek)/eact)*100, ((dact-dweek)/dact)*100]
+
 BAMcc['var %'] = varmad
 BAMcc['var ytd %'] = vareoy
+BAMcc['weekly var %'] = varmadweekly
+
 st.dataframe(BAMcc)
 
 
