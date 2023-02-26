@@ -41,9 +41,9 @@ last_year = lyoum.year - 1
 eoly = date(last_year, 12, 30).strftime('%Y-%m-%d')
 edate = lyoum
 start_date = st.sidebar.date_input('séléctionner la date pour les indices et les commodities')
-formatted_date = pd.to_datetime(start_date).strftime('%Y-%m-%d')
+formatted_date = start_date.strftime('%Y-%m-%d')
 
-no2 = formatted_date.strftime('%Y-%m-%d').weekday()
+no2 = formatted_date.weekday()
 
 
 if no == 0 :
