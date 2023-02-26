@@ -524,7 +524,7 @@ eurusd1 = yf.download("EURUSD=X", eoly, edate)
 eurusd = eurusd1.loc[formatted_date, "Close"]
 eurusdprev = eurusd1.loc[formatted_date2, "Close"]
 #eoy
-eurusdeoye = eurusdeoy.loc[eoly, "Close"]
+eurusdeoye = eurusd1.loc[eoly, "Close"]
 
 eurusdvarytd = ((eurusd-eurusdeoye)*100)/eurusdeoye
 eurusdvar = ((eurusd-eurusdprev)*100)/eurusdprev
