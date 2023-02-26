@@ -50,9 +50,6 @@ formatted_date = start_date.strftime('%Y-%m-%d')
 we_date = st.sidebar.date_input('séléctionner la fin de semaine pour la comparaison hebdo des indices et des commodities')
 formatted_date3 = we_date.strftime('%Y-%m-%d')
 
-#no2 = formatted_date.weekday()
-
-
 if no == 0 :
     sdate = lyoum - datetime.timedelta(days=3)
    
@@ -70,10 +67,6 @@ if no < 5 and ctime > starttime:
     selecteddate = lyoum
 else:
     selecteddate = '2023-01-02'
-    
-#Rolling Week
-rwsdate = lyoum - datetime.timedelta(days=7)
-rwedate = lyoum - datetime.timedelta(days=6)
 #end
     
 #threeyrsago = lyoum.replace(year=lyoum.year-3)
@@ -157,7 +150,6 @@ def euromad():
     except Exception as e:
         eurmadw = 1
         
-   
     return eurmad, eurmad2, eurmadw, eurmad3
 
 def usdmad():
@@ -201,7 +193,6 @@ def usdmad():
     except Exception as e:
         dolmad2 = 1
    
-    
     #####
 
     try:
@@ -230,8 +221,6 @@ def usdmad():
     except Exception as e:
         dollarmadweekly = 1   
         
-    
-    
     return dollarmad, dolmad2, dollarmadweekly, dolmad3
 
 dirhameuro = euromad()
@@ -276,7 +265,6 @@ with st.container():
 
 
 #Scrap from yahoo finance
-
 #                                       Indices
 
 def indices():
@@ -453,72 +441,98 @@ def indices():
     return dj30, sp500, nasdaq, cac, dax, jp, hk, dj30var, sp500var, nasdaqvar, cacvar, daxvar, jpvar, hkvar, djvarytd, spvarytd, nasvarytd, cacvarytd, daxvarytd, jpvarytd, hkvarytd, dj30wvar, sp500wvar, nasdaqwvar, cacwvar, daxwvar, jpwvar, hkwvar
 
 #                                        Commodities
-'''
+
 def commodities():
     #Gold
+    gld1 = yf.download("GC=F", eoly, edate)
     try:
-        gld1 = yf.download("GC=F", prevdate, edate)
-        gld = gld1.Close[1]
+        gld = gld1.loc[formatted_date, "Close"]
     except Exception as e:
-        gld = gld1.Close[0]
-    gldvar = ((gld-gld1.Close[0])*100)/gld1.Close[0]
+        gld = 1
+        
+    try: 
+        gldprev = gld1.loc[formatted_date2, "Close"]
+    except Exception as e:
+        gldprev = 1       
+    
+    try: 
+        gldwe = gld1.loc[formatted_date3, "Close"]
+    except Exception as e:
+        gldwe = 1       
+        
+    gldvar = ((gld-gldprev)*100)/gldprev
+    goldvarw = ((gld-gldwe)*100)/gldwe
+    
     #eoy
-    gldeoy = yf.download("GC=F", "2022-12-30", "2022-12-31")
-    gldeoye = gldeoy.Close[0]
+    gldeoye = gld1.loc[eoly, "Close"]
     gldvarytd = ((gld/gldeoye)*100)/gldeoye
-    #weekly
-    goldrw = yf.download("GC=F", rwsdate, rwedate)
-    goldrwe = goldrw.Close[0]
-    goldvarw = ((gld-goldrwe)*100)/goldrwe
 
-    #Brent
+    #Brent    
+    oil1 = yf.download("BZ=F", eoly, edate)
     try:
-        oil1 = yf.download("BZ=F", prevdate, edate)
-        oil = oil1.Close[1]
+        oil = oil1.loc[formatted_date, "Close"]
     except Exception as e:
-        oil = oil1.Close[0]
-    oilvar = ((oil/oil1.Close[0])*100)/oil1.Close[0]
+        oil = 1
+        
+    try: 
+        oilprev = oil1.loc[formatted_date2, "Close"]
+    except Exception as e:
+        oilprev = 1       
+    
+    try: 
+        oilwe = oil1.loc[formatted_date3, "Close"]
+    except Exception as e:
+        oilwe = 1       
+        
+    oilvar = ((oil-oilprev)*100)/oilprev
+    oilvarw = ((oil-oilwe)*100)/oilwe
+    
     #eoy
-    oileoy = yf.download("BZ=F", "2022-12-30", "2022-12-31")
-    oileoye = oileoy.Close[0]
-    oilvarytd = ((oil-oileoye)*100)/oileoye
-    #weekly
-    oilrw = yf.download("BZ=F", rwsdate, rwedate)
-    oilrwe = oilrw.Close[0]
-    oilvarw = ((oil-oilrwe)*100)/oilrwe
+    oileoye = oil1.loc[eoly, "Close"]
+    oilvarytd = ((oil/oileoye)*100)/oileoye
 
     #silver
-    silver1 = yf.download("SI=F", prevdate, edate)
-    silver = silver1.Close[0]   
-    silvervar = ((silver-silver1.Close[0])*100)/silver1.Close[0]
+    silver1 = yf.download("SI=F", eoly, edate)
+    try:
+        silver = silver1.loc[formatted_date, "Close"]
+    except Exception as e:
+        oil = 1
+        
+    try: 
+        silverprev = silver1.loc[formatted_date2, "Close"]
+    except Exception as e:
+        silverprev = 1       
+    
+    try: 
+        silverwe = silver1.loc[formatted_date3, "Close"]
+    except Exception as e:
+        silverwe = 1       
+        
+    silvervar = ((silver-silverprev)*100)/silverprev
+    silvervarw = ((silver-silverwe)*100)/silverwe
+    
     #eoy
-    silvereoy = yf.download("SI=F", "2022-12-30", "2022-12-31")
-    silvereoye = silvereoy.Close[0]
-    silvervarytd = ((silver-silvereoye)*100)/silvereoye
-    #weekly
-    silverrw = yf.download("SI=F", rwsdate, rwedate)
-    silverrwe = silverrw.Close[0]
-    silvervarw = ((silver-silverrwe)*100)/silverrwe
+    silvereoye = silver1.loc[eoly, "Close"]
+    silvervarytd = ((silver/silvereoye)*100)/silvereoye
     
     return gld, oil, silver, gldvar, oilvar, silvervar, gldeoye, oileoye, silvereoye, gldvarytd, oilvarytd, silvervarytd, goldrwe, oilrwe, silverrwe, goldvarw, oilvarw, silvervarw
 
 #                                          FX
 
 #eurodollar
-eurusd1 = yf.download("EURUSD=X", prevdate, edate)
-eurusd = eurusd1.Close[1]
+eurusd1 = yf.download("EURUSD=X", eoly, edate)
+eurusd = eurusd1.loc[formatted_date, "Close"]
+eurusdprev = eurusd1.loc[formatted_date2, "Close"]
 #eoy
-eurusdeoy = yf.download("EURUSD=X", "2022-12-30", "2022-12-31")
-eurusdeoye = eurusdeoy.Close[0]
+eurusdeoye = eurusdeoy.loc[eoly, "Close"]
 
 eurusdvarytd = ((eurusd-eurusdeoye)*100)/eurusdeoye
-eurusdvar = ((eurusd-eurusd1.Close[0])*100)/eurusd1.Close[0]
+eurusdvar = ((eurusd-eurusdprev)*100)/eurusdprev
 
 #weekly
-eurw = yf.download("EURUSD=X", rwsdate, rwedate)
-eurwe = eurw.Close[0]
+eurwe = eurusd1.loc[formatted_date3, "Close"]
 euvarw = ((eurusd-eurwe)*100)/eurwe
-'''
+
 #calling funcs to lists
 indiceslist = indices()
 #commolist = commodities()
@@ -530,37 +544,40 @@ var1 = [indiceslist[7], indiceslist[8], indiceslist[9], indiceslist[10], indices
 vari = [indiceslist[14], indiceslist[15], indiceslist[16], indiceslist[17], indiceslist[18], indiceslist[19], indiceslist[20]]
 varw = [indiceslist[21], indiceslist[22], indiceslist[23], indiceslist[24], indiceslist[25], indiceslist[26], indiceslist[27]]
 
-#Cours2 =  [eurusd, commolist[1], commolist[0], commolist[2]]
-#var2 =  [eurusdvar, commolist[4], commolist[3], commolist[5]]
+Cours2 =  [eurusd, commolist[1], commolist[0], commolist[2]]
+var2 =  [eurusdvar, commolist[4], commolist[3], commolist[5]]
 
-#vari2 =  [eurusdvarytd, commolist[10], commolist[9], commolist[11]]
-#Coursw2 = [eurwe, commolist[12], commolist[13], commolist[14]]
-#varw2 = [euvarw, commolist[15], commolist[16], commolist[17]]
+vari2 =  [eurusdvarytd, commolist[10], commolist[9], commolist[11]]
+Coursw2 = [eurwe, commolist[12], commolist[13], commolist[14]]
+varw2 = [euvarw, commolist[15], commolist[16], commolist[17]]
 
 # dictionary of lists 
 dictin = {'Cours': Cours1, 'var %': var1}
-#dictin2 = {'Cours': Cours2, 'var %': var2}
+dictin2 = {'Cours': Cours2, 'var %': var2}
 
-#FXCOM = pd.DataFrame(dictin2,index=['EUR/USD','Brent', 'Gold', 'Silver'])
-#FXCOM['var ytd %'] = vari2
-#FXCOM['Cours j-7'] = Coursw2
-#FXCOM['var weekly %'] = varw2
+FXCOM = pd.DataFrame(dictin2,index=['EUR/USD','Brent', 'Gold', 'Silver'])
+FXCOM['var ytd %'] = vari2
+FXCOM['Cours j-7'] = Coursw2
+FXCOM['var weekly %'] = varw2
 
 intlindices = pd.DataFrame(dictin,index=['Dow Jones','S&P500', 'Nasdaq', 'CAC40', 'DAX30', 'NIKKEI','Hang Seng'])
 intlindices['var ytd %'] = vari
 intlindices['var weekly %'] = varw
 
-#st.text('FX & commodities')
-#st.dataframe(FXCOM)
+st.text('FX & commodities')
+
 st.text('Indices internationaux')
 
 if (bamselection == 'Q') :
     intlindicesQ = intlindices[['Cours','var %','var ytd %']]
+    FXCOMQ = FXCOM[['Cours','var %','var ytd %']]
     st.dataframe(intlindicesQ)
+    st.dataframe(FXCOMQ)
         
 else :
     st.dataframe(intlindices)
-
+    st.dataframe(FXCOM)
+    
 #BVCscrapper
 
 #loading indices
@@ -570,7 +587,7 @@ index=bvc.getIndex()
 dfindex = pd.DataFrame(index['Resume indice']).transpose()
 
 #sectorial
-dfsect = pd.DataFrame(index['Indices sectoriels']).transpose()
+#dfsect = pd.DataFrame(index['Indices sectoriels']).transpose()
 
 st.text('Indices BVC')
 
@@ -685,7 +702,7 @@ with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
     
     # Write each dataframe to a different worksheet.
     BAMcc.to_excel(writer, sheet_name='Cours de change BAM')
-    #FXCOM.to_excel(writer, sheet_name='FX & commodities')
+    FXCOM.to_excel(writer, sheet_name='FX & commodities')
     intlindices.to_excel(writer, sheet_name='Indices internationaux')
     dfindex.to_excel(writer, sheet_name='Indices BVC')
     #dfsect.to_excel(writer, sheet_name='Indices sectoriaux')
