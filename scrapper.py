@@ -557,10 +557,10 @@ st.text('Indices internationaux')
 st.dataframe(intlindices)
 
 with st.container(): 
-    #ratio selection 
+    
     hebdo = st.radio(
-     "Quotidien ou Hebdo",
-     ('Q', 'H'))
+     "Daily ou Weekly",
+     ('D', 'W'))
     
     if (hebdo == 'Q') :
         intlindicesQ = intlindices[['Cours','var %','var ytd %']]
