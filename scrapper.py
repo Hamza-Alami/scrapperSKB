@@ -398,7 +398,7 @@ def indices():
     except Exception as e:
         hkrev = 1       
         
-    hkvar = ((hk-hk1.Close[0])*100)/hk1.Close[0]
+    hkvar = ((hk-hkprev)*100)/hkprev
     #eoy
     hkeoye = hk1.loc[eoly, "Close"]
     hkvarytd = ((hk-hkeoye)*100)/hkeoye
