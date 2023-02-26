@@ -556,8 +556,6 @@ intlindicesw['var weekly %'] = varw
 #st.dataframe(FXCOM)
 st.text('Indices internationaux')
 
-st.dataframe(intlindices)
-
 with st.container(): 
     
     hebdo = st.radio(
@@ -569,7 +567,6 @@ with st.container():
         
     else :
         st.dataframe(intlindicesw)
-
 
 #BVCscrapper
 
