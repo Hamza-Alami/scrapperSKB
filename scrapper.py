@@ -548,9 +548,7 @@ dictin = {'Cours': Cours1, 'var %': var1}
 
 intlindices = pd.DataFrame(dictin,index=['Dow Jones','S&P500', 'Nasdaq', 'CAC40', 'DAX30', 'NIKKEI','Hang Seng'])
 intlindices['var ytd %'] = vari
-
-intlindicesw = intlindices
-intlindicesw['var weekly %'] = varw
+intlindices['var weekly %'] = varw
 
 #st.text('FX & commodities')
 #st.dataframe(FXCOM)
@@ -563,10 +561,12 @@ with st.container():
      ('D', 'W'))
     
     if (hebdo == 'D') :
+        intlindicesQ = intlindices[['Cours','var %','var ytd %']]
         st.dataframe(intlindices)
         
     else :
-        st.dataframe(intlindicesw)
+        intlindicesW = intlindices
+        st.dataframe(intlindicesW)
         
 st.write(intlindices.columns)
 st.write(intlindicesw.columns)
