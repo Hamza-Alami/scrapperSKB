@@ -567,6 +567,9 @@ with st.container():
         
     else :
         st.dataframe(intlindicesw)
+        
+st.write(intlindices.columns)
+st.write(intlindicesw.columns)
 
 #BVCscrapper
 
