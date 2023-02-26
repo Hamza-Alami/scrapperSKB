@@ -556,7 +556,7 @@ st.text('Indices internationaux')
 
 if (bamselection == 'Q') :
     intlindicesQ = intlindices[['Cours','var %','var ytd %']]
-    st.dataframe(intlindices)
+    st.dataframe(intlindicesQ)
         
 else :
     st.dataframe(intlindices)
