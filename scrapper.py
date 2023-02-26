@@ -43,7 +43,7 @@ edate = lyoum
 start_date = st.sidebar.date_input('séléctionner la date pour les indices et les commodities')
 formatted_date = pd.to_datetime(start_date).strftime('%Y-%m-%d')
 
-no2 = formatted_date.weekday()
+no2 = date(formatted_date).weekday()
 
 
 if no == 0 :
