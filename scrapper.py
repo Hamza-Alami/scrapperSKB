@@ -554,12 +554,6 @@ intlindices['var weekly %'] = varw
 #st.dataframe(FXCOM)
 st.text('Indices internationaux')
 
-with st.container(): 
-    
-    hebdo = st.radio(
-     "Daily ou Weekly",
-     ('D', 'W'))
-    
 if (bamselection == 'Q') :
     intlindicesQ = intlindices[['Cours','var %','var ytd %']]
     st.dataframe(intlindices)
