@@ -43,7 +43,7 @@ edate = lyoum
 start_date = st.sidebar.date_input('séléctionner la date pour les indices et les commodities')
 formatted_date = start_date.strftime('%Y-%m-%d')
 
-no2 = formatted_date.weekday()
+#no2 = formatted_date.weekday()
 
 
 if no == 0 :
@@ -56,14 +56,14 @@ else:
     sdate = lyoum - datetime.timedelta(days=1)
 
 #loop 2
-if no2 == 0 :
-    prevdate = formatted_date - datetime.timedelta(days=4)
+#if no2 == 0 :
+    #prevdate = formatted_date - datetime.timedelta(days=4)
     
-elif no2 == 1 :
-    prevdate = formatted_date - datetime.timedelta(days=4)
+#elif no2 == 1 :
+    #prevdate = formatted_date - datetime.timedelta(days=4)
     
-else:
-    prevdate = formatted_date - datetime.timedelta(days=2)
+#else:
+    #prevdate = formatted_date - datetime.timedelta(days=2)
     
 #bamweek
 bamweek = lyoum - datetime.timedelta(days=7)
@@ -79,7 +79,7 @@ rwsdate = lyoum - datetime.timedelta(days=7)
 rwedate = lyoum - datetime.timedelta(days=6)
 #end
     
-threeyrsago = lyoum.replace(year=lyoum.year-3)
+#threeyrsago = lyoum.replace(year=lyoum.year-3)
 oneyrago = lyoum.replace(year=lyoum.year-1)
 
 st.text('Cours de référence BAM')
@@ -288,16 +288,16 @@ def indices():
     try:
         dj = yf.download("^DJI", eoly, edate)
         dj30 = dj.loc[formatted_date, "Close"]
-        dj30prev = dj.loc[prevdate, "Close"]
+        #dj30prev = dj.loc[prevdate, "Close"]
     except Exception as e:
         dj30 = 1
         dj30prev = 1
         
-    dj30var = ((dj30-dj30prev)*100)/dj30prev
+    #dj30var = ((dj30-dj30prev)*100)/dj30prev
     #eoy
     djeoye = dj.loc[eoly, "Close"]
     djvarytd = ((dj30-djeoye)*100)/djeoye
-    return dj30, dj30prev, dj30var, djeoye, djvarytd
+    return dj30, djeoye, djvarytd
 
 st.write(indices())
 '''
