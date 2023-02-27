@@ -239,9 +239,9 @@ deoy = dirhamdollar[3]
 
 BAMcc = pd.DataFrame({'Cours en MAD': [eact, dact]},index=['EUR', 'USD'])
 
-varmad = [((eact-eprev)/eact)*100, ((dact-dprev)/dact)*100]
-vareoy = [((eact-eeoy)/eact)*100, ((dact-deoy)/dact)*100]
-varmadweekly = [((eact-eweek)/eact)*100, ((dact-dweek)/dact)*100]
+varmad = [((eact-eprev)/eprev)*100, ((dact-dprev)/dprev)*100]
+vareoy = [((eact-eeoy)/eeoy)*100, ((dact-deoy)/deoy)*100]
+varmadweekly = [((eact-eweek)/eweek)*100, ((dact-dweek)/dweek)*100]
 
 BAMcc['var %'] = varmad
 BAMcc['var ytd %'] = vareoy
