@@ -543,7 +543,7 @@ varw2 = [commolist[15], commolist[16], commolist[17]]
 dictin = {'Cours': Cours1, 'var %': var1}
 dictin2 = {'Cours': Cours2, 'var %': var2}
 
-FXCOM = pd.DataFrame(dictin2,index=['Brent', 'Gold', 'Silver'])
+FXCOM = pd.DataFrame(dictin2,index=['Gold','Brent','Silver'])
 FXCOM['var ytd %'] = vari2
 FXCOM['Cours j-7'] = Coursw2
 FXCOM['var weekly %'] = varw2
