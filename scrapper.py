@@ -519,20 +519,6 @@ def commodities():
 
 #                                          FX
 
-#eurodollar
-eurusd1 = yf.download("EURUSD=X", eoly, edate)
-eurusd = eurusd1.loc[formatted_date, "Close"]
-eurusdprev = eurusd1.loc[formatted_date2, "Close"]
-#eoy
-eurusdeoye = eurusd1.loc[eoly, "Close"]
-
-eurusdvarytd = ((eurusd-eurusdeoye)*100)/eurusdeoye
-eurusdvar = ((eurusd-eurusdprev)*100)/eurusdprev
-
-#weekly
-eurwe = eurusd1.loc[formatted_date3, "Close"]
-euvarw = ((eurusd-eurwe)*100)/eurwe
-
 #calling funcs to lists
 indiceslist = indices()
 commolist = commodities()
@@ -546,18 +532,18 @@ var1 = [indiceslist[7], indiceslist[8], indiceslist[9], indiceslist[10], indices
 vari = [indiceslist[14], indiceslist[15], indiceslist[16], indiceslist[17], indiceslist[18], indiceslist[19], indiceslist[20]]
 varw = [indiceslist[21], indiceslist[22], indiceslist[23], indiceslist[24], indiceslist[25], indiceslist[26], indiceslist[27]]
 
-Cours2 =  [eurusd, commolist[1], commolist[0], commolist[2]]
-var2 =  [eurusdvar, commolist[4], commolist[3], commolist[5]]
+Cours2 =  [commolist[0], commolist[1], commolist[2]]
+var2 =  [commolist[3], commolist[4], commolist[5]]
 
-vari2 =  [eurusdvarytd, commolist[10], commolist[9], commolist[11]]
-Coursw2 = [eurwe, commolist[12], commolist[13], commolist[14]]
-varw2 = [euvarw, commolist[15], commolist[16], commolist[17]]
+vari2 =  [commolist[9], commolist[10], commolist[11]]
+Coursw2 = [commolist[12], commolist[13], commolist[14]]
+varw2 = [commolist[15], commolist[16], commolist[17]]
 
 # dictionary of lists 
 dictin = {'Cours': Cours1, 'var %': var1}
 dictin2 = {'Cours': Cours2, 'var %': var2}
 
-FXCOM = pd.DataFrame(dictin2,index=['EUR/USD','Brent', 'Gold', 'Silver'])
+FXCOM = pd.DataFrame(dictin2,index=['Brent', 'Gold', 'Silver'])
 FXCOM['var ytd %'] = vari2
 FXCOM['Cours j-7'] = Coursw2
 FXCOM['var weekly %'] = varw2
@@ -746,3 +732,17 @@ with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
 
 #Pondération et cours
 #courspond = pd.DataFrame(bvc.getPond())'''
+
+#eurodollar
+#eurusd1 = yf.download("EURUSD=X", eoly, edate)
+#eurusd = eurusd1.loc[formatted_date, "Close"]
+#eurusdprev = eurusd1.loc[formatted_date2, "Close"]
+#eoy
+#eurusdeoye = eurusd1.loc[eoly, "Close"]
+
+#eurusdvarytd = ((eurusd-eurusdeoye)*100)/eurusdeoye
+#eurusdvar = ((eurusd-eurusdprev)*100)/eurusdprev
+
+#weekly
+#eurwe = eurusd1.loc[formatted_date3, "Close"]
+#euvarw = ((eurusd-eurwe)*100)/eurwe
