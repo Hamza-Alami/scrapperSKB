@@ -517,7 +517,6 @@ def commodities():
     
     return gld, oil, silver, gldvar, oilvar, silvervar, gldeoye, oileoye, silvereoye, gldvarytd, oilvarytd, silvervarytd, gldwe, oilwe, silverwe, goldvarw, oilvarw, silvervarw
 
-stwrite(commodities())
 #                                          FX
 
 #eurodollar
