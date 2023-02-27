@@ -537,7 +537,7 @@ euvarw = ((eurusd-eurwe)*100)/eurwe
 indiceslist = indices()
 commolist = commodities()
 
-st.write(commolist[6], commolist[7], commolist[8], commolist[13], commolist[14], commolist[15])
+st.write(commolist[6], commolist[7], commolist[8], commolist[12], commolist[13], commolist[14])
 
 #putting data into lists
 Cours1 = [indiceslist[0], indiceslist[1], indiceslist[2], indiceslist[3], indiceslist[4], indiceslist[5], indiceslist[6]]
