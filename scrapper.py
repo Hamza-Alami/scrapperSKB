@@ -517,6 +517,7 @@ def commodities():
     
     return gld, oil, silver, gldvar, oilvar, silvervar, gldeoye, oileoye, silvereoye, gldvarytd, oilvarytd, silvervarytd, gldwe, oilwe, silverwe, goldvarw, oilvarw, silvervarw
 
+stwrite(commodities())
 #                                          FX
 
 #eurodollar
@@ -536,6 +537,8 @@ euvarw = ((eurusd-eurwe)*100)/eurwe
 #calling funcs to lists
 indiceslist = indices()
 commolist = commodities()
+
+st.write(commolist[6], commolist[7], commolist[8], commolist[13], commolist[14], commolist[15])
 
 #putting data into lists
 Cours1 = [indiceslist[0], indiceslist[1], indiceslist[2], indiceslist[3], indiceslist[4], indiceslist[5], indiceslist[6]]
