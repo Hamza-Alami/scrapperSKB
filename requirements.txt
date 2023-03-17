@@ -9,3 +9,4 @@ yfinance==0.1.85
 selenium
 seleniumbase
 webdriver-manager
+streamlit==1.11.0
