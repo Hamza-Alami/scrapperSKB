@@ -465,7 +465,7 @@ def commodities():
     
     #eoy
     gldeoye = gld1.loc[eoly, "Close"]
-    gldvarytd = ((gld/gldeoye)-1)*10
+    gldvarytd = ((gld/gldeoye)-1)*100
 
     #Brent    
     oil1 = yf.download("BZ=F", eoly, edate)
@@ -489,7 +489,7 @@ def commodities():
     
     #eoy
     oileoye = oil1.loc[eoly, "Close"]
-    oilvarytd = ((oil/oileoye)-1)*10
+    oilvarytd = ((oil/oileoye)-1)*100
 
     #silver
     silver1 = yf.download("SI=F", eoly, edate)
@@ -513,7 +513,7 @@ def commodities():
     
     #eoy
     silvereoye = silver1.loc[eoly, "Close"]
-    silvervarytd = ((silver/silvereoye)-1)*10
+    silvervarytd = ((silver/silvereoye)-1)*100
     
     return gld, oil, silver, gldvar, oilvar, silvervar, gldeoye, oileoye, silvereoye, gldvarytd, oilvarytd, silvervarytd, gldwe, oilwe, silverwe, goldvarw, oilvarw, silvervarw
 
