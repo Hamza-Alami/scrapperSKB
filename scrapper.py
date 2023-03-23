@@ -620,42 +620,42 @@ for i, val in enumerate(z):
     seance.append({'Ticker': val["name"],'Cours': val["cours"], 'Cloture': val["cloture"],'Variation': val["variation"], 'Volume Titre': val["volumeTitre"],"derniere transaction" : stripped})
     fulldf = pd.DataFrame(seance)
     
-fulldf['derniere transaction'] = pd.to_datetime(fulldf['derniere transaction'], infer_datetime_format=True)
+#fulldf['derniere transaction'] = pd.to_datetime(fulldf['derniere transaction'], infer_datetime_format=True)
 
-fulldf['derniere transaction'] = fulldf['derniere transaction'].dt.date
+#fulldf['derniere transaction'] = fulldf['derniere transaction'].dt.date
 
-tradedtoday = fulldf['derniere transaction'] < lyoum
-fulldf.loc[tradedtoday, 'Volume Titre'] = 0
-fulldf.loc[tradedtoday, 'Variation'] = 0
+#tradedtoday = fulldf['derniere transaction'] < lyoum
+#fulldf.loc[tradedtoday, 'Volume Titre'] = 0
+#fulldf.loc[tradedtoday, 'Variation'] = 0
 
 #renaming for merge
-fulldf.rename(columns = {'Ticker':'Scrappername'}, inplace = True)
-courspond.rename(columns = {'Instrument':'BVC'}, inplace = True)
-courspond.rename(columns = {'Cours':'Cours BVC'}, inplace = True)
+#fulldf.rename(columns = {'Ticker':'Scrappername'}, inplace = True)
+#courspond.rename(columns = {'Instrument':'BVC'}, inplace = True)
+#courspond.rename(columns = {'Cours':'Cours BVC'}, inplace = True)
 
 #merging
-df_merge_col = pd.merge(fulldf, supportsc, on='Scrappername')
-df_merge_2 = pd.merge(courspond, df_merge_col, on='BVC')
+#df_merge_col = pd.merge(fulldf, supportsc, on='Scrappername')
+#df_merge_2 = pd.merge(courspond, df_merge_col, on='BVC')
 
-df_merge_2['Cloture'] = df_merge_2['Cloture'].apply(lambda x: x.replace(" ", ""))
+#df_merge_2['Cloture'] = df_merge_2['Cloture'].apply(lambda x: x.replace(" ", ""))
 
-df_merge_2['Cours'] = df_merge_2['Cours'].astype(float)
-df_merge_2['Variation'] = df_merge_2['Variation'].astype(float)
-df_merge_2['Volume Titre'] = df_merge_2['Volume Titre'].astype(float)
-df_merge_2['Nombre de titres'] = df_merge_2['Volume Titre'].astype(float)
-df_merge_2['Var Ytd'] = ((df_merge_2['Cours']-df_merge_2['COURS AU 31/12/2022'])*100)/df_merge_2['COURS AU 31/12/2022']
+#df_merge_2['Cours'] = df_merge_2['Cours'].astype(float)
+#df_merge_2['Variation'] = df_merge_2['Variation'].astype(float)
+#df_merge_2['Volume Titre'] = df_merge_2['Volume Titre'].astype(float)
+#df_merge_2['Nombre de titres'] = df_merge_2['Volume Titre'].astype(float)
+#df_merge_2['Var Ytd'] = ((df_merge_2['Cours']-df_merge_2['COURS AU 31/12/2022'])*100)/df_merge_2['COURS AU 31/12/2022']
 
-df_merge_2['Capitalisation'] = (df_merge_2['Cours']*df_merge_2['NofS'])
-FinalDF = df_merge_2[['soge', 'TICKER','Cours', 'Variation', 'Var Ytd', 'Volume Titre', 'Capitalisation']]
+#df_merge_2['Capitalisation'] = (df_merge_2['Cours']*df_merge_2['NofS'])
+#FinalDF = df_merge_2[['soge', 'TICKER','Cours', 'Variation', 'Var Ytd', 'Volume Titre', 'Capitalisation']]
 
-mapping = {'StÃ© Boissons du Maroc': 'Sté Boissons du Maroc',
-           'CrÃ©dit Du Maroc': 'Crédit du Maroc',
-           'OulmÃ¨s': 'Oulmès',
-           'Maghreb OxygÃ¨ne':'Maghreb Oxygène'
-          }
+#mapping = {'StÃ© Boissons du Maroc': 'Sté Boissons du Maroc',
+           #'CrÃ©dit Du Maroc': 'Crédit du Maroc',
+           #'OulmÃ¨s': 'Oulmès',
+           #'Maghreb OxygÃ¨ne':'Maghreb Oxygène'
+          #}
 
-FinalDF.soge = FinalDF.soge.replace(mapping, regex=True)
-st.write(FinalDF)
+#FinalDF.soge = FinalDF.soge.replace(mapping, regex=True)
+#st.write(FinalDF)
 
 masi1=bvc.loadata('MASI',start=oneyrago,end=lyoum)
 msi20=bvc.loadata('MSI20',start=oneyrago,end=lyoum)
@@ -693,8 +693,7 @@ with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
     FXCOM.to_excel(writer, sheet_name='FX & commodities')
     intlindices.to_excel(writer, sheet_name='Indices internationaux')
     dfindex.to_excel(writer, sheet_name='Indices BVC')
-    #dfsect.to_excel(writer, sheet_name='Indices sectoriaux')
-    FinalDF.to_excel(writer, sheet_name='Cours & Variations')
+    #FinalDF.to_excel(writer, sheet_name='Cours & Variations')
     voldf.to_excel(writer, sheet_name='Volume global')
     masi1.to_excel(writer, sheet_name='Masi Hist 1YR')
     msi20.to_excel(writer, sheet_name='Msi20 Hist 1YR')
