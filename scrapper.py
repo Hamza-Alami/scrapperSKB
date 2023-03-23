@@ -609,16 +609,17 @@ voldf = s.to_frame()
 
 response_API = requests.get('https://medias24.com/content/api?method=getAllStocks&format=json')
 x = response_API.content
-y = json.loads(x)
-z = y['result']
-trntrn = z[0]
+st.write(x)
+#y = json.loads(x)
+#z = y['result']
+#trntrn = z[0]
         
-seance = []
-for i, val in enumerate(z):
-    sep = ' '
-    stripped = val["datetime"].split(sep, 1)[0]
-    seance.append({'Ticker': val["name"],'Cours': val["cours"], 'Cloture': val["cloture"],'Variation': val["variation"], 'Volume Titre': val["volumeTitre"],"derniere transaction" : stripped})
-    fulldf = pd.DataFrame(seance)
+#seance = []
+#for i, val in enumerate(z):
+    #sep = ' '
+    #stripped = val["datetime"].split(sep, 1)[0]
+    #seance.append({'Ticker': val["name"],'Cours': val["cours"], 'Cloture': val["cloture"],'Variation': val["variation"], 'Volume Titre': val["volumeTitre"],"derniere transaction" : stripped})
+    #fulldf = pd.DataFrame(seance)
     
 #fulldf['derniere transaction'] = pd.to_datetime(fulldf['derniere transaction'], infer_datetime_format=True)
 
