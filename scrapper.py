@@ -21,6 +21,7 @@ import http.client, urllib.request, urllib.parse, urllib.error, base64
 import yfinance as yf
 from datetime import date
 import time
+from fake_useragent import UserAgent
 
 #GITHUB READING
 # Downloading the csv file from your GitHub
@@ -610,7 +611,7 @@ voldf = s.to_frame()
 #response_API = requests.get('https://medias24.com/content/api?method=getAllStocks&format=json')
 #x = response_API.content
 
-url = "https://www.supremenewyork.com/mobile_stock.json"
+url = "https://medias24.com/content/api?method=getAllStocks&format=json"
 
 headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 Edge/16.16299"
