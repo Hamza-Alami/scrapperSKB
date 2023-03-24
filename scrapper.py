@@ -614,6 +614,7 @@ headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/
 
 response_API = requests.get('https://medias24.com/content/api?method=getAllStocks&format=json', headers=headers)
 x = response_API.content
+st.write(x)
 
 '''
 y = json.loads(x)
