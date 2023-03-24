@@ -610,17 +610,11 @@ voldf = s.to_frame()
 #response_API = requests.get('https://medias24.com/content/api?method=getAllStocks&format=json')
 #x = response_API.content
 
-headers = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'}
-response_API = requests.get('https://medias24.com/content/api?method=getAllStocks&format=json', headers=headers)
+headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'}
 
-if response.status_code == 200:
-    # Success, do something with the response data
-    x = response_API.content
-else:
-    # Error handling
-    x = 'Request failed with status code {response.status_code}'
-    
+response_API = requests.get('https://medias24.com/content/api?method=getAllStocks&format=json', headers=headers)
+x = response_API.content
+
 st.write(x)
     
 #y = json.loads(x)
