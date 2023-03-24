@@ -614,7 +614,8 @@ headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/
 
 response_API = requests.get('https://medias24.com/content/api?method=getAllStocks&format=json', headers=headers)
 x = response_API.content
-    
+
+'''
 y = json.loads(x)
 z = y['result']
 trntrn = z[0]
@@ -686,7 +687,7 @@ data0 = [[aujd[0], aujd[1]]]
 aujddf = pd.DataFrame(data0, columns=['Jour', 'Date'])
 st.write(aujddf)
 ###
-
+'''
 #to excel sheets
 buffer = io.BytesIO()
 
@@ -699,7 +700,7 @@ with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
     FXCOM.to_excel(writer, sheet_name='FX & commodities')
     intlindices.to_excel(writer, sheet_name='Indices internationaux')
     dfindex.to_excel(writer, sheet_name='Indices BVC')
-    FinalDF.to_excel(writer, sheet_name='Cours & Variations')
+    #FinalDF.to_excel(writer, sheet_name='Cours & Variations')
     voldf.to_excel(writer, sheet_name='Volume global')
     masi1.to_excel(writer, sheet_name='Masi Hist 1YR')
     msi20.to_excel(writer, sheet_name='Msi20 Hist 1YR')
