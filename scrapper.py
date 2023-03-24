@@ -22,6 +22,8 @@ import yfinance as yf
 from datetime import date
 import time
 from fake_useragent import UserAgent
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
 #GITHUB READING
 # Downloading the csv file from your GitHub
@@ -613,12 +615,17 @@ voldf = s.to_frame()
 
 url = "https://medias24.com/content/api?method=getAllStocks&format=json"
 
-ua = UserAgent()
-headers = {'User-Agent': ua.random}
+options = Options()
+options.add_argument('--headless')
+options.add_argument('--disable-gpu')
 
-response_API = requests.get(url, headers=headers)
+driver = webdriver.Chrome(options=options)
 
-x = response_API.content
+driver.get('https://example.com')
+driver.page_source
+
+x = driver.page_source
+
 st.write(x)
 
 '''
