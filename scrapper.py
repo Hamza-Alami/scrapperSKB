@@ -687,7 +687,7 @@ data0 = [[aujd[0], aujd[1]]]
 aujddf = pd.DataFrame(data0, columns=['Jour', 'Date'])
 st.write(aujddf)
 ###
-'''
+
 #to excel sheets
 buffer = io.BytesIO()
 
@@ -700,7 +700,7 @@ with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
     FXCOM.to_excel(writer, sheet_name='FX & commodities')
     intlindices.to_excel(writer, sheet_name='Indices internationaux')
     dfindex.to_excel(writer, sheet_name='Indices BVC')
-    #FinalDF.to_excel(writer, sheet_name='Cours & Variations')
+    FinalDF.to_excel(writer, sheet_name='Cours & Variations')
     voldf.to_excel(writer, sheet_name='Volume global')
     masi1.to_excel(writer, sheet_name='Masi Hist 1YR')
     msi20.to_excel(writer, sheet_name='Msi20 Hist 1YR')
@@ -715,7 +715,7 @@ with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
         data=buffer,
         file_name="ds.xlsx"
     )
-
+'''
 #data=bvc.loadmany(['Addoha','AFMA','Afric Indus','Afriquia Gaz','Agma','Alliances','Aluminium Maroc','Aradei Capital','ATLANTASANAD','Attijariwafa','Auto Hall','Auto Nejma','BALIMA','BOA','BCP','BMCI','Cartier Saada','CDM','CIH','Ciments Maroc','CMT','Colorado','COSUMAR','CTM','Dari Couspate','Delta Holding','DISWAY','Ennakl','EQDOM','FENIE BROSSETTE','HPS','Immr Invest','INVOLYS','Jet Contractors','LABEL VIE','LafargeHolcim','Lesieur Cristal','M2M Group','Maghreb Oxygene','Maghrebail','Managem','Maroc Leasing','Maroc Telecom','Microdata','Mutandis','Oulmes','PROMOPHARM','Rebab Company','Res.Dar Saada','Risma','S2M','Saham Assurance','SALAFIN','SMI','Stokvis Nord Afr','SNEP','SODEP','Sonasid','SRM','Ste Boissons','STROC Indus','TAQA Morocco','Timar','Total Maroc','Unimer','SOTHEMA','Wafa Assur','Zellidja'],start="2023-02-09",end='2023-02-15')
 #st.text('Weekly Hist')
 #st.write(data.T)
