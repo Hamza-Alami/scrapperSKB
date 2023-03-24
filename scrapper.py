@@ -607,9 +607,22 @@ voldf = s.to_frame()
 
 #Scraping stock data from le Boursier 
 
-response_API = requests.get('https://medias24.com/content/api?method=getAllStocks&format=json')
-x = response_API.content
+#response_API = requests.get('https://medias24.com/content/api?method=getAllStocks&format=json')
+#x = response_API.content
+
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'}
+response_API = requests.get('https://medias24.com/content/api?method=getAllStocks&format=json', headers=headers)
+
+if response.status_code == 200:
+    # Success, do something with the response data
+    x = response_API.content
+else:
+    # Error handling
+    x = 'Request failed with status code {response.status_code}'
+    
 st.write(x)
+    
 #y = json.loads(x)
 #z = y['result']
 #trntrn = z[0]
