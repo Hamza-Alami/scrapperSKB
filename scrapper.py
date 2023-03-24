@@ -610,13 +610,14 @@ voldf = s.to_frame()
 #response_API = requests.get('https://medias24.com/content/api?method=getAllStocks&format=json')
 #x = response_API.content
 
-urlm24 = 'https://medias24.com/content/api?method=getAllStocks&format=json'
+url = "https://www.supremenewyork.com/mobile_stock.json"
 
 headers = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 Edge/16.16299'
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 Edge/16.16299"
 }
 
-response_API = requests.get(urlm24, headers=headers)
+response_API = requests.get(url, headers=headers)
+
 
 x = response_API.content
 st.write(x)
