@@ -610,25 +610,11 @@ voldf = s.to_frame()
 
 #Scraping stock data from le Boursier 
 
-#response_API = requests.get('https://medias24.com/content/api?method=getAllStocks&format=json')
-#x = response_API.content
 
-url = "https://medias24.com/content/api?method=getAllStocks&format=json"
+'''response_API = requests.get('https://medias24.com/content/api?method=getAllStocks&format=json')
+x = response_API.content
 
-options = Options()
-options.add_argument('--headless')
-options.add_argument('--disable-gpu')
 
-driver = webdriver.Chrome(options=options)
-
-driver.get('https://example.com')
-driver.page_source
-
-x = driver.page_source
-
-st.write(x)
-
-'''
 y = json.loads(x)
 z = y['result']
 trntrn = z[0]
@@ -676,6 +662,7 @@ mapping = {'StÃ© Boissons du Maroc': 'Sté Boissons du Maroc',
 
 FinalDF.soge = FinalDF.soge.replace(mapping, regex=True)
 st.write(FinalDF)
+'''
 
 masi1=bvc.loadata('MASI',start=oneyrago,end=lyoum)
 msi20=bvc.loadata('MSI20',start=oneyrago,end=lyoum)
@@ -713,7 +700,7 @@ with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
     FXCOM.to_excel(writer, sheet_name='FX & commodities')
     intlindices.to_excel(writer, sheet_name='Indices internationaux')
     dfindex.to_excel(writer, sheet_name='Indices BVC')
-    FinalDF.to_excel(writer, sheet_name='Cours & Variations')
+    #FinalDF.to_excel(writer, sheet_name='Cours & Variations')
     voldf.to_excel(writer, sheet_name='Volume global')
     masi1.to_excel(writer, sheet_name='Masi Hist 1YR')
     msi20.to_excel(writer, sheet_name='Msi20 Hist 1YR')
@@ -728,6 +715,7 @@ with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
         data=buffer,
         file_name="ds.xlsx"
     )
+    
 '''
 #data=bvc.loadmany(['Addoha','AFMA','Afric Indus','Afriquia Gaz','Agma','Alliances','Aluminium Maroc','Aradei Capital','ATLANTASANAD','Attijariwafa','Auto Hall','Auto Nejma','BALIMA','BOA','BCP','BMCI','Cartier Saada','CDM','CIH','Ciments Maroc','CMT','Colorado','COSUMAR','CTM','Dari Couspate','Delta Holding','DISWAY','Ennakl','EQDOM','FENIE BROSSETTE','HPS','Immr Invest','INVOLYS','Jet Contractors','LABEL VIE','LafargeHolcim','Lesieur Cristal','M2M Group','Maghreb Oxygene','Maghrebail','Managem','Maroc Leasing','Maroc Telecom','Microdata','Mutandis','Oulmes','PROMOPHARM','Rebab Company','Res.Dar Saada','Risma','S2M','Saham Assurance','SALAFIN','SMI','Stokvis Nord Afr','SNEP','SODEP','Sonasid','SRM','Ste Boissons','STROC Indus','TAQA Morocco','Timar','Total Maroc','Unimer','SOTHEMA','Wafa Assur','Zellidja'],start="2023-02-09",end='2023-02-15')
 #st.text('Weekly Hist')
