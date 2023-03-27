@@ -662,8 +662,8 @@ mapping = {'StÃ© Boissons du Maroc': 'Sté Boissons du Maroc',
 FinalDF.soge = FinalDF.soge.replace(mapping, regex=True)
 st.write(FinalDF)
 
-#masi1=bvc.loadata('MASI',start=oneyrago,end=lyoum)
-#msi20=bvc.loadata('MSI20',start=oneyrago,end=lyoum)
+masi1=bvc.loadata('MASI',start=oneyrago,end=lyoum)
+msi20=bvc.loadata('MSI20',start=oneyrago,end=lyoum)
 
 # Get today's date
 today = datetime.datetime.now().date()
