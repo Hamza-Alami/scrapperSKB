@@ -610,8 +610,6 @@ voldf = s.to_frame()
 
 #Scraping stock data from le Boursier 
 
-
-'''
 response_API = requests.get('https://medias24.com/content/api?method=getAllStocks&format=json')
 x = response_API.content
 
@@ -663,7 +661,6 @@ mapping = {'StÃ© Boissons du Maroc': 'Sté Boissons du Maroc',
 
 FinalDF.soge = FinalDF.soge.replace(mapping, regex=True)
 st.write(FinalDF)
-'''
 
 #masi1=bvc.loadata('MASI',start=oneyrago,end=lyoum)
 #msi20=bvc.loadata('MSI20',start=oneyrago,end=lyoum)
