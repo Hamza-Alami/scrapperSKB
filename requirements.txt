@@ -6,7 +6,5 @@ beautifulsoup4
 lxml
 BVCscrap
 yfinance==0.1.85
-selenium
-seleniumbase
 webdriver-manager
 fake_useragent
