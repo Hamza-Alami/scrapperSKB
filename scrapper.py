@@ -22,8 +22,6 @@ import yfinance as yf
 from datetime import date
 import time
 from fake_useragent import UserAgent
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
 
 #GITHUB READING
 # Downloading the csv file from your GitHub
