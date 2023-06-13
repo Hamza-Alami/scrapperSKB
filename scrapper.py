@@ -666,9 +666,9 @@ msi20=bvc.loadata('MSI20',start=oneyrago,end=lyoum)
 # Get today's date
 today = datetime.datetime.now().date()
 
-last = dfindex['Valeur']
-last2 = last.iloc[1]
-s1 = pd.Series([today.strftime("%Y-%m-%d"), last2])
+#last = dfindex['Valeur']
+#last2 = last.iloc[1]
+#s1 = pd.Series([today.strftime("%Y-%m-%d"), last2])
 
 #date fr
 # Get the day of the week as an integer (Monday is 0, Tuesday is 1, etc.)
