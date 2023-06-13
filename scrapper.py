@@ -596,7 +596,7 @@ else :
 #st.dataframe(dfindex)
 
 #Pondération et cours
-#courspond = pd.DataFrame(bvc.getPond())
+courspond = pd.DataFrame(bvc.getPond())
 
 #Volume scrap
 #st.text('Volume de la séance :')
