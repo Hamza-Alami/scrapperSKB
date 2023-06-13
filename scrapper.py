@@ -596,15 +596,15 @@ else :
 #st.dataframe(dfindex)
 
 #Pondération et cours
-courspond = pd.DataFrame(bvc.getPond())
+#courspond = pd.DataFrame(bvc.getPond())
 
 #Volume scrap
-st.text('Volume de la séance :')
+#st.text('Volume de la séance :')
 #recap=bvc.getIndexRecap()
-st.write(recap['Volume Global'])
-s = pd.Series([recap['Volume Global']],
-              name="Volume Global")
-voldf = s.to_frame()
+#st.write(recap['Volume Global'])
+#s = pd.Series([recap['Volume Global']],
+              #name="Volume Global")
+#voldf = s.to_frame()
 
 #Scraping stock data from le Boursier 
 
@@ -697,7 +697,7 @@ with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
     intlindices.to_excel(writer, sheet_name='Indices internationaux')
     #dfindex.to_excel(writer, sheet_name='Indices BVC')
     FinalDF.to_excel(writer, sheet_name='Cours & Variations')
-    voldf.to_excel(writer, sheet_name='Volume global')
+    #voldf.to_excel(writer, sheet_name='Volume global')
     masi1.to_excel(writer, sheet_name='Masi Hist 1YR')
     msi20.to_excel(writer, sheet_name='Msi20 Hist 1YR')
     aujddf.to_excel(writer, sheet_name='Date')
