@@ -578,29 +578,29 @@ dfindex = pd.DataFrame(index['Resume indice']).transpose()
 #sectorial
 #dfsect = pd.DataFrame(index['Indices sectoriels']).transpose()
 
-st.text('Indices BVC')
+#st.text('Indices BVC')
 
-dfindex['Var %'] = dfindex['Var %'].apply(lambda x: x.replace(" %", ""))
-dfindex['Var % 31/12'] = dfindex['Var % 31/12'].apply(lambda x: x.replace(" %", ""))
-dfindex['Var % 31/12'] = dfindex['Var % 31/12'].apply(lambda x: x.replace(",", "."))
-dfindex['Var %'] = dfindex['Var %'].apply(lambda x: x.replace(",", "."))
-dfindex['Valeur'] = dfindex['Valeur'].apply(lambda x: x.replace(",", "."))
+#dfindex['Var %'] = dfindex['Var %'].apply(lambda x: x.replace(" %", ""))
+#dfindex['Var % 31/12'] = dfindex['Var % 31/12'].apply(lambda x: x.replace(" %", ""))
+#dfindex['Var % 31/12'] = dfindex['Var % 31/12'].apply(lambda x: x.replace(",", "."))
+#dfindex['Var %'] = dfindex['Var %'].apply(lambda x: x.replace(",", "."))
+#dfindex['Valeur'] = dfindex['Valeur'].apply(lambda x: x.replace(",", "."))
 
-dfindex['Var % 31/12'] = pd.to_numeric(dfindex['Var % 31/12'], errors='coerce')
-dfindex['Var %'] = pd.to_numeric(dfindex['Var %'], errors='coerce')
-dfindex['Valeur'] = pd.to_numeric(dfindex['Valeur'], errors='coerce')
+#dfindex['Var % 31/12'] = pd.to_numeric(dfindex['Var % 31/12'], errors='coerce')
+#dfindex['Var %'] = pd.to_numeric(dfindex['Var %'], errors='coerce')
+#dfindex['Valeur'] = pd.to_numeric(dfindex['Valeur'], errors='coerce')
 
-dfindex['Var %'] = dfindex['Var %'].fillna(0)
-dfindex['Var % 31/12'] = dfindex['Var % 31/12'].fillna(0)
+#dfindex['Var %'] = dfindex['Var %'].fillna(0)
+#dfindex['Var % 31/12'] = dfindex['Var % 31/12'].fillna(0)
 
-st.dataframe(dfindex)
+#st.dataframe(dfindex)
 
 #Pondération et cours
 courspond = pd.DataFrame(bvc.getPond())
 
 #Volume scrap
 st.text('Volume de la séance :')
-recap=bvc.getIndexRecap()
+#recap=bvc.getIndexRecap()
 st.write(recap['Volume Global'])
 s = pd.Series([recap['Volume Global']],
               name="Volume Global")
@@ -695,7 +695,7 @@ with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
     BAMcc.to_excel(writer, sheet_name='Cours de change BAM')
     FXCOM.to_excel(writer, sheet_name='FX & commodities')
     intlindices.to_excel(writer, sheet_name='Indices internationaux')
-    dfindex.to_excel(writer, sheet_name='Indices BVC')
+    #dfindex.to_excel(writer, sheet_name='Indices BVC')
     FinalDF.to_excel(writer, sheet_name='Cours & Variations')
     voldf.to_excel(writer, sheet_name='Volume global')
     masi1.to_excel(writer, sheet_name='Masi Hist 1YR')
