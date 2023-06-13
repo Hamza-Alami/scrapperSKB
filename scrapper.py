@@ -572,8 +572,8 @@ else :
 #loading indices
 
 #indices
-index=bvc.getIndex()
-dfindex = pd.DataFrame(index['Resume indice']).transpose()
+#index=bvc.getIndex()
+#dfindex = pd.DataFrame(index['Resume indice']).transpose()
 
 #sectorial
 #dfsect = pd.DataFrame(index['Indices sectoriels']).transpose()
