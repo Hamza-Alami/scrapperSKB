@@ -566,14 +566,6 @@ if (bamselection == 'Q') :
 else :
     st.dataframe(intlindices)
     st.dataframe(FXCOM)
-    
-#Volume scrap
-st.text('Volume de la séance :')
-recap=bvc.getIndexRecap()
-st.write(recap['Volume Global'])
-#s = pd.Series([recap['Volume Global']],
-              #name="Volume Global")
-#voldf = s.to_frame()
 
 #BVCscrapper
 
