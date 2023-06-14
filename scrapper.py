@@ -28,7 +28,7 @@ class MySpider(scrapy.Spider):
   name = "my_spider"
   start_urls = ["https://www.casablanca-bourse.com/fr/data/donnees-de-marche/volume"]
   def parse(self, response):
-    dynamic_element = response.xpath("//*[@id="__next"]/div/div[3]/div[1]/div/div/div/div/div[2]/div[1]/div[1]/div/h4/span").get()
+    dynamic_element = response.xpath("//*/div/div[3]/div[1]/div/div/div/div/div[2]/div[1]/div[1]/div/h4/span").get()
     yield {
       "dynamic_element": dynnamic_element
     }
