@@ -594,13 +594,10 @@ fulldf.loc[tradedtoday, 'Variation'] = 0
 
 #renaming for merge
 fulldf.rename(columns = {'Ticker':'Scrappername'}, inplace = True)
-st.write(fulldf)
-
-#courspond.rename(columns = {'Instrument':'BVC'}, inplace = True)
-#courspond.rename(columns = {'Cours':'Cours BVC'}, inplace = True)
 
 #merging
-#df_merge_col = pd.merge(fulldf, supportsc, on='Scrappername')
+df_merge_col = pd.merge(fulldf, supportsc, on='Scrappername')
+st.write(df_merge_col)
 #df_merge_2 = pd.merge(courspond, df_merge_col, on='BVC')
 
 #df_merge_2['Cloture'] = df_merge_col['Cloture'].apply(lambda x: x.replace(" ", ""))
