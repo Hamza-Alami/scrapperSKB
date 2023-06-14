@@ -640,7 +640,7 @@ courspond.rename(columns = {'Cours':'Cours BVC'}, inplace = True)
 df_merge_col = pd.merge(fulldf, supportsc, on='Scrappername')
 #df_merge_2 = pd.merge(courspond, df_merge_col, on='BVC')
 
-df_merge_2['Cloture'] = df_merge['Cloture'].apply(lambda x: x.replace(" ", ""))
+df_merge_2['Cloture'] = df_merge_col['Cloture'].apply(lambda x: x.replace(" ", ""))
 
 df_merge_2['Cours'] = df_merge_2['Cours'].astype(float)
 df_merge_2['Variation'] = df_merge_2['Variation'].astype(float)
