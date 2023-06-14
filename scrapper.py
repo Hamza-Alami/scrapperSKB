@@ -604,61 +604,61 @@ voldf = s.to_frame()
 #st.dataframe(dfindex)
 
 #Scraping stock data from le Boursier 
-''' 
+###
               
-headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'}
-response_API = requests.get('https://medias24.com/content/api?method=getAllStocks&format=json', headers=headers)
-x = response_API.content
+#headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'}
+#response_API = requests.get('https://medias24.com/content/api?method=getAllStocks&format=json', headers=headers)
+#x = response_API.content
 
-y = json.loads(x)
-z = y['result']
-trntrn = z[0]
+#y = json.loads(x)
+#z = y['result']
+#trntrn = z[0]
         
-seance = []
-for i, val in enumerate(z):
-    sep = ' '
-    stripped = val["datetime"].split(sep, 1)[0]
-    seance.append({'Ticker': val["name"],'Cours': val["cours"], 'Cloture': val["cloture"],'Variation': val["variation"], 'Volume Titre': val["volumeTitre"],"derniere transaction" : stripped})
-    fulldf = pd.DataFrame(seance)
+#seance = []
+#for i, val in enumerate(z):
+    #sep = ' '
+    #stripped = val["datetime"].split(sep, 1)[0]
+    #seance.append({'Ticker': val["name"],'Cours': val["cours"], 'Cloture': val["cloture"],'Variation': val["variation"], 'Volume Titre': val["volumeTitre"],"derniere transaction" : stripped})
+    #fulldf = pd.DataFrame(seance)
     
-fulldf['derniere transaction'] = pd.to_datetime(fulldf['derniere transaction'], infer_datetime_format=True)
+#fulldf['derniere transaction'] = pd.to_datetime(fulldf['derniere transaction'], infer_datetime_format=True)
 
-fulldf['derniere transaction'] = fulldf['derniere transaction'].dt.date
+#fulldf['derniere transaction'] = fulldf['derniere transaction'].dt.date
 
-tradedtoday = fulldf['derniere transaction'] < lyoum
-fulldf.loc[tradedtoday, 'Volume Titre'] = 0
-fulldf.loc[tradedtoday, 'Variation'] = 0
+#tradedtoday = fulldf['derniere transaction'] < lyoum
+#fulldf.loc[tradedtoday, 'Volume Titre'] = 0
+#fulldf.loc[tradedtoday, 'Variation'] = 0
 
 #renaming for merge
-fulldf.rename(columns = {'Ticker':'Scrappername'}, inplace = True)
-courspond.rename(columns = {'Instrument':'BVC'}, inplace = True)
-courspond.rename(columns = {'Cours':'Cours BVC'}, inplace = True)
+#fulldf.rename(columns = {'Ticker':'Scrappername'}, inplace = True)
+#courspond.rename(columns = {'Instrument':'BVC'}, inplace = True)
+#courspond.rename(columns = {'Cours':'Cours BVC'}, inplace = True)
 
 #merging
-df_merge_col = pd.merge(fulldf, supportsc, on='Scrappername')
+#df_merge_col = pd.merge(fulldf, supportsc, on='Scrappername')
 #df_merge_2 = pd.merge(courspond, df_merge_col, on='BVC')
 
-df_merge_2['Cloture'] = df_merge_col['Cloture'].apply(lambda x: x.replace(" ", ""))
+#df_merge_2['Cloture'] = df_merge_col['Cloture'].apply(lambda x: x.replace(" ", ""))
 
-df_merge_2['Cours'] = df_merge_2['Cours'].astype(float)
-df_merge_2['Variation'] = df_merge_2['Variation'].astype(float)
-df_merge_2['Volume Titre'] = df_merge_2['Volume Titre'].astype(float)
-df_merge_2['Nombre de titres'] = df_merge_2['Volume Titre'].astype(float)
-df_merge_2['Var Ytd'] = ((df_merge_2['Cours']-df_merge_2['COURS AU 31/12/2022'])*100)/df_merge_2['COURS AU 31/12/2022']
+#df_merge_2['Cours'] = df_merge_2['Cours'].astype(float)
+#df_merge_2['Variation'] = df_merge_2['Variation'].astype(float)
+#df_merge_2['Volume Titre'] = df_merge_2['Volume Titre'].astype(float)
+#df_merge_2['Nombre de titres'] = df_merge_2['Volume Titre'].astype(float)
+#df_merge_2['Var Ytd'] = ((df_merge_2['Cours']-df_merge_2['COURS AU 31/12/2022'])*100)/df_merge_2['COURS AU 31/12/2022']
 
-df_merge_2['Capitalisation'] = (df_merge_2['Cours']*df_merge_2['NofS'])
-FinalDF = df_merge_2[['soge', 'TICKER','Cours', 'Variation', 'Var Ytd', 'Volume Titre', 'Capitalisation']]
+#df_merge_2['Capitalisation'] = (df_merge_2['Cours']*df_merge_2['NofS'])
+#FinalDF = df_merge_2[['soge', 'TICKER','Cours', 'Variation', 'Var Ytd', 'Volume Titre', 'Capitalisation']]
 
-mapping = {'StÃ© Boissons du Maroc': 'Sté Boissons du Maroc',
-           'CrÃ©dit Du Maroc': 'Crédit du Maroc',
-           'OulmÃ¨s': 'Oulmès',
-           'Maghreb OxygÃ¨ne':'Maghreb Oxygène'
-          }
+#mapping = {'StÃ© Boissons du Maroc': 'Sté Boissons du Maroc',
+           #'CrÃ©dit Du Maroc': 'Crédit du Maroc',
+           #'OulmÃ¨s': 'Oulmès',
+           #'Maghreb OxygÃ¨ne':'Maghreb Oxygène'
+          #}
 
-FinalDF.soge = FinalDF.soge.replace(mapping, regex=True)
-st.write(FinalDF)
+#FinalDF.soge = FinalDF.soge.replace(mapping, regex=True)
+#st.write(FinalDF)
 
-'''
+
 #iIndex hsit
 
 masi1=bvc.loadata('MASI',start=oneyrago,end=lyoum)
