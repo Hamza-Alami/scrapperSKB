@@ -8,4 +8,4 @@ BVCscrap
 yfinance==0.1.85
 webdriver-manager
 fake_useragent
-selenium
+scrapy
