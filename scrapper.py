@@ -22,27 +22,6 @@ import yfinance as yf
 from datetime import date
 import time
 from fake_useragent import UserAgent
-import scrapy
-from scrapy.crawler import CrawlerProcess
-from scrapy.spiders import Spider
-from scrapy.http import Request
-
-class MySpider(scrapy.Spider):
-  name = "my_spider"
-  start_urls = ["https://www.casablanca-bourse.com/fr/data/donnees-de-marche/volume"]
-  def parse(self, response):
-    dynamic_element = response.xpath("//*/div/div[3]/div[1]/div/div/div/div/div[2]/div[1]/div[1]/div/h4/span").get()
-    yield {
-      "dynamic_element": dynnamic_element
-    }
-
-def run_spider():
-  process = CrawlerProcess()
-  process.crawl(MySpider)
-  process.start()
-st.write(run_spider())  
-  
-  
 
 #GITHUB READING
 # Downloading the csv file from your GitHub
