@@ -23,6 +23,9 @@ from datetime import date
 import time
 from fake_useragent import UserAgent
 import scrapy
+from scrapy.crawler import CrawlerProcess
+from scrapy.spiders import Spider
+from scrapy.http import Request
 
 class MySpider(scrapy.Spider):
   name = "my_spider"
