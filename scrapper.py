@@ -29,7 +29,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 #Init Chromedriver
-driver = webdriver
+driver = webdriver()
 
 #go to BVC website
 driver.get("https://www.casablanca-bourse.com/fr/data/donnees-de-marche/volume")
