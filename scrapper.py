@@ -24,13 +24,26 @@ import time
 from fake_useragent import UserAgent
 
 from selenium import webdriver
+from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+from webdriver_manager.firefox import GeckoDriverManager
 
-#Init Chromedriver
-driver = webdriver()
+URL = ""
+TIMEOUT = 20
 
+st.title("Test Selenium")
+
+firefoxOptions = Options()
+firefoxOptions.add_argument("--headless")
+service = Service(GeckoDriverManager().install())
+driver = webdriver.Firefox(
+    options=firefoxOptions,
+    service=service,
+)
 #go to BVC website
 driver.get("https://www.casablanca-bourse.com/fr/data/donnees-de-marche/volume")
 
