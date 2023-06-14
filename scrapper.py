@@ -567,62 +567,35 @@ else :
     st.dataframe(intlindices)
     st.dataframe(FXCOM)
 
-#BVCscrapper
-
-#loading indices
-
-#indices
-#index=bvc.getIndex()
-#dfindex = pd.DataFrame(index['Resume indice']).transpose()
-
-#sectorial
-#dfsect = pd.DataFrame(index['Indices sectoriels']).transpose()
-
-#st.text('Indices BVC')
-
-#dfindex['Var %'] = dfindex['Var %'].apply(lambda x: x.replace(" %", ""))
-#dfindex['Var % 31/12'] = dfindex['Var % 31/12'].apply(lambda x: x.replace(" %", ""))
-#dfindex['Var % 31/12'] = dfindex['Var % 31/12'].apply(lambda x: x.replace(",", "."))
-#dfindex['Var %'] = dfindex['Var %'].apply(lambda x: x.replace(",", "."))
-#dfindex['Valeur'] = dfindex['Valeur'].apply(lambda x: x.replace(",", "."))
-
-#dfindex['Var % 31/12'] = pd.to_numeric(dfindex['Var % 31/12'], errors='coerce')
-#dfindex['Var %'] = pd.to_numeric(dfindex['Var %'], errors='coerce')
-#dfindex['Valeur'] = pd.to_numeric(dfindex['Valeur'], errors='coerce')
-
-#dfindex['Var %'] = dfindex['Var %'].fillna(0)
-#dfindex['Var % 31/12'] = dfindex['Var % 31/12'].fillna(0)
-
-#st.dataframe(dfindex)
-
 #Scraping stock data from le Boursier 
-###
               
-#headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'}
-#response_API = requests.get('https://medias24.com/content/api?method=getAllStocks&format=json', headers=headers)
-#x = response_API.content
+headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'}
+response_API = requests.get('https://medias24.com/content/api?method=getAllStocks&format=json', headers=headers)
+x = response_API.content
 
-#y = json.loads(x)
-#z = y['result']
-#trntrn = z[0]
+y = json.loads(x)
+z = y['result']
+trntrn = z[0]
         
-#seance = []
-#for i, val in enumerate(z):
-    #sep = ' '
-    #stripped = val["datetime"].split(sep, 1)[0]
-    #seance.append({'Ticker': val["name"],'Cours': val["cours"], 'Cloture': val["cloture"],'Variation': val["variation"], 'Volume Titre': val["volumeTitre"],"derniere transaction" : stripped})
-    #fulldf = pd.DataFrame(seance)
+seance = []
+for i, val in enumerate(z):
+    sep = ' '
+    stripped = val["datetime"].split(sep, 1)[0]
+    seance.append({'Ticker': val["name"],'Cours': val["cours"], 'Cloture': val["cloture"],'Variation': val["variation"], 'Volume Titre': val["volumeTitre"],"derniere transaction" : stripped})
+    fulldf = pd.DataFrame(seance)
     
-#fulldf['derniere transaction'] = pd.to_datetime(fulldf['derniere transaction'], infer_datetime_format=True)
+fulldf['derniere transaction'] = pd.to_datetime(fulldf['derniere transaction'], infer_datetime_format=True)
 
-#fulldf['derniere transaction'] = fulldf['derniere transaction'].dt.date
+fulldf['derniere transaction'] = fulldf['derniere transaction'].dt.date
 
-#tradedtoday = fulldf['derniere transaction'] < lyoum
-#fulldf.loc[tradedtoday, 'Volume Titre'] = 0
-#fulldf.loc[tradedtoday, 'Variation'] = 0
+tradedtoday = fulldf['derniere transaction'] < lyoum
+fulldf.loc[tradedtoday, 'Volume Titre'] = 0
+fulldf.loc[tradedtoday, 'Variation'] = 0
 
 #renaming for merge
-#fulldf.rename(columns = {'Ticker':'Scrappername'}, inplace = True)
+fulldf.rename(columns = {'Ticker':'Scrappername'}, inplace = True)
+st.write(fulldf)
+
 #courspond.rename(columns = {'Instrument':'BVC'}, inplace = True)
 #courspond.rename(columns = {'Cours':'Cours BVC'}, inplace = True)
 
