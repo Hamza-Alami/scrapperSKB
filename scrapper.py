@@ -571,9 +571,9 @@ else :
 st.text('Volume de la séance :')
 recap=bvc.getIndexRecap()
 st.write(recap['Volume Global'])
-s = pd.Series([recap['Volume Global']],
+#s = pd.Series([recap['Volume Global']],
               name="Volume Global")
-voldf = s.to_frame()
+#voldf = s.to_frame()
 
 #BVCscrapper
 
