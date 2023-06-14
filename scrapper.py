@@ -597,28 +597,26 @@ fulldf.rename(columns = {'Ticker':'Scrappername'}, inplace = True)
 
 #merging
 df_merge_col = pd.merge(fulldf, supportsc, on='Scrappername')
-st.write(df_merge_col)
-#df_merge_2 = pd.merge(courspond, df_merge_col, on='BVC')
 
-#df_merge_2['Cloture'] = df_merge_col['Cloture'].apply(lambda x: x.replace(" ", ""))
+#cleaning and calculating
+df_merge_col['Cloture'] = df_merge_col['Cloture'].apply(lambda x: x.replace(" ", ""))
+df_merge_col['Cours'] = df_merge_col['Cours'].astype(float)
+df_merge_col['Variation'] = df_merge_col['Variation'].astype(float)
+df_merge_col['Volume Titre'] = df_merge_col['Volume Titre'].astype(float)
+df_merge_col['Nombre de titres'] = df_merge_col['Volume Titre'].astype(float)
+df_merge_col['Var Ytd'] = ((df_merge_col['Cours']-df_merge_col['COURS AU 31/12/2022'])*100)/df_merge_col['COURS AU 31/12/2022']
+df_merge_col['Capitalisation'] = (df_merge_col['Cours']*df_merge_col['NofS'])
 
-#df_merge_2['Cours'] = df_merge_2['Cours'].astype(float)
-#df_merge_2['Variation'] = df_merge_2['Variation'].astype(float)
-#df_merge_2['Volume Titre'] = df_merge_2['Volume Titre'].astype(float)
-#df_merge_2['Nombre de titres'] = df_merge_2['Volume Titre'].astype(float)
-#df_merge_2['Var Ytd'] = ((df_merge_2['Cours']-df_merge_2['COURS AU 31/12/2022'])*100)/df_merge_2['COURS AU 31/12/2022']
+FinalDF = df_merge_col[['soge', 'TICKER','Cours', 'Variation', 'Var Ytd', 'Volume Titre', 'Capitalisation']]
 
-#df_merge_2['Capitalisation'] = (df_merge_2['Cours']*df_merge_2['NofS'])
-#FinalDF = df_merge_2[['soge', 'TICKER','Cours', 'Variation', 'Var Ytd', 'Volume Titre', 'Capitalisation']]
+mapping = {'StÃ© Boissons du Maroc': 'Sté Boissons du Maroc',
+           'CrÃ©dit Du Maroc': 'Crédit du Maroc',
+           'OulmÃ¨s': 'Oulmès',
+           'Maghreb OxygÃ¨ne':'Maghreb Oxygène'
+          }
 
-#mapping = {'StÃ© Boissons du Maroc': 'Sté Boissons du Maroc',
-           #'CrÃ©dit Du Maroc': 'Crédit du Maroc',
-           #'OulmÃ¨s': 'Oulmès',
-           #'Maghreb OxygÃ¨ne':'Maghreb Oxygène'
-          #}
-
-#FinalDF.soge = FinalDF.soge.replace(mapping, regex=True)
-#st.write(FinalDF)
+FinalDF.soge = FinalDF.soge.replace(mapping, regex=True)
+st.write(FinalDF)
 
 
 #iIndex hsit
