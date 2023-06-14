@@ -22,36 +22,24 @@ import yfinance as yf
 from datetime import date
 import time
 from fake_useragent import UserAgent
+import scrapy
 
-from selenium import webdriver
-from selenium.common.exceptions import TimeoutException
-from selenium.webdriver.common.by import By
-from selenium.webdriver.firefox.options import Options
-from selenium.webdriver.firefox.service import Service
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.ui import WebDriverWait
-from webdriver_manager.firefox import GeckoDriverManager
+class MySpider(scrapy.Spider):
+  name = "my_spider"
+  start_urls = ["https://www.casablanca-bourse.com/fr/data/donnees-de-marche/volume"]
+  def parse(self, response):
+    dynamic_element = response.xpath("//*[@id="__next"]/div/div[3]/div[1]/div/div/div/div/div[2]/div[1]/div[1]/div/h4/span").get()
+    yield {
+      "dynamic_element": dynnamic_element
+    }
 
-@st.experimental_singleton
-def installff():
-  os.system('sbase install geckodriver')
-  os.system('ln -s /home/appuser/venv/lib/python3.7/site-packages/seleniumbase/drivers/geckodriver /home/appuser/venv/bin/geckodriver')
-
-_ = installff()
-from selenium.webdriver import FirefoxOptions
-opts = FirefoxOptions()
-opts.add_argument("--headless")
-browser = webdriver.Firefox(options=opts)
-
-#go to BVC website
-browser.get("https://www.casablanca-bourse.com/fr/data/donnees-de-marche/volume")
-
-#getting element
-elem = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.CLASS_NAME, "text-xl leading-[30px] md:text-[28px] md:leading-[38px] font-semibold mb-2")))
-element_text = elem.text
-driver.quit()
-
-st.write(element_text)
+def run_spider():
+  process = CrawlerProcess()
+  process.crawl(MySpider)
+  process.start()
+st.write(run_spider())  
+  
+  
 
 #GITHUB READING
 # Downloading the csv file from your GitHub
