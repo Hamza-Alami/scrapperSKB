@@ -23,6 +23,24 @@ from datetime import date
 import time
 from fake_useragent import UserAgent
 
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+#Init Chromedriver
+driver = webdriver.Chrome()
+
+#go to BVC website
+driver.get("https://www.casablanca-bourse.com/fr/data/donnees-de-marche/volume")
+
+#getting element
+elem = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.CLASS_NAME, "text-xl leading-[30px] md:text-[28px] md:leading-[38px] font-semibold mb-2")))
+element_text = elem.text
+driver.quit()
+
+st.write(element_text)
+
 #GITHUB READING
 # Downloading the csv file from your GitHub
 url = "https://raw.githubusercontent.com/Hamza-Alami/scrapperSKB/main/suppscrap.csv" # Make sure the url is the raw version of the file on GitHub
