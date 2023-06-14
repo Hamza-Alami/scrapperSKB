@@ -566,6 +566,15 @@ if (bamselection == 'Q') :
 else :
     st.dataframe(intlindices)
     st.dataframe(FXCOM)
+    
+#Volume scrap
+st.text('Volume de la séance :')
+recap=bvc.getIndexRecap()
+st.write(recap['Volume Global'])
+s = pd.Series([recap['Volume Global']],
+              #name="Volume Global")
+voldf = s.to_frame()
+    
 '''
 #BVCscrapper
 
@@ -594,16 +603,7 @@ else :
 #dfindex['Var % 31/12'] = dfindex['Var % 31/12'].fillna(0)
 
 #st.dataframe(dfindex)
-'''
-#Volume scrap
-st.text('Volume de la séance :')
-recap=bvc.getIndexRecap()
-st.write(recap['Volume Global'])
-s = pd.Series([recap['Volume Global']],
-              #name="Volume Global")
-voldf = s.to_frame()
-              
-''' 
+
 #Scraping stock data from le Boursier 
 
 headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'}
