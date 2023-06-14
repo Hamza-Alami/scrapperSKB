@@ -595,18 +595,15 @@ else :
 
 #st.dataframe(dfindex)
 '''
-#Pondération et cours
-courspond = pd.DataFrame(bvc.getPond())
-st.write(courspond)
-
-'''
 #Volume scrap
-#st.text('Volume de la séance :')
-#recap=bvc.getIndexRecap()
-#st.write(recap['Volume Global'])
-#s = pd.Series([recap['Volume Global']],
+st.text('Volume de la séance :')
+recap=bvc.getIndexRecap()
+st.write(recap['Volume Global'])
+s = pd.Series([recap['Volume Global']],
               #name="Volume Global")
-#voldf = s.to_frame()
+voldf = s.to_frame()
+              
+''' 
 
 #Scraping stock data from le Boursier 
 
