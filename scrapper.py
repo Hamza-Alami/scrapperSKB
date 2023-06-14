@@ -32,20 +32,19 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from webdriver_manager.firefox import GeckoDriverManager
 
-URL = ""
-TIMEOUT = 20
+@st.experimental_singleton
+def installff():
+  os.system('sbase install geckodriver')
+  os.system('ln -s /home/appuser/venv/lib/python3.7/site-packages/seleniumbase/drivers/geckodriver /home/appuser/venv/bin/geckodriver')
 
-st.title("Test Selenium")
+_ = installff()
+from selenium.webdriver import FirefoxOptions
+opts = FirefoxOptions()
+opts.add_argument("--headless")
+browser = webdriver.Firefox(options=opts)
 
-firefoxOptions = Options()
-firefoxOptions.add_argument("--headless")
-service = Service(GeckoDriverManager().install())
-driver = webdriver.Firefox(
-    options=firefoxOptions,
-    service=service,
-)
 #go to BVC website
-driver.get("https://www.casablanca-bourse.com/fr/data/donnees-de-marche/volume")
+browser.get("https://www.casablanca-bourse.com/fr/data/donnees-de-marche/volume")
 
 #getting element
 elem = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.CLASS_NAME, "text-xl leading-[30px] md:text-[28px] md:leading-[38px] font-semibold mb-2")))
