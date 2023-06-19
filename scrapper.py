@@ -1,4 +1,4 @@
-import streamlit as sthttps://github.com/Hamza-Alami/scrapperSKB/blob/main/scrapper.py
+import streamlit as st
 import pandas as pd
 import numpy as np
 import datetime
