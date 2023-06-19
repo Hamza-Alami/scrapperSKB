@@ -1,4 +1,4 @@
-import streamlit as st
+import streamlit as sthttps://github.com/Hamza-Alami/scrapperSKB/blob/main/scrapper.py
 import pandas as pd
 import numpy as np
 import datetime
@@ -642,8 +642,8 @@ st.write(aujddf)
 ###
 
 #empty sheets temporary
-dfindex = 0
-voldf = 0
+dfindex = pd.DataFrame()
+voldf = pd.DataFrame()
 
 #to excel sheets
 buffer = io.BytesIO()
