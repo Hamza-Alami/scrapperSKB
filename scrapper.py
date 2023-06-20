@@ -497,7 +497,7 @@ def commodities():
     try:
         silver = silver1.loc[formatted_date, "Close"]
     except Exception as e:
-        oil = 1
+        silver = 1
         
     try: 
         silverprev = silver1.loc[formatted_date2, "Close"]
