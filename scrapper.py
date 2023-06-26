@@ -426,7 +426,7 @@ def indices():
     try: 
         hkprev = hk1.loc[formatted_date2, "Close"]
     except Exception as e:
-        hkrev = 1       
+        hkprev = 1       
     
     try: 
         hkwe = hk1.loc[formatted_date3, "Close"]
