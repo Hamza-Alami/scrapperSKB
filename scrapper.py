@@ -264,7 +264,7 @@ with st.container():
         
 ##END OF BANK AL MAGHRIB TOOL
 
-'''
+
 #Scrap from yahoo finance
 #                                       Indices
 
@@ -566,7 +566,7 @@ if (bamselection == 'Q') :
 else :
     st.dataframe(intlindices)
     st.dataframe(FXCOM)
-'''
+
 
 #Scraping stock data from le Boursier 
               
