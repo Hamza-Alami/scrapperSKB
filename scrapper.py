@@ -565,7 +565,7 @@ if (bamselection == 'Q') :
         
 else :
     st.dataframe(intlindices)
-   ''' st.dataframe(FXCOM)'''
+   #st.dataframe(FXCOM)
 
 #Scraping stock data from le Boursier 
               
