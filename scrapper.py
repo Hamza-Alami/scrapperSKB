@@ -23,6 +23,7 @@ from datetime import date
 import time
 from fake_useragent import UserAgent
 
+st.write('test')
 #GITHUB READING
 # Downloading the csv file from your GitHub
 url = "https://raw.githubusercontent.com/Hamza-Alami/scrapperSKB/main/suppscrap.csv" # Make sure the url is the raw version of the file on GitHub
