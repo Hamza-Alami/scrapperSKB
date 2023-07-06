@@ -559,7 +559,7 @@ st.text('Indices internationaux')
 
 if (bamselection == 'Q') :
     intlindicesQ = intlindices[['Cours','var %','var ytd %']]
-  '''  FXCOMQ = FXCOM[['Cours','var %','var ytd %']]'''
+    #FXCOMQ = FXCOM[['Cours','var %','var ytd %']]
     st.dataframe(intlindicesQ)
     st.dataframe(FXCOMQ)
         
