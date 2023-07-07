@@ -655,8 +655,8 @@ with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
     
     # Write each dataframe to a different worksheet.
     BAMcc.to_excel(writer, sheet_name='Cours de change BAM')
-    #FXCOM.to_excel(writer, sheet_name='FX & commodities')
-    #intlindices.to_excel(writer, sheet_name='Indices internationaux')
+    FXCOM.to_excel(writer, sheet_name='FX & commodities')
+    intlindices.to_excel(writer, sheet_name='Indices internationaux')
     dfindex.to_excel(writer, sheet_name='Indices BVC')
     FinalDF.to_excel(writer, sheet_name='Cours & Variations')
     voldf.to_excel(writer, sheet_name='Volume global')
