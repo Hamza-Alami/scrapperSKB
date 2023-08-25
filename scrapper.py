@@ -568,8 +568,7 @@ else :
     st.dataframe(FXCOM)
 
 
-#Scraping stock data from le Boursier 
-'''              
+#Scraping stock data from le Boursier           
 headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'}
 response_API = requests.get('https://medias24.com/content/api?method=getAllStocks&format=json', headers=headers)
 x = response_API.content
@@ -624,7 +623,7 @@ st.write(FinalDF)
 
 masi1=bvc.loadata('MASI',start=oneyrago,end=lyoum)
 msi20=bvc.loadata('MSI20',start=oneyrago,end=lyoum)
-'''
+
 # Get today's date
 today = datetime.datetime.now().date()
 
@@ -658,10 +657,10 @@ with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
     FXCOM.to_excel(writer, sheet_name='FX & commodities')
     intlindices.to_excel(writer, sheet_name='Indices internationaux')
     dfindex.to_excel(writer, sheet_name='Indices BVC')
-    #FinalDF.to_excel(writer, sheet_name='Cours & Variations')
+    FinalDF.to_excel(writer, sheet_name='Cours & Variations')
     voldf.to_excel(writer, sheet_name='Volume global')
-    #masi1.to_excel(writer, sheet_name='Masi Hist 1YR')
-    #msi20.to_excel(writer, sheet_name='Msi20 Hist 1YR')
+    masi1.to_excel(writer, sheet_name='Masi Hist 1YR')
+    msi20.to_excel(writer, sheet_name='Msi20 Hist 1YR')
     aujddf.to_excel(writer, sheet_name='Date')
 
     # Close the Pandas Excel writer and output the Excel file to the buffer
