@@ -440,7 +440,7 @@ def indices():
     hkvarytd = ((hk-hkeoye)*100)/hkeoye
     
     return dj30, sp500, nasdaq, cac, dax, jp, hk, dj30var, sp500var, nasdaqvar, cacvar, daxvar, jpvar, hkvar, djvarytd, spvarytd, nasvarytd, cacvarytd, daxvarytd, jpvarytd, hkvarytd, dj30wvar, sp500wvar, nasdaqwvar, cacwvar, daxwvar, jpwvar, hkwvar
-'''
+
 #                                        Commodities
 
 def commodities():
@@ -521,17 +521,17 @@ def commodities():
 #                                          FX
 
 #calling funcs to lists
-'''indiceslist = indices()'''
+indiceslist = indices()
 commolist = commodities()
 
 st.write(commolist[6], commolist[7], commolist[8], commolist[9], commolist[10], commolist[11])
 
 #putting data into lists
-'''Cours1 = [indiceslist[0], indiceslist[1], indiceslist[2], indiceslist[3], indiceslist[4], indiceslist[5], indiceslist[6]]
+Cours1 = [indiceslist[0], indiceslist[1], indiceslist[2], indiceslist[3], indiceslist[4], indiceslist[5], indiceslist[6]]
 var1 = [indiceslist[7], indiceslist[8], indiceslist[9], indiceslist[10], indiceslist[11], indiceslist[12], indiceslist[13]]
 
 vari = [indiceslist[14], indiceslist[15], indiceslist[16], indiceslist[17], indiceslist[18], indiceslist[19], indiceslist[20]]
-varw = [indiceslist[21], indiceslist[22], indiceslist[23], indiceslist[24], indiceslist[25], indiceslist[26], indiceslist[27]]'''
+varw = [indiceslist[21], indiceslist[22], indiceslist[23], indiceslist[24], indiceslist[25], indiceslist[26], indiceslist[27]]
 
 Cours2 =  [commolist[0], commolist[1], commolist[2]]
 var2 =  [commolist[3], commolist[4], commolist[5]]
@@ -541,7 +541,7 @@ Coursw2 = [commolist[12], commolist[13], commolist[14]]
 varw2 = [commolist[15], commolist[16], commolist[17]]
 
 # dictionary of lists 
-'''dictin = {'Cours': Cours1, 'var %': var1}'''
+dictin = {'Cours': Cours1, 'var %': var1}
 dictin2 = {'Cours': Cours2, 'var %': var2}
 
 FXCOM = pd.DataFrame(dictin2,index=['Gold','Brent','Silver'])
@@ -549,24 +549,24 @@ FXCOM['var ytd %'] = vari2
 FXCOM['Cours j-7'] = Coursw2
 FXCOM['var weekly %'] = varw2
 
-'''intlindices = pd.DataFrame(dictin,index=['Dow Jones','S&P500', 'Nasdaq', 'CAC40', 'DAX30', 'NIKKEI','Hang Seng'])
+intlindices = pd.DataFrame(dictin,index=['Dow Jones','S&P500', 'Nasdaq', 'CAC40', 'DAX30', 'NIKKEI','Hang Seng'])
 intlindices['var ytd %'] = vari
-intlindices['var weekly %'] = varw'''
+intlindices['var weekly %'] = varw
 
 st.text('FX & commodities')
 
 st.text('Indices internationaux')
 
 if (bamselection == 'Q') :
-    '''intlindicesQ = intlindices[['Cours','var %','var ytd %']]'''
+    intlindicesQ = intlindices[['Cours','var %','var ytd %']]
     FXCOMQ = FXCOM[['Cours','var %','var ytd %']]
-    '''st.dataframe(intlindicesQ)'''
+    st.dataframe(intlindicesQ)
     st.dataframe(FXCOMQ)
         
 else :
-    '''st.dataframe(intlindices)'''
+    st.dataframe(intlindices)
     st.dataframe(FXCOM)
-
+'''
 
 #Scraping stock data from le Boursier           
 headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'}
