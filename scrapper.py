@@ -541,7 +541,7 @@ Coursw2 = [commolist[12], commolist[13], commolist[14]]
 varw2 = [commolist[15], commolist[16], commolist[17]]
 
 # dictionary of lists 
-dictin = {'Cours': Cours1, 'var %': var1}
+'''dictin = {'Cours': Cours1, 'var %': var1}'''
 dictin2 = {'Cours': Cours2, 'var %': var2}
 
 FXCOM = pd.DataFrame(dictin2,index=['Gold','Brent','Silver'])
